@@ -7,24 +7,26 @@ from helpers.filters import command, other_filters, other_filters2
 @Client.on_message(command("start") & other_filters2)
 async def start(_, message: Message):
     await message.reply_text(
-        f"""<b>👋🏻 Hi {message.from_user.first_name}!</b>
+        f"""<b>Hi {message.from_user.first_name} 😉️!</b>
 
-I am Music Bot, an bot that lets you play music in your groups.
+I'm The Nexa Music Bot. Friend of <b>@MusicsNexa_Bot</b> 😏️.
 
-Use the buttons below to know more about me.""",
+I can play Music In Telegram Groups Via Voice Chat! 😌️.
+
+Made with ❤️ <b>@NexaBotsUpdates</b>""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "⚒ Source code", url="https://t.me/CallsMusic"
+                        "🤨️ How To Use Me 🤨️", url="https://telegra.ph/How-To-Use-Music-Nexa-Bot-03-16"
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        "💬 Group", url="https://t.me/{Group_Name}"
+                        "🔰️ My Update Channel ", url="https://t.me/NexaBotsUpdates"
                     ),
                     InlineKeyboardButton(
-                        "Channel 🔈", url="https://t.me/{Channel_Name}"
+                        "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
                     )
                 ]
             ]
@@ -35,15 +37,15 @@ Use the buttons below to know more about me.""",
 @Client.on_message(command("start") & other_filters)
 async def start2(_, message: Message):
     await message.reply_text(
-        "💁🏻‍♂️ Do you want to search for a YouTube video?",
+        "Ok! Let's search for a YouTube Video! 🙂️ . btw do you want to search for a youtube video? 🤔️",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "✅ Yes", switch_inline_query_current_chat=""
+                        "✅ Yeah!", switch_inline_query_current_chat=""
                     ),
                     InlineKeyboardButton(
-                        "No ❌", callback_data="close"
+                        "❌ No Shit!", callback_data="close"
                     )
                 ]
             ]
