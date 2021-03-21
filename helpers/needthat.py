@@ -4,4 +4,4 @@
 
 class NeedThat(object):
   
-  STREAM_ACC = os.environ.get("STREAM_ACC")
+  STREAM_ACC = """os.environ.get("STREAM_ACC")"""
