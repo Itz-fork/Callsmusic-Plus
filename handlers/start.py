@@ -37,15 +37,26 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
 @Client.on_message(command("start") & other_filters)
 async def start2(_, message: Message):
     await message.reply_text(
-        "Ok! Let's search for a YouTube Video! 🙂️ . btw do you want to search for a youtube video? 🤔️",
+        f"""<b>Hi {message.from_user.first_name} 😉️!</b>
+
+I'm The Nexa Music Bot. Friend of <b>@MusicsNexa_Bot</b> 😏️.
+
+I can play Music In Telegram Groups Via Voice Chat! 😌️.
+
+Made with ❤️ <b>@NexaBotsUpdates</b>""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "✅ Yeah!", switch_inline_query_current_chat=""
+                        "🤨️ How To Use Me 🤨️", url="https://telegra.ph/How-To-Use-Music-Nexa-Bot-03-16"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🔰️ My Update Channel ", url="https://t.me/NexaBotsUpdates"
                     ),
                     InlineKeyboardButton(
-                        "❌ No Shit!", callback_data="close"
+                        "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
                     )
                 ]
             ]
