@@ -2,6 +2,7 @@ from pyrogram import Client
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 
 from helpers.filters import command, other_filters, other_filters2
+from helpers.needthat import NeedThat # pylint: disable=import-error
 
 
 @Client.on_message(command("start") & other_filters2)
