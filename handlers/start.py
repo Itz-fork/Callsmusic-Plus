@@ -2,7 +2,6 @@ from pyrogram import Client
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 
 from helpers.filters import command, other_filters, other_filters2
-from helpers.needthat import NeedThat
 
 
 @Client.on_message(command("start") & other_filters2)
@@ -74,9 +73,9 @@ Bruh! Do you need Help! 🤔️ yea yea I know it! 🙃️
 
 How To Use Me? 🧐️
 
-<b> 1. Add Me and {STREAM_ACC} To Your Group!
+<b> 1. Add Me and @NexaMusicAssistant To Your Group!
 
- 2. Give Admin To Me and {STREAM_ACC} ! </b>
+ 2. Give Admin To Me and @NexaMusicAssistant ! </b>
  
  Enjoy! 😌️
 
@@ -105,9 +104,9 @@ Bruh! Do you need Help! 🤔️ yea yea I know it! 🙃️
 
 How To Use Me? 🧐️
 
-<b> 1. Add Me and {STREAM_ACC} To Your Group!
+<b> 1. Add Me and @NexaMusicAssistant To Your Group!
 
- 2. Give Admin To Me and {STREAM_ACC} ! </b>
+ 2. Give Admin To Me and @NexaMusicAssistant ! </b>
  
  Enjoy! 😌️
 
