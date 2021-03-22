@@ -197,10 +197,17 @@ async def search(_, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "✅ Yes", switch_inline_query_current_chat=""
+                        "✅ Yeah", switch_inline_query_current_chat=""
                     ),
                     InlineKeyboardButton(
-                        "No ❌", callback_data="close"
+                        "Nope ❌", callback_data="close"
+                    ),
+                    [
+                    InlineKeyboardButton(
+                        "🔰️ My Update Channel ", url="https://t.me/NexaBotsUpdates"
+                    ),
+                    InlineKeyboardButton(
+                        "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
                     )
                 ]
             ]
@@ -217,10 +224,17 @@ async def search2(_, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "✅ Yes", switch_inline_query_current_chat=""
+                        "✅ Yeah", switch_inline_query_current_chat=""
                     ),
                     InlineKeyboardButton(
-                        "No ❌", callback_data="close"
+                        "Nope ❌", callback_data="close"
+                    ),
+                    [
+                    InlineKeyboardButton(
+                        "🔰️ My Update Channel ", url="https://t.me/NexaBotsUpdates"
+                    ),
+                    InlineKeyboardButton(
+                        "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
                     )
                 ]
             ]
