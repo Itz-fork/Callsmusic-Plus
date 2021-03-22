@@ -197,11 +197,15 @@ async def search(_, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "✅ Yeah", switch_inline_query_current_chat=""
+                        "✅ Yes", switch_inline_query_current_chat=""
                     ),
                     InlineKeyboardButton(
-                        "Nope ❌", callback_data="close"
+                        "No ❌", callback_data="close"
                     )
+                ]
+            ]
+        )
+    )
     
     
 
@@ -218,3 +222,7 @@ async def search2(_, message: Message):
                     InlineKeyboardButton(
                         "Nope ❌", callback_data="close"
                     )
+                ]
+            ]
+        )
+    )
