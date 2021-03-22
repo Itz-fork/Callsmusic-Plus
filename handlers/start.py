@@ -201,18 +201,7 @@ async def search(_, message: Message):
                     ),
                     InlineKeyboardButton(
                         "Nope ❌", callback_data="close"
-                    ),
-                    [
-                    InlineKeyboardButton(
-                        "🔰️ My Update Channel ", url="https://t.me/NexaBotsUpdates"
-                    ),
-                    InlineKeyboardButton(
-                        "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
                     )
-                ]
-            ]
-        )
-    )
     
     
 
@@ -228,15 +217,4 @@ async def search2(_, message: Message):
                     ),
                     InlineKeyboardButton(
                         "Nope ❌", callback_data="close"
-                    ),
-                    [
-                    InlineKeyboardButton(
-                        "🔰️ My Update Channel ", url="https://t.me/NexaBotsUpdates"
-                    ),
-                    InlineKeyboardButton(
-                        "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
                     )
-                ]
-            ]
-        )
-    )
