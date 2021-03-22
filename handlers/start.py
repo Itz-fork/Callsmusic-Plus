@@ -186,3 +186,43 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
             ]
         )
     )
+
+ 
+
+@Client.on_message(command("search") & other_filters2)
+async def search(_, message: Message):
+    await message.reply_text(
+        "💁🏻‍♂️ Do you want to search for a YouTube video?",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "✅ Yes", switch_inline_query_current_chat=""
+                    ),
+                    InlineKeyboardButton(
+                        "No ❌", callback_data="close"
+                    )
+                ]
+            ]
+        )
+    )
+    
+    
+
+@Client.on_message(command("search") & other_filters)
+async def search2(_, message: Message):
+    await message.reply_text(
+        "💁🏻‍♂️ Do you want to search for a YouTube video?",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "✅ Yes", switch_inline_query_current_chat=""
+                    ),
+                    InlineKeyboardButton(
+                        "No ❌", callback_data="close"
+                    )
+                ]
+            ]
+        )
+    )
