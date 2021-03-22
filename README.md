@@ -1,5 +1,7 @@
 # Group Music Bot
 
+## [Source Code](https://github.com/NEON-BOTZ/TG-Music)
+Don't deploy or Fork this!
 
 ## Requirements
 
