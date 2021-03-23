@@ -244,16 +244,16 @@ async def promode(_, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "Pause"="pause"
+                        "Pause" command="pause"
                     ),
                     InlineKeyboardButton(
-                        "Resume""resume"
+                        "Resume" command="resume"
                     ),
                     InlineKeyboardButton(
-                        "Stop"="stop"
+                        "Stop" command="stop"
                     ),
                     InlineKeyboardButton(
-                        "Skip"="skip"
+                        "Skip" command="skip"
                     ),
                 ]
             ]
