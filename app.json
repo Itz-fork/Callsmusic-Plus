@@ -1,8 +1,8 @@
 {
-  "name": "CallsMusic",
-  "description": "Open-Source bot to play songs in your Telegram's Group Voice Chat. Powered by PyTgCalls and Made By NeoN BotZ.",
+  "name": "CallsMusic Pro",
+  "description": "Itz Open Source! Itz Fork",
   "keywords": ["music", "voicechat", "telegram"],
-  "repository": "https://github.com/NEON-BOTZ/TG-Music",
+  "repository": "https://github.com/Itz-fork/yeah-my-man",
   "stack": "container",
   "env": {
     "SESSION_NAME": {
