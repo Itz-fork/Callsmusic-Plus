@@ -1,7 +1,7 @@
-# Group Music Bot
+# Group Music Bot (Itz-Fork Edit)
 
 ## Source Code
-Don't deploy or Fork My Repo! [Fork Original Repo](https://github.com/NEON-BOTZ/TG-Music))
+Don't deploy or Fork My Repo! [Fork Original Repo](https://github.com/NEON-BOTZ/TG-Music)
 
 ## Requirements
 
