@@ -226,3 +226,28 @@ async def search2(_, message: Message):
             ]
         )
     )
+    
+    
+@Client.on_message(command("promode") & other_filters)
+async def promode(_, message: Message):
+    await message.reply_text(
+        "😏️ Pro Mode Enabled! ",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "Pause", callback_data="pause"
+                    ),
+                    InlineKeyboardButton(
+                        "Resume", callback_data="resume"
+                    ),
+                    InlineKeyboardButton(
+                        "Stop", callback_data="stop"
+                    ),
+                    InlineKeyboardButton(
+                        "Skip", callback_data="skip"
+                    ),
+                ]
+            ]
+        )
+    )
