@@ -244,16 +244,16 @@ async def promode(_, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "Pause" command="pause"
+                        "Pause" callback_data="pause"
                     ),
                     InlineKeyboardButton(
-                        "Resume" command="resume"
+                        "Resume" callback_data="resume"
                     ),
                     InlineKeyboardButton(
-                        "Stop" command="stop"
+                        "Stop" callback_data="stop"
                     ),
                     InlineKeyboardButton(
-                        "Skip" command="skip"
+                        "Skip" callback_data="skip"
                     ),
                 ]
             ]
@@ -263,8 +263,6 @@ async def promode(_, message: Message):
     
     
 @Client.on_message(command(["pause", "p"]))
-@errors
-@admins_only
 async def pause(_, message: Message):
     if (
             message.chat.id not in callsmusic.pytgcalls.active_calls
@@ -278,8 +276,6 @@ async def pause(_, message: Message):
 
 
 @Client.on_message(command(["resume", "r"]))
-@errors
-@admins_only
 async def resume(_, message: Message):
     if (
             message.chat.id not in callsmusic.pytgcalls.active_calls
@@ -293,8 +289,6 @@ async def resume(_, message: Message):
 
 
 @Client.on_message(command(["stop", "s"]))
-@errors
-@admins_only
 async def stop(_, message: Message):
     if message.chat.id not in callsmusic.pytgcalls.active_calls:
         await message.reply_text("❕ Nothing is streaming.")
@@ -309,8 +303,6 @@ async def stop(_, message: Message):
 
 
 @Client.on_message(command(["skip", "f"]))
-@errors
-@admins_only
 async def skip(_, message: Message):
     if message.chat.id not in callsmusic.pytgcalls.active_calls:
         await message.reply_text("❕ Nothing is playing to skip.")
