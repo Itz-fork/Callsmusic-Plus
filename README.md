@@ -1,14 +1,8 @@
-# Calls Music Bot (Itz-Fork Edit)
-All Credits To [CallsMusic](https://github.com/calsmusic/callsmusic)
+# Calls Music (Itz-Fork Edit)
+All Credits To [CallsMusic](https://github.com/calsmusic/callsmusic) ❤️
 
-## Source Code
-Don't deploy or Fork My Repo! [Fork This Original Repo](https://github.com/NEON-BOTZ/TG-Music)
-
-## Requirements
-
-- FFmpeg
-- NodeJS 15+
-- Python 3.7+
+## Original Repo!
+Don't deploy or Fork My Repo! [This The Original Repo ❤️](https://github.com/callsmusic/callsmusic)
 
 ## Deployment
 
@@ -18,12 +12,19 @@ Don't deploy or Fork My Repo! [Fork This Original Repo](https://github.com/NEON-
 ## With Heroku
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Itz-fork)
 
-## Session
-
 ### Pyrogram String Session
 <a href="https://replit.com/@IamHirusha/GetPyroSessionVC"><img src="https://img.shields.io/badge/Run-Repl.it-white?style=for-the-badge&logo=repl.it"></a>
 
+## Problems?
+Huh? Facing Problems? Sed **[Read How To Deploy](
+
 </details>
+
+## Requirements
+
+- FFmpeg
+- NodeJS 15+
+- Python 3.7+
 
 ### Config
 
@@ -52,6 +53,8 @@ Copy `example.env` to `.env` and fill it with your credentials.
    ```
 
 ## Credits
+
+- [CallsMusic](https://github.com/callsmusic/callsmusic) ~ This is the original Repo! ❤️
 
 - [Roj](https://github.com/rojserbest) & [Marvin](https://github.com/BlackStoneReborn): development
 - [Laky](https://github.com/Laky-64) & [Andrew](https://github.com/AndrewLaneX): PyTgCalls
