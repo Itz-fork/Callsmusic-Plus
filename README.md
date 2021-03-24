@@ -14,7 +14,7 @@ Before You Deploy make sure you Starred & Forked [The Original Repo ❤️](http
    <summary><b>Easy Way ⚡️</b></summary>
 
 ## With Heroku
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Itz-fork)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Itz-fork/yeah-my-man)
 
 ### Pyrogram String Session
 <a href="https://replit.com/@IamHirusha/GetPyroSessionVC"><img src="https://img.shields.io/badge/Run-Repl.it-white?style=for-the-badge&logo=repl.it"></a>
