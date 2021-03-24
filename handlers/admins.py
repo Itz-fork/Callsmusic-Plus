@@ -1,86 +1,92 @@
-import queue
+from asyncio import QueueEmpty
 
 from pyrogram import Client
 from pyrogram.types import Message
 
-import callsmusic
-
-import queues
-import cache.admins
+from callsmusic import callsmusic, queues
 
 from helpers.filters import command
-from helpers.wrappers import errors, admins_only
+from helpers.decorators import errors, authorized_users_only
 
 
 @Client.on_message(command(["pause", "p"]))
 @errors
-@admins_only
+@authorized_users_only
 async def pause(_, message: Message):
-    if (
-            message.chat.id not in callsmusic.pytgcalls.active_calls
-    ) or (
-            callsmusic.pytgcalls.active_calls[message.chat.id] == 'paused'
-    ):
-        await message.reply_text("❕ Nothing is playing.")
+    if callsmusic.pause(message.chat.id):
+        await message.reply_text("⏸ Paused")
     else:
-        callsmusic.pytgcalls.pause_stream(message.chat.id)
-        await message.reply_text("⏸ Paused.")
+        await message.reply_text("❗️ Nothing is playing")
 
 
 @Client.on_message(command(["resume", "r"]))
 @errors
-@admins_only
+@authorized_users_only
 async def resume(_, message: Message):
-    if (
-            message.chat.id not in callsmusic.pytgcalls.active_calls
-    ) or (
-            callsmusic.pytgcalls.active_calls[message.chat.id] == 'playing'
-    ):
-        await message.reply_text("❕ Nothing is paused.")
+    if callsmusic.resume(message.chat.id):
+        await message.reply_text("🎧 Resumed")
     else:
-        callsmusic.pytgcalls.resume_stream(message.chat.id)
-        await message.reply_text("▶️ Resumed.")
+        await message.reply_text("❗️ Nothing is paused")
 
 
 @Client.on_message(command(["stop", "s"]))
 @errors
-@admins_only
+@authorized_users_only
 async def stop(_, message: Message):
-    if message.chat.id not in callsmusic.pytgcalls.active_calls:
-        await message.reply_text("❕ Nothing is streaming.")
+    if message.chat.id not in callsmusic.active_chats:
+        await message.reply_text("❗️ Nothing is playing")
     else:
         try:
             queues.clear(message.chat.id)
-        except queue.Empty:
+        except QueueEmpty:
             pass
 
-        callsmusic.pytgcalls.leave_group_call(message.chat.id)
-        await message.reply_text("⏹ Stopped streaming.")
+        callsmusic.stop(message.chat.id)
+        await message.reply_text("✅ Cleared the queue and left the call")
 
 
 @Client.on_message(command(["skip", "f"]))
 @errors
-@admins_only
+@authorized_users_only
 async def skip(_, message: Message):
-    if message.chat.id not in callsmusic.pytgcalls.active_calls:
-        await message.reply_text("❕ Nothing is playing to skip.")
+    if message.chat.id not in callsmusic.active_chats:
+        await message.reply_text("❗️ Nothing is playing")
     else:
         queues.task_done(message.chat.id)
 
         if queues.is_empty(message.chat.id):
-            callsmusic.pytgcalls.leave_group_call(message.chat.id)
+            await callsmusic.stop(message.chat.id)
         else:
-            callsmusic.pytgcalls.change_stream(message.chat.id, queues.get(message.chat.id)["file_path"])
+            await callsmusic.set_stream(
+                message.chat.id, queues.get(message.chat.id)["file"]
+            )
 
-        await message.reply_text("⏩ Skipped the current song.")
+        await message.reply_text("Skipped.")
 
 
-@Client.on_message(command("admincache"))
+@Client.on_message(command(["mute", "m"]))
 @errors
-@admins_only
-async def admincache(_, message: Message):
-    cache.admins.set(
-        message.chat.id,
-        [member.user for member in await message.chat.get_members(filter="administrators")]
-    )
-    await message.reply_text("❇ Admin cache refreshed!")
+@authorized_users_only
+async def mute(_, message: Message):
+    result = callsmusic.mute(message.chat.id)
+
+    if result == 0:
+        await message.reply_text("🔇 Muted")
+    elif result == 1:
+        await message.reply_text("🔇 Already muted")
+    elif result == 2:
+        await message.reply_text("❗️ Not in voice chat")
+
+
+@Client.on_message(command(["unmute", "u"]))
+@errors
+@authorized_users_only
+async def unmute(_, message: Message):
+    result = callsmusic.unmute(message.chat.id)
+
+    if result == 0:
+        await message.reply_text("🔈 Unmuted")
+    elif result == 1:
+        await message.reply_text("🔈 Already unmuted")
+    elif result == 2:
+        await message.reply_text("❗️ Not in voice chat")
