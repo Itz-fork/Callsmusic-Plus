@@ -1,6 +1,3 @@
-"""
-Written by @pokurt.
-"""
 from pyrogram import Client, errors
 from pyrogram.types import InlineQuery, InlineQueryResultArticle, InputTextMessageContent
 
@@ -16,7 +13,7 @@ async def inline(client: Client, query: InlineQuery):
         await client.answer_inline_query(
             query.id,
             results=answers,
-            switch_pm_text="Type a YouTube video name... by Nexa Bots",
+            switch_pm_text="Type a YouTube video name. CallsMusic ++",
             switch_pm_parameter="help",
             cache_time=0
         )
