@@ -27,12 +27,12 @@ Huh? Facing Problems? Sed **[Read How To Deploy](https://github.com/Itz-fork/yea
 
 ### Config Vars 😂,
 
- `SESSION_NAME`
- `BOT_TOKEN`
- `API_ID`
- `API_HASH`
- `SUDO_USERS`
- `DURATION_LIMIT`
+ `SESSION_NAME`</br>
+ `BOT_TOKEN`</br>
+ `API_ID` </br>
+ `API_HASH` </br>
+ `SUDO_USERS` </br>
+ `DURATION_LIMIT` </br>
 
 **[How To Get Config Vars? 🤔 Read This!](https://github.com/Itz-fork/yeah-my-man/wiki/How-To-Deploy-This!)**
 
