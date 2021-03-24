@@ -56,6 +56,9 @@ Copy `example.env` to `.env` and fill it with your credentials.
    docker run --env-file .env musicplayer
    ```
 
+## Need Support?
+Ask in **[Nexa Bots Support Group](https://t.me/Nexa_bots)**
+
 ## Credits
 
 - [CallsMusic](https://github.com/callsmusic/callsmusic) ~ This is the original Repo! ❤️
