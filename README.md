@@ -13,7 +13,7 @@ Don't deploy or Fork My Repo! [Fork This Original Repo](https://github.com/NEON-
 ## Deployment
 
 <details>
-   <summary><h2><b>Easy Way ⚡️</b></h2></summary>
+   <summary><h3><b>Easy Way ⚡️</b></h3></summary>
 
 ## With Heroku
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Itz-fork)
