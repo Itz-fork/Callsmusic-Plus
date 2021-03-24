@@ -226,5 +226,3 @@ async def search2(_, message: Message):
             ]
         )
     )
-    
-    
