@@ -24,6 +24,18 @@ Huh? Facing Problems? Sed **[Read How To Deploy](https://github.com/Itz-fork/yea
 
 </details>
 
+
+### Config Vars 😂,
+
+ `SESSION_NAME`
+ `BOT_TOKEN`
+ `API_ID`
+ `API_HASH`
+ `SUDO_USERS`
+ `DURATION_LIMIT`
+
+**[How To Get Config Vars? 🤔 Read This!](https://github.com/Itz-fork/yeah-my-man/wiki/How-To-Deploy-This!)**
+
 ## Requirements
 
 - FFmpeg
