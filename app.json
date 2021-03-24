@@ -1,6 +1,6 @@
 {
-  "name": "CallsMusic Pro",
-  "description": "Itz Open Source! Itz Fork",
+  "name": "CallsMusic",
+  "description": "Itz Open Source! Itz Forked! Sed",
   "keywords": ["music", "voicechat", "telegram"],
   "repository": "https://github.com/Itz-fork/yeah-my-man",
   "stack": "container",
@@ -28,7 +28,7 @@
     "DURATION_LIMIT": {
       "description": "Max audio duration limit for downloads (minutes).",
       "required": true,
-      "value": "10"
+      "value": "180"
     }
   }
 }
