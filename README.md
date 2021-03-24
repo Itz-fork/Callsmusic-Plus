@@ -1,4 +1,5 @@
-# Group Music Bot (Itz-Fork Edit)
+# Calls Music Bot (Itz-Fork Edit)
+All Credits To [CallsMusic](https://github.com/calsmusic/callsmusic)
 
 ## Source Code
 Don't deploy or Fork My Repo! [Fork This Original Repo](https://github.com/NEON-BOTZ/TG-Music)
@@ -10,6 +11,19 @@ Don't deploy or Fork My Repo! [Fork This Original Repo](https://github.com/NEON-
 - Python 3.7+
 
 ## Deployment
+
+<details>
+   <summary><h2><b>Easy Way ⚡️</b></h2></summary>
+
+## With Heroku
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Itz-fork)
+
+## Session
+
+### Pyrogram String Session
+<a href="https://replit.com/@IamHirusha/GetPyroSessionVC"><img src="https://img.shields.io/badge/Run-Repl.it-white?style=for-the-badge&logo=repl.it"></a>
+
+</details>
 
 ### Config
 
@@ -36,18 +50,6 @@ Copy `example.env` to `.env` and fill it with your credentials.
    ```bash
    docker run --env-file .env musicplayer
    ```
-<details>
-   <summary><b>Easy Way</b></summary>
-
-## With Heroku
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Itz-fork)
-
-## Session
-
-### Pyrogram String Session
-<a href="https://replit.com/@IamHirusha/GetPyroSessionVC"><img src="https://img.shields.io/badge/Run-Repl.it-white?style=for-the-badge&logo=repl.it"></a>
-
-</details>
 
 ## Credits
 
