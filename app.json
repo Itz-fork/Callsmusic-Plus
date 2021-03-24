@@ -1,34 +1,34 @@
 {
-  "name": "CallsMusic ++",
-  "description": "A CallsMusic Project. Edited By Itz-Fork.",
+  "name": "CallsMusic Pro",
+  "description": "A Project By CallsMusic. I just edited it.",
   "keywords": ["music", "voicechat", "telegram"],
   "repository": "https://github.com/Itz-fork/yeah-my-man",
   "stack": "container",
   "env": {
-    "API_ID": {
-      "description": "Your API_ID from my.telegram.org",
-      "required": true
-    },
-    "API_HASH": {
-      "description": "Your API_HASH from my.telegram.org",
-      "required": true
-    },
     "SESSION_NAME": {
-      "description": "Your Pyrogram String Session. Read wiki.",
+      "description": "Your pyrogram session string",
       "required": true
     },
     "BOT_TOKEN": {
-      "description": "Your Bot Token From @BotFather",
+      "description": "A bot token from @BotFather",
+      "required": true
+    },
+    "API_ID": {
+      "description": "App ID from my.telegram.org/apps",
+      "required": true
+    },
+    "API_HASH": {
+      "description": "App hash from my.telegram.org/apps",
       "required": true
     },
     "SUDO_USERS": {
-      "description": "ID's of Sudo Users. They admins everywhere (separate each id by space)",
+      "description": "List of user IDs counted as admin everywhere (separated by space).",
       "required": true
     },
     "DURATION_LIMIT": {
-      "description": "Max Time Limite For One Song.",
+      "description": "Max audio duration limit for downloads (minutes).",
       "required": true,
-      "value": "180"
+      "value": "10"
     }
   }
 }
