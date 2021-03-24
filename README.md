@@ -17,7 +17,7 @@ Before You Deploy make sure you Starred & Forked [The Original Repo ❤️](http
 <a href="https://replit.com/@IamHirusha/GetPyroSessionVC"><img src="https://img.shields.io/badge/Run-Repl.it-white?style=for-the-badge&logo=repl.it"></a>
 
 ## Problems?
-Huh? Facing Problems? Sed **[Read How To Deploy](
+Huh? Facing Problems? Sed **[Read How To Deploy](https://github.com/Itz-fork/yeah-my-man/wiki/How-To-Deploy-This!)**
 
 </details>
 
