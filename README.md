@@ -2,7 +2,7 @@
 All Credits To [CallsMusic](https://github.com/calsmusic/callsmusic) ❤️
 
 ## Original Repo!
-Don't deploy or Fork My Repo! [This The Original Repo ❤️](https://github.com/callsmusic/callsmusic)
+Here it is! [This The Original Repo ❤️](https://github.com/callsmusic/callsmusic)
 
 ## Note!⚠️ ,
 _**You need another (dummy) Telegram Account For This!**_
