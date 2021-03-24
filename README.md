@@ -4,6 +4,9 @@ All Credits To [CallsMusic](https://github.com/calsmusic/callsmusic) ❤️
 ## Original Repo!
 Don't deploy or Fork My Repo! [This The Original Repo ❤️](https://github.com/callsmusic/callsmusic)
 
+## Note!⚠️ ,
+_**You need another (dummy) Telegram Account For This!**_
+
 ## Deployment
 Before You Deploy make sure you Starred & Forked [The Original Repo ❤️](https://github.com/callsmusic/callsmusic) . And This Repo! 🤗️
 
