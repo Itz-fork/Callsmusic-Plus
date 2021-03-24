@@ -1,12 +1,12 @@
 {
-  "name": "CallsMusic Pro",
-  "description": "A Project By CallsMusic. I just edited it.",
+  "name": "CallsMusic",
+  "description": "Open-Source bot to play songs in your Telegram's Group Voice Chat. Powered by PyTgCalls.",
   "keywords": ["music", "voicechat", "telegram"],
-  "repository": "https://github.com/Itz-fork/yeah-my-man",
+  "repository": "https://github.com/suprojects/CallsMusicHeroku",
   "stack": "container",
   "env": {
     "SESSION_NAME": {
-      "description": "Your pyrogram session string",
+      "description": "Pyrogram session string",
       "required": true
     },
     "BOT_TOKEN": {
