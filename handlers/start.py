@@ -1,15 +1,7 @@
-import queue
-
 from pyrogram import Client
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 
-import callsmusic
-
-import queues
-import cache.admins
-
 from helpers.filters import command, other_filters, other_filters2
-from helpers.wrappers import errors, admins_only
 
 
 @Client.on_message(command("start") & other_filters2)
