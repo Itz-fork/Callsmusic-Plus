@@ -5,9 +5,10 @@ All Credits To [CallsMusic](https://github.com/calsmusic/callsmusic) ❤️
 Don't deploy or Fork My Repo! [This The Original Repo ❤️](https://github.com/callsmusic/callsmusic)
 
 ## Deployment
+Before You Deploy make sure you Starred & Forked [The Original Repo ❤️](https://github.com/callsmusic/callsmusic) . And This Repo! 🤗️
 
 <details>
-   <summary><h3><b>Easy Way ⚡️</b></h3></summary>
+   <summary><b>Easy Way ⚡️</b></summary>
 
 ## With Heroku
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Itz-fork)
