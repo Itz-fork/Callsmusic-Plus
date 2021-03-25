@@ -130,18 +130,16 @@ async def cmdlist(_, message: Message):
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
 
-Bruh! Do you need Help! 🤔️ yea yea I know it! 🙃️
-
 Here is the list of available commands! 😃️
 
 <code>/play</code> - Reply to youtube url or "/play youtube link"
 <code>/skip</code> - Skip currenly playing song!
 <code>/pause</code> - Pause currently playing song!
 <code>/resume</code> - Resume currently pushed song!
+<code>/mute</code> - Mutes Streamer!
+<code>/unmute</code> - Unmutes streamer!
  
- Enjoy! 😌️
-
-Made with ❤️ <b>@NexaBotsUpdates</b>""",
+ Enjoy! 😌️""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -161,18 +159,16 @@ async def cmdlist2(_, message: Message):
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
 
-Bruh! Do you need Help! 🤔️ yea yea I know it! 🙃️
-
 Here is the list of available commands! 😃️
 
 <code>/play</code> - Reply to youtube url or "/play youtube link"
 <code>/skip</code> - Skip currenly playing song!
 <code>/pause</code> - Pause currently playing song!
 <code>/resume</code> - Resume currently pushed song!
+<code>/mute</code> - Mutes Streamer!
+<code>/unmute</code> - Unmutes streamer!
  
- Enjoy! 😌️
-
-Made with ❤️ <b>@NexaBotsUpdates</b>""",
+ Enjoy! 😌️""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -188,6 +184,56 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
     )
 
  
+@Client.on_message(command("credits") & other_filters)
+async def credits(_, message: Message):
+    await message.reply_text(
+        f"""<b>Hi {message.from_user.first_name} 😉️!</b>
+
+This Project Is <b>Not Owned By Me</b> !
+
+Owners are <b><a href="https://github.com/CallsMusic">CallsMusic</a> !
+
+Respect To Code Owners! Not To Me!""",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "Source Code", url="https://github.com/CallsMusic/Callsmusic"
+                    ),
+                    InlineKeyboardButton(
+                        "⚜️ Owners Channel ⚜️", url="https://t.me/callsmusic"
+                    )
+                ]
+            ]
+        )
+    )
+    
+
+    
+@Client.on_message(command("credits") & other_filters2)
+async def credits2(_, message: Message):
+    await message.reply_text(
+        f"""<b>Hi {message.from_user.first_name} 😉️!</b>
+
+This Project Is <b>Not Owned By Me</b> !
+
+Owners are <b><a href="https://github.com/CallsMusic">CallsMusic</a> !
+
+Respect To Code Owners! Not To Me!""",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "Source Code", url="https://github.com/CallsMusic/Callsmusic"
+                    ),
+                    InlineKeyboardButton(
+                        "⚜️ Owners Channel ⚜️", url="https://t.me/callsmusic"
+                    )
+                ]
+            ]
+        )
+    )   
+    
 
 @Client.on_message(command("search") & other_filters2)
 async def search(_, message: Message):
