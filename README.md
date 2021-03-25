@@ -1,5 +1,6 @@
-# Calls Music (Itz-Fork Edit)
-All Credits To [CallsMusic](https://github.com/calsmusic/callsmusic) ❤️
+# Calls Music
+All Credits To [CallsMusic](https://github.com/calsmusic/callsmusic) ❤️ .
+This is CallsMusic-1
 
 ## Original Repo!
 Here it is! [This The Original Repo ❤️](https://github.com/callsmusic/callsmusic)
@@ -68,7 +69,7 @@ Copy `example.env` to `.env` and fill it with your credentials.
    ```
 
 ## Need Support?
-Ask in **[Nexa Bots Support Group](https://t.me/Nexa_bots)**
+Ask Me In**[Nexa Bots Support Group](https://t.me/Nexa_bots)**
 
 ## Credits
 
