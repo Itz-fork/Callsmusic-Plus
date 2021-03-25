@@ -8,7 +8,7 @@ Here it is! [This The Original Repo ❤️](https://github.com/callsmusic/callsm
 _**You need another (dummy) Telegram Account For This!**_
 
 ## Deployment
-Before You Deploy make sure you Starred & Forked [The Original Repo ❤️](https://github.com/callsmusic/callsmusic) . And This Repo! 🤗️
+Before You Deploy make sure you Starred & Forked **[The Original Repo ❤️](https://github.com/callsmusic/callsmusic)** . **And This Repo!** 🤗️
 
 <details>
    <summary><b>Easy Way ⚡️</b></summary>
@@ -20,26 +20,25 @@ Before You Deploy make sure you Starred & Forked [The Original Repo ❤️](http
 <a href="https://replit.com/@IamHirusha/GetPyroSessionVC"><img src="https://img.shields.io/badge/Run-Repl.it-white?style=for-the-badge&logo=repl.it"></a>
 
 ## Problems?
-Huh? Facing Problems? Sed **[Read How To Deploy](https://github.com/Itz-fork/yeah-my-man/wiki/How-To-Deploy-This!)**
+Facing Problems? **[Read How To Deploy](https://github.com/Itz-fork/yeah-my-man/wiki/How-To-Deploy-This!)**
 
 </details>
 
 
 ### Config Vars 😂,
 
- `SESSION_NAME`</br>
- `BOT_TOKEN`</br>
- `API_ID` </br>
- `API_HASH` </br>
- `SUDO_USERS` </br>
- `DURATION_LIMIT` </br>
+ `SESSION_NAME` - Your Pyrogram String Session!</br>
+ `BOT_TOKEN` - Your Bot Token</br>
+ `API_ID` - Your API ID</br>
+ `API_HASH` - Your API HASH</br>
+ `SUDO_USERS` - Sudo User's ID</br>
+ `DURATION_LIMIT` - Max Time Limited For a song!</br>
 
 **[How To Get Config Vars? 🤔 Read This!](https://github.com/Itz-fork/yeah-my-man/wiki/How-To-Deploy-This!)**
 
 ## Requirements
 
 - FFmpeg
-- NodeJS 15+
 - Python 3.7+
 
 ### Config
