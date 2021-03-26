@@ -69,7 +69,7 @@ Copy `example.env` to `.env` and fill it with your credentials.
    ```
 
 ## Need Support?
-Ask Me In**[Nexa Bots Support Group](https://t.me/Nexa_bots)**
+Ask Me In **[Nexa Bots Support Group](https://t.me/Nexa_bots)**
 
 ## Credits
 
