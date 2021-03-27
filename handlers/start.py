@@ -272,3 +272,73 @@ async def search2(_, message: Message):
             ]
         )
     )
+
+    ################## BETA TIME ######################
+    
+    @Client.on_message(command("donate") & other_filters2)
+async def donate(_, message: Message):
+    await message.reply_text(
+        f"""<b>Hi {message.from_user.first_name} 😉️!</b>
+
+I'm The Nexa Music Bot. Friend of <b>@MusicsNexa_Bot</b> 😏️.
+
+My Master Needs Your Donations To Keep This Service Alive & Free! 😔️
+
+You can Donate Him via below buttons
+
+Made with ❤️ <b>@NexaBotsUpdates</b>""",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "💰️ Donate 💰️", url="https://paypal.com"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🔰️ My Update Channel ", url="https://t.me/NexaBotsUpdates"
+                    ),
+                    InlineKeyboardButton(
+                        "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
+                    )
+                ]
+            ]
+        )
+    )
+
+
+@Client.on_message(command("donate") & other_filters)
+async def donate2(_, message: Message):
+    await message.reply_text(
+        f"""<b>Hi {message.from_user.first_name} 😉️!</b>
+
+I'm The Nexa Music Bot. Friend of <b>@MusicsNexa_Bot</b> 😏️.
+
+My Master Needs Your Donations To Keep This Service Alive & Free! 😔️
+
+You can Donate Him via below buttons
+
+Made with ❤️ <b>@NexaBotsUpdates</b>""",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "💰️ Donate 💰️", url="https://paypal.com"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🔰️ My Update Channel ", url="https://t.me/NexaBotsUpdates"
+                    ),
+                    InlineKeyboardButton(
+                        "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "Close This ❌", callback_data="close"
+                    )
+                ]
+            ]
+        )
+    )
