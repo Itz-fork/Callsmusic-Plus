@@ -1,8 +1,12 @@
 from pyrogram import Client
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+from database import Database
 
 from helpers.filters import command, other_filters, other_filters2
 
+
+### Sexy Config Tho ###
+db = Database(Config.DATABASE_URL, BOT_USERNAME)
 
 @Client.on_message(command("start") & other_filters2)
 async def start(_, message: Message):
