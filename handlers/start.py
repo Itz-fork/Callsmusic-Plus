@@ -1,14 +1,8 @@
 from pyrogram import Client
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
-import asyncio
-import datetime
-from database import Database
 
 from helpers.filters import command, other_filters, other_filters2
 
-
-### Sexy Config Tho ###
-db = Database(Config.DATABASE_URL, BOT_USERNAME)
 
 @Client.on_message(command("start") & other_filters2)
 async def start(_, message: Message):
@@ -280,13 +274,4 @@ async def search2(_, message: Message):
     )
 
 
-    
-
-#################################### Oh Shit! Fucked Again Fucking BETA Version ###############################
-
-@Client.on_message(filters.private & filters.command("status") & filters.user(BOT_OWNER))
-async def sts(c, m):
-	total_users = await db.total_users_count()
-	await m.reply_text(text=f"**Total Users :** `{total_users}`", parse_mode="Markdown", quote=True)
-    
     
