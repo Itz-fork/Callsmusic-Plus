@@ -243,7 +243,7 @@ async def cmdlist2(_, message: Message):
 **Voice Chat Link** 😌️
 https://t.me/{}?voicechat
  
- Enjoy The Music! 😌️❤️""",
+Enjoy The Music! 😌️❤️""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
