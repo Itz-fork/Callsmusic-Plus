@@ -1,6 +1,5 @@
 pyrogram
 TgCrypto
-ffmpeg
 pytgcalls
 python-dotenv
 youtube_dl
