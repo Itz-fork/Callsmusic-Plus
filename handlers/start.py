@@ -4,6 +4,9 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, 
 from helpers.filters import command, other_filters, other_filters2
 
 
+VC_USER = get_chat(username)
+
+
 @Client.on_message(command("start") & other_filters2)
 async def start(_, message: Message):
     await message.reply_text(
@@ -241,7 +244,7 @@ async def cmdlist2(_, message: Message):
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
 **Voice Chat Link** 😌️
-https://t.me/{username}?voicechat
+https://t.me/{VC_USER}?voicechat
 
 Enjoy!😌️""",
         reply_markup=InlineKeyboardMarkup(
