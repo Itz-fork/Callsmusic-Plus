@@ -4,5 +4,3 @@ pytgcalls
 python-dotenv
 youtube_dl
 youtube_search_python
-motor
-https://github.com/Tinche/aiofiles/archive/master.zip
