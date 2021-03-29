@@ -3,6 +3,10 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, 
 
 from helpers.filters import command, other_filters, other_filters2
 
+## ~ Simple Config ~ ##
+
+USERNAME = "{get_chat.username}"
+
 
 @Client.on_message(command("start") & other_filters2)
 async def start(_, message: Message):
@@ -182,31 +186,6 @@ Here is the list of available commands! 😃️
             ]
         )
     )
-
- 
-@Client.on_message(command("credits") & other_filters)
-async def credits(_, message: Message):
-    await message.reply_text(
-        f"""<b>Hi {message.from_user.first_name} 😉️!</b>
-
-This Project Is <b>Not Owned By Me</b> !
-
-Owners are <b><a href="https://github.com/CallsMusic">CallsMusic</a> !
-
-Respect To Code Owners! Not To Me!""",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        "Source Code", url="https://github.com/CallsMusic/Callsmusic"
-                    ),
-                    InlineKeyboardButton(
-                        "⚜️ Owners Channel ⚜️", url="https://t.me/callsmusic"
-                    )
-                ]
-            ]
-        )
-    )
     
 
     
@@ -236,12 +215,14 @@ Respect To Code Owners! Not To Me!""",
 
 
 
-@Client.on_message(command("vc") & other_filters)
+@Client.on_message(command("givevc") & other_filters)
 async def cmdlist2(_, message: Message):
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
+
 **Voice Chat Link** 😌️
-https://t.me/"{get_chat.username}"?voicechat
+
+https://t.me/{USERNAME}?voicechat
 
 Enjoy!😌️""",
         reply_markup=InlineKeyboardMarkup(
