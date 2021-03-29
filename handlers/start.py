@@ -241,7 +241,7 @@ async def cmdlist2(_, message: Message):
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
 **Voice Chat Link** 😌️
-https://t.me/{get_chat.username}?voicechat
+https://t.me/"{get_chat.username}"?voicechat
 
 Enjoy!😌️""",
         reply_markup=InlineKeyboardMarkup(
