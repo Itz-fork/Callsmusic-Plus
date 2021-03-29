@@ -233,6 +233,32 @@ Respect To Code Owners! Not To Me!""",
             ]
         )
     )   
+
+    
+@Client.on_message(command("vc") & other_filters)
+async def cmdlist2(_, message: Message):
+    await message.reply_text(
+        f"""<b>Hi {message.from_user.first_name} 😉️!</b>
+
+**Voice Chat Link** 😌️
+
+https://t.me/{}?voicechat
+ 
+ Enjoy The Music! 😌️❤️""",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "🔰️ My Update Channel ", url="https://t.me/NexaBotsUpdates"
+                    ),
+                    InlineKeyboardButton(
+                        "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
+                    )
+                ]
+            ]
+        )
+    )
+
     
 
 @Client.on_message(command("search") & other_filters2)
