@@ -242,8 +242,8 @@ async def cmdlist2(_, message: Message):
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
 **Voice Chat Link** 😌️
 https://t.me/{}?voicechat
- 
-Enjoy The Music! 😌️❤️""",
+
+Enjoy!😌️""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
