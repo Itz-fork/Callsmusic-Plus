@@ -1,5 +1,5 @@
 from pyrogram import Client
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, Chat
 
 from helpers.filters import command, other_filters, other_filters2
 
@@ -241,7 +241,7 @@ async def cmdlist2(_, message: Message):
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
 **Voice Chat Link** 😌️
-https://t.me/{}?voicechat
+https://t.me/{username}?voicechat
 
 Enjoy!😌️""",
         reply_markup=InlineKeyboardMarkup(
