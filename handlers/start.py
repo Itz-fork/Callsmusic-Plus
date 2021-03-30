@@ -89,7 +89,9 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
                 [
                     InlineKeyboardButton(
                         "🔰️ My Update Channel 🔰️", url="https://t.me/NexaBotsUpdates"
-                    ),
+                    )
+                ],
+                [
                     InlineKeyboardButton(
                         "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
                     )
@@ -120,7 +122,9 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
                 [
                     InlineKeyboardButton(
                         "🔰️ My Update Channel 🔰️", url="https://t.me/NexaBotsUpdates"
-                    ),
+                    )
+                ],
+                [
                     InlineKeyboardButton(
                         "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
                     )
@@ -136,7 +140,7 @@ async def cmdlist(_, message: Message):
 
 Here is the list of available commands! 😃️
 
-<code>/play</code> - Reply to youtube url or "/play youtube link"
+<code>/play</code> - Reply to supported url or "/play supported url"
 <code>/skip</code> - Skip currenly playing song!
 <code>/pause</code> - Pause currently playing song!
 <code>/resume</code> - Resume currently pushed song!
@@ -149,10 +153,17 @@ Here is the list of available commands! 😃️
             [
                 [
                     InlineKeyboardButton(
-                        "🔰️ My Update Channel 🔰️", url="https://t.me/NexaBotsUpdates"
-                    ),
+                        "👀️ Supported Sites 👀️", url="https://ytdl-org.github.io/youtube-dl/supportedsites.html"
+                    )
+                ],
+                [
                     InlineKeyboardButton(
                         "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                    "🔰️ My Update Channel 🔰️", url="https://t.me/NexaBotsUpdates"
                     )
                 ]
             ]
@@ -166,7 +177,7 @@ async def cmdlist2(_, message: Message):
 
 Here is the list of available commands! 😃️
 
-<code>/play</code> - Reply to youtube url or "/play youtube link"
+<code>/play</code> - Reply to supported url or "/play supported url"
 <code>/skip</code> - Skip currenly playing song!
 <code>/pause</code> - Pause currently playing song!
 <code>/resume</code> - Resume currently pushed song!
@@ -180,7 +191,9 @@ Here is the list of available commands! 😃️
                 [
                     InlineKeyboardButton(
                         "🔰️ My Update Channel 🔰️", url="https://t.me/NexaBotsUpdates"
-                    ),
+                    )
+                ],
+                [
                     InlineKeyboardButton(
                         "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
                     )
@@ -211,7 +224,9 @@ Respect To Code Owners! Not To Me!""",
                 [
                     InlineKeyboardButton(
                         "🔰️ My Update Channel 🔰️", url="https://t.me/NexaBotsUpdates"
-                    ),
+                    )
+                ],
+                [
                     InlineKeyboardButton(
                         "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
                     )
@@ -228,12 +243,11 @@ async def vc(_, message: Message):
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
 
 
-
              😌️  **Voice Chat Link** 😌️
-______________________________________________________
+____________________------------______________________
 
- ~ https://t.me/{message.chat.username}?voicechat   ~
-______________________________________________________
+👉️ https://t.me/{message.chat.username}?voicechat   👈️
+____________________------------______________________
 
 Enjoy!😌️❤️""",
         reply_markup=InlineKeyboardMarkup(
@@ -241,7 +255,9 @@ Enjoy!😌️❤️""",
                 [
                     InlineKeyboardButton(
                         "🔰️ My Update Channel 🔰️", url="https://t.me/NexaBotsUpdates"
-                    ),
+                    )
+                ],
+                [
                     InlineKeyboardButton(
                         "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
                     )
