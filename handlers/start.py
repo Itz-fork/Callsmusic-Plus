@@ -220,14 +220,15 @@ async def vc(_, message: Message):
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
 
-                **Voice Chat Link** 😌️
 
+
+             😌️  **Voice Chat Link** 😌️
 ______________________________________________________
 
  ~ https://t.me/{message.chat.username}?voicechat   ~
 ______________________________________________________
 
-Enjoy!😌️""",
+Enjoy!😌️❤️""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
