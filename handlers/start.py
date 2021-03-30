@@ -27,7 +27,7 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
                 ],
                 [
                     InlineKeyboardButton(
-                        "🔰️ My Update Channel ", url="https://t.me/NexaBotsUpdates"
+                        "🔰️ My Update Channel 🔰️", url="https://t.me/NexaBotsUpdates"
                     ),
                     InlineKeyboardButton(
                         "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
@@ -57,7 +57,7 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
                 ],
                 [
                     InlineKeyboardButton(
-                        "🔰️ My Update Channel ", url="https://t.me/NexaBotsUpdates"
+                        "🔰️ My Update Channel 🔰️", url="https://t.me/NexaBotsUpdates"
                     ),
                     InlineKeyboardButton(
                         "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
@@ -88,7 +88,7 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
             [
                 [
                     InlineKeyboardButton(
-                        "🔰️ My Update Channel ", url="https://t.me/NexaBotsUpdates"
+                        "🔰️ My Update Channel 🔰️", url="https://t.me/NexaBotsUpdates"
                     ),
                     InlineKeyboardButton(
                         "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
@@ -119,7 +119,7 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
             [
                 [
                     InlineKeyboardButton(
-                        "🔰️ My Update Channel ", url="https://t.me/NexaBotsUpdates"
+                        "🔰️ My Update Channel 🔰️", url="https://t.me/NexaBotsUpdates"
                     ),
                     InlineKeyboardButton(
                         "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
@@ -148,7 +148,7 @@ Here is the list of available commands! 😃️
             [
                 [
                     InlineKeyboardButton(
-                        "🔰️ My Update Channel ", url="https://t.me/NexaBotsUpdates"
+                        "🔰️ My Update Channel 🔰️", url="https://t.me/NexaBotsUpdates"
                     ),
                     InlineKeyboardButton(
                         "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
@@ -177,7 +177,7 @@ Here is the list of available commands! 😃️
             [
                 [
                     InlineKeyboardButton(
-                        "🔰️ My Update Channel ", url="https://t.me/NexaBotsUpdates"
+                        "🔰️ My Update Channel 🔰️", url="https://t.me/NexaBotsUpdates"
                     ),
                     InlineKeyboardButton(
                         "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
@@ -215,21 +215,24 @@ Respect To Code Owners! Not To Me!""",
 
 
 
-@Client.on_message(command("givevc") & other_filters)
-async def cmdlist2(_, message: Message):
+@Client.on_message(command("vc") & other_filters)
+async def vc(_, message: Message):
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
 
-**Voice Chat Link** 😌️
+ **Voice Chat Link** 😌️
 
-https://t.me/{USERNAME}?voicechat
+______________________________________________________
+
+~~ https://t.me/{message.chat.username}?voicechat   ~~
+______________________________________________________
 
 Enjoy!😌️""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "🔰️ My Update Channel ", url="https://t.me/NexaBotsUpdates"
+                        "🔰️ My Update Channel 🔰️", url="https://t.me/NexaBotsUpdates"
                     ),
                     InlineKeyboardButton(
                         "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
