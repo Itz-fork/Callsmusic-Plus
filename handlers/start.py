@@ -142,6 +142,7 @@ Here is the list of available commands! 😃️
 <code>/resume</code> - Resume currently pushed song!
 <code>/mute</code> - Mutes Streamer!
 <code>/unmute</code> - Unmutes streamer!
+<code>/vc</code> - Give voice chat link of your group! (Only For Public Groups)
  
  Enjoy! 😌️""",
         reply_markup=InlineKeyboardMarkup(
@@ -171,6 +172,7 @@ Here is the list of available commands! 😃️
 <code>/resume</code> - Resume currently pushed song!
 <code>/mute</code> - Mutes Streamer!
 <code>/unmute</code> - Unmutes streamer!
+<code>/vc</code> - Give voice chat link of your group! (Only For Public Groups)
  
  Enjoy! 😌️""",
         reply_markup=InlineKeyboardMarkup(
@@ -194,19 +196,24 @@ async def credits2(_, message: Message):
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
 
-This Project Is <b>Not Owned By Me</b> !
+__Note!__ ⚠️: This Project Is <b>Not Fully Owned By Me</b> !
 
-Owners are <b><a href="https://github.com/CallsMusic">CallsMusic</a> !
+Credits To,
+
+<b><a href="https://github.com/CallsMusic">CallsMusic</a></b> - For Callsmusic (Main Code ❤️) !
+<b><a href="https://github.com/nikhileashy">N A C</a></b> - For <code>/vc</code> Command
+
+Made with ❤️ by **@NexaBotsUpdates**
 
 Respect To Code Owners! Not To Me!""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "Source Code", url="https://github.com/CallsMusic/Callsmusic"
+                        "🔰️ My Update Channel 🔰️", url="https://t.me/NexaBotsUpdates"
                     ),
                     InlineKeyboardButton(
-                        "⚜️ Owners Channel ⚜️", url="https://t.me/callsmusic"
+                        "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
                     )
                 ]
             ]
@@ -252,10 +259,10 @@ async def search(_, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "✅ Yes", switch_inline_query_current_chat=""
+                        "✅ Yeah", switch_inline_query_current_chat=""
                     ),
                     InlineKeyboardButton(
-                        "No ❌", callback_data="close"
+                        "Nope ❌", callback_data="close"
                     )
                 ]
             ]
