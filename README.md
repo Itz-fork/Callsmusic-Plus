@@ -78,6 +78,11 @@ Ask Me In **[Nexa Bots Support Group](https://t.me/Nexa_bots)**
 - [Roj](https://github.com/rojserbest) & [Marvin](https://github.com/BlackStoneReborn): development
 - [Laky](https://github.com/Laky-64) & [Andrew](https://github.com/AndrewLaneX): PyTgCalls
 
+## Thanks To,
+
+- [N A C CREATIVE](https://github.com/nikhileashy): For Voice Chat Link Command!
+
+
 ## License
 
 ### GNU General Public License v3.0
