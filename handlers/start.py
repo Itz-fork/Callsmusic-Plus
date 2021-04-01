@@ -13,7 +13,7 @@ async def start(_, message: Message):
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
 
-I'm The Nexa Music Bot. Friend of <b>@MusicsNexa_Bot</b> 😏️.
+I'm The Nexa Music Bot. Friend of <b>@TheNexasMusic_bot</b> 😏️.
 
 I can play Music In Telegram Groups Via Voice Chat! 😌️.
 
@@ -43,7 +43,7 @@ async def start2(_, message: Message):
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
 
-I'm The Nexa Music Bot. Friend of <b>@MusicsNexa_Bot</b> 😏️.
+I'm The Nexa Music Bot. Friend of <b>@TheNexasMusic_bot</b> 😏️.
 
 I can play Music In Telegram Groups Via Voice Chat! 😌️.
 
@@ -77,9 +77,9 @@ Bruh! Do you need Help! 🤔️ yea yea I know it! 🙃️
 
 How To Use Me? 🧐️
 
-<b> 1. Add Me and @NexaMusicAssistant To Your Group!
+<b> 1. Add Me and @NexasMusic To Your Group!
 
- 2. Give Admin To Me and @NexaMusicAssistant ! </b>
+ 2. Give Admin To Me and @NexasMusic ! </b>
  
  Enjoy! 😌️
 
@@ -110,9 +110,9 @@ Bruh! Do you need Help! 🤔️ yea yea I know it! 🙃️
 
 How To Use Me? 🧐️
 
-<b> 1. Add Me and @NexaMusicAssistant To Your Group!
+<b> 1. Add Me and @NexasMusic To Your Group!
 
- 2. Give Admin To Me and @NexaMusicAssistant ! </b>
+ 2. Give Admin To Me and @NexasMusic ! </b>
  
  Enjoy! 😌️ Also hit /cmdlist to see available commands! 😶️
 
