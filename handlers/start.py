@@ -130,6 +130,39 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
         )
     )
 
+    
+@Client.on_message(command("help") & other_filters)
+async def help2(_, message: Message):
+    await message.reply_text(
+        f"""<b>Hi {message.from_user.first_name} 😉️!</b>
+
+Bruh! Do you need Help! 🤔️ yea yea I know it! 🙃️
+
+How To Use Me? 🧐️
+
+<b> 1. Add Me and @NexasMusic To Your Group!
+
+ 2. Give Admin To Me and @NexasMusic ! </b>
+ 
+ Enjoy! 😌️ Also hit /cmdlist to see available commands! 😶️
+
+Made with ❤️ <b>@NexaBotsUpdates</b>""",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "🔰️ My Update Channel 🔰️", url="https://t.me/NexaBotsUpdates"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
+                    )
+                ]
+            ]
+        )
+    )
+ 
 
 @Client.on_message(command("help@MusicsNexa_Bot") & other_filters)
 async def help2(_, message: Message):
@@ -163,39 +196,6 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
         )
     )
 
-    
-@Client.on_message(command("help") & other_filters)
-async def help2(_, message: Message):
-    await message.reply_text(
-        f"""<b>Hi {message.from_user.first_name} 😉️!</b>
-
-Bruh! Do you need Help! 🤔️ yea yea I know it! 🙃️
-
-How To Use Me? 🧐️
-
-<b> 1. Add Me and @NexasMusic To Your Group!
-
- 2. Give Admin To Me and @NexasMusic ! </b>
- 
- Enjoy! 😌️ Also hit /cmdlist to see available commands! 😶️
-
-Made with ❤️ <b>@NexaBotsUpdates</b>""",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        "🔰️ My Update Channel 🔰️", url="https://t.me/NexaBotsUpdates"
-                    )
-                ],
-                [
-                    InlineKeyboardButton(
-                        "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
-                    )
-                ]
-            ]
-        )
-    )
-    
     
 @Client.on_message(command("cmdlist") & other_filters2)
 async def cmdlist(_, message: Message):
