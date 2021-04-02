@@ -38,7 +38,7 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
     )
 
 
-@Client.on_message(command("start") & other_filters)
+@Client.on_message(command("start", "start@MusicsNexa_Bot") & other_filters)
 async def start2(_, message: Message):
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
