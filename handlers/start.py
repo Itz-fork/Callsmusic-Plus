@@ -13,7 +13,7 @@ async def start(_, message: Message):
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
 
-I'm The Nexa Music Bot. Friend of <b>@TheNexasMusic_bot</b> 😏️.
+I'm The Nexa Music Bot. Friend of <b>@MusicsNexa_Bot</b> 😏️.
 
 I can play Music In Telegram Groups Via Voice Chat! 😌️.
 
@@ -43,7 +43,7 @@ async def start2(_, message: Message):
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
 
-I'm The Nexa Music Bot. Friend of <b>@TheNexasMusic_bot</b> 😏️.
+I'm The Nexa Music Bot. Friend of <b>@MusicsNexa_Bot</b> 😏️.
 
 I can play Music In Telegram Groups Via Voice Chat! 😌️.
 
@@ -68,12 +68,12 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
     )
 
     
-@Client.on_message(command("start@MusicsNexa_Bot") & other_filters)
+@Client.on_message(command("start@TheNexasMusic_bot") & other_filters)
 async def start2(_, message: Message):
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
 
-I'm The Nexa Music Bot. Friend of <b>@TheNexasMusic_bot</b> 😏️.
+I'm The Nexa Music Bot. Friend of <b>@MusicsNexa_Bot</b> 😏️.
 
 I can play Music In Telegram Groups Via Voice Chat! 😌️.
 
@@ -107,9 +107,9 @@ Bruh! Do you need Help! 🤔️ yea yea I know it! 🙃️
 
 How To Use Me? 🧐️
 
-<b> 1. Add Me and @NexasMusic To Your Group!
+<b> 1. Add Me and @NexaMusicAssistant To Your Group!
 
- 2. Give Admin To Me and @NexasMusic ! </b>
+ 2. Give Admin To Me and @NexaMusicAssistant ! </b>
  
  Enjoy! 😌️
 
@@ -140,9 +140,9 @@ Bruh! Do you need Help! 🤔️ yea yea I know it! 🙃️
 
 How To Use Me? 🧐️
 
-<b> 1. Add Me and @NexasMusic To Your Group!
+<b> 1. Add Me and @NexaMusicAssistant To Your Group!
 
- 2. Give Admin To Me and @NexasMusic ! </b>
+ 2. Give Admin To Me and @NexaMusicAssistant ! </b>
  
  Enjoy! 😌️ Also hit /cmdlist to see available commands! 😶️
 
@@ -164,7 +164,7 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
     )
  
 
-@Client.on_message(command("help@MusicsNexa_Bot") & other_filters)
+@Client.on_message(command("help@TheNexasMusic_bot") & other_filters)
 async def help2(_, message: Message):
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
@@ -173,9 +173,9 @@ Bruh! Do you need Help! 🤔️ yea yea I know it! 🙃️
 
 How To Use Me? 🧐️
 
-<b> 1. Add Me and @NexasMusic To Your Group!
+<b> 1. Add Me and @NexaMusicAssistant To Your Group!
 
- 2. Give Admin To Me and @NexasMusic ! </b>
+ 2. Give Admin To Me and @NexaMusicAssistant ! </b>
  
  Enjoy! 😌️ Also hit /cmdlist to see available commands! 😶️
 
@@ -267,7 +267,7 @@ Here is the list of available commands! 😃️
     )
     
     
-@Client.on_message(command("cmdlist@MusicsNexa_Bot") & other_filters)
+@Client.on_message(command("cmdlist@TheNexasMusic_bot") & other_filters)
 async def cmdlist2(_, message: Message):
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
@@ -363,7 +363,7 @@ Enjoy!😌️❤️""",
     )
 
     
-@Client.on_message(command("vc@MusicsNexa_Bot") & other_filters)
+@Client.on_message(command("vc@TheNexasMusic_bot") & other_filters)
 async def vc(_, message: Message):
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
@@ -412,7 +412,7 @@ async def search(_, message: Message):
     )
     
  
-@Client.on_message(command("search@MusicsNexa_Bot") & other_filters)
+@Client.on_message(command("search@TheNexasMusic_bot") & other_filters)
 async def search2(_, message: Message):
     await message.reply_text(
         "💁🏻‍♂️ Do you want to search for a YouTube video?",
