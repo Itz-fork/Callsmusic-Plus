@@ -38,7 +38,7 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
     )
 
 
-@Client.on_message(command("start", "start@MusicsNexa_Bot") & other_filters)
+@Client.on_message(command("start") & other_filters)
 async def start2(_, message: Message):
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
@@ -67,6 +67,36 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
         )
     )
 
+    
+@Client.on_message(command("start@MusicsNexa_Bot") & other_filters)
+async def start2(_, message: Message):
+    await message.reply_text(
+        f"""<b>Hi {message.from_user.first_name} 😉️!</b>
+
+I'm The Nexa Music Bot. Friend of <b>@TheNexasMusic_bot</b> 😏️.
+
+I can play Music In Telegram Groups Via Voice Chat! 😌️.
+
+Made with ❤️ <b>@NexaBotsUpdates</b>""",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "🤨️ How To Use Me 🤨️", url="https://telegra.ph/How-To-Use-Music-Nexa-Bot-03-16"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🔰️ My Update Channel 🔰️", url="https://t.me/NexaBotsUpdates"
+                    ),
+                    InlineKeyboardButton(
+                        "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
+                    )
+                ]
+            ]
+        )
+    )
+    
     
 @Client.on_message(command("help") & other_filters2)
 async def help(_, message: Message):
