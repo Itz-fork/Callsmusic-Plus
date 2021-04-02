@@ -131,7 +131,7 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
     )
 
 
-@Client.on_message(command("help") & other_filters)
+@Client.on_message(command("help@MusicsNexa_Bot") & other_filters)
 async def help2(_, message: Message):
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
@@ -163,6 +163,40 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
         )
     )
 
+    
+@Client.on_message(command("help") & other_filters)
+async def help2(_, message: Message):
+    await message.reply_text(
+        f"""<b>Hi {message.from_user.first_name} 😉️!</b>
+
+Bruh! Do you need Help! 🤔️ yea yea I know it! 🙃️
+
+How To Use Me? 🧐️
+
+<b> 1. Add Me and @NexasMusic To Your Group!
+
+ 2. Give Admin To Me and @NexasMusic ! </b>
+ 
+ Enjoy! 😌️ Also hit /cmdlist to see available commands! 😶️
+
+Made with ❤️ <b>@NexaBotsUpdates</b>""",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "🔰️ My Update Channel 🔰️", url="https://t.me/NexaBotsUpdates"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
+                    )
+                ]
+            ]
+        )
+    )
+    
+    
 @Client.on_message(command("cmdlist") & other_filters2)
 async def cmdlist(_, message: Message):
     await message.reply_text(
@@ -232,6 +266,38 @@ Here is the list of available commands! 😃️
         )
     )
     
+    
+@Client.on_message(command("cmdlist@MusicsNexa_Bot") & other_filters)
+async def cmdlist2(_, message: Message):
+    await message.reply_text(
+        f"""<b>Hi {message.from_user.first_name} 😉️!</b>
+
+Here is the list of available commands! 😃️
+
+<code>/play</code> - Reply to supported url or "/play supported url"
+<code>/skip</code> - Skip currenly playing song!
+<code>/pause</code> - Pause currently playing song!
+<code>/resume</code> - Resume currently pushed song!
+<code>/mute</code> - Mutes Streamer!
+<code>/unmute</code> - Unmutes streamer!
+<code>/vc</code> - Give voice chat link of your group! (Only For Public Groups)
+ 
+ Enjoy! 😌️""",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "🔰️ My Update Channel 🔰️", url="https://t.me/NexaBotsUpdates"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
+                    )
+                ]
+            ]
+        )
+    )
 
     
 @Client.on_message(command("credits") & other_filters2)
@@ -296,6 +362,36 @@ Enjoy!😌️❤️""",
         )
     )
 
+    
+@Client.on_message(command("vc@MusicsNexa_Bot") & other_filters)
+async def vc(_, message: Message):
+    await message.reply_text(
+        f"""<b>Hi {message.from_user.first_name} 😉️!</b>
+
+
+             😌️  **Voice Chat Link** 😌️
+____________________------------______________________
+
+👉️ https://t.me/{message.chat.username}?voicechat   👈️
+____________________------------______________________
+
+Enjoy!😌️❤️""",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "🔰️ My Update Channel 🔰️", url="https://t.me/NexaBotsUpdates"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
+                    )
+                ]
+            ]
+        )
+    )
+    
 
 @Client.on_message(command("search") & other_filters2)
 async def search(_, message: Message):
@@ -315,7 +411,25 @@ async def search(_, message: Message):
         )
     )
     
-    
+ 
+@Client.on_message(command("search@MusicsNexa_Bot") & other_filters)
+async def search2(_, message: Message):
+    await message.reply_text(
+        "💁🏻‍♂️ Do you want to search for a YouTube video?",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "✅ Yeah", switch_inline_query_current_chat=""
+                    ),
+                    InlineKeyboardButton(
+                        "Nope ❌", callback_data="close"
+                    )
+                ]
+            ]
+        )
+    )
+
 
 @Client.on_message(command("search") & other_filters)
 async def search2(_, message: Message):
