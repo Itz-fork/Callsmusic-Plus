@@ -14,7 +14,7 @@ async def start(_, message: Message):
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
 
-I'm The Nexa Music Bot. Friend of <b>@MusicsNexa_Bot</b> 😏️.
+I'm The Nexa Music Bot. Friend of **@{FRIEND_BOT}** 😏️.
 
 I can play Music In Telegram Groups Via Voice Chat! 😌️.
 
