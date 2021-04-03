@@ -5,6 +5,7 @@ from helpers.filters import command, other_filters, other_filters2
 
 ## ~ Simple Config ~ ##
 FRIEND_BOT = "TheNexasMusic_bot"
+USER_ACCNAME = "NexaMusicAssistant"
 
 
 
