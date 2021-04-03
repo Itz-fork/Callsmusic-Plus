@@ -4,7 +4,7 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, 
 from helpers.filters import command, other_filters, other_filters2
 
 ## ~ Simple Config ~ ##
-FRIEND_BOT = "TheNexasMusic_bot"
+FRIEND_BOT = "MusicsNexa_bot"
 USER_ACCNAME = "NexaMusicAssistant"
 
 
