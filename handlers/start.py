@@ -212,6 +212,7 @@ Here is the list of available commands! 😃️
 <code>/mute</code> - Mutes Streamer!
 <code>/unmute</code> - Unmutes streamer!
 <code>/vc</code> - Give voice chat link of your group! (Only For Public Groups)
+<code>/yts (song name)</code> - Download song by it's name!
  
  Enjoy! 😌️""",
         reply_markup=InlineKeyboardMarkup(
@@ -249,6 +250,7 @@ Here is the list of available commands! 😃️
 <code>/mute</code> - Mutes Streamer!
 <code>/unmute</code> - Unmutes streamer!
 <code>/vc</code> - Give voice chat link of your group! (Only For Public Groups)
+<code>/yts (song name)</code> - Download song by it's name!
  
  Enjoy! 😌️""",
         reply_markup=InlineKeyboardMarkup(
@@ -282,6 +284,7 @@ Here is the list of available commands! 😃️
 <code>/mute</code> - Mutes Streamer!
 <code>/unmute</code> - Unmutes streamer!
 <code>/vc</code> - Give voice chat link of your group! (Only For Public Groups)
+<code>/yts (song name)</code> - Download song by it's name!
  
  Enjoy! 😌️""",
         reply_markup=InlineKeyboardMarkup(
