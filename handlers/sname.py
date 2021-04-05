@@ -6,7 +6,6 @@ import requests
 import aiohttp
 import youtube_dl
 
-from JESongBot import Jebot as app
 from pyrogram import filters, Client
 from youtube_search import YoutubeSearch
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, InputTextMessageContent
@@ -15,7 +14,7 @@ def time_to_seconds(time):
     stringt = str(time)
     return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(':'))))
 
-@app.on_message(filters.command('yts'))
+@Client.on_message(filters.command('yts'))
 def song(client, message):
 
     user_id = message.from_user.id 
