@@ -81,6 +81,7 @@ Ask Me In **[Nexa Bots Support Group](https://t.me/Nexa_bots)**
 ## Thanks To,
 
 - [N A C CREATIVE](https://github.com/nikhileashy): For Voice Chat Link Command!
+- [ImJanindu](https://github.com/ImJanindu) and Mr Dark prince : For their Powerful and Amazing Plugin!
 
 
 ## License
