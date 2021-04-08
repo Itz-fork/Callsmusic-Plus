@@ -14,6 +14,7 @@ _**You need another (dummy) Telegram Account For This!**_
 - **Download Songs By It's Name!** (Ex:- `/yts faded` )
 - **Search For YouTube Videos Inline!**
 - **Supports Queues!**
+- **Get Voice Chat Link!** (`/vc` - Public Groups Only )
 
 And Some Cool Features! 😚️
 
