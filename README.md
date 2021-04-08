@@ -21,7 +21,7 @@ And Some Cool Features! 😚️
 Before You Deploy make sure you Starred & Forked **[The Original Repo ❤️](https://github.com/callsmusic/callsmusic)** . **And This Repo!** 🤗️
 
 <details>
-   <summary><b>Easy Way ⚡️</b></summary>
+   <summary><b>The Easy Way ⚡️</b></summary>
 
 ## With Heroku
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Itz-fork/yeah-my-man/tree/beta-1)
