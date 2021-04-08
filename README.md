@@ -10,10 +10,10 @@ _**You need another (dummy) Telegram Account For This!**_
 
 ## Features 🔥️
 
-- **Play Music In Telegram Group Voice Chats! (Supports Multiple Groups)
-- **Download Songs By It's Name! (Ex:- `/yts faded` )
-- **Search For YouTube Videos Inline!
-- **Supports Queues!
+- **Play Music In Telegram Group Voice Chats!** (Supports Multiple Groups)
+- **Download Songs By It's Name!** (Ex:- `/yts faded` )
+- **Search For YouTube Videos Inline!**
+- **Supports Queues!**
 
 And Some Cool Features! 😚️
 
