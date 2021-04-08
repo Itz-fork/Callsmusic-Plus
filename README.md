@@ -1,5 +1,5 @@
 # Calls Music
-All Credits To [CallsMusic](https://github.com/calsmusic/callsmusic) ❤️ .
+All Credits To [CallsMusic](https://github.com/callsmusic/callsmusic) ❤️ .
 This is CallsMusic-1
 
 ## Original Repo!
