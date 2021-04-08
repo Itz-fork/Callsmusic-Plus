@@ -8,6 +8,15 @@ Here it is! [This The Original Repo ❤️](https://github.com/callsmusic/callsm
 ## Note!⚠️ ,
 _**You need another (dummy) Telegram Account For This!**_
 
+## Features 🔥️
+
+- **Play Music In Telegram Group Voice Chats! (Supports Multiple Groups)
+- **Download Songs By It's Name! (Ex:- `/yts faded` )
+- **Search For YouTube Videos Inline!
+- **Supports Queues!
+
+And Some Cool Features! 😚️
+
 ## Deployment
 Before You Deploy make sure you Starred & Forked **[The Original Repo ❤️](https://github.com/callsmusic/callsmusic)** . **And This Repo!** 🤗️
 
