@@ -10,7 +10,7 @@ USER_ACCNAME = "NexaMusicAssistant"
 
 
 
-@Client.on_message(command(["start", "start@TheNexasMusic_bot"]))
+@Client.on_message(command("start"))
 async def start(_, message: Message):
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
@@ -40,7 +40,7 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
     )
     
     
-@Client.on_message(command(["help", "help@TheNexasMusic_bot"]))
+@Client.on_message(command("help"))
 async def help(_, message: Message):
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
@@ -73,7 +73,7 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
     )
 
     
-@Client.on_message(command(["cmdlist", "cmdlist@TheNexasMusic_bot"]))
+@Client.on_message(command("cmdlist"))
 async def cmdlist(_, message: Message):
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
@@ -144,7 +144,7 @@ Respect To Code Owners! Not To Me!""",
     )   
 
 
-@Client.on_message(command(["vc", "vc@TheNexasMusic_bot"]) & other_filters)
+@Client.on_message(command("vc") & other_filters)
 async def vc(_, message: Message):
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
@@ -174,7 +174,7 @@ Enjoy!😌️❤️""",
     )
 
 
-@Client.on_message(command(["bmode", "bmode@TheNexasMusic_bot"]))
+@Client.on_message(command("bmode"))
 async def bmode(_, message: Message):
     await message.reply_text(
         "🚶‍♂️️ Beta Mode Enabled! Select Your Option!",
@@ -209,7 +209,7 @@ async def bmode(_, message: Message):
     )
 
     
-@Client.on_message(command(["search", "search@TheNexasMusic_bot"]))
+@Client.on_message(command("search"))
 async def search(_, message: Message):
     await message.reply_text(
         "💁🏻‍♂️ Do you want to search for a YouTube video?",
