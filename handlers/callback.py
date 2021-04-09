@@ -6,15 +6,15 @@ from helpers.filters import command
 from helpers.decorators import errors, authorized_users_only
 
 from pyrogram import Client, filters
-from pyrogram.types import CallbackQuery, Message
+from pyrogram.types import CallbackQuery
 
 
-@Client.on_callback_query(("close"))
+@Client.on_callback_query(filters.regex("close"))
 async def close(_, query: CallbackQuery):
     await query.message.delete()
 
 
-@Client.on_callback_query(("pause"))
+@Client.on_callback_query(filters.regex("pause"))
 @errors
 @authorized_users_only
 async def pause(_, query: CallbackQuery):
@@ -24,7 +24,7 @@ async def pause(_, query: CallbackQuery):
         await query.edit_text("❗️ Nothing is playing")
 
 
-@Client.on_callback_query(("resume"))
+@Client.on_callback_query(filters.regex("resume"))
 @errors
 @authorized_users_only
 async def resume(_, query: CallbackQuery):
@@ -34,7 +34,7 @@ async def resume(_, query: CallbackQuery):
         await query.message.edit_text("❗️ Nothing is paused")
 
 
-@Client.on_callback_query(("stop"))
+@Client.on_callback_query(filters.regex("stop"))
 @errors
 @authorized_users_only
 async def stop(_, query: CallbackQuery):
@@ -50,7 +50,7 @@ async def stop(_, query: CallbackQuery):
         await query.message.edit_text("✅ Cleared the queue and left the Voice Chat!")
 
 
-@Client.on_callback_query(("skip"))
+@Client.on_callback_query(filters.regex("skip"))
 @errors
 @authorized_users_only
 async def skip(_, query: CallbackQuery):
@@ -69,7 +69,7 @@ async def skip(_, query: CallbackQuery):
         await query.message.edit_text("Skipped.")
 
 
-@Client.on_callback_query(("mute"))
+@Client.on_callback_query(filters.regex("mute"))
 @errors
 @authorized_users_only
 async def mute(_, query: CallbackQuery):
@@ -83,7 +83,7 @@ async def mute(_, query: CallbackQuery):
         await query.message.edit_text("❗️ Not in voice chat")
 
 
-@Client.on_callback_query(("unmute"))
+@Client.on_callback_query(filters.regex("unmute"))
 @errors
 @authorized_users_only
 async def unmute(_, query: CallbackQuery):
