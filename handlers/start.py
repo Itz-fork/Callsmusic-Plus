@@ -174,6 +174,41 @@ Enjoy!😌️❤️""",
     )
 
 
+@Client.on_message(command(["bmode", "bmode@TheNexasMusic_bot"]))
+async def bmode(_, message: Message):
+    await message.reply_text(
+        "🚶‍♂️️ Beta Mode Enabled! Select Your Option!",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "⏸ Pause", callback_data="pause"
+                    ),
+                    InlineKeyboardButton(
+                        "🎧 Resume", callback_data="resume"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🖐️ Stop", callback_data="stop"
+                    ),
+                    InlineKeyboardButton(
+                        "➡️ Skip", callback_data="skip"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🔇 Mute", callback_data="mute"
+                    ),
+                    InlineKeyboardButton(
+                        "🔈 Unmute", callback_data="unmute"
+                    )
+                ]
+            ]
+        )
+    )
+
+    
 @Client.on_message(command(["search", "search@TheNexasMusic_bot"]))
 async def search(_, message: Message):
     await message.reply_text(
