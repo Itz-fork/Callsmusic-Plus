@@ -31,7 +31,7 @@
       "value": "180"
     },
     "USER_ACCNAME": {
-      "description": "Streamer Account Username without "@" !",
+      "description": "Streamer Account Username without '@' !",
       "required": true,
       "value": ""
     }
