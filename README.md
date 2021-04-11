@@ -6,7 +6,7 @@ This is CallsMusic-1
 Here it is! [This The Original Repo ❤️](https://github.com/callsmusic/callsmusic)
 
 ## Note!⚠️ ,
-_**You need another (dummy) Telegram Account For This!**_
+_**You need another (dummy) Telegram Account To Use/Deploy This!**_
 
 ## Features 🔥️
 
@@ -25,7 +25,7 @@ Before You Deploy make sure you Starred & Forked **[The Original Repo ❤️](ht
    <summary><b>The Easy Way ⚡️</b></summary>
 
 ## With Heroku
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Itz-fork/yeah-my-man/tree/beta-1)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Itz-fork/Callsmusic-Plus/tree/beta-1)
 
 ### Pyrogram String Session
 <a href="https://replit.com/@IamHirusha/GetPyroSessionVC"><img src="https://img.shields.io/badge/Run-Repl.it-white?style=for-the-badge&logo=repl.it"></a>
@@ -44,6 +44,7 @@ Facing Problems? **[Read How To Deploy](https://github.com/Itz-fork/yeah-my-man/
  `API_HASH` - Your API HASH</br>
  `SUDO_USERS` - Sudo User's ID</br>
  `DURATION_LIMIT` - Max Time Limited For a song!</br>
+ `USER_ACCNAME` - Your bot's streamer account username without "@" ! </br>
 
 **[How To Get Config Vars? 🤔 Read This!](https://github.com/Itz-fork/yeah-my-man/wiki/How-To-Deploy-This!)**
 
