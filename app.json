@@ -1,8 +1,8 @@
 {
-  "name": "CallsMusic ++",
+  "name": "CallsMusic Plus",
   "description": "A CallsMusic Project! Edited By Itz-Fork!",
   "keywords": ["music", "voicechat", "telegram"],
-  "repository": "https://github.com/Itz-fork/yeah-my-man",
+  "repository": "https://github.com/Itz-fork/Callsmusic-Plus",
   "stack": "container",
   "env": {
     "API_ID": {
@@ -29,6 +29,11 @@
       "description": "Max Time Limite For One Song.",
       "required": true,
       "value": "180"
+    },
+    "USER_ACCNAME": {
+      "description": "Streamer Account Username without "@" !",
+      "required": true,
+      "value": ""
     }
   }
 }
