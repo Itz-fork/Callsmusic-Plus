@@ -1,3 +1,5 @@
+import os
+
 from pyrogram import Client
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, Chat
 
@@ -6,7 +8,7 @@ from helpers.filters import command, other_filters, other_filters2
 
 ## ~ Simple Config ~ ##
 FRIEND_BOT = "MusicsNexa_bot"
-USER_ACCNAME = "NexaMusicAssistant"
+USER_ACCNAME = os.getenv("USER_ACCNAME", "NexaMusicAssistant")
 
 
 
