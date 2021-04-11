@@ -21,19 +21,19 @@ And Some Cool Features! 😚️
 ## Deployment
 Before You Deploy make sure you Starred & Forked **[The Original Repo ❤️](https://github.com/callsmusic/callsmusic)** . **And This Repo!** 🤗️
 
-<details>
-   <summary><b>The Easy Way ⚡️</b></summary>
 
-## With Heroku
+# The Easy Way ⚡️
+
+### With Heroku
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Itz-fork/Callsmusic-Plus/tree/beta-1)
 
-### Pyrogram String Session
+#### Pyrogram String Session
 <a href="https://replit.com/@IamHirusha/GetPyroSessionVC"><img src="https://img.shields.io/badge/Run-Repl.it-white?style=for-the-badge&logo=repl.it"></a>
 
-## Problems?
-Facing Problems? **[Read How To Deploy](https://github.com/Itz-fork/yeah-my-man/wiki/How-To-Deploy-This!)**
 
-</details>
+## Support!
+Facing Problems While Deploying or Using? **[Read How To Deploy](https://github.com/Itz-fork/Callsmusic-Plus/wiki/How-To-Deploy-This!)**
+or Ask Me In **[Nexa Bots Support Group](https://t.me/Nexa_bots)**
 
 
 ### Config Vars 😂,
@@ -79,8 +79,6 @@ Copy `example.env` to `.env` and fill it with your credentials.
    docker run --env-file .env musicplayer
    ```
 
-## Need Support?
-Ask Me In **[Nexa Bots Support Group](https://t.me/Nexa_bots)**
 
 ## Credits
 
