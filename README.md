@@ -18,11 +18,11 @@ _**You need another (dummy) Telegram Account To Use/Deploy This!**_
 
 And Some Cool Features! 😚️
 
-## Deployment
+# Deployment
 Before You Deploy make sure you Starred & Forked **[The Original Repo ❤️](https://github.com/callsmusic/callsmusic)** . **And This Repo!** 🤗️
 
 
-# The Easy Way ⚡️
+## The Easy Way ⚡️
 
 ### With Heroku
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Itz-fork/Callsmusic-Plus/tree/beta-1)
@@ -48,7 +48,10 @@ or Ask Me In **[Nexa Bots Support Group](https://t.me/Nexa_bots)**
 
 **[How To Get Config Vars? 🤔 Read This!](https://github.com/Itz-fork/yeah-my-man/wiki/How-To-Deploy-This!)**
 
-## Requirements
+
+## The Hard Way!
+
+### Requirements
 
 - FFmpeg
 - Python 3.7+
