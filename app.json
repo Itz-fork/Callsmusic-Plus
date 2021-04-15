@@ -1,5 +1,5 @@
 {
-  "name": "CallsMusic Plus",
+  "name": "CallsMusic ++",
   "description": "A CallsMusic Project! Edited By Itz-Fork!",
   "keywords": ["music", "voicechat", "telegram"],
   "repository": "https://github.com/Itz-fork/Callsmusic-Plus",
@@ -30,10 +30,9 @@
       "required": true,
       "value": "180"
     },
-    "USER_ACCNAME": {
-      "description": "Streamer Account Username without '@' !",
+    "LOG_CHAT": {
+      "description": "Dumb Chat Where Bot Errors Go!",
       "required": true,
       "value": ""
-    }
   }
 }
