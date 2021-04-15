@@ -4,21 +4,29 @@ import os
 
 import requests
 import wget
-from pyrogram import Client,
+from pyrogram import Client, filters
 
-from MashaRoBot.pyrogramee.dark import get_arg
+# ~~ Define ~~ #
+
+def get_arg(message):
+    msg = message.text
+    msg = msg.replace(" ", "", 1) if msg[1] == " " else msg
+    split = msg[1:].replace("\n", " \n").split(" ")
+    if " ".join(split[1:]).strip() == "":
+        return ""
+    return " ".join(split[1:])
 
 
-@Jebot.on_message(filters.command("saavn"))
+@Client.on_message(filters.command("saavn"))
 async def song(client, message):
     message.chat.id
     message.from_user["id"]
     args = get_arg(message) + " " + "song"
     if args.startswith(" "):
-        await message.reply("<b>Enter song name❗</b>")
+        await message.reply("<b>Hey! Enter song name❗</b>")
         return ""
     m = await message.reply_text(
-        "Downloading your song,\nPlz wait ⏳️"
+        "`Downloading your song...`\nPlease wait 🙃️🙃️"
     )
     try:
         r = requests.get(f"https://snobybuddymusic.herokuapp.com/result/?query={args}")
