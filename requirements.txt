@@ -8,3 +8,4 @@ aiohttp
 youtube_search_python
 asyncio
 youtube_search
+youtube-dl
