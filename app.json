@@ -32,7 +32,8 @@
     },
     "LOG_CHAT": {
       "description": "Dumb Chat Where Bot Errors Go!",
-      "required": true,
+      "required": false,
       "value": ""
+    }
   }
 }
