@@ -11,8 +11,9 @@ _**You need another (dummy) Telegram Account To Use/Deploy This!**_
 ## Features 🔥️
 
 - **Play Music In Telegram Group Voice Chats!** (Supports Multiple Groups)
-- **Download Songs By It's Name!** (Ex:- `/yts faded` )
 - **Search For YouTube Videos Inline!**
+- **Download Yt Songs By It's Name!** (Ex:- `/yts faded` )
+- **Saavn Music Download**  (Ex:- `/saavn teri meri kahani` )
 - **Supports Queues!**
 - **Get Voice Chat Link!** (`/vc` - Public Groups Only )
 
@@ -92,8 +93,8 @@ Copy `example.env` to `.env` and fill it with your credentials.
 
 ## Thanks To,
 
-- [N A C CREATIVE](https://github.com/nikhileashy): For Voice Chat Link Command!
-- [ImJanindu](https://github.com/ImJanindu) and Mr Dark prince : For their Powerful and Amazing Plugin!
+- [N A C CREATIVE](https://t.me/n_a_c_creative): For Voice Chat Link Command!
+- Mr Dark prince : For Yt / Saavn Module
 
 
 ## License
