@@ -1,20 +1,21 @@
-# A Powerful Plugin by @Mr_Dark_Prince
-# Copied From A Sexy Project From Infinity BOTs <https://t.me/Infinity_BOTs>
+# © @Mr_Dark_Prince
 
 import os
 import requests
 import aiohttp
 import youtube_dl
 
-from pyrogram import filters, Client
+from pyrogram import Client, filters
 from youtube_search import YoutubeSearch
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, InputTextMessageContent
+from helpers.merrors import capture_err
+
 
 def time_to_seconds(time):
     stringt = str(time)
     return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(':'))))
 
-@Client.on_message(filters.command('yts'))
+
+@Client.on_message(filters.command(['yts']))
 def song(client, message):
 
     user_id = message.from_user.id 
@@ -25,7 +26,7 @@ def song(client, message):
     for i in message.command[1:]:
         query += ' ' + str(i)
     print(query)
-    m = message.reply('Please wait... I am searching for your song! 😊️. **Join @NexaBotsUpdates**')
+    m = message.reply('Please wait! Im Finding the song... **Join @NexaBotsUpdates** ❤️')
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -37,31 +38,32 @@ def song(client, message):
         thumb = requests.get(thumbnail, allow_redirects=True)
         open(thumb_name, 'wb').write(thumb.content)
 
+
         duration = results[0]["duration"]
         url_suffix = results[0]["url_suffix"]
         views = results[0]["views"]
 
     except Exception as e:
         m.edit(
-            "Hmmm... I can't find anything! 😊️.\n\nMaybe Your Spellings Wrong? 😐️"
+            "I can't Find Anything! 🙁️\n\nTry again with another name! or maybe your spellings wrong? 😑️"
         )
         print(str(e))
         return
-    m.edit("__Your Song is Downloading...__  😉️ Do join **@NexaBotsUpdates**")
+    m.edit("`Downloading Your Song...` Please wait for a moment 🙃️")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = '**Your Song Is Successfully Uploaded 😌️! Join @NexaBotsUpdates ❤️** 🙂️'
+        rep = f'🎙 **Title**: [{title[:35]}]({link})\n🎬 **Source**: YouTube\n⏱️ **Duration**: `{duration}`\n👀️ **Views**: `{views}`\n **Up By**: **@MusicsNexa_bot** \n\nJoin **@NexaBotsUpdates** ❤️'
         secmul, dur, dur_arr = 1, 0, duration.split(':')
         for i in range(len(dur_arr)-1, -1, -1):
             dur += (int(dur_arr[i]) * secmul)
             secmul *= 60
-        s = message.reply_audio(audio_file, caption=rep, thumb=thumb_name, parse_mode='md', title=title, duration=dur)
+        message.reply_audio(audio_file, caption=rep, thumb=thumb_name, parse_mode='md', title=title, duration=dur)
         m.delete()
     except Exception as e:
-        m.edit('❌ Error')
+        m.edit('❌ Oops..! Error')
         print(e)
 
     try:
