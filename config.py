@@ -17,3 +17,6 @@ COMMAND_PREFIXES = list(getenv("COMMAND_PREFIXES", "/ !").split())
 SUDO_USERS = list(map(int, getenv("SUDO_USERS").split()))
 
 LOG_CHAT = getenv("LOG_CHAT")
+
+# NOTE Don't make changes below this line
+ARQ_API_BASE_URL = "http://35.240.133.234:8000"
