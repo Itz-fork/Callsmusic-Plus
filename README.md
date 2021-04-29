@@ -14,6 +14,7 @@ _**You need another (dummy) Telegram Account To Use/Deploy This!**_
 - **Search For YouTube Videos Inline!**
 - **Download Yt Songs By It's Name!** (Ex:- `/yts faded` )
 - **Saavn Music Download**  (Ex:- `/saavn teri meri kahani` )
+- **Deezer Music Download** (Ex:- `/deezer faded` )
 - **Supports Queues!**
 - **Get Voice Chat Link!** (`/vc` - Public Groups Only )
 
