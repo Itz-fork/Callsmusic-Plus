@@ -90,6 +90,8 @@ Here is the list of available commands! 😃️
 <code>/unmute</code> - Unmutes streamer!
 <code>/vc</code> - Give voice chat link of your group! (Only For Public Groups)
 <code>/yts (song name)</code> - Download song by it's name!
+<code>/saavn</code> - Download Songs From Saavn!
+<code>/deezer</code> - Download Songs From Deezer!
  
  Enjoy! 😌️""",
         reply_markup=InlineKeyboardMarkup(
@@ -125,6 +127,8 @@ Credits To,
 
 <b><a href="https://github.com/CallsMusic">CallsMusic</a></b> - For Callsmusic (Main Code ❤️) !
 <b><a href="https://github.com/nikhileashy">N A C</a></b> - For <code>/vc</code> Command
+Mr Dark Prince - For Yt Download!
+TheHamkercat - For Deezer and Saavn Download!
 
 Made with ❤️ by **@NexaBotsUpdates**
 
@@ -155,7 +159,7 @@ async def vc(_, message: Message):
              😌️  **Voice Chat Link** 😌️
 ____________________------------______________________
 
-👉️ https://t.me/{message.chat.username}?voicechat   👈️
+👉️ [Here Is Your Voice Chat Link](https://t.me/{message.chat.username}?voicechat)   👈️
 ____________________------------______________________
 
 Enjoy!😌️❤️""",
@@ -164,9 +168,7 @@ Enjoy!😌️❤️""",
                 [
                     InlineKeyboardButton(
                         "🔰️ My Update Channel 🔰️", url="https://t.me/NexaBotsUpdates"
-                    )
-                ],
-                [
+                    ),
                     InlineKeyboardButton(
                         "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
                     )
