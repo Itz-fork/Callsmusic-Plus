@@ -35,7 +35,7 @@ def song(client, message):
     for i in message.command[1:]:
         query += ' ' + str(i)
     print(query)
-    m = message.reply('🔎 Finding the song...')
+    m = message.reply('Searching for your song... 🔎')
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -64,7 +64,7 @@ def song(client, message):
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = '**🎵 Uploaded by **'
+        rep = '**Your Song Is Successfully Uploaded 😌! Join @NexaBotsUpdates**'
         secmul, dur, dur_arr = 1, 0, duration.split(':')
         for i in range(len(dur_arr)-1, -1, -1):
             dur += (int(dur_arr[i]) * secmul)
@@ -72,7 +72,7 @@ def song(client, message):
         message.reply_audio(audio_file, caption=rep, thumb=thumb_name, parse_mode='md', title=title, duration=dur)
         m.delete()
     except Exception as e:
-        m.edit('❌ Error')
+        m.edit('Oh! Error ❌')
         print(e)
 
     try:
@@ -259,20 +259,20 @@ async def jssong(_, message):
         await message.reply_text("/saavn requires an argument.")
         return
     if is_downloading:
-        await message.reply_text("Another download is in progress, try again after sometime.")
+        await message.reply_text("Sorry! Another download is in progress, try again after sometime.")
         return
     is_downloading = True
     text = message.text.split(None, 1)[1]
     query = text.replace(" ", "%20")
-    m = await message.reply_text("**Searching For Your Song...**")
+    m = await message.reply_text("**Searching for your song... 🔎**")
     try:
         songs = await arq.saavn(query)
         sname = songs[0].song
         slink = songs[0].media_url
         ssingers = songs[0].singers
-        await m.edit("Downloading")
+        await m.edit("**Downloading Your Song**")
         song = await download_song(slink)
-        await m.edit("Uploading")
+        await m.edit("**Uploading Your Song**")
         await message.reply_audio(audio=song, title=sname,
                                   performer=ssingers)
         os.remove(song)
@@ -300,15 +300,15 @@ async def deezsong(_, message):
     is_downloading = True
     text = message.text.split(None, 1)[1]
     query = text.replace(" ", "%20")
-    m = await message.reply_text("Searching...")
+    m = await message.reply_text("**Searching for your song... 🔎**")
     try:
         songs = await arq.deezer(query, 1)
         title = songs[0].title
         url = songs[0].url
         artist = songs[0].artist
-        await m.edit("Downloading")
+        await m.edit("**Downloading Your Song**")
         song = await download_song(url)
-        await m.edit("Uploading")
+        await m.edit("**Uploading Your Song**")
         await message.reply_audio(audio=song, title=title,
                                   performer=artist)
         os.remove(song)
@@ -333,7 +333,7 @@ async def ytmusic(client,message: Message):
             message.chat.id,
             f"`Getting {urlissed} From Youtube Servers. Please Wait.`")
     if not urlissed:
-        await pablo.edit("Invalid Command Syntax, Please Check Help Menu To Know More!")
+        await pablo.edit("Invalid Command Syntax, Please Check `/help` Command To Know More!")
         return
     
     search = SearchVideos(f"{urlissed}", offset=1, mode="dict", max_results=1)
@@ -369,7 +369,7 @@ async def ytmusic(client,message: Message):
 
             if duration > 999999:
                 await pablo.edit(
-                    f"❌ Videos longer than 999999 minute(s) aren't allowed, the provided video is {duration} minute(s)"
+                    f"Sorry! ❌ Videos longer than 999999 minute(s) aren't allowed, the provided video is {duration} minute(s)"
                 )
                 is_downloading = False
                 return
@@ -383,7 +383,7 @@ async def ytmusic(client,message: Message):
     
     c_time = time.time()
     file_stark = f"{ytdl_data['id']}.mp4"
-    capy = f"**🎧️ Music Video Name:** `{thum}` \n\n**👨‍💻️ Your Keyword:** `{urlissed}` \n\n**😉️ Channel:** `{thums}` \n\n**🔗️ Video Link :** `{mo}` /n/n/n**Join @NexaBotsUpdates** ❤️"
+    capy = f"**🎧️ Music Video Name:** `{thum}` \n\n**👨‍💻️ Your Keyword:** `{urlissed}` \n\n**😉️ Channel:** `{thums}` \n\n**🔗️ Video Link :** `{mo}` \n\n\n**Join @NexaBotsUpdates** ❤️"
     await client.send_video(message.chat.id, video = open(file_stark, "rb"), duration = int(ytdl_data["duration"]), file_name = str(ytdl_data["title"]), thumb = sedlyf, caption = capy, supports_streaming = True , progress=progress, progress_args=(pablo, c_time, f'**Please wait I am Uploading {urlissed} Song From YouTube Music!** 😁️', file_stark))
     await pablo.delete()
     is_downloading = False
