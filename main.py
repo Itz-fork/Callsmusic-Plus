@@ -1,7 +1,7 @@
 from pyrogram import Client as Bot, filters
 
 from callsmusic import run
-from config import API_ID, API_HASH, BOT_TOKEN
+from config import API_ID, API_HASH, BOT_TOKEN, SUDO_USERS
 
 
 bot = Bot(
