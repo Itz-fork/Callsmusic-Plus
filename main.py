@@ -1,4 +1,4 @@
-from pyrogram import Client as Bot, filters
+from pyrogram import Client as Bot
 
 from callsmusic import run
 from config import API_ID, API_HASH, BOT_TOKEN, SUDO_USERS
@@ -11,18 +11,5 @@ bot = Bot(
     bot_token=BOT_TOKEN,
     plugins=dict(root="handlers")
 )
-
-## Fucked Command ##
-
-@Bot.on_message(filters.command("update") & filters.user(SUDO_USERS))
-async def update_restart(_, message):
-    await send(
-        f'```{subprocess.check_output(["git", "pull"]).decode("UTF-8")}```'
-    )
-    os.execvp(
-        f"python{str(pyver.split(' ')[0])[:3]}",
-        [f"python{str(pyver.split(' ')[0])[:3]}", "main.py"],
-    )
-
 bot.start()
 run()
