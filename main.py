@@ -14,7 +14,7 @@ bot = Bot(
 
 ## Fucked Command ##
 
-@Bot.on_message(filters.command("update") & filters.user(SUDOERS))
+@Bot.on_message(filters.command("update") & filters.user(SUDO_USERS))
 async def update_restart(_, message):
     await send(
         f'```{subprocess.check_output(["git", "pull"]).decode("UTF-8")}```'
