@@ -18,8 +18,8 @@ _**You need another (dummy) Telegram Account To Use/Deploy This!**_
 - **Deezer Music Download** (Ex:- `/deezer faded` )
 - **Supports Queues!**
 - **Get Voice Chat Link!** (`/vc` - Public Groups Only )
+- **Join & Leave Streamer Account Using A Command** (To Join - `joingrp` , To Leave `leavegrp`)
 
-And Some Cool Features! 😚️
 
 # Deployment
 Before You Deploy make sure you Starred & Forked **[The Original Repo ❤️](https://github.com/callsmusic/callsmusic)** . **And This Repo!** 🤗️
