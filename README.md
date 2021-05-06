@@ -13,6 +13,7 @@ _**You need another (dummy) Telegram Account To Use/Deploy This!**_
 - **Play Music In Telegram Group Voice Chats!** (Supports Multiple Groups)
 - **Search For YouTube Videos Inline!**
 - **Download Yt Songs By It's Name!** (Ex:- `/yts faded` )
+- **Download Yt Videos By It's Name!** (Ex:- `/ytvid faded` )
 - **Saavn Music Download**  (Ex:- `/saavn teri meri kahani` )
 - **Deezer Music Download** (Ex:- `/deezer faded` )
 - **Supports Queues!**
