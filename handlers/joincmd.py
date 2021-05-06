@@ -38,21 +38,21 @@ async def addchannel(client, message):
     except Exception as e:
         print(e)
         await message.reply_text(
-            f"Shit! <b>❌ Flood Wait Error ❌ \n Sorry! use {user.first_name} couldn't join your group due to heavy join requests! Also make sure streamer account is not banned in your group."
-            "\n\nOr you can manually add @NexasMusic to your Group!</b>",
+            f"Shit! <b>❌ Flood Wait Error ❌ \n Sorry! user {user.first_name} couldn't join your group due to heavy join requests! Also make sure streamer account is not banned in your group. ✅"
+            "\n\nOr you can manually add @NexasMusic to your Group!</b> 😉",
         )
         return
     await message.reply_text(
-            "<b>helper userbot joined your chat</b>",
+            "<b>Streamer Account Joined</b> 😊",
         )
     
-@USER.on_message(filters.group & filters.command(["userbotleave"]))
+@USER.on_message(filters.group & filters.command(["leavegrp"]))
 async def rem(USER, message):
     try:
         await USER.leave_chat(message.chat.id)
     except:  
         await message.reply_text(
-            f"<b>User couldn't leave your group! May be floodwaits."
-            "\n\nOr manually kick me from to your Group</b>",
+            f"<b>Oops! Streamer Account Can't Leave Right Now! May Be Floodwait 🤔"
+            "\n\nOr You Can Manually Remove Me 🤗</b>",
         )
         return
