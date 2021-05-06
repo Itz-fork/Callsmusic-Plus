@@ -97,6 +97,7 @@ Copy `example.env` to `.env` and fill it with your credentials.
 
 - [N A C CREATIVE](https://t.me/n_a_c_creative): For Voice Chat Link Command!
 - Mr Dark prince : For Yt / Saavn Module
+- **TeamDaisyX**
 
 
 ## License
