@@ -8,6 +8,7 @@ youtube_search_python
 asyncio
 youtube_search
 youtube-dl
+search_engine_parser
 wget
 python-arq
 youtube_dl
