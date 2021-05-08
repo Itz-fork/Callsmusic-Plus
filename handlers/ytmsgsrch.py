@@ -40,6 +40,6 @@ async def ytsearch(_, message: Message):
             text += f"https://youtube.com{results[i]['url_suffix']}\n\n"
             i += 1
         await m.delete()
-        await m.reply_photo(thumb, caption=text, disable_web_page_preview=True)
+        await m.reply_photo(thumb, caption=text)
     except Exception as e:
         await message.reply_text(str(e))
