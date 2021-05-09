@@ -26,6 +26,11 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
             [
                 [
                     InlineKeyboardButton(
+                        "➕ Add Me To Your Group ➕", url="https://t.me/MusicsNexa_bot?startgroup=true"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
                         "🤨️ How To Use Me 🤨️", url="https://telegra.ph/How-To-Use-Music-Nexa-Bot-03-16"
                     )
                 ],
