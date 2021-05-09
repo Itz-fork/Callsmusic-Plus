@@ -70,14 +70,12 @@ async def play(_, message: Message):
         url = text[offset:offset + length]
         file = await converter.convert(youtube.download(url))
         thumb = "https://telegra.ph/file/a4b7d13da17c3cc828ab9.jpg"
-        queuedtxt = "**Your Song Queued at position {position}!**"
-        playtxt = "**Playing Your Song 🎧...**"
 
     if message.chat.id in callsmusic.active_chats:
         position = await queues.put(message.chat.id, file=file)
         await response.delete()
-        await response.reply_photo(thumb, caption=queuedtxt)
+        await response.reply_photo(thumb, caption="**Your Song Queued at position {position} !**")
     else:
         await callsmusic.set_stream(message.chat.id, file)
         await response.delete()
-        await response.reply_photo(thumb, caption=playtxt)
+        await response.reply_photo(thumb, caption="**Playing Your Song 🎧...**")
