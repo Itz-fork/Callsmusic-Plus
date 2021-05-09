@@ -14,14 +14,14 @@ from helpers.errors import DurationLimitError
 from helpers.filters import command, other_filters
 from helpers.decorators import errors
 
+WHOREQED = message.from_user.first_name
+
 @Client.on_message(command("play") & other_filters)
 @errors
 async def play(_, message: Message):
     audio = (message.reply_to_message.audio or message.reply_to_message.voice) if message.reply_to_message else None
 
     response = await message.reply_text("**Processing Your Song...** 😇")
-    
-    requested_by = message.from_user.first_name
 
     if audio:
         if round(audio.duration / 60) > DURATION_LIMIT:
@@ -72,8 +72,8 @@ async def play(_, message: Message):
         url = text[offset:offset + length]
         file = await converter.convert(youtube.download(url))
         thumb = "https://telegra.ph/file/a4b7d13da17c3cc828ab9.jpg"
-        queuedtxt = "**Your Song Queued at position {position}!**  **Requested by: {requested_by}**"
-        playtxt = "**Playing Your Song 🎧...** **Requested by: {requested_by}**"
+        queuedtxt = "**Your Song Queued at position {position}!**  **Requested by**: **{WHOREQED}**"
+        playtxt = "**Playing Your Song 🎧...** **Requested by**: **{WHOREQED}**"
 
     if message.chat.id in callsmusic.active_chats:
         position = await queues.put(message.chat.id, file=file)
