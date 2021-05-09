@@ -1,9 +1,9 @@
 # Calls Music Plus
-All Credits To [CallsMusic](https://github.com/callsmusic/callsmusic) ❤️ .
-This is CallsMusic-1
 
-## Original Repo!
-Here it is! [This The Original Repo ❤️](https://github.com/callsmusic/callsmusic)
+### ![MusicsNexa_bot](https://telegra.ph/file/a4b7d13da17c3cc828ab9.jpg)
+
+An [CallsMusic](https://github.com/callsmusic/callsmusic) Based Telegram Bot ❤️ 
+
 
 ## Note!⚠️ ,
 _**You need another (dummy) Telegram Account To Use/Deploy This!**_
