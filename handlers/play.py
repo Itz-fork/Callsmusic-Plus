@@ -74,9 +74,9 @@ async def play(_, message: Message):
         thumb = "https://telegra.ph/file/a4b7d13da17c3cc828ab9.jpg"
         position = await queues.put(message.chat.id, file=file)
         await response.delete()
-        await message.reply_photo(thumb, caption=f"**Your Song Queued at position** {position}!")
+        await message.reply_photo(thumb, caption=f"**Your Song Queued at position** {position}! **Requested by: {}**".format(message.from_user.mention()))
     else:
         thumb = "https://telegra.ph/file/a4b7d13da17c3cc828ab9.jpg"
         await callsmusic.set_stream(message.chat.id, file)
         await response.delete()
-        await message.reply_photo(thumb, caption=f"**Playing Your Song 🎧...** **Requested by: {}**".format(message.from_user.mention())
+        await message.reply_photo(thumb, caption=f"**Playing Your Song 🎧...** **Requested by: {}**".format(message.from_user.mention()))
