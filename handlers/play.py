@@ -74,7 +74,7 @@ async def play(_, message: Message):
     if message.chat.id in callsmusic.active_chats:
         position = await queues.put(message.chat.id, file=file)
         await response.delete()
-        await response.reply_photo(thumb, caption="**Your Song Queued at position {position} !**")
+        await response.reply_photo(thumb, caption="**Your Song Queued at position {position}!")
     else:
         await callsmusic.set_stream(message.chat.id, file)
         await response.delete()
