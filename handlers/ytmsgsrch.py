@@ -20,7 +20,7 @@ import pyrogram
 
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
-@Client.on_message(pyrogram.filters.command(["ytsearch"]))
+@Client.on_message(pyrogram.filters.command(["ytsearch", "ytsearch@MusicsNexa_bot"]))
 async def ytsearch(_, message: Message):
     try:
         if len(message.command) < 2:
