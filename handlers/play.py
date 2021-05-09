@@ -14,7 +14,7 @@ from helpers.errors import DurationLimitError
 from helpers.filters import command, other_filters
 from helpers.decorators import errors
 
-WHOREQED = message.from_user.first_name
+WHOREQED = Message.from_user.first_name
 
 @Client.on_message(command("play") & other_filters)
 @errors
