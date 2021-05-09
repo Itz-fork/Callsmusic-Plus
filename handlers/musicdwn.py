@@ -24,7 +24,7 @@ import sys
 import time
 from helpers.errors import DurationLimitError
 
-@Client.on_message(filters.command('yts') & ~filters.channel)
+@Client.on_message(filters.command(['yts', 'yts@MusicsNexa_bot']))
 def song(client, message):
 
     user_id = message.from_user.id 
@@ -248,11 +248,7 @@ def time_to_seconds(time):
 
 
 
-
-
-
-
-@Client.on_message(filters.command("saavn") & ~filters.edited)
+@Client.on_message(filters.command(["saavn", "saavn@MusicsNexa_bot"]) & ~filters.edited)
 async def jssong(_, message):
     global is_downloading
     if len(message.command) < 2:
@@ -288,7 +284,7 @@ async def jssong(_, message):
 # Deezer Music
 
 
-@Client.on_message(filters.command("deezer") & ~filters.edited)
+@Client.on_message(filters.command(["deezer", "deezer@MusicsNexa_bot"]) & ~filters.edited)
 async def deezsong(_, message):
     global is_downloading
     if len(message.command) < 2:
@@ -320,7 +316,7 @@ async def deezsong(_, message):
     is_downloading = False
 
 
-@Client.on_message(filters.command(["ytvid", "ytvideo"]))
+@Client.on_message(filters.command(["ytvid", "ytvid@MusicsNexa_bot", "ytvideo"]))
 async def ytmusic(client,message: Message):
     global is_downloading
     if is_downloading:
