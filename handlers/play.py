@@ -7,6 +7,7 @@ from callsmusic import callsmusic, queues
 
 import converter
 import youtube
+import aiohttp
 
 from config import DURATION_LIMIT
 from helpers.errors import DurationLimitError
@@ -19,6 +20,8 @@ async def play(_, message: Message):
     audio = (message.reply_to_message.audio or message.reply_to_message.voice) if message.reply_to_message else None
 
     response = await message.reply_text("**Processing Your Song...** 😇")
+    
+    requested_by = message.from_user.first_name
 
     if audio:
         if round(audio.duration / 60) > DURATION_LIMIT:
@@ -68,10 +71,15 @@ async def play(_, message: Message):
 
         url = text[offset:offset + length]
         file = await converter.convert(youtube.download(url))
+        thumb = "https://telegra.ph/file/a4b7d13da17c3cc828ab9.jpg"
+        queuedtxt = "**Your Song Queued at position {position}!**  **Requested by: {requested_by}**"
+        playtxt = "**Playing Your Song 🎧...** **Requested by: {requested_by}**"
 
     if message.chat.id in callsmusic.active_chats:
         position = await queues.put(message.chat.id, file=file)
-        await response.edit_text(f"**Your Song Queued at position {position}!**")
+        await response.delete()
+        await response.reply_photo(thumb, caption=queuedtxt)
     else:
         await callsmusic.set_stream(message.chat.id, file)
-        await response.edit_text("**Playing Your Song...** 🎧")
+        await response.delete()
+        await response.reply_photo(thumb, caption=playtxt)
