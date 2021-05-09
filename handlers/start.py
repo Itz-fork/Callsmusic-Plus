@@ -7,12 +7,12 @@ from helpers.filters import command, other_filters, other_filters2
 
 
 ## ~ Simple Config ~ ##
-FRIEND_BOT = "MusicsNexa_bot"
+FRIEND_BOT = "TheNexasMusic_bot"
 USER_ACCNAME = os.getenv("USER_ACCNAME", "NexaMusicAssistant")
 
 
 
-@Client.on_message(command(["start", "start@TheNexasMusic_bot"]))
+@Client.on_message(command(["start", "start@MusicsNexa_bot"]))
 async def start(_, message: Message):
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
@@ -42,7 +42,7 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
     )
     
     
-@Client.on_message(command(["help", "help@TheNexasMusic_bot"]))
+@Client.on_message(command(["help", "help@MusicsNexa_bot"]))
 async def help(_, message: Message):
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
@@ -51,7 +51,7 @@ Bruh! Do you need Help! 🤔️ yea yea I know it! 🙃️
 
 How To Use Me? 🧐️
 
-<b> 1. Add Me and @{USER_ACCNAME} To Your Group!
+<b> 1. Add Me and @{USER_ACCNAME} To Your Group! (Send `/joingrp` to your group! Streamer Will Automatically join)
 
  2. Give Admin To Me and @{USER_ACCNAME} ! </b>
  
@@ -75,7 +75,7 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
     )
 
     
-@Client.on_message(command(["cmdlist", "cmdlist@TheNexasMusic_bot"]))
+@Client.on_message(command(["cmdlist", "cmdlist@MusicsNexa_bot"]))
 async def cmdlist(_, message: Message):
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
@@ -90,8 +90,11 @@ Here is the list of available commands! 😃️
 <code>/unmute</code> - Unmutes streamer!
 <code>/vc</code> - Give voice chat link of your group! (Only For Public Groups)
 <code>/yts (song name)</code> - Download song by it's name!
-<code>/saavn</code> - Download Songs From Saavn!
-<code>/deezer</code> - Download Songs From Deezer!
+<code>/ytvid (song name)</code> - Download Videos From YouTube!
+<code>/saavn (song name)</code> - Download Songs From Saavn!
+<code>/deezer (song namme)</code> - Download Songs From Deezer!
+<code>/joingrp</code> - To Add Streamer Account To Your Group!
+<code>/leavegrp</code> - To Remove Streamer Account From Your Group!
  
  Enjoy! 😌️""",
         reply_markup=InlineKeyboardMarkup(
@@ -126,9 +129,10 @@ __Note!__ ⚠️: This Project Is <b>Not Fully Owned By Me</b> !
 Credits To,
 
 <b><a href="https://github.com/CallsMusic">CallsMusic</a></b> - For Callsmusic (Main Code ❤️) !
-<b><a href="https://github.com/nikhileashy">N A C</a></b> - For <code>/vc</code> Command
-Mr Dark Prince - For Yt Download!
-TheHamkercat - For Deezer and Saavn Download!
+<b>N A C</a></b> - For <code>/vc</code> Command
+<b>Mr Dark Prince</b> - For Yt Download!
+<b>TheHamkercat</b> - For Deezer and Saavn Download!
+<b>TeamDaisyX</b>
 
 Made with ❤️ by **@NexaBotsUpdates**
 
@@ -150,7 +154,7 @@ Respect To Code Owners! Not To Me!""",
     )   
 
 
-@Client.on_message(command(["vc", "vc@TheNexasMusic_bot"]) & other_filters)
+@Client.on_message(command(["vc", "vc@MusicsNexa_bot"]) & other_filters)
 async def vc(_, message: Message):
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
@@ -178,7 +182,7 @@ Enjoy!😌️❤️""",
     )
 
     
-@Client.on_message(command(["search", "search@TheNexasMusic_bot"]))
+@Client.on_message(command(["search", "search@MusicsNexa_bot"]))
 async def search(_, message: Message):
     await message.reply_text(
         "💁🏻‍♂️ Do you want to search for a YouTube video?",
