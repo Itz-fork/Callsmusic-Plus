@@ -14,8 +14,6 @@ from helpers.errors import DurationLimitError
 from helpers.filters import command, other_filters
 from helpers.decorators import errors
 
-WHOREQED = Message.from_user.first_name
-
 @Client.on_message(command("play") & other_filters)
 @errors
 async def play(_, message: Message):
@@ -71,6 +69,7 @@ async def play(_, message: Message):
 
         url = text[offset:offset + length]
         file = await converter.convert(youtube.download(url))
+        WHOREQED = message.from_user.first_name
         thumb = "https://telegra.ph/file/a4b7d13da17c3cc828ab9.jpg"
         queuedtxt = "**Your Song Queued at position {position}!**  **Requested by**: **{WHOREQED}**"
         playtxt = "**Playing Your Song 🎧...** **Requested by**: **{WHOREQED}**"
