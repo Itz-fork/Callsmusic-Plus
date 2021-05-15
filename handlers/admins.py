@@ -5,7 +5,6 @@ from pyrogram.types import Message
 
 from callsmusic import callsmusic, queues
 
-from helpers.channelmusic import get_chat_id
 from helpers.filters import command
 from helpers.decorators import errors, authorized_users_only
 
