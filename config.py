@@ -18,4 +18,6 @@ SUDO_USERS = list(map(int, getenv("SUDO_USERS").split()))
 
 LOG_CHAT = getenv("LOG_CHAT")
 
-ARQ_API_BASE_URL = getenv("ARQ_API_BASE_URL")
+ARQ_API_KEY = getenv("ARQ_API_KEY")
+# Don't Change Anything Here
+ARQ_API_URL = "http://thearq.tech"
