@@ -1,11 +1,12 @@
 # Daisyxmusic (Telegram bot project )
 # Copyright (C) 2021  Inukaasith 
 
+from __future__ import unicode_literals
+
 from os import getenv
 from dotenv import load_dotenv
 load_dotenv()
 
-from __future__ import unicode_literals
 import os
 import requests
 import aiohttp
