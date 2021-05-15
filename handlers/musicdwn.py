@@ -28,6 +28,7 @@ from typing import Callable, Coroutine, Dict, List, Tuple, Union
 import sys
 import time
 from helpers.errors import DurationLimitError
+from config import ARQ_API_BASE_URL as ARQ_API
 
 @Client.on_message(filters.command(['yts', 'yts@MusicsNexa_bot']))
 def song(client, message):
@@ -86,7 +87,6 @@ def song(client, message):
     except Exception as e:
         print(e)
 
-ARQ_API = getenv("ARQ_API_BASE_URL")
 arq = ARQ(ARQ_API)
 
 
