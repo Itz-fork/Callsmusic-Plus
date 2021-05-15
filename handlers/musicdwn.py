@@ -14,6 +14,7 @@ import requests
 import youtube_dl
 from pyrogram import Client, filters
 from youtube_search import YoutubeSearch
+from Python_ARQ import ARQ
 
 from config import ARQ_API_URL, ARQ_API_KEY
 from helpers.merrors import capture_err
