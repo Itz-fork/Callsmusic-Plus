@@ -13,3 +13,5 @@ wget
 python-arq
 youtube_dl
 aiofiles
+ffmpeg
+requests
