@@ -18,7 +18,8 @@ _**You need another (dummy) Telegram Account To Use/Deploy This!**_
 - **Deezer Music Download** (Ex:- `/deezer faded` )
 - **Supports Queues!**
 - **Get Voice Chat Link!** (`/vc` - Public Groups Only )
-- **Join & Leave Streamer Account Using A Command** (To Join - `joingrp` , To Leave `leavegrp`)
+- **Get Lyrics Of Your Song!** (Ex:- `/lyrics faded` )
+- **Join & Leave Streamer Account Using A Command** (To Join - `joingrp` , To Leave `leavegrp` )
 
 
 # Deployment
