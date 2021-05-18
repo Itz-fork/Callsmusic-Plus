@@ -23,7 +23,7 @@ _**You need another (dummy) Telegram Account To Use/Deploy This!**_
 
 
 # Deployment
-Before You Deploy make sure you Starred & Forked **[The Original Repo ❤️](https://github.com/callsmusic/callsmusic)** . **And This Repo!** 🤗️
+Before You Deploy make sure you Starred & Forked **[The Original Repo ❤️](https://github.com/callsmusic/callsmusic)** . **And [This Repo!](https://github.com/Itz-fork/Callsmusic-Plus)** 🤗️
 
 
 ## The Easy Way ⚡️
@@ -31,7 +31,7 @@ Before You Deploy make sure you Starred & Forked **[The Original Repo ❤️](ht
 ### With Heroku
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Itz-fork/Callsmusic-Plus)
 
-#### Pyrogram String Session
+#### Get Pyrogram String Session
 <a href="https://replit.com/@IamHirusha/GetPyroSessionVC"><img src="https://img.shields.io/badge/Run-Repl.it-white?style=for-the-badge&logo=repl.it"></a>
 
 
@@ -49,6 +49,7 @@ or Ask Me In **[Nexa Bots Support Group](https://t.me/Nexa_bots)**
  `SUDO_USERS` - Sudo User's ID</br>
  `DURATION_LIMIT` - Max Time Limited For a song!</br>
  `USER_ACCNAME` - Your bot's streamer account username without "@" ! </br>
+ `ARQ_API_KEY` - Your ARQ api key! Get your own at [ARQ Bot](https://t.me/ARQRobot)
 
 **[How To Get Config Vars? 🤔 Read This!](https://github.com/Itz-fork/yeah-my-man/wiki/How-To-Deploy-This!)**
 
