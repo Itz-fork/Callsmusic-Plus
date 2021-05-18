@@ -53,7 +53,35 @@ or Ask Me In **[Nexa Bots Support Group](https://t.me/Nexa_bots)**
 **[How To Get Config Vars? 🤔 Read This!](https://github.com/Itz-fork/yeah-my-man/wiki/How-To-Deploy-This!)**
 
 
-## The Hard Way!
+# The Hard Way!
+
+### Deploy In Your PC (or whatever)
+
+#### For Ubuntu Based OS
+
+**First run this command** - ``` sudo apt update ```
+
+- Install Python,
+``` sudo apt install software-properties-common ```
+``` sudo add-apt-repository ppa:deadsnakes/ppa```
+``` sudo apt install python3.9 ```
+
+- Install ffmpeg - ``` sudo apt install ffmpeg ```
+
+- Install Git - ``` sudo apt install git ```
+
+- Clone This Repo -``` git clone https://github.com/Itz-fork/Callsmusic-Plus ```
+
+- Enter File Dir. - ``` cd Callsmusic-Plus ```
+
+- Install Other Requirements - ``` pip3 install -r requirements.txt ```
+
+- Go to **config.py** and edit it this with **[your own values](https://github.com/Itz-fork/yeah-my-man/wiki/How-To-Deploy-This!)**
+
+- Finally Let's run the bot - ``` python3 main.py ```
+
+
+**For guide on other OS check [This wiki page](https://github.com/Itz-fork/yeah-my-man/wiki/Install-On-Other-OS)**
 
 ### Requirements
 
@@ -64,16 +92,6 @@ or Ask Me In **[Nexa Bots Support Group](https://t.me/Nexa_bots)**
 
 Copy `example.env` to `.env` and fill it with your credentials.
 
-### Without Docker
-
-1. Install Python requirements:
-   ```bash
-   pip install -U -r requirements.txt
-   ```
-2. Run:
-   ```bash
-   python main.py
-   ```
 
 ### Using Docker
 
@@ -90,15 +108,11 @@ Copy `example.env` to `.env` and fill it with your credentials.
 ## Credits
 
 - [CallsMusic](https://github.com/callsmusic/callsmusic) ~ This is the original Repo! ❤️
-
-- [Roj](https://github.com/rojserbest) & [Marvin](https://github.com/BlackStoneReborn): development
-- [Laky](https://github.com/Laky-64) & [Andrew](https://github.com/AndrewLaneX): PyTgCalls
-
-## Thanks To,
-
-- [N A C CREATIVE](https://t.me/n_a_c_creative): For Voice Chat Link Command!
-- Mr Dark prince : For Yt / Saavn Module
+- **[Roj](https://github.com/rojserbest) & [Marvin](https://github.com/BlackStoneReborn)** : development
+- **[Laky](https://github.com/Laky-64) & [Andrew](https://github.com/AndrewLaneX)** : PyTgCalls
+- **Mr Dark prince**
 - **TeamDaisyX**
+- **N A C CREATIVE**: For Voice Chat Link Command!
 
 
 ## License
