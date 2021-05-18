@@ -35,8 +35,8 @@
       "required": false,
       "value": ""
     },
-    "ARQ_API_BASE_URL": {
-      "description": "Your ARQ API key! Read wiki for instructions",
+    "ARQ_API_KEY": {
+      "description": "Your ARQ API key! Get your own with @ARQRobot !",
       "required": false,
       "value": ""
     }
