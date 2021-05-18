@@ -72,19 +72,37 @@ sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt install python3.9
 ```
 
-- Install ffmpeg - ``` sudo apt install ffmpeg ```
+- Install ffmpeg,
+```
+sudo apt install ffmpeg
+```
 
-- Install Git - ``` sudo apt install git ```
+- Install Git,
+```
+sudo apt install git
+```
 
-- Clone This Repo -``` git clone https://github.com/Itz-fork/Callsmusic-Plus ```
+- Clone This Repo, 
+```
+git clone https://github.com/Itz-fork/Callsmusic-Plus
+```
 
-- Enter File Dir. - ``` cd Callsmusic-Plus ```
+- Enter File Dir; 
+```
+cd Callsmusic-Plus
+```
 
-- Install Other Requirements - ``` pip3 install -r requirements.txt ```
+- Install Other Requirements, 
+```
+pip3 install -r requirements.txt
+```
 
 - Go to **config.py** and edit it this with **[your own values](https://github.com/Itz-fork/yeah-my-man/wiki/How-To-Deploy-This!)**
 
-- Finally Let's run the bot - ``` python3 main.py ```
+- Finally Let's run the bot, 
+```
+python3 main.py
+```
 
 
 **For guide on other OS check [This wiki page](https://github.com/Itz-fork/yeah-my-man/wiki/Install-On-Other-OS)**
