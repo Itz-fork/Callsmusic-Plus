@@ -55,16 +55,22 @@ or Ask Me In **[Nexa Bots Support Group](https://t.me/Nexa_bots)**
 
 # The Hard Way!
 
-### Deploy In Your PC (or whatever)
+## Deploy In Your PC (or whatever)
 
 #### For Ubuntu Based OS
 
 **First run this command** - ``` sudo apt update ```
 
 - Install Python,
-``` sudo apt install software-properties-common ```
-``` sudo add-apt-repository ppa:deadsnakes/ppa```
-``` sudo apt install python3.9 ```
+```
+sudo apt install software-properties-common
+```
+```
+sudo add-apt-repository ppa:deadsnakes/ppa
+```
+```
+sudo apt install python3.9
+```
 
 - Install ffmpeg - ``` sudo apt install ffmpeg ```
 
