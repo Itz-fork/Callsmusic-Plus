@@ -12,7 +12,6 @@ USER_ACCNAME = os.getenv("USER_ACCNAME", "NexaMusicAssistant")
 VC_LINK = f"https://t.me/{message.chat.username}?voicechat"
 
 
-
 @Client.on_message(command(["start", "start@MusicsNexa_bot"]))
 async def start(_, message: Message):
     await message.reply_text(
