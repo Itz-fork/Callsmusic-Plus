@@ -1,5 +1,5 @@
 from pyrogram import Client, filters
-from pyrogram.types import Message as message, InlineKeyboardMarkup, InlineKeyboardButton, Chat, CallbackQuery
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, Chat, CallbackQuery
 
 from handlers.start import FRIEND_BOT
 
@@ -15,7 +15,7 @@ async def close(_, query: CallbackQuery):
 @Client.on_callback_query(filters.regex("startcb"))
 async def startcb(_, query: CallbackQuery):
     await query.edit_message_text(
-        f"""<b>Hi {message.from_user.first_name} 😉️!</b>
+        f"""<b>Hey 😉️!</b>
 I'm The Nexa Music Bot. Friend of **@{FRIEND_BOT}** 😏️.
 I can play Music In Telegram Groups Via Voice Chat! 😌️.
 Made with ❤️ <b>@NexaBotsUpdates</b>""",
@@ -49,7 +49,7 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
 @Client.on_callback_query(filters.regex("cmdlistcb"))
 async def cmdlistcb(_, query: CallbackQuery):
     await query.edit_message_text(
-        f"""<b>Hi {message.from_user.first_name} 😉️!</b>
+        f"""<b>Hey 😉️!</b>
 
 Here is the list of available commands! 😃️
 
