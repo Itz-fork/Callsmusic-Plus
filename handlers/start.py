@@ -9,7 +9,6 @@ from helpers.filters import command, other_filters, other_filters2
 ## ~ Simple Config ~ ##
 FRIEND_BOT = "TheNexasMusic_bot"
 USER_ACCNAME = os.getenv("USER_ACCNAME", "NexaMusicAssistant")
-VC_LINK = f"https://t.me/{Message.Chat.username}?voicechat"
 
 
 @Client.on_message(command(["start", "start@MusicsNexa_bot"]))
@@ -171,6 +170,7 @@ Respect To Code Owners! Not To Me!""",
 
 @Client.on_message(command(["vc", "vc@MusicsNexa_bot"]) & other_filters)
 async def vc(_, message: Message):
+    VC_LINK = f"https://t.me/{message.chat.username}?voicechat"
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
 
