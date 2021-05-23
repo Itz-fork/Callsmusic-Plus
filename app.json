@@ -1,9 +1,9 @@
 {
-  "name": "CallsMusic ++",
-  "logo": "https://telegra.ph/file/7fa5bd949db5061e6f361.jpg"
-  "description": "A CallsMusic Project! Edited By Itz-Fork!",
+  "name": "CallsMusic-Plus",
+  "description": "Telegram Voice Chat Music Player Bot Based On Callsmusic with Extrac Features!",
   "keywords": ["music", "voicechat", "telegram"],
   "repository": "https://github.com/Itz-fork/Callsmusic-Plus",
+  "logo": "https://telegra.ph/file/7fa5bd949db5061e6f361.jpg",
   "stack": "container",
   "env": {
     "API_ID": {
