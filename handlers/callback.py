@@ -73,7 +73,8 @@ Here is the list of available commands! 😃️
  ➲ <code>/saavn (song name)</code> - Download Songs From Saavn!
  ➲ <code>/deezer (song namme)</code> - Download Songs From Deezer!
 
- 
+**❌ Don't End Voice Chat While Bot Playing A Song ❌**
+
 Made with ❤️ by **@NexaBotsUpdates**""",
         reply_markup=InlineKeyboardMarkup(
             [
