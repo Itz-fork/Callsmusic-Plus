@@ -54,14 +54,14 @@ async def skip(_, message: Message):
     else:
         queues.task_done(message.chat.id)
 
-        if queues.is_empty(message.chat):
+        if queues.is_empty(message.chat.id):
             await callsmusic.stop(message.chat.id)
         else:
             await callsmusic.set_stream(
                 message.chat.id, queues.get(message.chat.id)["file"]
             )
 
-        await message.reply_text("Skipped.")
+        await message.reply_text("Skipped!")
 
 
 @Client.on_message(command(["mute", "m"]))
