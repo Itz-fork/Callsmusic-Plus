@@ -31,6 +31,10 @@ Before You Deploy make sure you Starred & Forked **[The Original Repo ❤️](ht
 ### With Heroku
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Itz-fork/Callsmusic-Plus)
 
+### With Zeet
+[![Deploy](https://user-images.githubusercontent.com/77770753/119371372-fe917900-bcd3-11eb-8db5-f5e8063cdd1c.jpg)](https://zeet.co/new/template/itz-fork/yeah-my-man)
+
+
 #### Get Pyrogram String Session
 <a href="https://replit.com/@IamHirusha/GetPyroSessionVC"><img src="https://img.shields.io/badge/Run-Repl.it-white?style=for-the-badge&logo=repl.it"></a>
 
