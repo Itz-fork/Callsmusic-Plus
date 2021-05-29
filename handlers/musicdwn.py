@@ -13,6 +13,8 @@ import ffmpeg
 import requests
 import wget
 import youtube_dl
+
+from aiohttp import ClientSession
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from youtube_search import YoutubeSearch
@@ -24,7 +26,7 @@ from helpers.modhelps import paste
 
 
 is_downloading = False
-arq = ARQ(ARQ_API_URL, ARQ_API_KEY)
+arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
 
 
 def get_file_extension_from_url(url):
