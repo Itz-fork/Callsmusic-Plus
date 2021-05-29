@@ -25,6 +25,8 @@ from helpers.merrors import capture_err
 from helpers.modhelps import paste
 
 
+aiohttpsession = ClientSession()
+
 is_downloading = False
 arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
 
