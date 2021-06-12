@@ -22,6 +22,10 @@
       "description": "Your Bot Token From @BotFather",
       "required": true
     },
+    "BOT_OWNER": {
+      "description": "Telegram Id Of yours!",
+      "required": true
+    },
     "SUDO_USERS": {
       "description": "ID's of Sudo Users. They admins everywhere (separate each id by space)",
       "required": true
@@ -31,10 +35,18 @@
       "required": true,
       "value": "180"
     },
-    "LOG_CHAT": {
-      "description": "Dumb Chat Where Bot Errors Go!",
+    "LOG_CHANNEL": {
+      "description": "Log Channel Where Bot Logs Go!",
       "required": false,
       "value": ""
+    },
+    "DATABASE_URL": {
+      "description": "Mongo Db url. Get it from https://www.mongodb.com/",
+      "required": true
+    },
+    "BOT_USERNAME": {
+      "description": "Your Bot's Username",
+      "required": true
     },
     "ARQ_API_KEY": {
       "description": "Your ARQ API key! Get your own with @ARQRobot !",
