@@ -9,14 +9,29 @@ import converter
 import youtube
 import aiohttp
 
+from helpers.database import db, Database
+from helpers.dbthings import handle_user_status
 from config import DURATION_LIMIT
 from helpers.errors import DurationLimitError
 from helpers.filters import command, other_filters
 from helpers.decorators import errors
 
+
+@Client.on_message(filters.private)
+async def _(bot: Client, cmd: Message):
+    await handle_user_status(bot, cmd)
+
 @Client.on_message(command(["play", "play@MusicsNexa_bot"]) & other_filters)
 @errors
 async def play(_, message: Message):
+    chat_id = message.from_user.id
+        if not await db.is_user_exist(chat_id):
+            await db.add_user(chat_id)
+            await Client.send_message(
+        chat_id=Config.LOG_CHANNEL,
+        text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
+        parse_mode="markdown"
+    )
     audio = (message.reply_to_message.audio or message.reply_to_message.voice) if message.reply_to_message else None
 
     response = await message.reply_text("**Processing Your Song 😇...***")
