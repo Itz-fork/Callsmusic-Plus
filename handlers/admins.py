@@ -7,12 +7,27 @@ from callsmusic import callsmusic, queues
 
 from helpers.filters import command
 from helpers.decorators import errors, authorized_users_only
+from helpers.database import db, Database
+from helpers.dbthings import handle_user_status
+
+
+@Client.on_message(filters.private)
+async def _(bot: Client, cmd: Message):
+    await handle_user_status(bot, cmd)
 
 
 @Client.on_message(command(["pause", "p"]))
 @errors
 @authorized_users_only
 async def pause(_, message: Message):
+    chat_id = message.from_user.id
+        if not await db.is_user_exist(chat_id):
+            await db.add_user(chat_id)
+            await Client.send_message(
+        chat_id=Config.LOG_CHANNEL,
+        text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
+        parse_mode="markdown"
+    )
     if callsmusic.pause(message.chat.id):
         await message.reply_text("⏸ Paused")
     else:
@@ -23,6 +38,14 @@ async def pause(_, message: Message):
 @errors
 @authorized_users_only
 async def resume(_, message: Message):
+    chat_id = message.from_user.id
+        if not await db.is_user_exist(chat_id):
+            await db.add_user(chat_id)
+            await Client.send_message(
+        chat_id=Config.LOG_CHANNEL,
+        text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
+        parse_mode="markdown"
+    )
     if callsmusic.resume(message.chat.id):
         await message.reply_text("🎧 Resumed")
     else:
@@ -33,6 +56,14 @@ async def resume(_, message: Message):
 @errors
 @authorized_users_only
 async def stop(_, message: Message):
+    chat_id = message.from_user.id
+        if not await db.is_user_exist(chat_id):
+            await db.add_user(chat_id)
+            await Client.send_message(
+        chat_id=Config.LOG_CHANNEL,
+        text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
+        parse_mode="markdown"
+    )
     if message.chat.id not in callsmusic.active_chats:
         await message.reply_text("❗️ Nothing is playing")
     else:
@@ -49,6 +80,14 @@ async def stop(_, message: Message):
 @errors
 @authorized_users_only
 async def skip(_, message: Message):
+    chat_id = message.from_user.id
+        if not await db.is_user_exist(chat_id):
+            await db.add_user(chat_id)
+            await Client.send_message(
+        chat_id=Config.LOG_CHANNEL,
+        text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
+        parse_mode="markdown"
+    )
     if message.chat.id not in callsmusic.active_chats:
         await message.reply_text("❗️ Nothing is playing")
     else:
@@ -68,6 +107,14 @@ async def skip(_, message: Message):
 @errors
 @authorized_users_only
 async def mute(_, message: Message):
+    chat_id = message.from_user.id
+        if not await db.is_user_exist(chat_id):
+            await db.add_user(chat_id)
+            await Client.send_message(
+        chat_id=Config.LOG_CHANNEL,
+        text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
+        parse_mode="markdown"
+    )
     result = callsmusic.mute(message.chat.id)
 
     if result == 0:
@@ -82,6 +129,14 @@ async def mute(_, message: Message):
 @errors
 @authorized_users_only
 async def unmute(_, message: Message):
+    chat_id = message.from_user.id
+        if not await db.is_user_exist(chat_id):
+            await db.add_user(chat_id)
+            await Client.send_message(
+        chat_id=Config.LOG_CHANNEL,
+        text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
+        parse_mode="markdown"
+    )
     result = callsmusic.unmute(message.chat.id)
 
     if result == 0:
