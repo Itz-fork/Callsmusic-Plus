@@ -20,6 +20,8 @@ async def _(bot: Client, cmd: Message):
 
 @Client.on_message(command(["start", "start@MusicsNexa_bot"]))
 async def start(_, message: Message):
+        usr_cmd = message.text.split("_")[-1]
+    if usr_cmd == "/start":
         chat_id = message.from_user.id
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
@@ -63,7 +65,9 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
     
 @Client.on_message(command(["help", "help@MusicsNexa_bot"]))
 async def help(_, message: Message):
-    chat_id = message.from_user.id
+    usr_cmd = message.text.split("_")[-1]
+    if usr_cmd == "/help":
+        chat_id = message.from_user.id
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
@@ -108,7 +112,9 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
     
 @Client.on_message(command(["cmdlist", "cmdlist@MusicsNexa_bot"]))
 async def cmdlist(_, message: Message):
-    chat_id = message.from_user.id
+    usr_cmd = message.text.split("_")[-1]
+    if usr_cmd == "/cmdlist":
+        chat_id = message.from_user.id
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
@@ -168,7 +174,9 @@ Made with ❤️ by **@NexaBotsUpdates**""",
     
 @Client.on_message(command("credits") & other_filters2)
 async def credits2(_, message: Message):
-    chat_id = message.from_user.id
+    usr_cmd = message.text.split("_")[-1]
+    if usr_cmd == "/credits":
+        chat_id = message.from_user.id
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
@@ -187,6 +195,7 @@ Credits To,
 <b>Mr Dark Prince</b> - For Yt Download!
 <b>TheHamkercat</b> - For Deezer and Saavn Download!
 <b>TeamDaisyX</b>
+<b>AbirHasan2005</b>
 <b>N A C</b> - For <code>/vc</code> Command
 
 Made with ❤️ by **@NexaBotsUpdates**
@@ -211,7 +220,9 @@ Respect To Code Owners! Not To Me!""",
 
 @Client.on_message(command(["vc", "vc@MusicsNexa_bot"]) & other_filters)
 async def vc(_, message: Message):
-    chat_id = message.from_user.id
+    usr_cmd = message.text.split("_")[-1]
+    if usr_cmd == "/vc":
+        chat_id = message.from_user.id
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
@@ -253,7 +264,9 @@ Enjoy!😌️❤️""",
     
 @Client.on_message(command(["search", "search@MusicsNexa_bot"]))
 async def search(_, message: Message):
-    chat_id = message.from_user.id
+    usr_cmd = message.text.split("_")[-1]
+    if usr_cmd == "/search":
+        chat_id = message.from_user.id
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
