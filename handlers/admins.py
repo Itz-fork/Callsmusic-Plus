@@ -17,11 +17,13 @@ async def _(bot: Client, cmd: Message):
     await handle_user_status(bot, cmd)
 
 
-@Client.on_message(command(["pause", "p"]))
+@Client.on_message(command(["pause", "pause@MusicsNexa_bot"]))
 @errors
 @authorized_users_only
 async def pause(_, message: Message):
-    chat_id = message.from_user.id
+    usr_cmd = message.text.split("_")[-1]
+    if usr_cmd == "/pause":
+        chat_id = message.from_user.id
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
@@ -35,11 +37,13 @@ async def pause(_, message: Message):
         await message.reply_text("❗️ Nothing is playing")
 
 
-@Client.on_message(command(["resume", "r"]))
+@Client.on_message(command(["resume", "resume@MusicsNexa_bot"]))
 @errors
 @authorized_users_only
 async def resume(_, message: Message):
-    chat_id = message.from_user.id
+    usr_cmd = message.text.split("_")[-1]
+    if usr_cmd == "/resume":
+        chat_id = message.from_user.id
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
@@ -53,11 +57,13 @@ async def resume(_, message: Message):
         await message.reply_text("❗️ Nothing is paused")
 
 
-@Client.on_message(command(["stop", "s"]))
+@Client.on_message(command(["stop", "stop@MusicsNexa_bot"]))
 @errors
 @authorized_users_only
 async def stop(_, message: Message):
-    chat_id = message.from_user.id
+    usr_cmd = message.text.split("_")[-1]
+    if usr_cmd == "/stop":
+        chat_id = message.from_user.id
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
@@ -77,11 +83,13 @@ async def stop(_, message: Message):
         await message.reply_text("✅ Cleared the queue and left the Voice Chat!")
 
 
-@Client.on_message(command(["skip", "f"]))
+@Client.on_message(command(["skip", "skip@MusicsNexa_bot"]))
 @errors
 @authorized_users_only
 async def skip(_, message: Message):
-    chat_id = message.from_user.id
+    usr_cmd = message.text.split("_")[-1]
+    if usr_cmd == "/skip":
+        chat_id = message.from_user.id
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
@@ -104,11 +112,13 @@ async def skip(_, message: Message):
         await message.reply_text("Skipped!")
 
 
-@Client.on_message(command(["mute", "m"]))
+@Client.on_message(command(["mute", "mute@MusicsNexa_bot"]))
 @errors
 @authorized_users_only
 async def mute(_, message: Message):
-    chat_id = message.from_user.id
+    usr_cmd = message.text.split("_")[-1]
+    if usr_cmd == "/mute":
+        chat_id = message.from_user.id
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
@@ -126,11 +136,13 @@ async def mute(_, message: Message):
         await message.reply_text("❗️ Not in voice chat")
 
 
-@Client.on_message(command(["unmute", "u"]))
+@Client.on_message(command(["unmute", "unmute@MusicsNexa_bot"]))
 @errors
 @authorized_users_only
 async def unmute(_, message: Message):
-    chat_id = message.from_user.id
+    usr_cmd = message.text.split("_")[-1]
+    if usr_cmd == "/unmute":
+        chat_id = message.from_user.id
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
