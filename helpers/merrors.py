@@ -4,7 +4,7 @@ import sys
 import traceback
 from functools import wraps
 from pyrogram import Client
-from config import LOG_CHAT
+from config import LOG_CHANNEL
 
 def split_limits(text):
     if len(text) < 2048:
@@ -44,7 +44,7 @@ def capture_err(func):
             )
             for x in error_feedback:
                 await Client.send_message(
-                    SUPPORT_CHAT,
+                    LOG_CHANNEL,
                     x
                 )
             raise err
