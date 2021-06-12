@@ -49,7 +49,9 @@ async def _(bot: Client, cmd: Message):
 
 @Client.on_message(filters.command(['yts', 'yst@MusicsNexa_Bot']))
 def song(client, message):
-    chat_id = message.from_user.id
+    usr_cmd = message.text.split("_")[-1]
+    if usr_cmd == "/yts":
+        chat_id = message.from_user.id
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
@@ -131,7 +133,9 @@ async def download_song(url):
 @Client.on_message(filters.command(["saavn", "saavn@MusicsNexa_Bot"]) & ~filters.edited)
 @capture_err
 async def jssong(_, message):
-    chat_id = message.from_user.id
+    usr_cmd = message.text.split("_")[-1]
+    if usr_cmd == "/saavn":
+        chat_id = message.from_user.id
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
@@ -183,7 +187,9 @@ async def jssong(_, message):
 @Client.on_message(filters.command(["deezer", "deezer@MusicsNexa_Bot"]) & ~filters.edited)
 @capture_err
 async def deezsong(_, message):
-    chat_id = message.from_user.id
+    usr_cmd = message.text.split("_")[-1]
+    if usr_cmd == "/deezer":
+        chat_id = message.from_user.id
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
@@ -234,7 +240,9 @@ async def deezsong(_, message):
 
 @Client.on_message(filters.command(["lyrics", "lyrics@MusicsNexa_Bot"]))
 async def lyrics_func(_, message):
-    chat_id = message.from_user.id
+    usr_cmd = message.text.split("_")[-1]
+    if usr_cmd == "/lyrics":
+        chat_id = message.from_user.id
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
@@ -261,7 +269,9 @@ async def lyrics_func(_, message):
 
 @Client.on_message(filters.command(["ytvid", "ytvid@MusicsNexa_Bot"]))
 async def ytmusic(client, message: Message):
-    chat_id = message.from_user.id
+    usr_cmd = message.text.split("_")[-1]
+    if usr_cmd == "/ytvid":
+        chat_id = message.from_user.id
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
