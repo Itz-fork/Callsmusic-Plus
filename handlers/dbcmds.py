@@ -5,19 +5,20 @@ from pyrogram import Client, filters
 
 from helpers.database import db
 from helpers.dbthings import main_broadcast_handler
+from config import BOT_OWNER
 
-@Client.on_message(filters.private & filters.command("broadcast") & filters.user(Config.BOT_OWNER) & filters.reply)
+@Client.on_message(filters.private & filters.command("broadcast") & filters.user(BOT_OWNER) & filters.reply)
 async def broadcast_handler_open(_, m: Message):
     await main_broadcast_handler(m, db)
 
 
-@Client.on_message(filters.private & filters.command("stats") & filters.user(Config.BOT_OWNER))
+@Client.on_message(filters.private & filters.command("stats") & filters.user(BOT_OWNER))
 async def sts(_, m: Message):
     total_users = await db.total_users_count()
     await m.reply_text(text=f"**I have** `{total_users}` **Users In My database", parse_mode="Markdown", quote=True)
 
 
-@Client.on_message(filters.private & filters.command("ban") & filters.user(Config.BOT_OWNER))
+@Client.on_message(filters.private & filters.command("ban") & filters.user(BOT_OWNER))
 async def ban(c: Client, m: Message):
     if len(m.command) == 1:
         await m.reply_text(
@@ -53,7 +54,7 @@ async def ban(c: Client, m: Message):
         )
 
 
-@Client.on_message(filters.private & filters.command("unban") & filters.user(Config.BOT_OWNER))
+@Client.on_message(filters.private & filters.command("unban") & filters.user(BOT_OWNER))
 async def unban(c: Client, m: Message):
     if len(m.command) == 1:
         await m.reply_text(
@@ -87,7 +88,7 @@ async def unban(c: Client, m: Message):
         )
 
 
-@Client.on_message(filters.private & filters.command("banned") & filters.user(Config.BOT_OWNER))
+@Client.on_message(filters.private & filters.command("banned") & filters.user(BOT_OWNER))
 async def _banned_usrs(_, m: Message):
     all_banned_users = await db.get_all_banned_users()
     banned_usr_count = 0
