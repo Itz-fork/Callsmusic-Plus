@@ -6,6 +6,7 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, 
 from helpers.filters import command, other_filters, other_filters2
 from helpers.database import db, Database
 from helpers.dbthings import handle_user_status
+from config import LOG_CHANNEL
 
 ## ~ Simple Config ~ ##
 FRIEND_BOT = "TheNexasMusic_bot"
@@ -23,7 +24,7 @@ async def start(_, message: Message):
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
-        chat_id=Config.LOG_CHANNEL,
+        chat_id=LOG_CHANNEL,
         text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
         parse_mode="markdown"
     )
@@ -66,7 +67,7 @@ async def help(_, message: Message):
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
-        chat_id=Config.LOG_CHANNEL,
+        chat_id=LOG_CHANNEL,
         text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
         parse_mode="markdown"
     )
@@ -111,7 +112,7 @@ async def cmdlist(_, message: Message):
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
-        chat_id=Config.LOG_CHANNEL,
+        chat_id=LOG_CHANNEL,
         text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
         parse_mode="markdown"
     )
@@ -171,7 +172,7 @@ async def credits2(_, message: Message):
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
-        chat_id=Config.LOG_CHANNEL,
+        chat_id=LOG_CHANNEL,
         text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
         parse_mode="markdown"
     )
@@ -214,7 +215,7 @@ async def vc(_, message: Message):
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
-        chat_id=Config.LOG_CHANNEL,
+        chat_id=LOG_CHANNEL,
         text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
         parse_mode="markdown"
     )
@@ -256,7 +257,7 @@ async def search(_, message: Message):
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
-        chat_id=Config.LOG_CHANNEL,
+        chat_id=LOG_CHANNEL,
         text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
         parse_mode="markdown"
     )
