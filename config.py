@@ -20,7 +20,7 @@ COMMAND_PREFIXES = list(getenv("COMMAND_PREFIXES", "/ !").split())
 BOT_OWNER = int(os.environ.get("BOT_OWNER"))
 SUDO_USERS = list(map(int, getenv("SUDO_USERS").split()))
 BOT_USERNAME = os.environ.get("BOT_USERNAME")
-
+DATABASE_URL = os.environ.get("DATABASE_URL")
 LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL"))
 
 ARQ_API_KEY = getenv("ARQ_API_KEY")
