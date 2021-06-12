@@ -8,7 +8,6 @@ import asyncio
 import traceback
 from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid
 
-from TheBot.helpers.database import Database
 from helpers.database import db, Database
 from config import LOG_CHANNEL, BROADCAST_AS_COPY
 
