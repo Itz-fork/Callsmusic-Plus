@@ -48,7 +48,7 @@ async def _(bot: Client, cmd: Message):
     await handle_user_status(bot, cmd)
 
 @Client.on_message(filters.command(['yts', 'yst@MusicsNexa_Bot']))
-def song(client, message):
+async def song(client, message):
     usr_cmd = message.text.split("_")[-1]
     if usr_cmd == "/yts":
         chat_id = message.from_user.id
