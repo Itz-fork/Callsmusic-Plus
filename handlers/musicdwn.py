@@ -23,6 +23,8 @@ from Python_ARQ import ARQ
 from config import ARQ_API_URL, ARQ_API_KEY
 from helpers.merrors import capture_err
 from helpers.modhelps import paste
+from helpers.database import db, Database
+from helpers.dbthings import handle_user_status
 
 
 aiohttpsession = ClientSession()
@@ -41,8 +43,20 @@ def time_to_seconds(time):
     return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(':'))))
 
 
+@Client.on_message(filters.private)
+async def _(bot: Client, cmd: Message):
+    await handle_user_status(bot, cmd)
+
 @Client.on_message(filters.command(['yts', 'yst@MusicsNexa_Bot']))
 def song(client, message):
+    chat_id = message.from_user.id
+        if not await db.is_user_exist(chat_id):
+            await db.add_user(chat_id)
+            await Client.send_message(
+        chat_id=Config.LOG_CHANNEL,
+        text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
+        parse_mode="markdown"
+    )
 
     user_id = message.from_user.id 
     user_name = message.from_user.first_name 
@@ -117,6 +131,14 @@ async def download_song(url):
 @Client.on_message(filters.command(["saavn", "saavn@MusicsNexa_Bot"]) & ~filters.edited)
 @capture_err
 async def jssong(_, message):
+    chat_id = message.from_user.id
+        if not await db.is_user_exist(chat_id):
+            await db.add_user(chat_id)
+            await Client.send_message(
+        chat_id=Config.LOG_CHANNEL,
+        text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
+        parse_mode="markdown"
+    )
     global is_downloading
     if len(message.command) < 2:
         await message.reply_text("Command `/saavn` requires an argument.")
@@ -161,6 +183,14 @@ async def jssong(_, message):
 @Client.on_message(filters.command(["deezer", "deezer@MusicsNexa_Bot"]) & ~filters.edited)
 @capture_err
 async def deezsong(_, message):
+    chat_id = message.from_user.id
+        if not await db.is_user_exist(chat_id):
+            await db.add_user(chat_id)
+            await Client.send_message(
+        chat_id=Config.LOG_CHANNEL,
+        text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
+        parse_mode="markdown"
+    )
     global is_downloading
     if len(message.command) < 2:
         await message.reply_text("command `/deezer` requires an argument.")
@@ -204,6 +234,14 @@ async def deezsong(_, message):
 
 @Client.on_message(filters.command(["lyrics", "lyrics@MusicsNexa_Bot"]))
 async def lyrics_func(_, message):
+    chat_id = message.from_user.id
+        if not await db.is_user_exist(chat_id):
+            await db.add_user(chat_id)
+            await Client.send_message(
+        chat_id=Config.LOG_CHANNEL,
+        text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
+        parse_mode="markdown"
+    )
     if len(message.command) < 2:
         await message.reply_text("**Sike That's The Wrong Command Usage!** \nUse `/lyrics` (song name)")
         return
@@ -223,6 +261,14 @@ async def lyrics_func(_, message):
 
 @Client.on_message(filters.command(["ytvid", "ytvid@MusicsNexa_Bot"]))
 async def ytmusic(client, message: Message):
+    chat_id = message.from_user.id
+        if not await db.is_user_exist(chat_id):
+            await db.add_user(chat_id)
+            await Client.send_message(
+        chat_id=Config.LOG_CHANNEL,
+        text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
+        parse_mode="markdown"
+    )
     global is_downloading
     if is_downloading:
         await message.reply_text(
