@@ -2,6 +2,7 @@ import traceback
 import asyncio
 
 from pyrogram import Client, filters
+from pyrogram.types import Message
 
 from helpers.database import db
 from helpers.dbthings import main_broadcast_handler
