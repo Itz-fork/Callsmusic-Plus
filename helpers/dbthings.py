@@ -10,13 +10,14 @@ from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, Peer
 
 from TheBot.helpers.database import Database
 from helpers.database import db, Database
+from config import LOG_CHANNEL, BROADCAST_AS_COPY
 
 async def handle_user_status(bot, cmd):
     chat_id = cmd.from_user.id
     if not await db.is_user_exist(chat_id):
         await db.add_user(chat_id)
         await bot.send_message(
-            Config.LOG_CHANNEL,
+            LOG_CHANNEL,
             f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})"
         )
 
