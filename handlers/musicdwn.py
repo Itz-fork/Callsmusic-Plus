@@ -20,7 +20,7 @@ from pyrogram.types import Message
 from youtube_search import YoutubeSearch
 from Python_ARQ import ARQ
 
-from config import ARQ_API_URL, ARQ_API_KEY
+from config import ARQ_API_URL, ARQ_API_KEY, LOG_CHANNEL
 from helpers.merrors import capture_err
 from helpers.modhelps import paste
 from helpers.database import db, Database
@@ -53,7 +53,7 @@ def song(client, message):
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
-        chat_id=Config.LOG_CHANNEL,
+        chat_id=LOG_CHANNEL,
         text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
         parse_mode="markdown"
     )
@@ -135,7 +135,7 @@ async def jssong(_, message):
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
-        chat_id=Config.LOG_CHANNEL,
+        chat_id=LOG_CHANNEL,
         text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
         parse_mode="markdown"
     )
@@ -187,7 +187,7 @@ async def deezsong(_, message):
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
-        chat_id=Config.LOG_CHANNEL,
+        chat_id=LOG_CHANNEL,
         text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
         parse_mode="markdown"
     )
@@ -238,7 +238,7 @@ async def lyrics_func(_, message):
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
-        chat_id=Config.LOG_CHANNEL,
+        chat_id=LOG_CHANNEL,
         text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
         parse_mode="markdown"
     )
@@ -265,7 +265,7 @@ async def ytmusic(client, message: Message):
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
-        chat_id=Config.LOG_CHANNEL,
+        chat_id=LOG_CHANNEL,
         text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
         parse_mode="markdown"
     )
