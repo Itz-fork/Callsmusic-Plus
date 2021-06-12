@@ -3,10 +3,6 @@ import motor.motor_asyncio
 
 from config import DATABASE_URL, BOT_USERNAME
 
-# Database
-db = Database(DATABASE_URL, BOT_USERNAME)
-
-
 class Database:
 
     def __init__(self, uri, database_name):
@@ -76,3 +72,7 @@ class Database:
     async def get_all_banned_users(self):
         banned_users = self.col.find({'ban_status.is_banned': True})
         return banned_users
+
+
+# Database
+db = Database(DATABASE_URL, BOT_USERNAME)
