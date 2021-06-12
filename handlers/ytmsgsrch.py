@@ -30,7 +30,9 @@ async def _(bot: Client, cmd: Message):
 
 @Client.on_message(pyrogram.filters.command(["ytsearch", "ytsearch@MusicsNexa_bot"]))
 async def ytsearch(_, message: Message):
-    chat_id = message.from_user.id
+    usr_cmd = message.text.split("_")[-1]
+    if usr_cmd == "/ytsearch":
+        chat_id = message.from_user.id
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
