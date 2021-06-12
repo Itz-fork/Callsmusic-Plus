@@ -4,6 +4,7 @@ from pyrogram import Client
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, Chat
 
 from helpers.filters import command, other_filters, other_filters2
+from helpers.database import db, Database
 
 
 ## ~ Simple Config ~ ##
@@ -13,6 +14,14 @@ USER_ACCNAME = os.getenv("USER_ACCNAME", "NexaMusicAssistant")
 
 @Client.on_message(command(["start", "start@MusicsNexa_bot"]))
 async def start(_, message: Message):
+        chat_id = message.from_user.id
+        if not await db.is_user_exist(chat_id):
+            await db.add_user(chat_id)
+            await Client.send_message(
+        chat_id=Config.LOG_CHANNEL,
+        text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
+        parse_mode="markdown"
+    )
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
 
@@ -48,6 +57,14 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
     
 @Client.on_message(command(["help", "help@MusicsNexa_bot"]))
 async def help(_, message: Message):
+    chat_id = message.from_user.id
+        if not await db.is_user_exist(chat_id):
+            await db.add_user(chat_id)
+            await Client.send_message(
+        chat_id=Config.LOG_CHANNEL,
+        text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
+        parse_mode="markdown"
+    )
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
 
@@ -85,6 +102,14 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
     
 @Client.on_message(command(["cmdlist", "cmdlist@MusicsNexa_bot"]))
 async def cmdlist(_, message: Message):
+    chat_id = message.from_user.id
+        if not await db.is_user_exist(chat_id):
+            await db.add_user(chat_id)
+            await Client.send_message(
+        chat_id=Config.LOG_CHANNEL,
+        text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
+        parse_mode="markdown"
+    )
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
 
@@ -137,6 +162,14 @@ Made with ❤️ by **@NexaBotsUpdates**""",
     
 @Client.on_message(command("credits") & other_filters2)
 async def credits2(_, message: Message):
+    chat_id = message.from_user.id
+        if not await db.is_user_exist(chat_id):
+            await db.add_user(chat_id)
+            await Client.send_message(
+        chat_id=Config.LOG_CHANNEL,
+        text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
+        parse_mode="markdown"
+    )
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
 
@@ -172,6 +205,14 @@ Respect To Code Owners! Not To Me!""",
 
 @Client.on_message(command(["vc", "vc@MusicsNexa_bot"]) & other_filters)
 async def vc(_, message: Message):
+    chat_id = message.from_user.id
+        if not await db.is_user_exist(chat_id):
+            await db.add_user(chat_id)
+            await Client.send_message(
+        chat_id=Config.LOG_CHANNEL,
+        text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
+        parse_mode="markdown"
+    )
     VC_LINK = f"https://t.me/{message.chat.username}?voicechat"
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
@@ -206,6 +247,14 @@ Enjoy!😌️❤️""",
     
 @Client.on_message(command(["search", "search@MusicsNexa_bot"]))
 async def search(_, message: Message):
+    chat_id = message.from_user.id
+        if not await db.is_user_exist(chat_id):
+            await db.add_user(chat_id)
+            await Client.send_message(
+        chat_id=Config.LOG_CHANNEL,
+        text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
+        parse_mode="markdown"
+    )
     await message.reply_text(
         "💁🏻‍♂️ Do you want to search for a YouTube video?",
         reply_markup=InlineKeyboardMarkup(
