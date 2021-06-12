@@ -20,7 +20,7 @@ async def _(bot: Client, cmd: Message):
 
 @Client.on_message(command(["start", "start@MusicsNexa_bot"]))
 async def start(_, message: Message):
-        usr_cmd = message.text.split("_")[-1]
+    usr_cmd = message.text.split("_")[-1]
     if usr_cmd == "/start":
         chat_id = message.from_user.id
         if not await db.is_user_exist(chat_id):
