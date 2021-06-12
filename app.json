@@ -37,7 +37,7 @@
     },
     "LOG_CHANNEL": {
       "description": "Log Channel Where Bot Logs Go!",
-      "required": false,
+      "required": true,
       "value": ""
     },
     "DATABASE_URL": {
