@@ -1,6 +1,6 @@
 import os
 
-from pyrogram import Client
+from pyrogram import Client, filters # Ik this is weird as this shit is already imported in line 6! anyway ... Fuck Off!
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, Chat
 
 from helpers.filters import command, other_filters, other_filters2
