@@ -1,9 +1,10 @@
 import datetime
 import motor.motor_asyncio
 
+from config import DATABASE_URL, BOT_USERNAME
 
 # Database
-db = Database(Config.DATABASE_URL, Config.BOT_USERNAME)
+db = Database(DATABASE_URL, BOT_USERNAME)
 
 
 class Database:
