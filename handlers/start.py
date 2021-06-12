@@ -5,11 +5,16 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, 
 
 from helpers.filters import command, other_filters, other_filters2
 from helpers.database import db, Database
-
+from helpers.dbthings import handle_user_status
 
 ## ~ Simple Config ~ ##
 FRIEND_BOT = "TheNexasMusic_bot"
 USER_ACCNAME = os.getenv("USER_ACCNAME", "NexaMusicAssistant")
+
+
+@Client.on_message(filters.private)
+async def _(bot: Client, cmd: Message):
+    await handle_user_status(bot, cmd)
 
 
 @Client.on_message(command(["start", "start@MusicsNexa_bot"]))
