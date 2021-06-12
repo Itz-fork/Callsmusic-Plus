@@ -1,6 +1,6 @@
 from asyncio import QueueEmpty
 
-from pyrogram import Client
+from pyrogram import Client, filters
 from pyrogram.types import Message, Chat
 
 from callsmusic import callsmusic, queues
