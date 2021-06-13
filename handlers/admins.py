@@ -10,7 +10,7 @@ from helpers.decorators import errors, authorized_users_only
 from helpers.database import db, Database
 from helpers.dbthings import handle_user_status
 from config import LOG_CHANNEL
-from helpers.admins import que, admins as fuck
+from . import que, admins as fuck
 
 @Client.on_message
 async def _(bot: Client, cmd: command):
