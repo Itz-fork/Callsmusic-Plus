@@ -25,7 +25,7 @@ async def update_admin(client, message):
     new_ads = []
     for u in admins:
         new_ads.append(u.user.id)
-    a[message.chat.id] = new_ads
+    fuck[message.chat.id] = new_ads
     await message.reply_text("**Successfully Updated Admin List ✅!**")
 
 
