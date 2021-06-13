@@ -16,7 +16,7 @@ async def broadcast_handler_open(_, m: Message):
 @Client.on_message(filters.private & filters.command("stats") & filters.user(BOT_OWNER))
 async def sts(_, m: Message):
     total_users = await db.total_users_count()
-    await m.reply_text(text=f"**I have** `{total_users}` **Users In My database", parse_mode="Markdown", quote=True)
+    await m.reply_text(text=f"**I have** `{total_users}` **Users In My Database**", parse_mode="Markdown", quote=True)
 
 
 @Client.on_message(filters.private & filters.command("ban") & filters.user(BOT_OWNER))
@@ -31,16 +31,16 @@ async def ban(c: Client, m: Message):
         user_id = int(m.command[1])
         ban_duration = int(m.command[2])
         ban_reason = ' '.join(m.command[3:])
-        ban_log_text = f"Banning user {user_id} for {ban_duration} days for the reason {ban_reason}."
+        ban_log_text = f"`Banning User 🗑...` \nUser ID: `{user_id}` \nDuration: `{ban_duration}` \nReason: `{ban_reason}`"
         try:
             await c.send_message(
                 user_id,
-                f"Lmao You are banned 😂! \n\nReason: `{ban_reason}` \nDuration: `{ban_duration}` day(s). \n\n**Message From The Owner! Ask in **@Nexa_bots** if you think this was an mistake."
+                f"Lmao You are **Banned 😂!** \n\nReason: `{ban_reason}` \nDuration: `{ban_duration}` day(s). \n\n**Message From The Owner! Ask in **@Nexa_bots** if you think this was an mistake."
             )
-            ban_log_text += '\n\nSuccessfully Notified About This to that **Dumb User** 😅'
+            ban_log_text += '\n\nSuccessfully Notified About This Ban to that **Dumb User** 😅'
         except:
             traceback.print_exc()
-            ban_log_text += f"\n\nKCUF! I can't Notify About This to That **Dumb User** 🤯 \n\n`{traceback.format_exc()}`"
+            ban_log_text += f"\n\nKCUF! I can't Notify About This Ban to That **Dumb User** 🤯 \n\n`{traceback.format_exc()}`"
         await db.ban_user(user_id, ban_duration, ban_reason)
         print(ban_log_text)
         await m.reply_text(
@@ -89,7 +89,7 @@ async def unban(c: Client, m: Message):
         )
 
 
-@Client.on_message(filters.private & filters.command("banned") & filters.user(BOT_OWNER))
+@Client.on_message(filters.private & filters.command("banlist") & filters.user(BOT_OWNER))
 async def _banned_usrs(_, m: Message):
     all_banned_users = await db.get_all_banned_users()
     banned_usr_count = 0
@@ -100,12 +100,12 @@ async def _banned_usrs(_, m: Message):
         banned_on = banned_user['ban_status']['banned_on']
         ban_reason = banned_user['ban_status']['ban_reason']
         banned_usr_count += 1
-        text += f"> **User ID**: `{user_id}`, **Ban Duration**: `{ban_duration}`, **Banned Date**: `{banned_on}`, **Reason For The Ban**: `{ban_reason}`\n\n"
-    reply_text = f"Total banned user(s): `{banned_usr_count}`\n\n{text}"
+        text += f"➬ **User ID**: `{user_id}`, **Ban Duration**: `{ban_duration}`, **Banned Date**: `{banned_on}`, **Ban Reason**: `{ban_reason}`\n\n"
+    reply_text = f"**Total Banned:** `{banned_usr_count}`\n\n{text}"
     if len(reply_text) > 4096:
-        with open('banned-users.txt', 'w') as f:
+        with open('banned-user-list.txt', 'w') as f:
             f.write(reply_text)
-        await m.reply_document('banned-users.txt', True)
+        await m.reply_document('banned-user-list.txt', True)
         os.remove('banned-user-list.txt')
         return
     await m.reply_text(reply_text, True)
