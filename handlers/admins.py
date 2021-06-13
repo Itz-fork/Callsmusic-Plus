@@ -17,6 +17,18 @@ async def _(bot: Client, cmd: command):
     await handle_user_status(bot, cmd)
 
 
+@Client.on_message(filters.command(["reload", "reload@MusicsNexa_bot"]))
+@authorized_users_only # Fuk Off Everyone! Admin Only Command!
+async def update_admin(client, message):
+    global a
+    admins = await client.get_chat_members(message.chat.id, filter="administrators")
+    new_ads = []
+    for u in admins:
+        new_ads.append(u.user.id)
+    a[message.chat.id] = new_ads
+    await message.reply_text("**Successfully Updated Admin List ✅!**")
+
+
 @Client.on_message(command(["pause", "pause@MusicsNexa_bot"]))
 @errors
 @authorized_users_only
