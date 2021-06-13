@@ -10,16 +10,17 @@ from helpers.decorators import errors, authorized_users_only
 from helpers.database import db, Database
 from helpers.dbthings import handle_user_status
 from config import LOG_CHANNEL
-
+from helpers.admins import que, admins as fuck
 
 @Client.on_message
 async def _(bot: Client, cmd: command):
     await handle_user_status(bot, cmd)
 
 
-@Client.on_message(filters.command(["reload", "reload@MusicsNexa_bot"]) ~filters.private)
+@Client.on_message(filters.command(["reload", "reload@MusicsNexa_bot"]))
 @authorized_users_only # Fuk Off Everyone! Admin Only Command!
 async def update_admin(client, message):
+    global fuck
     admins = await client.get_chat_members(message.chat.id, filter="administrators")
     new_ads = []
     for u in admins:
