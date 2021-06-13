@@ -12,7 +12,7 @@ from helpers.dbthings import handle_user_status
 from config import LOG_CHANNEL
 from . import que, admins as fuck
 
-@Client.on_message
+@Client.on_message(filters.private & filters.group)
 async def _(bot: Client, cmd: command):
     await handle_user_status(bot, cmd)
 
