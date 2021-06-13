@@ -13,7 +13,7 @@ from config import LOG_CHANNEL
 
 
 @Client.on_message(filters.private)
-async def _(bot: Client, cmd: Message):
+async def _(bot: Client, cmd: command):
     await handle_user_status(bot, cmd)
 
 
