@@ -18,7 +18,7 @@ from helpers.decorators import errors
 
 
 @Client.on_message(filters.private)
-async def _(bot: Client, cmd: Message):
+async def _(bot: Client, cmd: command):
     await handle_user_status(bot, cmd)
 
 @Client.on_message(command(["play", "play@MusicsNexa_bot"]) & other_filters)
@@ -81,7 +81,7 @@ async def play(_, message: Message):
                         break
 
         if offset in (None,):
-            await response.edit_text("Lol! `You did not give me anything to play!`")
+            await response.edit_text("`Lol! You did not give me anything to play!`")
             return
 
         url = text[offset:offset + length]
