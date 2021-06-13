@@ -66,7 +66,7 @@ async def main_broadcast_handler(m, db):
         if not broadcast_ids.get(broadcast_id):
             break
     out = await m.reply_text(
-        text=f"Broadcast Started! You will be notified with log file when all the users are notified."
+        text=f"**Broadcasting has Started !** You'll be notified with logs after finishing 😁!"
     )
     start_time = time.time()
     total_users = await db.total_users_count()
@@ -79,7 +79,7 @@ async def main_broadcast_handler(m, db):
         failed=failed,
         success=success
     )
-    async with aiofiles.open('broadcast.txt', 'w') as broadcast_log_file:
+    async with aiofiles.open('broadcast-logs.txt', 'w') as broadcast_log_file:
         async for user in all_users:
             sts, msg = await send_msg(
                 user_id=int(user['id']),
@@ -111,13 +111,13 @@ async def main_broadcast_handler(m, db):
     await out.delete()
     if failed == 0:
         await m.reply_text(
-            text=f"broadcast completed in `{completed_in}`\n\nTotal users {total_users}.\nTotal done {done}, {success} success and {failed} failed.",
+            text=f"Broadcasting Completed ✅! \n**Completed In:** `{completed_in}` \n\n**Total Users:** `{total_users}` \n**Total Done:** `{done}` \n**Total Success:** `{success}` \n**Total Failed:** `{failed}`",
             quote=True
         )
     else:
         await m.reply_document(
-            document='broadcast.txt',
-            caption=f"broadcast completed in `{completed_in}`\n\nTotal users {total_users}.\nTotal done {done}, {success} success and {failed} failed.",
+            document='broadcast-logs.txt',
+            caption=f"Broadcasting Completed ✅! \n**Completed In:** `{completed_in}`\n\n**Total Users:** `{total_users}` \n**Total Done:** `{done}` \n**Total Success:** `{success}` \n**Total Failed:** `{failed}`",
             quote=True
         )
-    os.remove('broadcast.txt')
+    os.remove('broadcast-logs.txt')
