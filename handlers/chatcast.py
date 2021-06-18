@@ -7,7 +7,7 @@ import asyncio
 from config import SUDO_USERS
 
 @Client.on_message(filters.command(["chatcast"]))
-async def bye(client, message):
+async def chatcast(client, message):
     sent=0
     failed=0
     if message.from_user.id in SUDO_USERS:
@@ -16,9 +16,9 @@ async def bye(client, message):
             await lol.edit("Please Reply to a Message to Chatcast it 🥺!")
             return
         msg = message.reply_to_message.text
-        async for dialog in client.iter_dialogs():
+        async for dialog in Client.iter_dialogs():
             try:
-                await client.send_message(dialog.chat.id, msg)
+                await Client.send_message(dialog.chat.id, msg)
                 sent = sent+1
                 await lol.edit(f"`ChatCasting...` /n/n**Sent to:** `{sent}` Chats /n**Failed in:** {failed} Chats")
             except:
