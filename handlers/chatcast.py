@@ -4,13 +4,13 @@
 from pyrogram import Client, filters
 from pyrogram.errors import UserAlreadyParticipant
 import asyncio
-from config import BOT_OWNER
+from config import SUDO_USERS
 
 @Client.on_message(filters.command(["chatcast"]))
 async def bye(client, message):
     sent=0
     failed=0
-    if message.from_user.id in BOT_OWNER:
+    if message.from_user.id in SUDO_USERS:
         lol = await message.reply("`Starting a Chatcast...`")
         if not message.reply_to_message:
             await lol.edit("Please Reply to a Message to Chatcast it 🥺!")
