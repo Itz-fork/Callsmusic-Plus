@@ -1,7 +1,7 @@
 from asyncio import QueueEmpty
 
 from pyrogram import Client, filters
-from pyrogram.types import Message, Chat
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, Chat, CallbackQuery
 
 from callsmusic import callsmusic, queues
 
@@ -16,6 +16,15 @@ from . import que, admins as fuck
 @Client.on_message()
 async def _(bot: Client, cmd: Message):
     await handle_user_status(bot, cmd)
+
+
+@Client.on_callback_query(filters.regex("cbpause"))
+async def cbpause(_, query: CallbackQuery):
+    if callsmusic.pause(Message.chat.id):
+        await query.edit_message_text("⏸ Paused")
+    else:
+        await query.edit_message_text("❗️ Nothing is playing")
+
 
 
 @Client.on_message(filters.command(["reload", "reload@MusicsNexa_bot"]))
