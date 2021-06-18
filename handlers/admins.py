@@ -20,7 +20,8 @@ async def _(bot: Client, cmd: Message):
 
 @Client.on_callback_query(filters.regex("cbpause"))
 async def cbpause(_, message: Message):
-    if callsmusic.pause(CallbackQuery.chat.id):
+    fuckyou = cb.message.chat.id
+    if callsmusic.pause(fuckyou):
         await CallbackQuery.edit_message_text("⏸ Paused")
     else:
         await CallbackQuery.edit_message_text("❗️ Nothing is playing")
