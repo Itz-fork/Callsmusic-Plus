@@ -1,7 +1,6 @@
 from pyrogram import Client
 from pyrogram.types import ChatMemberUpdated
 
-from cache import admins
 from cache import admins as cache
 
 
