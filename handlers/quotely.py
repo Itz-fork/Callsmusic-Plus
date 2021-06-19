@@ -38,12 +38,12 @@ def isArgInt(message: Message) -> bool:
 @capture_err
 async def quotly_func(client, message: Message):
     if not message.reply_to_message:
-        return await message.reply_text("Please Reply To a Message To Quote It 😆!")
+        return await message.reply_text("Reply to a message to quote it.")
     if not message.reply_to_message.text:
         return await message.reply_text(
-            "Sorry! Please Reply To a Text Message 🥺!"
+            "Replied message has no text, can't quote it."
         )
-    m = await message.reply_text("`Quoting Messages...`")
+    m = await message.reply_text("Quoting Messages")
     if len(message.command) < 2:
         messages = [message.reply_to_message]
 
@@ -51,7 +51,7 @@ async def quotly_func(client, message: Message):
         arg = isArgInt(message)
         if arg[0]:
             if arg[1] < 2 or arg[1] > 10:
-                return await m.edit("Argument must be between `2-10` 😋")
+                return await m.edit("Argument must be between 2-10.")
             count = arg[1]
             messages = await client.get_messages(
                 message.chat.id,
@@ -67,7 +67,7 @@ async def quotly_func(client, message: Message):
         else:
             if getArg(message) != "r":
                 return await m.edit(
-                    "Wrong Argument, Pass **'r'** or **'INT'**, /n**Eample:** `/q 2`"
+                    "Incorrect Argument, Pass **'r'** or **'INT'**, **EX:** __/q 2__"
                 )
             reply_message = await client.get_messages(
                 message.chat.id,
@@ -77,7 +77,7 @@ async def quotly_func(client, message: Message):
             messages = [reply_message]
     else:
         await m.edit(
-            "Wrong Argument! Please hit on **/help** and Select 'Quotely' Module Help Section 😁!"
+            "Incorrect argument, check quotly module in help section."
         )
         return
     try:
@@ -91,9 +91,9 @@ async def quotly_func(client, message: Message):
         sticker.close()
     except Exception as e:
         await m.edit(
-            "Oops! Something wrong happened while quoting messages,"
+            "Something wrong happened while quoting messages,"
             + " This error usually happens when there's a "
-            + " message containing something other than text 😕!"
+            + " message containing something other than text."
         )
         e = format_exc()
         print(e)
