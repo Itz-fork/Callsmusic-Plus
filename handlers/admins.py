@@ -18,16 +18,6 @@ async def _(bot: Client, cmd: Message):
     await handle_user_status(bot, cmd)
 
 
-@Client.on_callback_query(filters.regex("cbpause"))
-async def cbpause(_, message: Message):
-    fuckyou = cb.message.chat.id
-    if callsmusic.pause(fuckyou):
-        await CallbackQuery.edit_message_text("⏸ Paused")
-    else:
-        await CallbackQuery.edit_message_text("❗️ Nothing is playing")
-
-
-
 @Client.on_message(filters.command(["reload", "reload@MusicsNexa_bot"]))
 @authorized_users_only # Fuk Off Everyone! Admin Only Command!
 async def update_admin(client, message):
