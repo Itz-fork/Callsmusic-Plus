@@ -8,7 +8,7 @@ from callsmusic import callsmusic, queues
 from helpers.filters import command
 from helpers.decorators import errors, authorized_users_only
 from helpers.database import db, Database
-from helpers.dbthings import handle_user_status
+from helpers.dbthings import handle_user_status, delcmd_is_on, delcmd_on, delcmd_off
 from config import LOG_CHANNEL
 from . import que, admins as fuck
 
@@ -21,7 +21,12 @@ async def _(bot: Client, cmd: Message):
 
 @Client.on_message(command(["play", "pause", "resume", "stop", "skip", "reload", "mute", "unmute"]))
 async def delcmd(_, message: Message):
-    await message.delete()
+    if not await delcmd_is_on(message.chat.id):
+        return
+    try:
+        await message.delete()
+    except Exception as e:
+        await message.reply_text(e)
 
 
 @Client.on_message(filters.command(["reload", "reload@MusicsNexa_bot"]))
