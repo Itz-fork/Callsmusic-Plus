@@ -289,21 +289,3 @@ async def search(_, message: Message):
             ]
         )
     )
-
-    
-# BetaMode
-
-@Client.on_message(command(["test", "test@MusicsNexa_bot"]))
-async def search(_, message: Message):
-    await message.reply_text(
-        "Secret Menu Lol",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        "Pause", callback_data="cbpause"
-                    )
-                ]
-            ]
-        )
-    )
