@@ -1,7 +1,7 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, Chat, CallbackQuery
 
-from handlers.start import FRIEND_BOT
+from handlers.start import USER_ACCNAME
 
 # close calllback
 
@@ -88,6 +88,56 @@ async def cbhelpmenu(_, query: CallbackQuery):
                 ]
             ]
         )
+    )
+
+# How to Use Module Help
+
+@Client.on_callback_query(filters.regex("cbhowtouse"))
+async def cbhowtouse(_, query: CallbackQuery):
+    await query.edit_message_text(
+        f"""<b>How To Use This Bot?</b>
+
+**Setting Up The Bot:**
+    1. Add This Bot and @{USER_ACCNAME} To Your Group! (Send `/joingrp` to your group! Streamer Will Automatically join)
+    2. Give Admin To Me and @{USER_ACCNAME} !
+
+ 
+**Using Player Commands:**
+    1. **Group Admin Only Commands 👮 ,**
+     - `/play` - Reply to supported url, Reply to Audio File or Send `/play` with [Supported Url](https://ytdl-org.github.io/youtube-dl/supportedsites.html)
+       **Example:** `/play https://www.youtube.com/watch?v=ALZHF5UqnU4`
+    
+     - `/skip` - Skip currenly playing song.
+    
+     - `/pause` - Pause currently playing song.
+    
+     - `/resume` - Resume currently pushed song.
+    
+     - `/mute` - Mutes Streamer.
+    
+     - `/unmute`- Unmutes streamer.
+    
+     - `/joingrp` - To Add Streamer Account To Your Group.
+    
+     - `/leavegrp` - To Remove Streamer Account From Your Group.
+     
+    2. **Other Commands,**
+     - `/vc` - To Get and Share Voice Chat Link. (Public Groups Only)
+
+
+**Supported Url List:** https://ytdl-org.github.io/youtube-dl/supportedsites.html
+
+Made with ❤️ by **@NexaBotsUpdates**""",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "◀️ Back ◀️", callback_data="cbhelpmenu"
+                    )
+                ]
+            ]
+        ),
+        disable_web_page_preview = True
     )
 
 
