@@ -32,6 +32,8 @@ _**You need another (dummy) Telegram Account To Use/Deploy This!**_
 - [ ] Add Thumbnail Generate Support
 - [ ] Remove Some unnecessary imports
 - [ ] Add Command Delete Feature
+- [ ] Add Quoately Module
+- [ ] Redesign Menu UI
 
 # Deployment
 Before You Deploy make sure you Starred & Forked **[The Original Repo ❤️](https://github.com/callsmusic/callsmusic)** . **And [This Repo!](https://github.com/Itz-fork/Callsmusic-Plus)** 🤗️
