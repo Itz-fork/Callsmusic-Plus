@@ -17,3 +17,4 @@ ffmpeg
 requests
 motor
 dnspython
+bs4
