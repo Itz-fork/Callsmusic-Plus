@@ -21,8 +21,7 @@ async def _(bot: Client, cmd: Message):
 
 @Client.on_message(command(["play", "pause", "resume", "stop", "skip", "reload", "mute", "unmute"]))
 async def delcmd(_, message: Message):
-    if not await delcmd_is_on(message.chat.id):
-        return
+    if await delcmd_is_on(message.chat.id):
     try:
         await message.delete()
     except Exception as e:
