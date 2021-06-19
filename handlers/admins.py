@@ -22,10 +22,7 @@ async def _(bot: Client, cmd: Message):
 @Client.on_message(command(["play", "pause", "resume", "stop", "skip", "reload", "mute", "unmute"]))
 async def delcmd(_, message: Message):
     if await delcmd_is_on(message.chat.id):
-    try:
         await message.delete()
-    except Exception as e:
-        await message.reply_text(e)
 
 
 @Client.on_message(filters.command(["reload", "reload@MusicsNexa_bot"]))
