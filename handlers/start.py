@@ -9,7 +9,6 @@ from helpers.dbthings import handle_user_status
 from config import LOG_CHANNEL
 
 ## ~ Simple Config ~ ##
-FRIEND_BOT = "TheNexasMusic_bot"
 USER_ACCNAME = os.getenv("USER_ACCNAME", "NexaMusicAssistant")
 
 
@@ -31,11 +30,11 @@ async def start(_, message: Message):
         parse_mode="markdown"
     )
     await message.reply_text(
-        f"""<b>Hi {message.from_user.first_name} 😉️!</b>
+        f"""<b>Hi {message.from_user.mention} 😉️!</b>
 
-I'm The Nexa Music Bot. Friend of **@{FRIEND_BOT}** 😏️.
+I'm The Nexa Music Bot! A Powerful Bot to Play Music in Your Group Voice Chat 😇!
 
-I can play Music In Telegram Groups Via Voice Chat! 😌️.
+Also I have more features! Please hit on **/help** to see them 😘!
 
 Made with ❤️ <b>@NexaBotsUpdates</b>""",
         reply_markup=InlineKeyboardMarkup(
@@ -61,8 +60,10 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
             ]
         )
     )
-    
-    
+
+
+# Help Menu
+
 @Client.on_message(command(["help", "help@MusicsNexa_bot"]))
 async def help(_, message: Message):
     usr_cmd = message.text.split("_")[-1]
@@ -76,102 +77,45 @@ async def help(_, message: Message):
         parse_mode="markdown"
     )
     await message.reply_text(
-        f"""<b>Hi {message.from_user.first_name} 😉️!</b>
+        f"""<b>Hi {message.from_user.mention} 😉️!</b>
 
-Bruh! Do you need Help! 🤔️ yea yea I know it! 🙃️
-
-How To Use Me? 🧐️
-
-<b> 1. Add Me and @{USER_ACCNAME} To Your Group! (Send `/joingrp` to your group! Streamer Will Automatically join)
-
- 2. Give Admin To Me and @{USER_ACCNAME} ! </b>
-
- 
-**For More Info or Know about My Commands Just Click On "♻️ Additional Help ♻️" Button!**
-
-Made with ❤️ <b>@NexaBotsUpdates</b>""",
+**Here is the Help Menu For This Bot 😊!**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "♻️ Additional Help ♻️", callback_data="cmdlistcb"
+                        "🤔 How To Use Me 🤔", callback_data="cbhowtouse"
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        "🔰️ Update Channel 🔰️", url="https://t.me/NexaBotsUpdates"
+                        "Get Lyrics", callback_data="cbgetlyrics"
                     ),
                     InlineKeyboardButton(
-                        "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
+                        "YT Search", callback_data="cbytsearch"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "Music Downloader", callback_data="cbmusicdown"
+                    ),
+                    InlineKeyboardButton(
+                        "YT Video Downloader", callback_data="cbytviddown"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "Delete Commands", callback_data="cbdelcmds"
+                    ),
+                    InlineKeyboardButton(
+                        "Quotely", callback_data="cbquotely"
                     )
                 ]
             ]
         )
     )
 
-    
-@Client.on_message(command(["cmdlist", "cmdlist@MusicsNexa_bot"]))
-async def cmdlist(_, message: Message):
-    usr_cmd = message.text.split("_")[-1]
-    if usr_cmd == "/cmdlist":
-        chat_id = message.from_user.id
-        if not await db.is_user_exist(chat_id):
-            await db.add_user(chat_id)
-            await Client.send_message(
-        chat_id=LOG_CHANNEL,
-        text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
-        parse_mode="markdown"
-    )
-    await message.reply_text(
-        f"""<b>Hi {message.from_user.first_name} 😉️!</b>
 
-Here is the list of available commands! 😃️
-
-• **Group Admin Only Commands 👮 ✓,**
-
- ➲ <code>/play</code> - Reply to supported url or "/play supported url"
- ➲ <code>/skip</code> - Skip currenly playing song!
- ➲ <code>/pause</code> - Pause currently playing song!
- ➲ <code>/resume</code> - Resume currently pushed song!
- ➲ <code>/mute</code> - Mutes Streamer!
- ➲ <code>/unmute</code> - Unmutes streamer!
- ➲ <code>/joingrp</code> - To Add Streamer Account To Your Group!
- ➲ <code>/leavegrp</code> - To Remove Streamer Account From Your Group!
-
-
-• **Group Members Commands 👮 ✓,**
-
- ➲ <code>/vc</code> - Give voice chat link of your group! (Only For Public Groups)
- ➲ <code>/yts (song name)</code> - Download song by it's name!
- ➲ <code>/ytvid (song name)</code> - Download Videos From YouTube!
- ➲ <code>/saavn (song name)</code> - Download Songs From Saavn!
- ➲ <code>/deezer (song namme)</code> - Download Songs From Deezer!
- 
-**❌ Don't End Voice Chat While Bot Playing A Song ❌**
- 
-Made with ❤️ by **@NexaBotsUpdates**""",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        "👀️ Supported Sites 👀️", url="https://ytdl-org.github.io/youtube-dl/supportedsites.html"
-                    )
-                ],
-                [
-                    InlineKeyboardButton(
-                        "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
-                    )
-                ],
-                [
-                    InlineKeyboardButton(
-                    "🔰️ My Update Channel 🔰️", url="https://t.me/NexaBotsUpdates"
-                    )
-                ]
-            ]
-        )
-    )
-   
-    
 @Client.on_message(command("credits") & other_filters2)
 async def credits2(_, message: Message):
     usr_cmd = message.text.split("_")[-1]
