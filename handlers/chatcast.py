@@ -15,10 +15,10 @@ async def chatcast(client, message):
         if not message.reply_to_message:
             await lol.edit("Please Reply to a Message to Chatcast it 🥺!")
             return
-        msg = message.reply_to_message.text
+        msg = message.reply_to_message
         async for dialog in Client.iter_dialogs():
             try:
-                await Client.send_message(dialog.chat.id, msg)
+                await Client.msg.forward(dialog.chat.id, msg)
                 sent = sent+1
                 await lol.edit(f"`ChatCasting...` /n/n**Sent to:** `{sent}` Chats /n**Failed in:** {failed} Chats")
             except:
