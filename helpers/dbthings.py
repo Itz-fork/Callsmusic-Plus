@@ -8,7 +8,7 @@ import asyncio
 import traceback
 from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid
 
-from helpers.database import db, Database
+from helpers.database import db, Database, dcmdb
 from config import LOG_CHANNEL, BROADCAST_AS_COPY
 
 async def handle_user_status(bot, cmd):
