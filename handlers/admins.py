@@ -19,7 +19,7 @@ async def _(bot: Client, cmd: Message):
 
 # Command Delete
 
-@Client.on_message(command(["play", "pause", "resume", "stop", "skip", "reload", "mute", "unmute", "help", "start"]))
+@Client.on_message(command(["play", "pause", "resume", "stop", "skip", "reload", "mute", "unmute", "help", "start"]) & ~filters.private)
 async def delcmd(_, message: Message):
     if await delcmd_is_on(message.chat.id):
         await message.delete()
