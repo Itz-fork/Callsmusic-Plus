@@ -126,7 +126,7 @@ async def main_broadcast_handler(m, db):
 
 # Anti Command Feature
 
-delcmdmdb = db.delcmdmdb
+delcmdmdb = dcmdb.admins
 
 async def delcmd_is_on(chat_id: int) -> bool:
     chat = await delcmdmdb.find_one({"chat_id": chat_id})
