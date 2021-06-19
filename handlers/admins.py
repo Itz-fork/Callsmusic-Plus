@@ -17,6 +17,12 @@ from . import que, admins as fuck
 async def _(bot: Client, cmd: Message):
     await handle_user_status(bot, cmd)
 
+# Command Delete
+
+@Client.on_message(command(["play", "pause", "resume", "stop", "skip", "reload", "mute", "unmute"]))
+async def delcmd(_, message: Message):
+    await message.delete()
+
 
 @Client.on_message(filters.command(["reload", "reload@MusicsNexa_bot"]))
 @authorized_users_only # Fuk Off Everyone! Admin Only Command!
