@@ -5,7 +5,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 
 from helpers.database import db
-from helpers.dbthings import main_broadcast_handler
+from helpers.dbthings import main_broadcast_handler, delcmd_is_on, delcmd_on, delcmd_off
 from config import BOT_OWNER
 
 @Client.on_message(filters.private & filters.command("broadcast") & filters.user(BOT_OWNER) & filters.reply)
@@ -114,7 +114,7 @@ async def _banned_usrs(_, m: Message):
 # Anti-Command Feature On/Off
 
 @Client.on_message(filters.command("delcmd") & ~filters.private)
-async def delcmd(_, message: Message):
+async def delcmdc(_, message: Message):
     if len(message.command) != 2:
         await message.reply_text("Lol! Wrong way Bro!")
         return
