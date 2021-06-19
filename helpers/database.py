@@ -2,6 +2,7 @@ import datetime
 import motor.motor_asyncio
 
 from config import DATABASE_URL, BOT_USERNAME
+from motor.motor_asyncio import AsyncIOMotorClient as MongoClient
 
 class Database:
 
@@ -77,5 +78,5 @@ class Database:
 # Database
 db = Database(DATABASE_URL, BOT_USERNAME)
 # Database for Anti-Cmd (I know what you are thinking about! but IDC)
-mongo_db_lmao = MongoClient(MONGO_DB_URI)
+mongo_db_lmao = MongoClient(DATABASE_URL)
 dcmdb = mongo_db_lmao.handlers
