@@ -4,7 +4,7 @@ import asyncio
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from helpers.database import db
+from helpers.database import db, dcmdb
 from helpers.dbthings import main_broadcast_handler, delcmd_is_on, delcmd_on, delcmd_off
 from config import BOT_OWNER
 
