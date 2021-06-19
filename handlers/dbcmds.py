@@ -116,20 +116,22 @@ async def _banned_usrs(_, m: Message):
 @Client.on_message(filters.command("delcmd") & ~filters.private)
 async def delcmdc(_, message: Message):
     if len(message.command) != 2:
-        await message.reply_text("Lol! Wrong way Bro!")
+        await message.reply_text("Lol! This isn't the way to use this command 😂! Please read **/help** ☺️")
         return
+    if await delcmd_is_on(message.chat.id):
+        await message.reply_text("Eh! You are already enabled This Service 😉")
     status = message.text.split(None, 1)[1].strip()
     status = status.lower()
     chat_id = message.chat.id
     if status == "on":
         await delcmd_on(chat_id)
         await message.reply_text(
-            "Enabled Delete Command Feature"
+            "Successfully Enabled Delete Command Feature For This Chat 😇"
         )
     elif status == "off":
         await delcmd_off(chat_id)
-        await message.reply_text("Disabled Delete Command Feature")
+        await message.reply_text("Successfully Disabled Delete Command Feature For This Chat 😌")
     else:
         await message.reply_text(
-            "Can't Understand What you're talking about!"
+            "Can't Understand What you're talking about! Maybe Read **/help** 🤔"
         )
