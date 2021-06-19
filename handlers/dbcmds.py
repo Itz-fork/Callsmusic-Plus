@@ -109,3 +109,27 @@ async def _banned_usrs(_, m: Message):
         os.remove('banned-user-list.txt')
         return
     await m.reply_text(reply_text, True)
+
+
+# Anti-Command Feature On/Off
+
+@Client.on_message(filters.command("delcmd") & ~filters.private)
+async def delcmd(_, message: Message):
+    if len(message.command) != 2:
+        await message.reply_text("Lol! Wrong way Bro!")
+        return
+    status = message.text.split(None, 1)[1].strip()
+    status = status.lower()
+    chat_id = message.chat.id
+    if status == "on":
+        await delcmd_on(chat_id)
+        await message.reply_text(
+            "Enabled Delete Command Feature"
+        )
+    elif status == "off":
+        await delcmd_off(chat_id)
+        await message.reply_text("Disabled Delete Command Feature")
+    else:
+        await message.reply_text(
+            "Can't Understand What you're talking about!"
+        )
