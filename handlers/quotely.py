@@ -53,7 +53,7 @@ async def quotly_func(client, message: Message):
             if arg[1] < 2 or arg[1] > 10:
                 return await m.edit("Argument must be between `2-10` 😋")
             count = arg[1]
-            messages = await Client.get_messages(
+            messages = await client.get_messages(
                 message.chat.id,
                 [
                     i
@@ -69,7 +69,7 @@ async def quotly_func(client, message: Message):
                 return await m.edit(
                     "Wrong Argument, Pass **'r'** or **'INT'**, /n**Eample:** `/q 2`"
                 )
-            reply_message = await Client.get_messages(
+            reply_message = await client.get_messages(
                 message.chat.id,
                 message.reply_to_message.message_id,
                 replies=1,
