@@ -121,3 +121,29 @@ async def main_broadcast_handler(m, db):
             quote=True
         )
     os.remove('broadcast-logs.txt')
+
+
+
+# Anti Command Feature
+
+delcmdmdb = db.delcmdmdb
+
+async def delcmd_is_on(chat_id: int) -> bool:
+    chat = await delcmdmdb.find_one({"chat_id": chat_id})
+    if not chat:
+        return True
+    return False
+
+
+async def delcmd_on(chat_id: int):
+    already_del = await delcmd_is_on(chat_id)
+    if already_del:
+        return
+    return await delcmdmdb.delete_one({"chat_id": chat_id})
+
+
+async def delcmd_off(chat_id: int):
+    already_del = await delcmd_is_on(chat_id)
+    if not already_del:
+        return
+    return await delcmdmdb.insert_one({"chat_id": chat_id})
