@@ -23,6 +23,7 @@ async def _(bot: Client, cmd: Message):
 async def delcmd(_, message: Message):
     if await delcmd_is_on(message.chat.id):
         await message.delete()
+    await message.continue_propagation()
 
 
 @Client.on_message(filters.command(["reload", "reload@MusicsNexa_bot"]))
