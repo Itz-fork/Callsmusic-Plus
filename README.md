@@ -20,6 +20,8 @@ _**You need another (dummy) Telegram Account To Use/Deploy This!**_
 - **Get Voice Chat Link!** (`/vc` - Public Groups Only )
 - **Get Lyrics Of Your Song!** (Ex:- `/lyrics faded` )
 - **Join & Leave Streamer Account Using A Command** (To Join - `joingrp` , To Leave `leavegrp` )
+- **Ban / Unban Users and Check User Status.**
+- **Broadcast Messages** (Sometimes Won't Work)
 
 
 # Deployment
@@ -141,6 +143,7 @@ Copy `example.env` to `.env` and fill it with your credentials.
 - **[Laky](https://github.com/Laky-64) & [Andrew](https://github.com/AndrewLaneX)** : PyTgCalls
 - **Mr Dark prince**
 - **TeamDaisyX**
+- **TheHamkerCat**
 - **N A C CREATIVE**: For Voice Chat Link Command!
 
 

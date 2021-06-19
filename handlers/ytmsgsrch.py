@@ -8,8 +8,11 @@ import logging
 from pyrogram.types import Message
 from search_engine_parser import GoogleSearch
 from youtube_search import YoutubeSearch
-
 from pyrogram import Client, filters
+
+from helpers.database import db, Database
+from helpers.dbthings import handle_user_status
+from config import LOG_CHANNEL
 
 logging.basicConfig(
     level=logging.DEBUG, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -19,6 +22,11 @@ logger = logging.getLogger(__name__)
 import pyrogram
 
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
+
+
+@Client.on_message(filters.private)
+async def _(bot: Client, cmd: Message):
+    await handle_user_status(bot, cmd)
 
 @Client.on_message(pyrogram.filters.command(["ytsearch", "ytsearch@MusicsNexa_bot"]))
 async def ytsearch(_, message: Message):

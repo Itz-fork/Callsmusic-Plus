@@ -1,18 +1,35 @@
 import os
 
-from pyrogram import Client
+from pyrogram import Client, filters # Ik this is weird as this shit is already imported in line 6! anyway ... Fuck Off!
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, Chat
 
 from helpers.filters import command, other_filters, other_filters2
-
+from helpers.database import db, Database
+from helpers.dbthings import handle_user_status
+from config import LOG_CHANNEL
 
 ## ~ Simple Config ~ ##
 FRIEND_BOT = "TheNexasMusic_bot"
 USER_ACCNAME = os.getenv("USER_ACCNAME", "NexaMusicAssistant")
 
 
+@Client.on_message(filters.private)
+async def _(bot: Client, cmd: Message):
+    await handle_user_status(bot, cmd)
+
+
 @Client.on_message(command(["start", "start@MusicsNexa_bot"]))
 async def start(_, message: Message):
+    usr_cmd = message.text.split("_")[-1]
+    if usr_cmd == "/start":
+        chat_id = message.from_user.id
+        if not await db.is_user_exist(chat_id):
+            await db.add_user(chat_id)
+            await Client.send_message(
+        chat_id=LOG_CHANNEL,
+        text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
+        parse_mode="markdown"
+    )
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
 
@@ -48,6 +65,16 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
     
 @Client.on_message(command(["help", "help@MusicsNexa_bot"]))
 async def help(_, message: Message):
+    usr_cmd = message.text.split("_")[-1]
+    if usr_cmd == "/help":
+        chat_id = message.from_user.id
+        if not await db.is_user_exist(chat_id):
+            await db.add_user(chat_id)
+            await Client.send_message(
+        chat_id=LOG_CHANNEL,
+        text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
+        parse_mode="markdown"
+    )
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
 
@@ -85,6 +112,16 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
     
 @Client.on_message(command(["cmdlist", "cmdlist@MusicsNexa_bot"]))
 async def cmdlist(_, message: Message):
+    usr_cmd = message.text.split("_")[-1]
+    if usr_cmd == "/cmdlist":
+        chat_id = message.from_user.id
+        if not await db.is_user_exist(chat_id):
+            await db.add_user(chat_id)
+            await Client.send_message(
+        chat_id=LOG_CHANNEL,
+        text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
+        parse_mode="markdown"
+    )
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
 
@@ -137,6 +174,16 @@ Made with ❤️ by **@NexaBotsUpdates**""",
     
 @Client.on_message(command("credits") & other_filters2)
 async def credits2(_, message: Message):
+    usr_cmd = message.text.split("_")[-1]
+    if usr_cmd == "/credits":
+        chat_id = message.from_user.id
+        if not await db.is_user_exist(chat_id):
+            await db.add_user(chat_id)
+            await Client.send_message(
+        chat_id=LOG_CHANNEL,
+        text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
+        parse_mode="markdown"
+    )
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
 
@@ -148,6 +195,7 @@ Credits To,
 <b>Mr Dark Prince</b> - For Yt Download!
 <b>TheHamkercat</b> - For Deezer and Saavn Download!
 <b>TeamDaisyX</b>
+<b>AbirHasan2005</b>
 <b>N A C</b> - For <code>/vc</code> Command
 
 Made with ❤️ by **@NexaBotsUpdates**
@@ -172,6 +220,16 @@ Respect To Code Owners! Not To Me!""",
 
 @Client.on_message(command(["vc", "vc@MusicsNexa_bot"]) & other_filters)
 async def vc(_, message: Message):
+    usr_cmd = message.text.split("_")[-1]
+    if usr_cmd == "/vc":
+        chat_id = message.from_user.id
+        if not await db.is_user_exist(chat_id):
+            await db.add_user(chat_id)
+            await Client.send_message(
+        chat_id=LOG_CHANNEL,
+        text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
+        parse_mode="markdown"
+    )
     VC_LINK = f"https://t.me/{message.chat.username}?voicechat"
     await message.reply_text(
         f"""<b>Hi {message.from_user.first_name} 😉️!</b>
@@ -206,6 +264,16 @@ Enjoy!😌️❤️""",
     
 @Client.on_message(command(["search", "search@MusicsNexa_bot"]))
 async def search(_, message: Message):
+    usr_cmd = message.text.split("_")[-1]
+    if usr_cmd == "/search":
+        chat_id = message.from_user.id
+        if not await db.is_user_exist(chat_id):
+            await db.add_user(chat_id)
+            await Client.send_message(
+        chat_id=LOG_CHANNEL,
+        text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
+        parse_mode="markdown"
+    )
     await message.reply_text(
         "💁🏻‍♂️ Do you want to search for a YouTube video?",
         reply_markup=InlineKeyboardMarkup(
@@ -216,6 +284,24 @@ async def search(_, message: Message):
                     ),
                     InlineKeyboardButton(
                         "Nope ❌", callback_data="close"
+                    )
+                ]
+            ]
+        )
+    )
+
+    
+# BetaMode
+
+@Client.on_message(command(["test", "test@MusicsNexa_bot"]))
+async def search(_, message: Message):
+    await message.reply_text(
+        "Secret Menu Lol",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "Pause", callback_data="cbpause"
                     )
                 ]
             ]

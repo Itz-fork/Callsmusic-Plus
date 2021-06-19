@@ -1,15 +1,46 @@
 from asyncio import QueueEmpty
 
-from pyrogram import Client
-from pyrogram.types import Message, Chat
+from pyrogram import Client, filters
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, Chat, CallbackQuery
 
 from callsmusic import callsmusic, queues
 
 from helpers.filters import command
 from helpers.decorators import errors, authorized_users_only
+from helpers.database import db, Database
+from helpers.dbthings import handle_user_status
+from config import LOG_CHANNEL
+from . import que, admins as fuck
 
 
-@Client.on_message(command(["pause", "p"]))
+@Client.on_message()
+async def _(bot: Client, cmd: Message):
+    await handle_user_status(bot, cmd)
+
+
+@Client.on_callback_query(filters.regex("cbpause"))
+async def cbpause(_, message: Message):
+    fuckyou = cb.message.chat.id
+    if callsmusic.pause(fuckyou):
+        await CallbackQuery.edit_message_text("⏸ Paused")
+    else:
+        await CallbackQuery.edit_message_text("❗️ Nothing is playing")
+
+
+
+@Client.on_message(filters.command(["reload", "reload@MusicsNexa_bot"]))
+@authorized_users_only # Fuk Off Everyone! Admin Only Command!
+async def update_admin(client, message):
+    global fuck
+    admins = await client.get_chat_members(message.chat.id, filter="administrators")
+    new_ads = []
+    for u in admins:
+        new_ads.append(u.user.id)
+    fuck[message.chat.id] = new_ads
+    await message.reply_text("**Successfully Updated Admin List ✅!**")
+
+
+@Client.on_message(command(["pause", "pause@MusicsNexa_bot"]))
 @errors
 @authorized_users_only
 async def pause(_, message: Message):
@@ -19,7 +50,7 @@ async def pause(_, message: Message):
         await message.reply_text("❗️ Nothing is playing")
 
 
-@Client.on_message(command(["resume", "r"]))
+@Client.on_message(command(["resume", "resume@MusicsNexa_bot"]))
 @errors
 @authorized_users_only
 async def resume(_, message: Message):
@@ -29,7 +60,7 @@ async def resume(_, message: Message):
         await message.reply_text("❗️ Nothing is paused")
 
 
-@Client.on_message(command(["stop", "s"]))
+@Client.on_message(command(["stop", "stop@MusicsNexa_bot"]))
 @errors
 @authorized_users_only
 async def stop(_, message: Message):
@@ -45,7 +76,7 @@ async def stop(_, message: Message):
         await message.reply_text("✅ Cleared the queue and left the Voice Chat!")
 
 
-@Client.on_message(command(["skip", "f"]))
+@Client.on_message(command(["skip", "skip@MusicsNexa_bot"]))
 @errors
 @authorized_users_only
 async def skip(_, message: Message):
@@ -64,7 +95,7 @@ async def skip(_, message: Message):
         await message.reply_text("Skipped!")
 
 
-@Client.on_message(command(["mute", "m"]))
+@Client.on_message(command(["mute", "mute@MusicsNexa_bot"]))
 @errors
 @authorized_users_only
 async def mute(_, message: Message):
@@ -78,7 +109,7 @@ async def mute(_, message: Message):
         await message.reply_text("❗️ Not in voice chat")
 
 
-@Client.on_message(command(["unmute", "u"]))
+@Client.on_message(command(["unmute", "unmute@MusicsNexa_bot"]))
 @errors
 @authorized_users_only
 async def unmute(_, message: Message):

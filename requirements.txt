@@ -15,3 +15,5 @@ youtube_dl
 aiofiles
 ffmpeg
 requests
+motor
+dnspython

@@ -1,6 +1,6 @@
 from os import path
 
-from pyrogram import Client
+from pyrogram import Client, filters # Ik this is weird as this shit is already imported in line 16! anyway ... Fuck Off!
 from pyrogram.types import Message, Voice
 
 from callsmusic import callsmusic, queues
@@ -9,22 +9,29 @@ import converter
 import youtube
 import aiohttp
 
-from config import DURATION_LIMIT
+from helpers.database import db, Database
+from helpers.dbthings import handle_user_status
+from config import DURATION_LIMIT, LOG_CHANNEL
 from helpers.errors import DurationLimitError
 from helpers.filters import command, other_filters
 from helpers.decorators import errors
+
+
+@Client.on_message(filters.private)
+async def _(bot: Client, cmd: command):
+    await handle_user_status(bot, cmd)
 
 @Client.on_message(command(["play", "play@MusicsNexa_bot"]) & other_filters)
 @errors
 async def play(_, message: Message):
     audio = (message.reply_to_message.audio or message.reply_to_message.voice) if message.reply_to_message else None
 
-    response = await message.reply_text("**Processing Your Song...** 😇")
+    response = await message.reply_text("**Processing Your Song 😇...**")
 
     if audio:
         if round(audio.duration / 60) > DURATION_LIMIT:
             raise DurationLimitError(
-                f"Bruh! Videos longer than {DURATION_LIMIT} minute(s) aren’t allowed, the provided audio is {round(audio.duration / 60)} minute(s) 😒"
+                f"Bruh! Videos longer than `{DURATION_LIMIT}` minute(s) aren’t allowed, the provided audio is {round(audio.duration / 60)} minute(s) 😒"
             )
 
         file_name = audio.file_unique_id + "." + (
@@ -64,7 +71,7 @@ async def play(_, message: Message):
                         break
 
         if offset in (None,):
-            await response.edit_text("Lol! `You did not give me anything to play!`")
+            await response.edit_text("`Lol! You did not give me anything to play!`")
             return
 
         url = text[offset:offset + length]
@@ -75,9 +82,9 @@ async def play(_, message: Message):
         position = await queues.put(message.chat.id, file=file)
         MENTMEH = message.from_user.mention()
         await response.delete()
-        await message.reply_photo(thumb, caption=f"**Your Song Queued at position** {position}! \n **Requested by: {MENTMEH}**")
+        await message.reply_photo(thumb, caption=f"**Your Song Queued at position** `{position}`! \n**Requested by: {MENTMEH}**")
     else:
         thumb = "https://telegra.ph/file/a4b7d13da17c3cc828ab9.jpg"
         await callsmusic.set_stream(message.chat.id, file)
         await response.delete()
-        await message.reply_photo(thumb, caption="**Playing Your Song 🎧...** \n **Requested by: {}**".format(message.from_user.mention()))
+        await message.reply_photo(thumb, caption="**Playing Your Song 🎧...** \n**Requested by: {}**".format(message.from_user.mention()))
