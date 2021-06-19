@@ -23,6 +23,15 @@ _**You need another (dummy) Telegram Account To Use/Deploy This!**_
 - **Ban / Unban Users and Check User Status.**
 - **Broadcast Messages** (Sometimes Won't Work)
 
+## To-Do
+
+- [ ] Add Control by Buttons Feature
+- [x] ~Add Database To Ban, Unban, Broadcast and check user status~ (Done)
+- [ ] Fix `/chatcast` Command
+- [ ] Remove unnecessary codes to avoid spam in Log Channel
+- [ ] Add Thumbnail Generate Support
+- [ ] Remove Some unnecessary imports
+- [ ] Add Command Delete Feature
 
 # Deployment
 Before You Deploy make sure you Starred & Forked **[The Original Repo ❤️](https://github.com/callsmusic/callsmusic)** . **And [This Repo!](https://github.com/Itz-fork/Callsmusic-Plus)** 🤗️
