@@ -20,10 +20,9 @@ async def chatcast(_, message: Message):
             await lol.edit("Please Reply to a Message to Chatcast it 🥺!")
             return
         msg = message.reply_to_message
-        cmsg = msg.copy
         async for dialog in pakaya.iter_dialogs():
             try:
-                await pakaya.send_message(dialog.chat.id, cmsg)
+                await pakaya.send_message(dialog.chat.id, msg.copy)
                 sent = sent+1
                 await lol.edit(f"`ChatCasting...` \n\n**Sent to:** `{sent}` Chats \n**Failed in:** {failed} Chats")
             except:
