@@ -2,7 +2,7 @@
 # Copyright (C) 2021  Inukaasith
 
 from pyrogram import Client, filters
-from pyrogram.types import Dialog, Chat
+from pyrogram.types import Dialog, Chat, Message
 from pyrogram.errors import UserAlreadyParticipant
 import asyncio
 from config import SUDO_USERS
