@@ -21,7 +21,7 @@ async def _(bot: Client, cmd: Message):
 # That epic moment wen u realize there is an easy way to do it but u did it in a hard way!
 @Client.on_message(~filters.private)
 async def delcmd(_, message: Message):
-    if await delcmd_is_on(message.chat.id) and message.startswith("/") or message.startswith("!"):
+    if await delcmd_is_on(message.chat.id) and message.text.startswith("/") or message.text.startswith("!"):
         await message.delete()
     await message.continue_propagation()
 
