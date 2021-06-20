@@ -20,7 +20,6 @@ OWNER_HELPCB=InlineKeyboardMarkup(
                 ]
             ]
         )
-    )
 
 
 # Main owner help menu
