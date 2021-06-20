@@ -8,7 +8,7 @@ from callsmusic import callsmusic, queues
 from helpers.filters import command
 from helpers.decorators import errors, authorized_users_only
 from helpers.database import db, Database
-from helpers.dbthings import handle_user_status
+from helpers.dbthings import handle_user_status, delcmd_is_on, delcmd_on, delcmd_off
 from config import LOG_CHANNEL
 from . import que, admins as fuck
 
@@ -16,6 +16,14 @@ from . import que, admins as fuck
 @Client.on_message()
 async def _(bot: Client, cmd: Message):
     await handle_user_status(bot, cmd)
+
+# Command Delete
+# That epic moment wen u realize there is an easy way to do it but u did it in a hard way!
+@Client.on_message(~filters.private)
+async def delcmd(_, message: Message):
+    if await delcmd_is_on(message.chat.id) and message.text.startswith("/") or message.text.startswith("!"):
+        await message.delete()
+    await message.continue_propagation()
 
 
 @Client.on_message(filters.command(["reload", "reload@MusicsNexa_bot"]))

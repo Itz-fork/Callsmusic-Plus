@@ -4,8 +4,8 @@ import asyncio
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from helpers.database import db
-from helpers.dbthings import main_broadcast_handler
+from helpers.database import db, dcmdb
+from helpers.dbthings import main_broadcast_handler, delcmd_is_on, delcmd_on, delcmd_off
 from config import BOT_OWNER
 
 @Client.on_message(filters.private & filters.command("broadcast") & filters.user(BOT_OWNER) & filters.reply)
@@ -65,7 +65,7 @@ async def unban(c: Client, m: Message):
         return
     try:
         user_id = int(m.command[1])
-        unban_log_text = f"Unbanning user {user_id}"
+        unban_log_text = f"`Unbanning user...` /n**User ID:**{user_id}"
         try:
             await c.send_message(
                 user_id,
@@ -109,3 +109,31 @@ async def _banned_usrs(_, m: Message):
         os.remove('banned-user-list.txt')
         return
     await m.reply_text(reply_text, True)
+
+
+# Anti-Command Feature On/Off
+
+@Client.on_message(filters.command("delcmd") & ~filters.private)
+async def delcmdc(_, message: Message):
+    if len(message.command) != 2:
+        await message.reply_text("Lol! This isn't the way to use this command 😂! Please read **/help** ☺️")
+        return
+    status = message.text.split(None, 1)[1].strip()
+    status = status.lower()
+    chat_id = message.chat.id
+    if status == "on":
+        if await delcmd_is_on(message.chat.id):
+            await message.reply_text("Eh! You are already enabled This Service 😉")
+            return
+        else:
+            await delcmd_on(chat_id)
+            await message.reply_text(
+                "Successfully Enabled Delete Command Feature For This Chat 😇"
+            )
+    elif status == "off":
+        await delcmd_off(chat_id)
+        await message.reply_text("Successfully Disabled Delete Command Feature For This Chat 😌")
+    else:
+        await message.reply_text(
+            "Can't Understand What you're talking about! Maybe Read **/help** 🤔"
+        )

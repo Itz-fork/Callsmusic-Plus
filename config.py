@@ -26,4 +26,4 @@ BROADCAST_AS_COPY = bool(os.environ.get("BROADCAST_AS_COPY", False))
 
 ARQ_API_KEY = getenv("ARQ_API_KEY")
 # Don't Change Anything Here
-ARQ_API_URL = "http://thearq.tech"
+ARQ_API_URL = "https://thearq.tech/"
