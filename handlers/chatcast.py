@@ -24,9 +24,9 @@ async def chatcast(_, message: Message):
             try:
                 await pakaya.msg.send_message(dialog.chat.id, msg)
                 sent = sent+1
-                await lol.edit(f"`ChatCasting...` /n/n**Sent to:** `{sent}` Chats /n**Failed in:** {failed} Chats")
+                await lol.edit(f"`ChatCasting...` \n\n**Sent to:** `{sent}` Chats \n**Failed in:** {failed} Chats")
             except:
                 failed=failed+1
-                await lol.edit(f"`ChatCasting...` /n/n**Sent to:** `{sent}` Chats /n**Failed in:** {failed} Chats")
+                await lol.edit(f"`ChatCasting...` \n\n**Sent to:** `{sent}` Chats \n**Failed in:** {failed} Chats")
             await asyncio.sleep(3)
-        await message.reply_text(f"`ChatCasting Finished 😌` /n/n**Sent to:** `{sent}` Chats /n**Failed in:** {failed} Chats")
+        await message.reply_text(f"`ChatCasting Finished 😌` \n\n**Sent to:** `{sent}` Chats \n**Failed in:** {failed} Chats")
