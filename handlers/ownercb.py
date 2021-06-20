@@ -4,7 +4,7 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, 
 from config import BOT_OWNER
 
 
-OWNER_TEXT = "**Hello My Master 😇!** Please select option from below buttons /n/n ~ @NexaBotsUpdates"
+OWNER_TEXT = "**Hello My Master 😇!** Please select option from below buttons \n\n ~ @NexaBotsUpdates"
 
 OWNER_HELPCB=InlineKeyboardMarkup(
             [
@@ -67,7 +67,7 @@ async def cbbans(_, query: CallbackQuery):
 
 **Example:** `/ban 1234567891 2 Test`
 
- - This will ban user with /nUser ID: `1234567891` /nFor: `2 Days` /nReason will be: `Test`
+ - This will ban user with \nUser ID: `1234567891` \nFor: `2 Days` \nReason will be: `Test`
 
 Made with ❤️ by **@NexaBotsUpdates**""",
         reply_markup=InlineKeyboardMarkup(
