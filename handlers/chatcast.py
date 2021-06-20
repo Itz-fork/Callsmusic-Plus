@@ -20,7 +20,7 @@ async def chatcast(_, message: Message):
             await lol.edit("Please Reply to a Message to Chatcast it 🥺!")
             return
         msg = message.reply_to_message
-        for dialog in pakaya.iter_dialogs():
+        async for dialog in pakaya.iter_dialogs():
             try:
                 await pakaya.msg.forward(dialog.chat.id, msg)
                 sent = sent+1
