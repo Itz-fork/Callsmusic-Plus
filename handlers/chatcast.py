@@ -7,7 +7,8 @@ from pyrogram import Client, filters
 from pyrogram.types import Dialog, Chat, Message
 from pyrogram.errors import UserAlreadyParticipant
 
-from config import SUDO_USERS, BOT_OWNER
+from callsmusic import client as pakaya
+from config import SUDO_USERS
 
 @Client.on_message(filters.command(["chatcast"]))
 async def chatcast(_, message: Message):
@@ -18,10 +19,10 @@ async def chatcast(_, message: Message):
         if not message.reply_to_message:
             await lol.edit("Please Reply to a Message to Chatcast it 🥺!")
             return
-        msg = message.reply_to_message.id
+        lmao = message.reply_to_message.text
         async for dialog in pakaya.iter_dialogs():
             try:
-                await pakaya.copy_message(dialog.chat.id, BOT_OWNER, msg)
+                await pakaya.send_message(dialog.chat.id, lmao)
                 sent = sent+1
                 await lol.edit(f"`ChatCasting...` \n\n**Sent to:** `{sent}` Chats \n**Failed in:** {failed} Chats")
             except:
