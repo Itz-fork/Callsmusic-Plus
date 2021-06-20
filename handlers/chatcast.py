@@ -20,13 +20,13 @@ async def chatcast(_, message: Message):
             await lol.edit("Please Reply to a Message to Chatcast it 🥺!")
             return
         msg = message.reply_to_message
-        async for dialog in pakaya.iter_dialogs():
+        async for dialog in Client.iter_dialogs():
             try:
-                await pakaya.msg.forward(dialog.chat.id, msg)
+                await Client.msg.forward(dialog.chat.id, msg)
                 sent = sent+1
-                await lol.edit(f"`ChatCasting...` /n/n**Sent to:** `{sent}` Chats /n**Failed in:** {failed} Chats")
+                await lol.edit(f"`ChatCasting...` \n\n**Sent to:** `{sent}` Chats \n**Failed in:** {failed} Chats")
             except:
                 failed=failed+1
-                await lol.edit(f"`ChatCasting...` /n/n**Sent to:** `{sent}` Chats /n**Failed in:** {failed} Chats")
+                await lol.edit(f"`ChatCasting...` \n\n**Sent to:** `{sent}` Chats \n**Failed in:** {failed} Chats")
             await asyncio.sleep(3)
-        await message.reply_text(f"`ChatCasting Finished 😌` /n/n**Sent to:** `{sent}` Chats /n**Failed in:** {failed} Chats")
+        await message.reply_text(f"`ChatCasting Finished 😌` \n\n**Sent to:** `{sent}` Chats \n**Failed in:** {failed} Chats")
