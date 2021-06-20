@@ -6,7 +6,8 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, 
 from helpers.filters import command, other_filters, other_filters2
 from helpers.database import db, Database
 from helpers.dbthings import handle_user_status
-from config import LOG_CHANNEL
+from config import LOG_CHANNEL, BOT_OWNER
+from handlers.ownercb import OWNER_TEXT, OWNER_HELPCB
 
 ## ~ Simple Config ~ ##
 USER_ACCNAME = os.getenv("USER_ACCNAME", "NexaMusicAssistant")
@@ -76,7 +77,10 @@ async def help(_, message: Message):
         text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
         parse_mode="markdown"
     )
-    await message.reply_text(
+    if message.from_user.id in BOT_OWNER
+    await message.reply_text(OWNER_TEXT, reply_markup=OWNER_HELPCB)
+    else:
+        await message.reply_text(
         f"""<b>Hi {message.from_user.mention} 😉️!</b>
 
 **Here is the Help Menu For This Bot 😊!**""",
