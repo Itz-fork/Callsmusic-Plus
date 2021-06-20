@@ -1,10 +1,13 @@
-# From Daisyxmusic (Telegram bot project )
+# From Daisyxmusic
 # Copyright (C) 2021  Inukaasith
 
-from pyrogram import Client, filters
+import asyncio
+
+from pyrogram import filters
 from pyrogram.types import Dialog, Chat, Message
 from pyrogram.errors import UserAlreadyParticipant
-import asyncio
+
+from callsmusic import client as pakaya
 from config import SUDO_USERS
 
 @Client.on_message(filters.command(["chatcast"]))
@@ -17,9 +20,9 @@ async def chatcast(_, message: Message):
             await lol.edit("Please Reply to a Message to Chatcast it 🥺!")
             return
         msg = message.reply_to_message
-        for dialog in Client.iter_dialogs():
+        for dialog in pakaya.iter_dialogs():
             try:
-                await Client.msg.forward(dialog.chat.id, msg)
+                await pakaya.msg.forward(dialog.chat.id, msg)
                 sent = sent+1
                 await lol.edit(f"`ChatCasting...` /n/n**Sent to:** `{sent}` Chats /n**Failed in:** {failed} Chats")
             except:
