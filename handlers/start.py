@@ -6,7 +6,7 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, 
 from helpers.filters import command, other_filters, other_filters2
 from helpers.database import db, Database
 from helpers.dbthings import handle_user_status
-from config import LOG_CHANNEL, BOT_OWNER
+from config import LOG_CHANNEL
 from handlers.ownercb import OWNER_TEXT, OWNER_HELPCB
 
 ## ~ Simple Config ~ ##
