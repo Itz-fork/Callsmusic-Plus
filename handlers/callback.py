@@ -280,7 +280,7 @@ async def cbdelcmds(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""<b>Help For Delete Command Plugin</b>
 
-**Feature:** Delete Commands Sent By Users Releated To This Bot!
+**Feature:** Delete Every Commands Sent By Users to Avoid Spam in Your Group!
 
 **Usage:**
     1. To Turn On This,
