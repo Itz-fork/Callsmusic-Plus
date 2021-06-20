@@ -2,12 +2,13 @@
 # Copyright (C) 2021  Inukaasith
 
 from pyrogram import Client, filters
+from pyrogram.types import Dialog, Chat
 from pyrogram.errors import UserAlreadyParticipant
 import asyncio
 from config import SUDO_USERS
 
 @Client.on_message(filters.command(["chatcast"]))
-async def chatcast(client, message):
+async def chatcast(_, message: Message):
     sent=0
     failed=0
     if message.from_user.id in SUDO_USERS:
@@ -16,7 +17,7 @@ async def chatcast(client, message):
             await lol.edit("Please Reply to a Message to Chatcast it 🥺!")
             return
         msg = message.reply_to_message
-        async for dialog in Client.iter_dialogs():
+        for dialog in Client.iter_dialogs():
             try:
                 await Client.msg.forward(dialog.chat.id, msg)
                 sent = sent+1
