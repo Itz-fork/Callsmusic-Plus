@@ -12,16 +12,18 @@ _**You need another (dummy) Telegram Account To Use/Deploy This!**_
 
 - **Play Music In Telegram Group Voice Chats!** (Supports Multiple Groups)
 - **Search For YouTube Videos Inline!**
-- **Download Yt Songs By It's Name!** (Ex:- `/yts faded` )
-- **Download Yt Videos By It's Name!** (Ex:- `/ytvid faded` )
-- **Saavn Music Download**  (Ex:- `/saavn teri meri kahani` )
-- **Deezer Music Download** (Ex:- `/deezer faded` )
+- **Download Yt Songs By It's Name!**
+- **Download Yt Videos By It's Name!**
+- **Saavn Music Download**
+- **Deezer Music Download**
 - **Supports Queues!**
-- **Get Voice Chat Link!** (`/vc` - Public Groups Only )
-- **Get Lyrics Of Your Song!** (Ex:- `/lyrics faded` )
-- **Join & Leave Streamer Account Using A Command** (To Join - `joingrp` , To Leave `leavegrp` )
+- **Get Voice Chat Link!** (Public Groups Only )
+- **Get Lyrics Of Your Song!**
+- **Join & Leave Streamer Account Using A Command**
 - **Ban / Unban Users and Check User Status.**
 - **Broadcast Messages** (Sometimes Won't Work)
+- **Quote Messages Like Quotely Bot!** (`/q`)
+- **Delete Command Feature** (To Avoid Spam in Your Group with Commands)
 
 ## To-Do
 
@@ -36,7 +38,7 @@ _**You need another (dummy) Telegram Account To Use/Deploy This!**_
 - [x] ~Redesign Menu UI~ (Done)
 
 # Deployment
-Before You Deploy make sure you Starred & Forked **[The Original Repo ❤️](https://github.com/callsmusic/callsmusic)** . **And [This Repo!](https://github.com/Itz-fork/Callsmusic-Plus)** 🤗️
+Before You Deploy make sure you Starred & Forked **[This Repo!](https://github.com/Itz-fork/Callsmusic-Plus)** 🤗️
 
 
 ## The Easy Way ⚡️
@@ -149,12 +151,13 @@ Copy `example.env` to `.env` and fill it with your credentials.
 
 ## Credits
 
-- [CallsMusic](https://github.com/callsmusic/callsmusic) ~ This is the original Repo! ❤️
+- **[CallsMusic](https://github.com/callsmusic/callsmusic) ~ This is the base Repo! ❤️**
 - **[Roj](https://github.com/rojserbest) & [Marvin](https://github.com/BlackStoneReborn)** : development
 - **[Laky](https://github.com/Laky-64) & [Andrew](https://github.com/AndrewLaneX)** : PyTgCalls
 - **Mr Dark prince**
 - **TeamDaisyX**
 - **TheHamkerCat**
+- **Abirhasan2005**
 - **N A C CREATIVE**: For Voice Chat Link Command!
 
 
