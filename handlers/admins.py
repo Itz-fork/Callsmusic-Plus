@@ -18,10 +18,11 @@ async def _(bot: Client, cmd: Message):
     await handle_user_status(bot, cmd)
 
 # Command Delete
-
-@Client.on_message(command(["play", "pause", "resume", "stop", "skip", "reload", "mute", "unmute", "help", "start"]) & ~filters.private)
+# That epic moment wen u realize there is an easy way to do it but u did it in a hard way!
+@Client.on_message("" & ~filters.private)
 async def delcmd(_, message: Message):
     if await delcmd_is_on(message.chat.id):
+        if message.startswith("/") 
         await message.delete()
     await message.continue_propagation()
 
