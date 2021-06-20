@@ -29,7 +29,7 @@ _**You need another (dummy) Telegram Account To Use/Deploy This!**_
 
 - [ ] Add Control by Buttons Feature
 - [x] ~Add Database To Ban, Unban, Broadcast and check user status~ (Done)
-- [ ] Fix `/chatcast` Command
+- [x] ~Fix `/chatcast` Command~ (Done)
 - [ ] Remove unnecessary codes to avoid spam in Log Channel
 - [ ] Add Thumbnail Generate Support
 - [ ] Remove Some unnecessary imports
