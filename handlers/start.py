@@ -7,7 +7,6 @@ from helpers.filters import command, other_filters, other_filters2
 from helpers.database import db, Database
 from helpers.dbthings import handle_user_status
 from config import LOG_CHANNEL
-from handlers.ownercb import OWNER_TEXT, OWNER_HELPCB
 
 ## ~ Simple Config ~ ##
 USER_ACCNAME = os.getenv("USER_ACCNAME", "NexaMusicAssistant")
