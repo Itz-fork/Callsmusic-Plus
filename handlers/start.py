@@ -77,10 +77,7 @@ async def help(_, message: Message):
         text=f"**📢 News ** \n#New_Music_Lover **Started To Using Meh!** \n\nFirst Name: `{message.from_user.first_name}` \nUser ID: `{message.from_user.id}` \nProfile Link: [{message.from_user.first_name}](tg://user?id={message.from_user.id})",
         parse_mode="markdown"
     )
-    if message.from_user.id in BOT_OWNER
-    await message.reply_text(OWNER_TEXT, reply_markup=OWNER_HELPCB)
-    else:
-        await message.reply_text(
+    await message.reply_text(
         f"""<b>Hi {message.from_user.mention} 😉️!</b>
 
 **Here is the Help Menu For This Bot 😊!**""",
