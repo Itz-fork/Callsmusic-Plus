@@ -118,12 +118,13 @@ async def delcmdc(_, message: Message):
     if len(message.command) != 2:
         await message.reply_text("Lol! This isn't the way to use this command 😂! Please read **/help** ☺️")
         return
-    if await delcmd_is_on(message.chat.id):
-        await message.reply_text("Eh! You are already enabled This Service 😉")
     status = message.text.split(None, 1)[1].strip()
     status = status.lower()
     chat_id = message.chat.id
     if status == "on":
+        if await delcmd_is_on(message.chat.id):
+        await message.reply_text("Eh! You are already enabled This Service 😉")
+        return
         await delcmd_on(chat_id)
         await message.reply_text(
             "Successfully Enabled Delete Command Feature For This Chat 😇"
