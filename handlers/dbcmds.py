@@ -65,7 +65,7 @@ async def unban(c: Client, m: Message):
         return
     try:
         user_id = int(m.command[1])
-        unban_log_text = f"Unbanning user {user_id}"
+        unban_log_text = f"`Unbanning user...` /n**User ID:**{user_id}"
         try:
             await c.send_message(
                 user_id,
