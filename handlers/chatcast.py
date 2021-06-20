@@ -22,7 +22,7 @@ async def chatcast(_, message: Message):
         msg = message.reply_to_message
         async for dialog in pakaya.iter_dialogs():
             try:
-                await pakaya.msg.forward(dialog.chat.id, msg)
+                await pakaya.msg.send_message(dialog.chat.id, msg)
                 sent = sent+1
                 await lol.edit(f"`ChatCasting...` /n/n**Sent to:** `{sent}` Chats /n**Failed in:** {failed} Chats")
             except:
