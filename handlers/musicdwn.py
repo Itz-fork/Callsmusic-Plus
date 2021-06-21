@@ -3,6 +3,7 @@
 
 from __future__ import unicode_literals
 
+import traceback
 import os
 from random import randint
 from urllib.parse import urlparse
@@ -14,11 +15,13 @@ import requests
 import wget
 import youtube_dl
 
+from asyncio import gather
+from os import remove
+from random import randint
 from aiohttp import ClientSession
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from youtube_search import YoutubeSearch
-from youtubesearchpython import SearchVideos
 from Python_ARQ import ARQ
 
 from config import ARQ_API_URL, ARQ_API_KEY
@@ -232,87 +235,3 @@ async def lyrics_func(_, message):
     
 # Youtube Video Download
 
-@Client.on_message(filters.command(["ytvid", "ytvid@MusicsNexa_Bot"]))
-async def ytmusic(client, message: Message):
-    global is_downloading
-    if is_downloading:
-        await message.reply_text(
-            "Sorry! **Another download is in progress !** Try Again After Sometime!"
-        )
-        return
-
-    urlissed = get_text(message)
-
-    pablo = await client.send_message(
-        message.chat.id, f"`Getting {urlissed} From Youtube Servers. Please Wait For Moment!`"
-    )
-    if not urlissed:
-        await pablo.edit("oWo! Invalid Command Syntax")
-        return
-
-    search = SearchVideos(f"{urlissed}", offset=1, mode="dict", max_results=1)
-    mi = search.result()
-    mio = mi["search_result"]
-    mo = mio[0]["link"]
-    thum = mio[0]["title"]
-    fridayz = mio[0]["id"]
-    thums = mio[0]["channel"]
-    kekme = f"https://img.youtube.com/vi/{fridayz}/hqdefault.jpg"
-    await asyncio.sleep(0.6)
-    url = mo
-    sedlyf = wget.download(kekme)
-    opts = {
-        "format": "best",
-        "addmetadata": True,
-        "key": "FFmpegMetadata",
-        "prefer_ffmpeg": True,
-        "geo_bypass": True,
-        "nocheckcertificate": True,
-        "postprocessors": [{"key": "FFmpegVideoConvertor", "preferedformat": "mp4"}],
-        "outtmpl": "%(id)s.mp4",
-        "logtostderr": False,
-        "quiet": True,
-    }
-    try:
-        is_downloading = True
-        with youtube_dl.YoutubeDL(opts) as ytdl:
-            infoo = ytdl.extract_info(url, False)
-            duration = round(infoo["duration"] / 60)
-
-            if duration > 999:
-                await pablo.edit(
-                    f"❌ Videos longer than 999 minute(s) aren't allowed, the provided video is {duration} minute(s)"
-                )
-                is_downloading = False
-                return
-            ytdl_data = ytdl.extract_info(url, download=True)
-
-    except Exception:
-        # await pablo.edit(event, f"**Failed To Download** \n**Error :** `{str(e)}`")
-        is_downloading = False
-        return
-
-    c_time = time.time()
-    file_stark = f"{ytdl_data['id']}.mp4"
-    capy = f"**🎧️ Music Video Name:** `{thum}` \n\n**👨‍💻️ Your Keyword:** `{urlissed}` \n**😉️ YouTube Channel:** `{thums}` \n**🔗️ Video Link :** `{mo}`"
-    await client.send_video(
-        message.chat.id,
-        video=open(file_stark, "rb"),
-        duration=int(ytdl_data["duration"]),
-        file_name=str(ytdl_data["title"]),
-        thumb=sedlyf,
-        caption=capy,
-        supports_streaming=True,
-        progress=progress,
-        progress_args=(
-            pablo,
-            c_time,
-            f"`Please Wait! I'm Uploading {urlissed} From YouTube!`",
-            file_stark,
-        ),
-    )
-    await pablo.delete()
-    is_downloading = False
-    for files in (sedlyf, file_stark):
-        if files and os.path.exists(files):
-            os.remove(files)
