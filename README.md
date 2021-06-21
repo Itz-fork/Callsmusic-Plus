@@ -28,14 +28,16 @@ _**You need another (dummy) Telegram Account To Use/Deploy This!**_
 ## To-Do
 
 - [ ] Add Control by Buttons Feature
-- [x] ~Add Database To Ban, Unban, Broadcast and check user status~ (Done)
-- [x] ~Fix `/chatcast` Command~ (Done)
 - [ ] Remove unnecessary codes to avoid spam in Log Channel
 - [ ] Add Thumbnail Generate Support
 - [ ] Remove Some unnecessary imports
+- [ ] Fix Youtube Video Downloader
 - [x] ~Add Command Delete Feature~ (Done)
 - [x] ~Add Quoately Module~ (Done)
 - [x] ~Redesign Menu UI~ (Done)
+- [x] ~Add Database To Ban, Unban, Broadcast and check user status~ (Done)
+- [x] ~Fix `/chatcast` Command~ (Done)
+
 
 # Deployment
 Before You Deploy make sure you Starred & Forked **[This Repo!](https://github.com/Itz-fork/Callsmusic-Plus)** 🤗️
