@@ -1,4 +1,4 @@
-# (c) @TheHamkerCat , @MrDarkPrince & TeamDaisyX
+# (c) @TheHamkerCat , @MrDarkPrince
 
 
 from __future__ import unicode_literals
@@ -34,26 +34,16 @@ aiohttpsession = ClientSession()
 arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
 
 
-def get_file_extension_from_url(url):
-    url_path = urlparse(url).path
-    basename = os.path.basename(url_path)
-    return basename.split(".")[-1]
+VIDEO_DATA = {}
 
-def time_to_seconds(time):
-    stringt = str(time)
-    return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(':'))))
-
-def get_text(message: Message) -> [None, str]:
-    text_to_return = message.text
-    if message.text is None:
-        return None
-    if " " in text_to_return:
-        try:
-            return message.text.split(None, 1)[1]
-        except IndexError:
-            return None
-    else:
-        return None
+# Convert seconds to mm:ss
+async def timeFormat(seconds: int):
+    seconds = int(seconds)
+    seconds = seconds % (24 * 3600)
+    seconds %= 3600
+    minutes = seconds // 60
+    seconds %= 60
+    return "%02d:%02d" % (minutes, seconds)
 
 
 @Client.on_message(filters.command(['yts', 'yts@MusicsNexa_Bot']))
