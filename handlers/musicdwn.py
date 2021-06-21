@@ -18,6 +18,7 @@ from aiohttp import ClientSession
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from youtube_search import YoutubeSearch
+from youtubesearchpython import SearchVideos
 from Python_ARQ import ARQ
 
 from config import ARQ_API_URL, ARQ_API_KEY
