@@ -3,9 +3,7 @@
 
 from __future__ import unicode_literals
 
-import traceback
-import os
-from random import randint
+
 from urllib.parse import urlparse
 
 import aiofiles
