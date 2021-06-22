@@ -6,6 +6,7 @@ from __future__ import unicode_literals
 
 from urllib.parse import urlparse
 
+import time
 import asyncio
 import aiofiles
 import aiohttp
