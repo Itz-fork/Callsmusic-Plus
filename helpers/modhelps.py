@@ -1,9 +1,7 @@
 # This File Is Made and Owned By @TheHamkerCat and @TeamDaisyX
 
 import socket
-from asyncio import gather, get_running_loop
 
-from helpers.aiodownloader import downloader, Handler
 
 async def _netcat(host, port, content):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -21,11 +19,3 @@ async def _netcat(host, port, content):
 async def paste(content):
     link = await _netcat("ezup.dev", 9999, content)
     return link
-
-# Downloader
-downloader = Handler()
-
-async def download_url(url: str):
-    loop = get_running_loop()
-    file = await loop.run_in_executor(None, download, url)
-    return file
