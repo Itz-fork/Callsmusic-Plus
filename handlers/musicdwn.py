@@ -27,7 +27,8 @@ from Python_ARQ import ARQ
 
 from config import ARQ_API_URL, ARQ_API_KEY
 from helpers.merrors import capture_err
-from helpers.modhelps import paste, downloader
+from helpers.modhelps import paste
+from helpers.aiodownloader import downloader
 
 is_downloading = False
 
@@ -259,7 +260,7 @@ async def ytvidz(_, message):
         }
         keyboard.append(
             InlineKeyboardButton(
-                text=f"{quality} | {size}", callback_data=f"YtDl {data}"
+                text=f"{quality} | {size}", callback_data=f"ytdl {data}"
             )
         )
     buttons.add(*keyboard)
@@ -271,9 +272,9 @@ async def ytvidz(_, message):
     await m.delete()
 
 
-@Client.on_callback_query(filters.regex(r"^YtDl"))
+@Client.on_callback_query(filters.regex(r"^ytdl"))
 async def ytdlCallback(_, cq):
-    await cq.message.edit("`Downloading...`")
+    await cq.message.edit("`Downloading The Video...`")
     data_ = cq.data.split()[1]
     try:
         data = VIDEO_DATA[data_]
@@ -292,7 +293,7 @@ async def ytdlCallback(_, cq):
         media, thumb = await gather(
             downloader.download(url), downloader.download(thumbnail)
         )
-        await cq.message.edit("`Uploading...`")
+        await cq.message.edit("`Uploading The Video...`")
         if format == "mp3":
             await cq.message.reply_audio(
                 media,
