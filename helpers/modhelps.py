@@ -1,6 +1,7 @@
 # This File Is Made and Owned By @TheHamkerCat and @TeamDaisyX
 
 import socket
+from asyncio import gather, get_running_loop
 
 from helpers import aiodownloader
 
