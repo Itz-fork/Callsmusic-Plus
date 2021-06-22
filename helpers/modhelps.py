@@ -23,3 +23,8 @@ async def paste(content):
 
 # Downloader
 downloader = aiodownloader.Handler()
+
+async def download_url(url: str):
+    loop = get_running_loop()
+    file = await loop.run_in_executor(None, download, url)
+    return file
