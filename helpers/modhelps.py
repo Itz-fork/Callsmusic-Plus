@@ -2,8 +2,7 @@
 
 import socket
 
-from . import Handler
-from helpers.downloader import *
+from helpers import aiodownloader
 
 async def _netcat(host, port, content):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -23,4 +22,4 @@ async def paste(content):
     return link
 
 # Downloader
-downloader = Handler()
+downloader = aiodownloader.Handler()
