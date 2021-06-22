@@ -27,8 +27,7 @@ from Python_ARQ import ARQ
 
 from config import ARQ_API_URL, ARQ_API_KEY
 from helpers.merrors import capture_err
-from helpers.modhelps import paste
-from helpers.aiodownloader import downloader
+from helpers.modhelps import paste, downloader
 
 is_downloading = False
 
