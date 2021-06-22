@@ -228,6 +228,7 @@ async def lyrics_func(_, message):
 # Youtube Video Download
 
 @Client.on_message(filters.command("ytvid"))
+@capture_err
 async def ytvidz(_, message):
     if len(message.command) != 2:
         return await message.reply_text("Lol! Wrong Way bro! Read **/help** section!")
@@ -274,7 +275,7 @@ async def ytvidz(_, message):
 
 @Client.on_callback_query(filters.regex(r"^ytdl"))
 async def ytdlCallback(_, cq):
-    await cq.message.edit("`Downloading The Video...`")
+    await cq.message.edit("`Downloading...`")
     data_ = cq.data.split()[1]
     try:
         data = VIDEO_DATA[data_]
@@ -293,7 +294,7 @@ async def ytdlCallback(_, cq):
         media, thumb = await gather(
             downloader.download(url), downloader.download(thumbnail)
         )
-        await cq.message.edit("`Uploading The Video...`")
+        await cq.message.edit("`Uploading...`")
         if format == "mp3":
             await cq.message.reply_audio(
                 media,
