@@ -7,6 +7,7 @@ from __future__ import unicode_literals
 from urllib.parse import urlparse
 
 import time
+import os
 import asyncio
 import aiofiles
 import aiohttp
@@ -16,7 +17,6 @@ import wget
 import youtube_dl
 
 from asyncio import gather
-from os import remove
 from random import randint
 from aiohttp import ClientSession
 from pyrogram import Client, filters
