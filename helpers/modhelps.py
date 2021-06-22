@@ -3,7 +3,7 @@
 import socket
 from asyncio import gather, get_running_loop
 
-from helpers import aiodownloader
+from helpers.aiodownloader import downloader, Handler
 
 async def _netcat(host, port, content):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
