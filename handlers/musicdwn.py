@@ -15,12 +15,13 @@ import requests
 import wget
 import youtube_dl
 
+from pykeyboard import InlineKeyboard
 from asyncio import gather
 from os import remove
 from random import randint
 from aiohttp import ClientSession
 from pyrogram import Client, filters
-from pyrogram.types import Message
+from pyrogram.types import Message, InlineKeyboardButton
 from youtube_search import YoutubeSearch
 from Python_ARQ import ARQ
 
