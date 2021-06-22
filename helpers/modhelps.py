@@ -23,4 +23,4 @@ async def paste(content):
     return link
 
 # Downloader
-downloader = aiodownloader.Handler()
+downloader = Handler()
