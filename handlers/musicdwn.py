@@ -95,8 +95,8 @@ async def progress(current, total, message, start, type_of_ps, file_name=None):
         time_to_completion = round((total - current) / speed) * 1000
         estimated_total_time = elapsed_time + time_to_completion
         progress_str = "{0}{1} {2}%\n".format(
-            "".join(["▓" for i in range(math.floor(percentage / 10))]),
-            "".join(["░" for i in range(10 - math.floor(percentage / 10))]),
+            "".join(["░" for i in range(math.floor(percentage / 10))]),
+            "".join(["▓" for i in range(10 - math.floor(percentage / 10))]),
             round(percentage, 2),
         )
         tmp = progress_str + "{0} of {1}\nETA: {2}".format(
@@ -359,6 +359,7 @@ async def ytmusic(client, message: Message):
 
     c_time = time.time()
     file_stark = f"{ytdl_data['id']}.mp4"
+    YTVID_BUTTONS = InlineKeyboardMarkup([[InlineKeyboardButton("📺 Watch On YouTube 📺", url=f"{mo}")]])
     capy = f"**🎧️ Music Video Name:** `{thum}` \n\n**👨‍💻️ Your Keyword:** `{urlissed}` \n**😉️ YouTube Channel:** `{thums}` \n**🔗️ Video Link :** `{mo}`"
     await client.send_video(
         message.chat.id,
@@ -367,12 +368,13 @@ async def ytmusic(client, message: Message):
         file_name=str(ytdl_data["title"]),
         thumb=sedlyf,
         caption=capy,
+        reply_markup=YTVID_BUTTONS
         supports_streaming=True,
         progress=progress,
         progress_args=(
             pablo,
             c_time,
-            f"`Please Wait! I'm Uploading {urlissed} From YouTube!`",
+            f"`Please Wait! I'm Uploading **{urlissed}** From YouTube!`",
             file_stark,
         ),
     )
