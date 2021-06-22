@@ -46,7 +46,7 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
                 ],
                 [
                     InlineKeyboardButton(
-                        "🤨️ How To Use Me 🤨️", url="https://telegra.ph/How-To-Use-Music-Nexa-Bot-03-16"
+                        "🤨️ How To Use Me 🤨️", callback_data="cbhelpmenu"
                     )
                 ],
                 [
@@ -202,7 +202,8 @@ Enjoy!😌️❤️""",
                     )
                 ]
             ]
-        )
+        ),
+        disable_web_page_preview=True
     )
 
     
