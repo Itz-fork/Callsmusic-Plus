@@ -226,7 +226,6 @@ async def lyrics_func(_, message):
 # Youtube Video Download
 
 @Client.on_message(filters.command("ytvid"))
-@capture_err
 async def ytvidz(_, message):
     if len(message.command) != 2:
         return await message.reply_text("Lol! Wrong Way bro! Read **/help** section!")
