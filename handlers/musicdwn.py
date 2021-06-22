@@ -368,7 +368,7 @@ async def ytmusic(client, message: Message):
         file_name=str(ytdl_data["title"]),
         thumb=sedlyf,
         caption=capy,
-        reply_markup=YTVID_BUTTONS
+        reply_markup=YTVID_BUTTONS,
         supports_streaming=True,
         progress=progress,
         progress_args=(
