@@ -18,3 +18,4 @@ requests
 motor
 dnspython
 bs4
+psutil

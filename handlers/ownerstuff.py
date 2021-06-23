@@ -1,22 +1,39 @@
+# Credits @AbirHasan2005
+# CallsMusic-Plus (https://github.com/Itz-fork/Callsmusic-Plus)
+
 import traceback
 import asyncio
+import shutil
+import psutil
 
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from helpers.database import db, dcmdb
-from helpers.dbthings import main_broadcast_handler, delcmd_is_on, delcmd_on, delcmd_off
-from config import BOT_OWNER
+from helpers.database import db
+from helpers.dbthings import main_broadcast_handler
+from handlers.musicdwn import humanbytes
+from config import BOT_USERNAME, BOT_OWNER
+
+@Client.on_message(filters.command("stats") & filters.user(BOT_OWNER))
+async def botstats(_, message: Message):
+    total, used, free = shutil.disk_usage(".")
+    total = humanbytes(total)
+    used = humanbytes(used)
+    free = humanbytes(free)
+    cpu_usage = psutil.cpu_percent()
+    ram_usage = psutil.virtual_memory().percent
+    disk_usage = psutil.disk_usage('/').percent
+    total_users = await db.total_users_count()
+    await message.reply_text(
+        text=f"**💫 Bot Stats Of @{BOT_USERNAME} 💫** \n\n\n**👥 Users:** \n ↳**PM'ed Users:** `{total_users}` \n\n**💾 Disk Usage,** \n ↳**Total Disk Space:** `{total}` \n ↳**Used:** `{used}({disk_usage}%)` \n ↳**Free:** `{free}` \n\n**🎛 Hardware Usage,** \n ↳**CPU Usage:** `{cpu_usage}%` \n ↳**RAM Usage:** `{ram_usage}%`",
+        parse_mode="Markdown",
+        quote=True
+    )
+
 
 @Client.on_message(filters.private & filters.command("broadcast") & filters.user(BOT_OWNER) & filters.reply)
 async def broadcast_handler_open(_, m: Message):
     await main_broadcast_handler(m, db)
-
-
-@Client.on_message(filters.private & filters.command("stats") & filters.user(BOT_OWNER))
-async def sts(_, m: Message):
-    total_users = await db.total_users_count()
-    await m.reply_text(text=f"**I have** `{total_users}` **Users In My Database**", parse_mode="Markdown", quote=True)
 
 
 @Client.on_message(filters.private & filters.command("ban") & filters.user(BOT_OWNER))
@@ -109,31 +126,3 @@ async def _banned_usrs(_, m: Message):
         os.remove('banned-user-list.txt')
         return
     await m.reply_text(reply_text, True)
-
-
-# Anti-Command Feature On/Off
-
-@Client.on_message(filters.command("delcmd") & ~filters.private)
-async def delcmdc(_, message: Message):
-    if len(message.command) != 2:
-        await message.reply_text("Lol! This isn't the way to use this command 😂! Please read **/help** ☺️")
-        return
-    status = message.text.split(None, 1)[1].strip()
-    status = status.lower()
-    chat_id = message.chat.id
-    if status == "on":
-        if await delcmd_is_on(message.chat.id):
-            await message.reply_text("Eh! You are already enabled This Service 😉")
-            return
-        else:
-            await delcmd_on(chat_id)
-            await message.reply_text(
-                "Successfully Enabled Delete Command Feature For This Chat 😇"
-            )
-    elif status == "off":
-        await delcmd_off(chat_id)
-        await message.reply_text("Successfully Disabled Delete Command Feature For This Chat 😌")
-    else:
-        await message.reply_text(
-            "Can't Understand What you're talking about! Maybe Read **/help** 🤔"
-        )

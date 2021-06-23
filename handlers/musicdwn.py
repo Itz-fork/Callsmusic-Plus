@@ -1,12 +1,15 @@
-# (c) @TheHamkerCat , @MrDarkPrince & TeamDaisyX
+# (c) @TheHamkerCat , @MrDarkPrince, @TeamOfDaisyX
 
 
 from __future__ import unicode_literals
 
-import os
-from random import randint
+
 from urllib.parse import urlparse
 
+import time
+import os
+import math
+import asyncio
 import aiofiles
 import aiohttp
 import ffmpeg
@@ -14,9 +17,13 @@ import requests
 import wget
 import youtube_dl
 
+from asyncio import gather
+from random import randint
 from aiohttp import ClientSession
 from pyrogram import Client, filters
-from pyrogram.types import Message
+from pyrogram.errors import FloodWait, MessageNotModified
+from pyrogram.types import Message,InlineKeyboardMarkup, InlineKeyboardButton
+from youtubesearchpython import SearchVideos
 from youtube_search import YoutubeSearch
 from Python_ARQ import ARQ
 
@@ -50,6 +57,67 @@ def get_text(message: Message) -> [None, str]:
             return None
     else:
         return None
+
+def humanbytes(size):
+    if not size:
+        return ""
+    power = 2 ** 10
+    raised_to_pow = 0
+    dict_power_n = {0: "", 1: "Ki", 2: "Mi", 3: "Gi", 4: "Ti"}
+    while size > power:
+        size /= power
+        raised_to_pow += 1
+    return str(round(size, 2)) + " " + dict_power_n[raised_to_pow] + "B"
+
+def time_formatter(milliseconds: int) -> str:
+    seconds, milliseconds = divmod(int(milliseconds), 1000)
+    minutes, seconds = divmod(seconds, 60)
+    hours, minutes = divmod(minutes, 60)
+    days, hours = divmod(hours, 24)
+    tmp = (
+        ((str(days) + " day(s), ") if days else "")
+        + ((str(hours) + " hour(s), ") if hours else "")
+        + ((str(minutes) + " minute(s), ") if minutes else "")
+        + ((str(seconds) + " second(s), ") if seconds else "")
+        + ((str(milliseconds) + " millisecond(s), ") if milliseconds else "")
+    )
+    return tmp[:-2]
+
+async def progress(current, total, message, start, type_of_ps, file_name=None):
+    now = time.time()
+    diff = now - start
+    if round(diff % 10.00) == 0 or current == total:
+        percentage = current * 100 / total
+        speed = current / diff
+        elapsed_time = round(diff) * 1000
+        if elapsed_time == 0:
+            return
+        time_to_completion = round((total - current) / speed) * 1000
+        estimated_total_time = elapsed_time + time_to_completion
+        progress_str = "{0}{1} {2}%\n".format(
+            "".join(["▓" for i in range(math.floor(percentage / 10))]),
+            "".join(["░" for i in range(10 - math.floor(percentage / 10))]),
+            round(percentage, 2),
+        )
+        tmp = progress_str + "{0} of {1}\nETA: {2}".format(
+            humanbytes(current), humanbytes(total), time_formatter(estimated_total_time)
+        )
+        if file_name:
+            try:
+                await message.edit(
+                    "{}\n**File Name:** `{}`\n{}".format(type_of_ps, file_name, tmp)
+                )
+            except FloodWait as e:
+                await asyncio.sleep(e.x)
+            except MessageNotModified:
+                pass
+        else:
+            try:
+                await message.edit("{}\n{}".format(type_of_ps, tmp))
+            except FloodWait as e:
+                await asyncio.sleep(e.x)
+            except MessageNotModified:
+                pass
 
 
 @Client.on_message(filters.command(['yts', 'yts@MusicsNexa_Bot']))
@@ -226,9 +294,7 @@ async def lyrics_func(_, message):
         return
     lyrics = await paste(lyrics)
     await m.edit(f"**Oops! Lyrics Too Long To Send!** \n**Your Song Lyrics: [Click Here]({lyrics})**")
-    
-    
-    
+
 # Youtube Video Download
 
 @Client.on_message(filters.command(["ytvid", "ytvid@MusicsNexa_Bot"]))
@@ -246,7 +312,7 @@ async def ytmusic(client, message: Message):
         message.chat.id, f"`Getting {urlissed} From Youtube Servers. Please Wait For Moment!`"
     )
     if not urlissed:
-        await pablo.edit("oWo! Invalid Command Syntax")
+        await pablo.edit("Invalid Command Syntax")
         return
 
     search = SearchVideos(f"{urlissed}", offset=1, mode="dict", max_results=1)
@@ -293,6 +359,7 @@ async def ytmusic(client, message: Message):
 
     c_time = time.time()
     file_stark = f"{ytdl_data['id']}.mp4"
+    YTVID_BUTTONS = InlineKeyboardMarkup([[InlineKeyboardButton("📺 Watch On YouTube 📺", url=f"{mo}")]])
     capy = f"**🎧️ Music Video Name:** `{thum}` \n\n**👨‍💻️ Your Keyword:** `{urlissed}` \n**😉️ YouTube Channel:** `{thums}` \n**🔗️ Video Link :** `{mo}`"
     await client.send_video(
         message.chat.id,
@@ -301,12 +368,13 @@ async def ytmusic(client, message: Message):
         file_name=str(ytdl_data["title"]),
         thumb=sedlyf,
         caption=capy,
+        reply_markup=YTVID_BUTTONS,
         supports_streaming=True,
         progress=progress,
         progress_args=(
             pablo,
             c_time,
-            f"`Please Wait! I'm Uploading {urlissed} From YouTube!`",
+            f"`Please Wait! I'm Uploading` **{urlissed}** `From YouTube!`",
             file_stark,
         ),
     )
