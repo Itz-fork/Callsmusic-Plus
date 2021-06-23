@@ -31,7 +31,7 @@ _**You need another (dummy) Telegram Account To Use/Deploy This!**_
 - [ ] Remove unnecessary codes to avoid spam in Log Channel
 - [ ] Add Thumbnail Generate Support
 - [ ] Remove Some unnecessary imports
-- [ ] Fix Youtube Video Downloader
+- [x] Fix Youtube Video Downloader
 - [x] ~Add Command Delete Feature~ (Done)
 - [x] ~Add Quoately Module~ (Done)
 - [x] ~Redesign Menu UI~ (Done)
