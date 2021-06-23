@@ -23,7 +23,7 @@ async def chatcast(_, message: Message):
             await wtf.edit("Please Reply to a Message to Chatcast it 🥺!")
             return
         lmao = message.reply_to_message.text
-        async for dialog in Client.iter_dialogs():
+        async for dialog in Client.iter_dialogs(self):
             try:
                 await Client.send_message(dialog.chat.id, lmao)
                 sent = sent+1
