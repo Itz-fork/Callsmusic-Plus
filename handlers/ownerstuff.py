@@ -185,7 +185,7 @@ async def updatebot(_, message: Message):
         exit()
         return
     else:
-        await msg.edit("`Heroku Detected! Pushing, Please Wait!`")
+        await msg.edit("`Heroku Detected! Please wait for 5 - 10 Minutes!`")
         ups_rem.fetch(U_BRANCH)
         repo.git.reset("--hard", "FETCH_HEAD")
         if "heroku" in repo.remotes:
@@ -198,3 +198,4 @@ async def updatebot(_, message: Message):
         except BaseException as error:
             await msg.edit(f"**Updater Error** \nTraceBack : `{error}`")
             return repo.__del__()
+        await msg.edit("**Successfully Updated**")
