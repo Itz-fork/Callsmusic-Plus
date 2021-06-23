@@ -179,13 +179,13 @@ async def updatebot(_, message: Message):
         except GitCommandError:
             repo.git.reset("--hard", "FETCH_HEAD")
         await run_cmd("pip3 install --no-cache-dir -r requirements.txt")
-        await msg_.edit("**Successfully Updated! Restarting Now!**")
+        await msg.edit("**Successfully Updated! Restarting Now!**")
         args = [sys.executable, "main.py"]
         execle(sys.executable, *args, environ)
         exit()
         return
     else:
-        await msg_.edit("`Heroku Detected! Pushing, Please Wait!`")
+        await msg.edit("`Heroku Detected! Pushing, Please Wait!`")
         ups_rem.fetch(U_BRANCH)
         repo.git.reset("--hard", "FETCH_HEAD")
         if "heroku" in repo.remotes:
@@ -198,4 +198,3 @@ async def updatebot(_, message: Message):
         except BaseException as error:
             await msg.edit(f"**Updater Error** \nTraceBack : `{error}`")
             return repo.__del__()
-
