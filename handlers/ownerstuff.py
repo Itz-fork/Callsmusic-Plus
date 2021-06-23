@@ -185,9 +185,9 @@ async def updatebot(_, message: Message):
         exit()
         return
     else:
-        await msg.edit("`Heroku Detected! Pusing...`")
-        ups_rem.fetch(U_BRANCH)
+        await msg.edit("`Heroku Detected!`")
         await msg.edit("`Updating and Restarting has Started! Please wait for 5-10 Minutes!`")
+        ups_rem.fetch(U_BRANCH)
         repo.git.reset("--hard", "FETCH_HEAD")
         if "heroku" in repo.remotes:
             remote = repo.remote("heroku")
