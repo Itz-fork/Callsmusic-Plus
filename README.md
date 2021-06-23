@@ -68,10 +68,16 @@ or Ask Me In **[Nexa Bots Support Group](https://t.me/Nexa_bots)**
  `BOT_TOKEN` - Your Bot Token</br>
  `API_ID` - Your API ID</br>
  `API_HASH` - Your API HASH</br>
- `SUDO_USERS` - Sudo User's ID</br>
- `DURATION_LIMIT` - Max Time Limited For a song!</br>
+ `BOT_OWNER` - Your Telegram Id</br>
  `USER_ACCNAME` - Your bot's streamer account username without "@" ! </br>
- `ARQ_API_KEY` - Your ARQ api key! Get your own at [ARQ Bot](https://t.me/ARQRobot)
+ `SUDO_USERS` - Sudo User's ID</br>
+ `LOG_CHANNEL` - Log Channel Where Bot Logs Go!</br>
+ `BOT_USERNAME` - Your Bot's Username</br>
+ `DURATION_LIMIT` - Max Time Limited For a song!</br>
+ `ARQ_API_KEY` - Your ARQ api key! Get your own at [ARQ Bot](https://t.me/ARQRobot)</br>
+ `DATABASE_URL` - Your MongoDB Url</br>
+ `HEROKU_APP_NAME` - Your Heroku App Name! (If you used Heroku)</br>
+ `HEROKU_API_KEY` - Your Heroku Api Key! (If you used Heroku)
 
 **[How To Get Config Vars? 🤔 Read This!](https://github.com/Itz-fork/yeah-my-man/wiki/How-To-Deploy-This!)**
 
