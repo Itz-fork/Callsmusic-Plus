@@ -45,14 +45,18 @@ async def addchannel(client, message):
     await message.reply_text(
             "<b>Streamer Account Joined</b> 😊",
         )
-    
+
+# Remove Bot and Streamer Account From the group
 @Client.on_message(filters.group & filters.command(["leavegrp"]))
 @authorized_users_only
-async def leavegrp(client, message):
+async def botleavegrp(client, message):
+    await message.chat.leave()
+
+@USER.on_message(filters.group & filters.command(["leavegrp"]))
+async def strmleavegrp(USER, message):
     try:
         await USER.leave_chat(message.chat.id)
-        await message.chat.leave()
-    except:  
+    except:
         await message.reply_text(
             f"<b>Oops! Streamer Account Can't Leave Right Now! May Be Floodwait 🤔"
             "\n\nOr You Can Manually Remove Me 🤗</b>",
