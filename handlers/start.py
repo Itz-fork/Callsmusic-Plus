@@ -21,7 +21,7 @@ async def _(bot: Client, cmd: Message):
 async def start(_, message: Message):
     usr_cmd = message.text.split("_")[-1]
     if usr_cmd == "/start":
-        chat_id = message.from_user.id
+        chat_id = message.chat.id
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
@@ -68,7 +68,7 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
 async def help(_, message: Message):
     usr_cmd = message.text.split("_")[-1]
     if usr_cmd == "/help":
-        chat_id = message.from_user.id
+        chat_id = message.chat.id
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
@@ -120,7 +120,7 @@ async def help(_, message: Message):
 async def credits2(_, message: Message):
     usr_cmd = message.text.split("_")[-1]
     if usr_cmd == "/credits":
-        chat_id = message.from_user.id
+        chat_id = message.chat.id
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
@@ -166,7 +166,7 @@ Respect To Code Owners! Not To Me!""",
 async def vc(_, message: Message):
     usr_cmd = message.text.split("_")[-1]
     if usr_cmd == "/vc":
-        chat_id = message.from_user.id
+        chat_id = message.chat.id
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
@@ -211,7 +211,7 @@ Enjoy!😌️❤️""",
 async def search(_, message: Message):
     usr_cmd = message.text.split("_")[-1]
     if usr_cmd == "/search":
-        chat_id = message.from_user.id
+        chat_id = message.chat.id
         if not await db.is_user_exist(chat_id):
             await db.add_user(chat_id)
             await Client.send_message(
