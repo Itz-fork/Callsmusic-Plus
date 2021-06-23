@@ -57,6 +57,21 @@
       "description": "Streamer Account Username of your account. Need for start message!",
       "required": true,
       "value": ""
+    },
+    "HEROKU_APP_NAME": {
+      "description": "Your Heroku App Name!",
+      "required": true,
+      "value": ""
+    },
+    "HEROKU_API_KEY": {
+      "description": "Your Heroku Api Key!",
+      "required": true,
+      "value": ""
+    },
+    "UPSTREAM_REPO": {
+      "description": "Github Repo Url. Only needed if you are using your own Fork!",
+      "required": false,
+      "value": ""
     }
   }
 }
