@@ -19,3 +19,5 @@ motor
 dnspython
 bs4
 psutil
+heroku3
+gitpython

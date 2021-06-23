@@ -4,6 +4,7 @@ import os
 from os import getenv
 
 from dotenv import load_dotenv
+from helpers.modhelps import fetch_heroku_git_url
 
 load_dotenv()
 
@@ -27,3 +28,10 @@ BROADCAST_AS_COPY = bool(os.environ.get("BROADCAST_AS_COPY", False))
 ARQ_API_KEY = getenv("ARQ_API_KEY")
 # Don't Change Anything Here
 ARQ_API_URL = "https://thearq.tech/"
+
+# Updator Configs
+HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
+HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
+UPSTREAM_REPO = os.environ.get("UPSTREAM_REPO", "https://github.com/Itz-fork/Callsmusic-Plus")
+U_BRANCH = "Updator"
+HEROKU_URL = fetch_heroku_git_url(HEROKU_API_KEY, HEROKU_APP_NAME)
