@@ -1,28 +1,24 @@
-# Copyright (c) DevsExspo (Friday UserBot)
+# Credits @AbirHasan2005
+# CallsMusic-Plus (https://github.com/Itz-fork/Callsmusic-Plus)
 
-import os
-import shlex
-import asyncio
+import shutil
+import psutil
 
 from pyrogram import Client, filters
-from pyrogram.types import Message
-from typing import Tuple
+from handlers.musicdwn import humanbytes
+from config import BOT_USERNAME, BOT_OWNER
 
-
-async def execute(cmd: str) -> Tuple[str, str, int, int]:
-    args = shlex.split(cmd)
-    process = await asyncio.create_subprocess_exec(
-        *args, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
+@Client.on_message(filters.command("botstats") & filters.user(Config.BOT_OWNER))
+async def botstats(_, message: Message):
+    total, used, free = shutil.disk_usage(".")
+    total = humanbytes(total)
+    used = humanbytes(used)
+    free = humanbytes(free)
+    cpu_usage = psutil.cpu_percent()
+    ram_usage = psutil.virtual_memory().percent
+    disk_usage = psutil.disk_usage('/').percent
+    await message.reply_text(
+        text=f"**💫 Bot Stats Of @{BOT_USERNAME} 💫** \n\n**💾 Disk Usage,** \n ↳ **Total Disk Space:** `{total}` \n ↳**Used:** `{used}({disk_usage}%)` \n ↳**Free:** `{free}` \n**🎛 Hardware Usage,** \n ↳**CPU Usage:** `{cpu_usage}%` \n ↳**RAM Usage:** `{ram_usage}%`",
+        parse_mode="Markdown",
+        quote=True
     )
-    stdout, stderr = await process.communicate()
-    return (
-        stdout.decode("utf-8", "replace").strip(),
-        stderr.decode("utf-8", "replace").strip(),
-        process.returncode,
-        process.pid,
-    )
-
-# Command to update yt-dl
-@Client.on_message(filters.command(["uytdl", "uytdl@MusicsNexa_bot"]))
-async def uytdl(_, message: Message):
-  await execute("youtube-dl -U")
