@@ -24,6 +24,7 @@ _**You need another (dummy) Telegram Account To Use/Deploy This!**_
 - **Broadcast Messages** (Sometimes Won't Work)
 - **Quote Messages Like Quotely Bot!** (`/q`)
 - **Delete Command Feature** (To Avoid Spam in Your Group with Commands)
+- **Update Your Bot Without Leaving Telegram** (`/update`)
 
 ## To-Do
 
@@ -160,6 +161,7 @@ Copy `example.env` to `.env` and fill it with your credentials.
 - **TeamDaisyX**
 - **TheHamkerCat**
 - **Abirhasan2005**
+- **DevsExpo**
 - **N A C CREATIVE**: For Voice Chat Link Command!
 
 
