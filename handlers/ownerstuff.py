@@ -146,7 +146,7 @@ BRANCH_ = U_BRANCH
 
 @Client.on_message(filters.command("update") & filters.user(BOT_OWNER))
 async def updatebot(_, message: Message):
-    msg = await message.reply_text("`Updating Please Wait...`")
+    msg = await message.reply_text("`Updating Module is Starting! Please Wait...`")
     try:
         repo = Repo()
     except GitCommandError:
@@ -185,7 +185,7 @@ async def updatebot(_, message: Message):
         exit()
         return
     else:
-        await msg.edit("`Heroku Detected! Please wait for 5 - 10 Minutes!`")
+        await msg.edit("`Heroku Detected! Pusing...`")
         ups_rem.fetch(U_BRANCH)
         repo.git.reset("--hard", "FETCH_HEAD")
         if "heroku" in repo.remotes:
@@ -195,7 +195,7 @@ async def updatebot(_, message: Message):
             remote = repo.create_remote("heroku", HEROKU_URL)
         try:
             remote.push(refspec="HEAD:refs/heads/master", force=True)
+            await msg.edit("`Updating and Restarting has Started! Please wait for 5-10 Minutes!`")
         except BaseException as error:
             await msg.edit(f"**Updater Error** \nTraceBack : `{error}`")
             return repo.__del__()
-        await msg.edit("**Successfully Updated**")
