@@ -20,4 +20,3 @@ dnspython
 bs4
 psutil
 heroku3
-git
