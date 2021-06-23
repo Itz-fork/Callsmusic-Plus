@@ -14,7 +14,7 @@ from helpers.dbthings import main_broadcast_handler
 from handlers.musicdwn import humanbytes
 from config import BOT_USERNAME, BOT_OWNER
 
-@Client.on_message(filters.command("botstats") & filters.user(Config.BOT_OWNER))
+@Client.on_message(filters.command("botstats") & filters.user(BOT_OWNER))
 async def botstats(_, message: Message):
     total, used, free = shutil.disk_usage(".")
     total = humanbytes(total)
