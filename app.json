@@ -71,7 +71,7 @@
     "UPSTREAM_REPO": {
       "description": "Github Repo Url. Only needed if you are using your own Fork!",
       "required": false,
-      "value": ""
+      "value": "https://github.com/Itz-fork/Callsmusic-Plus"
     }
   }
 }
