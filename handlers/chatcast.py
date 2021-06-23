@@ -23,9 +23,9 @@ async def chatcast(_, message: Message):
             await wtf.edit("Please Reply to a Message to Chatcast it 🥺!")
             return
         lmao = message.reply_to_message.text
-        async for dialog in pakaya.iter_dialogs():
+        async for dialog in Client.iter_dialogs():
             try:
-                await pakaya.send_message(dialog.chat.id, lmao)
+                await Client.send_message(dialog.chat.id, lmao)
                 sent = sent+1
                 await wtf.edit(f"`ChatCasting...` \n\n**Sent to:** `{sent}` Chats \n**Failed in:** {failed} Chats")
             except:
