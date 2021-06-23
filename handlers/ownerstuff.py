@@ -187,6 +187,7 @@ async def updatebot(_, message: Message):
     else:
         await msg.edit("`Heroku Detected! Pusing...`")
         ups_rem.fetch(U_BRANCH)
+        await msg.edit("`Updating and Restarting has Started! Please wait for 5-10 Minutes!`")
         repo.git.reset("--hard", "FETCH_HEAD")
         if "heroku" in repo.remotes:
             remote = repo.remote("heroku")
@@ -195,7 +196,6 @@ async def updatebot(_, message: Message):
             remote = repo.create_remote("heroku", HEROKU_URL)
         try:
             remote.push(refspec="HEAD:refs/heads/master", force=True)
-            await msg.edit("`Updating and Restarting has Started! Please wait for 5-10 Minutes!`")
         except BaseException as error:
             await msg.edit(f"**Updater Error** \nTraceBack : `{error}`")
             return repo.__del__()
