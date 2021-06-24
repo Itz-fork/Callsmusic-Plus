@@ -140,14 +140,17 @@ async def cbbroadcast(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""<b>Help For Broadcast Plugin</b>
 
-**Feature:** Broadcast Messages To Users Using This Bot!
+**Feature:** Broadcast Messages To Users Using This Bot and Streamer Account!
 
 **Usage:**
     1. If You Set `BROADCAST_AS_COPY` to `False`
-     - Reply to a message to Broadcast it.
+     - Reply to a message with `/broadcast` command to Broadcast it using Bot as a Forwarded Message.
      
     2. If You Set `BROADCAST_AS_COPY` to `True`
-     - Reply to a message to Broadcast it.
+     - Reply to a message with `/broadcast` command to Broadcast it using Bot as a copy of that Message.
+    
+    3. ChatCast Plugin
+     - Reply to a Text message with `/chatcast` command to Broadcast it using Streamer Account as a copy of that Message.
 
 
 Made with ❤️ by **@NexaBotsUpdates**""",
