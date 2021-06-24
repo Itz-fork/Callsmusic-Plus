@@ -2,7 +2,9 @@
 # CallsMusic-Plus (https://github.com/Itz-fork/Callsmusic-Plus)
 
 import sys
+import os
 import heroku3
+import time
 import traceback
 import asyncio
 import shutil
@@ -11,6 +13,7 @@ import psutil
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from datetime import datetime
+from functools import wraps
 from os import environ, execle, path, remove
 from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
@@ -199,3 +202,68 @@ async def updatebot(_, message: Message):
         except BaseException as error:
             await msg.edit(f"**Updater Error** \nTraceBack : `{error}`")
             return repo.__del__()
+
+
+# Heroku Logs
+
+async def edit_or_send_as_file(
+    text: str,
+    message: Message,
+    client: Client,
+    caption: str = "`Result!`",
+    file_name: str = "result",
+    parse_mode="md",
+):
+    """Send As File If Len Of Text Exceeds Tg Limit Else Edit Message"""
+    if not text:
+        await message.edit("`There is something other than text! Aborting...`")
+        return
+    if len(text) > 1024:
+        await message.edit("`OutPut is Too Large to Send in TG, Sending As File!`")
+        file_names = f"{file_name}.text"
+        open(file_names, "w").write(text)
+        await client.send_document(message.chat.id, file_names, caption=caption)
+        await message.delete()
+        if os.path.exists(file_names):
+            os.remove(file_names)
+        return
+    else:
+        return await message.edit(text, parse_mode=parse_mode)
+
+
+
+heroku_client = None
+if HEROKU_API_KEY:
+    heroku_client = heroku3.from_key(HEROKU_API_KEY)
+
+def _check_heroku(func):
+    @wraps(func)
+    async def heroku_cli(client, message):
+        heroku_app = None
+        if not heroku_client:
+            await message.reply_text(
+                "`Please Add Heroku API Key To Use This Feature!`"
+            )
+        elif not HEROKU_APP_NAME:
+            await edit_or_reply(
+                message, "`Please Add Heroku APP Name To Use This Feature!`"
+            )
+        if HEROKU_APP_NAME and heroku_client:
+            try:
+                heroku_app = heroku_client.app(HEROKU_APP_NAME)
+            except:
+                await message.reply_text(
+                    message, "`Heroku Api Key And App Name Doesn't Match! Check it again`"
+                )
+            if heroku_app:
+                await func(client, message, heroku_app)
+
+    return heroku_cli
+
+@Client.on_message(filters.command("logs") & filters.user(BOT_OWNER))
+@_check_heroku
+async def logswen(client: Client, message: Message, happ):
+    msg = await message.reply_text("`Please Wait For a Moment!`")
+    logs = happ.get_log()
+    capt = f"Heroku Logs Of `{Config.HEROKU_APP_NAME}`"
+    await edit_or_send_as_file(logs, msg, client, capt, "logs")
