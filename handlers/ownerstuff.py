@@ -265,5 +265,5 @@ def _check_heroku(func):
 async def logswen(client: Client, message: Message, happ):
     msg = await message.reply_text("`Please Wait For a Moment!`")
     logs = happ.get_log()
-    capt = f"Heroku Logs Of `{Config.HEROKU_APP_NAME}`"
+    capt = f"Heroku Logs Of `{HEROKU_APP_NAME}`"
     await edit_or_send_as_file(logs, msg, client, capt, "logs")
