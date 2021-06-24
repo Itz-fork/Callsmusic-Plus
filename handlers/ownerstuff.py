@@ -20,7 +20,7 @@ from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 
 from helpers.database import db
 from helpers.dbthings import main_broadcast_handler
-from handlers.musicdwn import humanbytes
+from handlers.musicdwn import humanbytes, get_text
 from config import BOT_USERNAME, BOT_OWNER, UPSTREAM_REPO, U_BRANCH, HEROKU_URL, HEROKU_API_KEY, HEROKU_APP_NAME
 
 
@@ -267,3 +267,50 @@ async def logswen(client: Client, message: Message, happ):
     logs = happ.get_log()
     capt = f"Heroku Logs Of `{HEROKU_APP_NAME}`"
     await edit_or_send_as_file(logs, msg, client, capt, "logs")
+
+
+# Restart Your Bot
+@Client.on_message(filters.command("restart") & filters.user(BOT_OWNER))
+@_check_heroku
+async def restart(client: Client, message: Message, hap):
+    msg = await message.reply_text("`Restarting Now! Please wait...`")
+    hap.restart()
+
+
+# Set Heroku Var
+@Client.on_message(filters.command("setvar") & filters.user(BOT_OWNER))
+@_check_heroku
+async def setvar(client: Client, message: Message, app_):
+    msg = await message.reply_text(message, "`Please Wait...!`")
+    heroku_var = app_.config()
+    _var = get_text(message)
+    if not _var:
+        await msg.edit("This is not the way bro! \n\n**Usage:**`/setvar VAR VALUE`")
+        return
+    if not " " in _var:
+        await msg.edit("This is not the way bro! \n\n**Usage:**`/setvar VAR VALUE`")
+        return
+    var_ = _var.split(" ", 1)
+    if len(var_) > 2:
+        await msg.edit("This is not the way bro! \n\n**Usage:**`/setvar VAR VALUE`")
+        return
+    _varname, _varvalue = var_
+    await msg.edit(f"**Variable:** `{_varname}` \n**New Value:** `{_varvalue}`")
+    heroku_var[_varname] = _varvalue
+
+
+# Delete Heroku Var
+@Client.on_message(filters.command("delvar") & filters.user(BOT_OWNER))
+@_check_heroku
+async def delvar(client: Client, message: Message, app_):
+    msg = await message.reply_text(message, "`Please Wait...!`")
+    heroku_var = app_.config()
+    _var = get_text(message)
+    if not _var:
+        await msg_.edit("`Give Me a Var Name To Delete!`")
+        return
+    if not _var in heroku_var:
+        await msg_.edit("`Lol! This Var Doesn't Even Exists!`")
+        return
+    await msg_.edit(f"Sucessfully Deleted Var Named `{_var}`")
+    del heroku_var[_var]
