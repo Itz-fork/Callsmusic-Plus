@@ -6,10 +6,7 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, 
 from helpers.filters import command, other_filters, other_filters2
 from helpers.database import db, Database
 from helpers.dbthings import handle_user_status
-from config import LOG_CHANNEL
-
-## ~ Simple Config ~ ##
-USER_ACCNAME = os.getenv("USER_ACCNAME", "NexaMusicAssistant")
+from config import LOG_CHANNEL, BOT_USERNAME
 
 
 @Client.on_message(filters.private)
@@ -17,7 +14,7 @@ async def _(bot: Client, cmd: Message):
     await handle_user_status(bot, cmd)
 
 
-@Client.on_message(command(["start", "start@MusicsNexa_bot"]))
+@Client.on_message(command(["start", f"start@{BOT_USERNAME}"]))
 async def start(_, message: Message):
     usr_cmd = message.text.split("_")[-1]
     if usr_cmd == "/start":
@@ -64,7 +61,7 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
 
 # Help Menu
 
-@Client.on_message(command(["help", "help@MusicsNexa_bot"]))
+@Client.on_message(command(["help", f"help@{BOT_USERNAME}"]))
 async def help(_, message: Message):
     usr_cmd = message.text.split("_")[-1]
     if usr_cmd == "/help":
@@ -162,7 +159,7 @@ Respect To Code Owners! Not To Me!""",
     )   
 
 
-@Client.on_message(command(["vc", "vc@MusicsNexa_bot"]) & other_filters)
+@Client.on_message(command(["vc", f"vc@{BOT_USERNAME}"]) & other_filters)
 async def vc(_, message: Message):
     usr_cmd = message.text.split("_")[-1]
     if usr_cmd == "/vc":
@@ -207,7 +204,7 @@ Enjoy!😌️❤️""",
     )
 
     
-@Client.on_message(command(["search", "search@MusicsNexa_bot"]))
+@Client.on_message(command(["search", f"search@{BOT_USERNAME}"]))
 async def search(_, message: Message):
     usr_cmd = message.text.split("_")[-1]
     if usr_cmd == "/search":
