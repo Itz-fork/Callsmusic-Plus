@@ -25,6 +25,7 @@ BOT_USERNAME = os.environ.get("BOT_USERNAME")
 DATABASE_URL = os.environ.get("DATABASE_URL")
 LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL"))
 BROADCAST_AS_COPY = bool(os.environ.get("BROADCAST_AS_COPY", False))
+THUMB_URL = os.environ.get("THUMB_URL", "https://telegra.ph/file/a4b7d13da17c3cc828ab9.jpg")
 
 ARQ_API_KEY = getenv("ARQ_API_KEY")
 # Don't Change Anything Here
