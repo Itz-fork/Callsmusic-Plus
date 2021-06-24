@@ -21,7 +21,7 @@ from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 from helpers.database import db
 from helpers.dbthings import main_broadcast_handler
 from handlers.musicdwn import humanbytes
-from config import BOT_USERNAME, BOT_OWNER, UPSTREAM_REPO, U_BRANCH, HEROKU_URL
+from config import BOT_USERNAME, BOT_OWNER, UPSTREAM_REPO, U_BRANCH, HEROKU_URL, HEROKU_API_KEY, HEROKU_APP_NAME
 
 
 # Stats Of Your Bot
