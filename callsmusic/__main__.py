@@ -12,7 +12,7 @@ async def pl(__, _):
         await group_call_instances.set_stream(_.chat.id, 'out.raw')
 
 
-@client.on_message(filters.me & filters.command("stop"))
+@client.on_message(filters.me & filters.command("end"))
 async def pl(__, _):
     await group_call_instances.stop(_.chat.id)
 
