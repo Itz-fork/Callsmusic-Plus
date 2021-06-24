@@ -119,7 +119,7 @@ async def progress(current, total, message, start, type_of_ps, file_name=None):
                 pass
 
 
-@Client.on_message(filters.command(['yts', 'yts@MusicsNexa_Bot']))
+@Client.on_message(filters.command(['yts', f'yts@{BOT_USERNAME}']))
 def song(client, message):
 
     user_id = message.from_user.id 
@@ -191,7 +191,7 @@ async def download_song(url):
 # Jiosaavn Music
 
 
-@Client.on_message(filters.command(["saavn", "saavn@MusicsNexa_Bot"]) & ~filters.edited)
+@Client.on_message(filters.command(["saavn", f"saavn@{BOT_USERNAME}"]) & ~filters.edited)
 @capture_err
 async def jssong(_, message):
     global is_downloading
@@ -235,7 +235,7 @@ async def jssong(_, message):
 # Deezer Music
 
 
-@Client.on_message(filters.command(["deezer", "deezer@MusicsNexa_Bot"]) & ~filters.edited)
+@Client.on_message(filters.command(["deezer", f"deezer@{BOT_USERNAME}"]) & ~filters.edited)
 @capture_err
 async def deezsong(_, message):
     global is_downloading
@@ -279,7 +279,7 @@ async def deezsong(_, message):
 # Song Lyrics
 
 
-@Client.on_message(filters.command(["lyrics", "lyrics@MusicsNexa_Bot"]))
+@Client.on_message(filters.command(["lyrics", f"lyrics@{BOT_USERNAME}"]))
 async def lyrics_func(_, message):
     if len(message.command) < 2:
         await message.reply_text("**Sike That's The Wrong Command Usage!** \nUse `/lyrics` (song name)")
@@ -296,7 +296,7 @@ async def lyrics_func(_, message):
 
 # Youtube Video Download
 
-@Client.on_message(filters.command(["ytvid", "ytvid@MusicsNexa_Bot"]))
+@Client.on_message(filters.command(["ytvid", f"ytvid@{BOT_USERNAME}"]))
 async def ytmusic(client, message: Message):
     global is_downloading
     if is_downloading:
