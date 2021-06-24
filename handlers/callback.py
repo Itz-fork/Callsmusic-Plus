@@ -116,6 +116,8 @@ async def cbhowtouse(_, query: CallbackQuery):
      - `/mute` - Mutes Streamer.
     
      - `/unmute`- Unmutes streamer.
+     
+     - `/end` - Stop playing and leaves the voice chat.
     
      - `/joingrp` - To Add Streamer Account To Your Group.
     
@@ -131,6 +133,9 @@ Made with ❤️ by **@NexaBotsUpdates**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
+                    InlineKeyboardButton(
+                        "Supported Url List", url="https://ytdl-org.github.io/youtube-dl/supportedsites.html"
+                    ),
                     InlineKeyboardButton(
                         "◀️ Back ◀️", callback_data="cbhelpmenu"
                     )
