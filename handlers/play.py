@@ -11,7 +11,7 @@ import aiohttp
 
 from helpers.database import db, Database
 from helpers.dbthings import handle_user_status
-from config import DURATION_LIMIT, LOG_CHANNEL
+from config import DURATION_LIMIT, LOG_CHANNEL, BOT_USERNAME, THUMB_URL
 from helpers.errors import DurationLimitError
 from helpers.filters import command, other_filters
 from helpers.decorators import errors
@@ -21,7 +21,7 @@ from helpers.decorators import errors
 async def _(bot: Client, cmd: command):
     await handle_user_status(bot, cmd)
 
-@Client.on_message(command(["play", "play@MusicsNexa_bot"]) & other_filters)
+@Client.on_message(command(["play", f"play@{BOT_USERNAME}"]) & other_filters)
 @errors
 async def play(_, message: Message):
     audio = (message.reply_to_message.audio or message.reply_to_message.voice) if message.reply_to_message else None
@@ -78,13 +78,13 @@ async def play(_, message: Message):
         file = await converter.convert(youtube.download(url))
 
     if message.chat.id in callsmusic.active_chats:
-        thumb = "https://telegra.ph/file/a4b7d13da17c3cc828ab9.jpg"
+        thumb = THUMB_URL
         position = await queues.put(message.chat.id, file=file)
         MENTMEH = message.from_user.mention()
         await response.delete()
         await message.reply_photo(thumb, caption=f"**Your Song Queued at position** `{position}`! \n**Requested by: {MENTMEH}**")
     else:
-        thumb = "https://telegra.ph/file/a4b7d13da17c3cc828ab9.jpg"
+        thumb = THUMB_URL
         await callsmusic.set_stream(message.chat.id, file)
         await response.delete()
         await message.reply_photo(thumb, caption="**Playing Your Song 🎧...** \n**Requested by: {}**".format(message.from_user.mention()))
