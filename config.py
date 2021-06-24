@@ -9,10 +9,6 @@ from helpers.modhelps import fetch_heroku_git_url
 
 load_dotenv()
 
-# Getting Bot's Username
-async def get_username(lmao: Client):
-  await lmao.get_me().username
-
 SESSION_NAME = getenv("SESSION_NAME", "session")
 BOT_TOKEN = getenv("BOT_TOKEN")
 
