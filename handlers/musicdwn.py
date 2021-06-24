@@ -27,7 +27,7 @@ from youtubesearchpython import SearchVideos
 from youtube_search import YoutubeSearch
 from Python_ARQ import ARQ
 
-from config import ARQ_API_URL, ARQ_API_KEY
+from config import ARQ_API_URL, ARQ_API_KEY, get_username
 from helpers.merrors import capture_err
 from helpers.modhelps import paste
 
@@ -35,7 +35,6 @@ is_downloading = False
 
 aiohttpsession = ClientSession()
 arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
-BOT_USERNAME = (await Client.get_me()).username
 
 def get_file_extension_from_url(url):
     url_path = urlparse(url).path
@@ -160,7 +159,7 @@ def song(client, message):
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = f'🎙 **Title**: [{title[:35]}]({link})\n🎬 **Source**: `YouTube`\n⏱️ **Song Duration**: `{duration}`\n👁‍🗨 **Song Views**: `{views}`\n**Uploaded By**: **@{BOT_USERNAME}** \n **Join @NexaBotsUpdates 😉** '
+        rep = f'🎙 **Title**: [{title[:35]}]({link})\n🎬 **Source**: `YouTube`\n⏱️ **Song Duration**: `{duration}`\n👁‍🗨 **Song Views**: `{views}`\n**Uploaded By**: **@{get_username}** \n **Join @NexaBotsUpdates 😉** '
         secmul, dur, dur_arr = 1, 0, duration.split(':')
         for i in range(len(dur_arr)-1, -1, -1):
             dur += (int(dur_arr[i]) * secmul)
