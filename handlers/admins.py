@@ -41,7 +41,7 @@ async def update_admin(client, message):
     await message.reply_text("**Successfully Updated Admin List ✅!**")
 
 
-@Client.on_message(command(["pause", "pause@MusicsNexa_bot"]))
+@Client.on_message(command(["pause", "pause@MusicsNexa_bot", "p"]))
 @errors
 @authorized_users_only
 async def pause(_, message: Message):
@@ -52,7 +52,7 @@ async def pause(_, message: Message):
         await message.reply_text("❗️ Nothing is playing")
 
 
-@Client.on_message(command(["resume", "resume@MusicsNexa_bot"]))
+@Client.on_message(command(["resume", "resume@MusicsNexa_bot", "r"]))
 @errors
 @authorized_users_only
 async def resume(_, message: Message):
@@ -62,7 +62,7 @@ async def resume(_, message: Message):
         await message.reply_text("❗️ Nothing is paused")
 
 
-@Client.on_message(command(["stop", "stop@MusicsNexa_bot"]))
+@Client.on_message(command(["end", "end@MusicsNexa_bot", "e"]))
 @errors
 @authorized_users_only
 async def stop(_, message: Message):
@@ -78,7 +78,7 @@ async def stop(_, message: Message):
         await message.reply_text("✅ Cleared the queue and left the Voice Chat!")
 
 
-@Client.on_message(command(["skip", "skip@MusicsNexa_bot"]))
+@Client.on_message(command(["skip", "skip@MusicsNexa_bot", "s"]))
 @errors
 @authorized_users_only
 async def skip(_, message: Message):
@@ -97,7 +97,7 @@ async def skip(_, message: Message):
         await message.reply_text("Skipped!")
 
 
-@Client.on_message(command(["mute", "mute@MusicsNexa_bot"]))
+@Client.on_message(command(["mute", "mute@MusicsNexa_bot", "m"]))
 @errors
 @authorized_users_only
 async def mute(_, message: Message):
@@ -111,7 +111,7 @@ async def mute(_, message: Message):
         await message.reply_text("❗️ Not in voice chat")
 
 
-@Client.on_message(command(["unmute", "unmute@MusicsNexa_bot"]))
+@Client.on_message(command(["unmute", "unmute@MusicsNexa_bot", "um"]))
 @errors
 @authorized_users_only
 async def unmute(_, message: Message):
