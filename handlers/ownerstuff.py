@@ -307,10 +307,10 @@ async def delvar(client: Client, message: Message, app_):
     heroku_var = app_.config()
     _var = get_text(message)
     if not _var:
-        await msg_.edit("`Give Me a Var Name To Delete!`")
+        await msg.edit("`Give Me a Var Name To Delete!`")
         return
     if not _var in heroku_var:
-        await msg_.edit("`Lol! This Var Doesn't Even Exists!`")
+        await msg.edit("`Lol! This Var Doesn't Even Exists!`")
         return
-    await msg_.edit(f"Sucessfully Deleted Var Named `{_var}`")
+    await msg.edit(f"Sucessfully Deleted Var Named `{_var}`")
     del heroku_var[_var]
