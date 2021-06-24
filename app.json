@@ -53,11 +53,6 @@
       "required": false,
       "value": ""
     },
-    "USER_ACCNAME": {
-      "description": "Streamer Account Username of your account. Need for start message!",
-      "required": true,
-      "value": ""
-    },
     "HEROKU_APP_NAME": {
       "description": "Your Heroku App Name!",
       "required": true,
