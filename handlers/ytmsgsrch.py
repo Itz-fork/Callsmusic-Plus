@@ -12,7 +12,7 @@ from pyrogram import Client, filters
 
 from helpers.database import db, Database
 from helpers.dbthings import handle_user_status
-from config import LOG_CHANNEL
+from config import LOG_CHANNEL, BOT_USERNAME
 
 logging.basicConfig(
     level=logging.DEBUG, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -28,7 +28,7 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 async def _(bot: Client, cmd: Message):
     await handle_user_status(bot, cmd)
 
-@Client.on_message(pyrogram.filters.command(["ytsearch", "ytsearch@MusicsNexa_bot"]))
+@Client.on_message(pyrogram.filters.command(["ytsearch", f"ytsearch@{BOT_USERNAME}"]))
 async def ytsearch(_, message: Message):
     try:
         if len(message.command) < 2:
