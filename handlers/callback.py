@@ -1,7 +1,8 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, Chat, CallbackQuery
 
-from handlers.start import USER_ACCNAME
+from callsmusic.callsmusic import client as USER
+from config import BOT_USERNAME
 
 # close calllback
 
@@ -98,8 +99,8 @@ async def cbhowtouse(_, query: CallbackQuery):
         f"""<b>How To Use This Bot?</b>
 
 **Setting Up The Bot:**
-    1. Add This Bot and @{USER_ACCNAME} To Your Group! (Send `/joingrp` to your group! Streamer Will Automatically join)
-    2. Give Admin To Me and @{USER_ACCNAME} !
+    1. Add This Bot and @{(await USER.get_me()).username} To Your Group! (Send `/joingrp` to your group! Streamer Will Automatically join)
+    2. Give Admin To Me and @{(await USER.get_me()).username} !
 
  
 **Using Player Commands:**
@@ -184,14 +185,14 @@ async def cbytsearch(_, query: CallbackQuery):
 
 **Usage:**
     1. For Inline Search Feature,
-     - Type `@MusicsNexa_Bot` in any chat then type ` `(space) and search.
+     - Type `@{BOT_USERNAME}` in any chat then type ` `(space) and search.
     
     2. For Search Via Command,
      - Send `/ytsearch` command with your keyword.
 
 **Example:**
     1. Example For Inline Search
-     - `@MusicsNexa_Bot faded`
+     - `@{BOT_USERNAME} faded`
     
     2. Example For Search via Command
      - `/ytsearch faded`
