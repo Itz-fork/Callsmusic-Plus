@@ -42,7 +42,7 @@ async def ytsearch(_, message: Message):
         text = ""
         while i < 4:
             text += f"📄**Title:** `{results[i]['title']}`\n"
-            text += f"  ↳**Duration*:* `{results[i]['duration']}`\n"
+            text += f"  ↳**Duration:** `{results[i]['duration']}`\n"
             text += f"  ↳**Views:** `{results[i]['views']}`\n"
             text += f"  ↳**Channel:** `{results[i]['channel']}`\n"
             text += f"  ↳**Url:** https://youtube.com{results[i]['url_suffix']}\n\n"
