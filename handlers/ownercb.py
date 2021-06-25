@@ -71,6 +71,7 @@ Please Select an Option From Below buttons 😊!**""",
 
 # Bans
 @Client.on_callback_query(filters.regex("cbbans"))
+@is_that_owner
 async def cbbans(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""<b>Help For Bans Plugin</b>
@@ -100,6 +101,7 @@ Made with ❤️ by **@NexaBotsUpdates**""",
 
 # Unbans
 @Client.on_callback_query(filters.regex("cbunbans"))
+@is_that_owner
 async def cbunbans(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""<b>Help For Unbans Plugin</b>
@@ -128,6 +130,7 @@ Made with ❤️ by **@NexaBotsUpdates**""",
 
 # User Stats
 @Client.on_callback_query(filters.regex("cbuserstats"))
+@is_that_owner
 async def cbuserstats(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""<b>Help For User Stats Plugin</b>
@@ -152,6 +155,7 @@ Made with ❤️ by **@NexaBotsUpdates**""",
 
 # Broadcast
 @Client.on_callback_query(filters.regex("cbbroadcast"))
+@is_that_owner
 async def cbbroadcast(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""<b>Help For Broadcast Plugin</b>
@@ -183,6 +187,7 @@ Made with ❤️ by **@NexaBotsUpdates**""",
 
 # Heroku Functions
 @Client.on_callback_query(filters.regex("cbherokufuncs"))
+@is_that_owner
 async def cbherokufuncs(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""<b>Help For Heroku Plugin</b>
