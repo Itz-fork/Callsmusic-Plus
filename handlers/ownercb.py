@@ -47,6 +47,11 @@ Please Select an Option From Below buttons 😊!**""",
                     InlineKeyboardButton(
                         "Broadcast", callback_data="cbbroadcast"
                     )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "Heroku", callback_data="cbherokufuncs"
+                    )
                 ]
             ]
         )
@@ -151,6 +156,52 @@ async def cbbroadcast(_, query: CallbackQuery):
     
     3. ChatCast Plugin
      - Reply to a Text message with `/chatcast` command to Broadcast it using Streamer Account as a copy of that Message.
+
+
+Made with ❤️ by **@NexaBotsUpdates**""",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "◀️ Back ◀️", callback_data="cbownertools"
+                    )
+                ]
+            ]
+        )
+    )
+
+# Heroku Functions
+@Client.on_callback_query(filters.regex("cbherokufuncs"))
+async def cbherokufuncs(_, query: CallbackQuery):
+    await query.edit_message_text(
+        f"""<b>Help For Heroku Plugin</b>
+
+**Feature:** Update, Restart, Set New Config  Vars, Delete Config Vars and Get Your Bot Logs inside Telegram!
+
+**Usage:**
+    1. Update Your Bot (To Get Latest Features)
+     - Send `/update` command to your bot.
+    
+    2. Restart Your Bot (In case Heroku  Ram exceed or something)
+     - Send `/restart` command to your bot.
+    
+    3. Set New Config Vars
+     - Command `/setvar VARIABLE_NAME VALUE` (Refer Example Section at the end of this message)
+    
+    4. Delete Config Vars
+     - Command `/delvar VARIABLE_NAME` (Refer Example Section at the end of this message)
+    
+    5. Get Your Bot's Logs
+     - Send `/logs` command to your  bot.
+
+**Examples:**
+     1. Set New Config Vars,
+      - `/setvar THUMB_URL https://telegra.ph/file/1abf950297d8e9810dc81.jpg`
+       This will Update `THUMB_URL` variable with `https://telegra.ph/file/1abf950297d8e9810dc81.jpg` as Value
+     
+     2. Delete Config Vars,
+      - `/delvar THUMB_URL`
+       This will delete variable named  `THUMB_URL`
 
 
 Made with ❤️ by **@NexaBotsUpdates**""",
