@@ -12,7 +12,7 @@ from pyrogram import Client, filters
 
 from helpers.database import db, Database
 from helpers.dbthings import handle_user_status
-from config import LOG_CHANNEL, BOT_USERNAME
+from config import LOG_CHANNEL, BOT_USERNAME, THUMB_URL
 
 logging.basicConfig(
     level=logging.DEBUG, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -37,15 +37,15 @@ async def ytsearch(_, message: Message):
         query = message.text.split(None, 1)[1]
         m = await message.reply_text("**Searching For Your Keyword** 😒")
         results = YoutubeSearch(query, max_results=4).to_dict()
-        thumb = "https://telegra.ph/file/a4b7d13da17c3cc828ab9.jpg"
+        thumb = THUMB_URL
         i = 0
         text = ""
         while i < 4:
-            text += f"Title - {results[i]['title']}\n"
-            text += f"Duration - {results[i]['duration']}\n"
-            text += f"Views - {results[i]['views']}\n"
-            text += f"Channel - {results[i]['channel']}\n"
-            text += f"https://youtube.com{results[i]['url_suffix']}\n\n"
+            text += f"📄**Title:** `{results[i]['title']}`\n"
+            text += f"  ↳**Duration*:* `{results[i]['duration']}`\n"
+            text += f"  ↳**Views:** `{results[i]['views']}`\n"
+            text += f"  ↳**Channel:** `{results[i]['channel']}`\n"
+            text += f"  ↳**Url:** https://youtube.com{results[i]['url_suffix']}\n\n"
             i += 1
         await m.delete()
         await m.reply_photo(thumb, caption=text)
