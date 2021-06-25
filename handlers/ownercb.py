@@ -4,6 +4,16 @@ from functools import wraps
 
 from config import BOT_OWNER
 
+def is_that_owner(func):
+    @wraps(func)
+    async def ownermelol(message, query):
+        mahowner = BOT_OWNER
+        if query.from_user.id not in mahowner:
+            await query.answer("You Go Away, This isn't For You!", show_alert=True)
+        return
+    
+    return ownermelol
+
 OWNER_TEXT = "**Hello My Master 😇!** Please select option from below buttons \n\n ~ @NexaBotsUpdates"
 
 OWNER_HELPCB=InlineKeyboardMarkup(
