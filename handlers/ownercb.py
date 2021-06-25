@@ -9,8 +9,10 @@ def is_that_owner(func):
     async def ownermelol(message, query):
         mahowner = BOT_OWNER
         if query.from_user.id != mahowner:
+            return await func(message, query)
+        else:
             await query.answer("You Go Away, This isn't For You!", show_alert=True)
-        return
+            return
     
     return ownermelol
 
