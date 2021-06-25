@@ -76,7 +76,7 @@
     "UPDATES_CHANNEL": {
       "description": "Your Telegram Channel's Username without '@' . Not Needed by Default!",
       "required": false,
-      "value": ""
+      "value": "NexaBotsUpdates"
     }
   }
 }
