@@ -43,7 +43,12 @@ Made with ❤️ **@{UPDATES_CHANNEL}**""",
                 ],
                 [
                     InlineKeyboardButton(
-                        "🤨️ How To Use Me 🤨️", callback_data="cbhelpmenu"
+                        "👮‍♂️ Help Menu 👮‍♂️", callback_data="cbhelpmenu"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "📦 Source Code 📦", url="https://github.com/Itz-fork/Callsmusic-Plus"
                     )
                 ],
                 [
