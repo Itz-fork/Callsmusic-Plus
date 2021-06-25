@@ -69,9 +69,9 @@
       "value": "https://github.com/Itz-fork/Callsmusic-Plus"
     },
     "THUMB_URL": {
-      "description": "Thumbnail Url To Use in play, search commands. Add if you need a custom one instead of default thumbnail",
+      "description": "Thumbnail Url To Use in play, search commands. Add this only if you need a custom one instead of default thumbnail",
       "required": false,
-      "value": ""
+      "value": "https://telegra.ph/file/2ed47c81eda6b0624021d.jpg"
     },
     "UPDATES_CHANNEL": {
       "description": "Your Telegram Channel's Username without '@' . Not Needed by Default!",
