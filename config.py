@@ -34,7 +34,7 @@ BROADCAST_AS_COPY = bool(os.environ.get("BROADCAST_AS_COPY", False))
 # Thumbnail URL
 THUMB_URL = os.environ.get("THUMB_URL", "https://telegra.ph/file/2ed47c81eda6b0624021d.jpg")
 # Your Updates Channel! Don't Put Anything If you don't have one
-UPDATES_CHANNEL = getenv("UPDATES_CHANNEL", "NexaBotsUpdates")
+UPDATES_CHANNEL = os.environ.get("UPDATES_CHANNEL", "NexaBotsUpdates")
 
 # Your ARQ API Key
 ARQ_API_KEY = getenv("ARQ_API_KEY")
