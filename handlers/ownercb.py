@@ -1,8 +1,18 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, Chat, CallbackQuery
+from functools import wraps
 
 from config import BOT_OWNER
 
+def is_that_owner(func):
+    @wraps(func)
+    async def ownermelol(message, query):
+        mahowner = BOT_OWNER
+        if query.from_user.id not in mahowner
+        await query.answer("You Go Away, This isn't For You!", show_alert=True)
+        return
+
+    return ownermelol
 
 OWNER_TEXT = "**Hello My Master 😇!** Please select option from below buttons \n\n ~ @NexaBotsUpdates"
 
@@ -25,6 +35,7 @@ OWNER_HELPCB=InlineKeyboardMarkup(
 # Main owner help menu
 
 @Client.on_callback_query(filters.regex("cbownertools"))
+@is_that_owner
 async def cbownertools(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""**He he! You Opened Owner Menu!
@@ -217,6 +228,6 @@ Made with ❤️ by **@NexaBotsUpdates**""",
     )
 
 # Command
-@Client.on_message(filters.private & filters.command("modhelp") & filters.user(BOT_OWNER) & ~filters.edited)
+@Client.on_message(filters.command("modhelp") & filters.user(BOT_OWNER) & ~filters.edited)
 async def modhelp(_, message: Message):
     await message.reply_text(OWNER_TEXT, reply_markup=OWNER_HELPCB)
