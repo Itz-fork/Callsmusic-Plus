@@ -22,7 +22,7 @@ I'm The Nexa Music Bot! A Powerful Bot to Play Music in Your Group Voice Chat �
 
 Also I have more features! Please hit on **/help** to see them 😘!
 
-Made with ❤️ <b>@NexaBotsUpdates</b>""",
+Made with ❤️ **@{UPDATES_CHANNEL}**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -37,7 +37,12 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
                 ],
                 [
                     InlineKeyboardButton(
-                        "🔰️ My Update Channel 🔰️", url="https://t.me/NexaBotsUpdates"
+                        "📦 Source Code 📦", url="https://github.com/Itz-fork/Callsmusic-Plus"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🔰️ My Update Channel 🔰️", url=f"https://t.me/{UPDATES_CHANNEL}"
                     ),
                     InlineKeyboardButton(
                         "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
