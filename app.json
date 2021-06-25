@@ -15,7 +15,7 @@
       "required": true
     },
     "SESSION_NAME": {
-      "description": "Your Pyrogram String Session. Read wiki.",
+      "description": "Streamer(Dummy) Account's Pyrogram String Session. Read wiki.",
       "required": true
     },
     "BOT_TOKEN": {
@@ -31,8 +31,8 @@
       "required": true
     },
     "DURATION_LIMIT": {
-      "description": "Max Time Limite For One Song.",
-      "required": true,
+      "description": "Max Time Limit For One Song. Fill in Minutes",
+      "required": false,
       "value": "180"
     },
     "LOG_CHANNEL": {
@@ -45,7 +45,7 @@
       "required": true
     },
     "BOT_USERNAME": {
-      "description": "Your Bot's Username",
+      "description": "Your Bot's Username without '@' !",
       "required": true
     },
     "ARQ_API_KEY": {
@@ -67,6 +67,16 @@
       "description": "Github Repo Url. Only needed if you are using your own Fork!",
       "required": false,
       "value": "https://github.com/Itz-fork/Callsmusic-Plus"
+    },
+    "THUMB_URL": {
+      "description": "Thumbnail Url To Use in play, search commands. Add if you need a custom one instead of default thumbnail",
+      "required": false,
+      "value": ""
+    },
+    "UPDATES_CHANNEL": {
+      "description": "Your Telegram Channel's Username without '@' . Not Needed by Default!",
+      "required": false,
+      "value": ""
     }
   }
 }
