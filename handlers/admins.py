@@ -12,7 +12,7 @@ from helpers.filters import command
 from helpers.decorators import errors, authorized_users_only
 from helpers.database import db, dcmdb, Database
 from helpers.dbthings import handle_user_status, delcmd_is_on, delcmd_on, delcmd_off
-from config import LOG_CHANNEL, BOT_OWNER
+from config import LOG_CHANNEL, BOT_OWNER, BOT_USERNAME
 from . import que, admins as fuck
 
 
@@ -29,7 +29,7 @@ async def delcmd(_, message: Message):
     await message.continue_propagation()
 
 
-@Client.on_message(filters.command(["reload", "reload@MusicsNexa_bot"]))
+@Client.on_message(filters.command(["reload", f"reload@{BOT_USERNAME}"]))
 @authorized_users_only # Fuk Off Everyone! Admin Only Command!
 async def update_admin(client, message):
     global fuck
@@ -41,7 +41,7 @@ async def update_admin(client, message):
     await message.reply_text("**Successfully Updated Admin List ✅!**")
 
 
-@Client.on_message(command(["pause", "pause@MusicsNexa_bot", "p"]))
+@Client.on_message(command(["pause", f"pause@{BOT_USERNAME}", "p"]))
 @errors
 @authorized_users_only
 async def pause(_, message: Message):
@@ -52,7 +52,7 @@ async def pause(_, message: Message):
         await message.reply_text("❗️ Nothing is playing")
 
 
-@Client.on_message(command(["resume", "resume@MusicsNexa_bot", "r"]))
+@Client.on_message(command(["resume", f"resume@{BOT_USERNAME}", "r"]))
 @errors
 @authorized_users_only
 async def resume(_, message: Message):
@@ -62,7 +62,7 @@ async def resume(_, message: Message):
         await message.reply_text("❗️ Nothing is paused")
 
 
-@Client.on_message(command(["end", "end@MusicsNexa_bot", "e"]))
+@Client.on_message(command(["end", f"end@{BOT_USERNAME}", "e"]))
 @errors
 @authorized_users_only
 async def stop(_, message: Message):
@@ -78,7 +78,7 @@ async def stop(_, message: Message):
         await message.reply_text("✅ Cleared the queue and left the Voice Chat!")
 
 
-@Client.on_message(command(["skip", "skip@MusicsNexa_bot", "s"]))
+@Client.on_message(command(["skip", f"skip@{BOT_USERNAME}", "s"]))
 @errors
 @authorized_users_only
 async def skip(_, message: Message):
@@ -97,7 +97,7 @@ async def skip(_, message: Message):
         await message.reply_text("Skipped!")
 
 
-@Client.on_message(command(["mute", "mute@MusicsNexa_bot", "m"]))
+@Client.on_message(command(["mute", f"mute@{BOT_USERNAME}", "m"]))
 @errors
 @authorized_users_only
 async def mute(_, message: Message):
@@ -111,7 +111,7 @@ async def mute(_, message: Message):
         await message.reply_text("❗️ Not in voice chat")
 
 
-@Client.on_message(command(["unmute", "unmute@MusicsNexa_bot", "um"]))
+@Client.on_message(command(["unmute", f"unmute@{BOT_USERNAME}", "um"]))
 @errors
 @authorized_users_only
 async def unmute(_, message: Message):
@@ -127,7 +127,7 @@ async def unmute(_, message: Message):
 
 # Anti-Command Feature On/Off
 
-@Client.on_message(filters.command("delcmd") & ~filters.private)
+@Client.on_message(filters.command(["delcmd", f"delcmd@{BOT_USERNAME}"]) & ~filters.private)
 async def delcmdc(_, message: Message):
     if len(message.command) != 2:
         await message.reply_text("Lol! This isn't the way to use this command 😂! Please read **/help** ☺️")

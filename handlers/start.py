@@ -6,7 +6,7 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, 
 from helpers.filters import command, other_filters, other_filters2
 from helpers.database import db, Database
 from helpers.dbthings import handle_user_status
-from config import LOG_CHANNEL, BOT_USERNAME
+from config import LOG_CHANNEL, BOT_USERNAME, UPDATES_CHANNEL
 
 
 @Client.on_message(filters.private)
@@ -33,22 +33,27 @@ I'm The Nexa Music Bot! A Powerful Bot to Play Music in Your Group Voice Chat �
 
 Also I have more features! Please hit on **/help** to see them 😘!
 
-Made with ❤️ <b>@NexaBotsUpdates</b>""",
+Made with ❤️ **@{UPDATES_CHANNEL}**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "➕ Add Me To Your Group ➕", url="https://t.me/MusicsNexa_bot?startgroup=true"
+                        "➕ Add Me To Your Group ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true"
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        "🤨️ How To Use Me 🤨️", callback_data="cbhelpmenu"
+                        "👮‍♂️ Help Menu 👮‍♂️", callback_data="cbhelpmenu"
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        "🔰️ My Update Channel 🔰️", url="https://t.me/NexaBotsUpdates"
+                        "📦 Source Code 📦", url="https://github.com/Itz-fork/Callsmusic-Plus"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🔰️ My Update Channel 🔰️", url=f"https://t.me/{UPDATES_CHANNEL}"
                     ),
                     InlineKeyboardButton(
                         "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
@@ -133,20 +138,19 @@ __Note!__ ⚠️: This Project Is <b>Not Fully Owned By Me</b> !
 Credits To,
 
 <b><a href="https://github.com/CallsMusic">CallsMusic</a></b> - For Callsmusic (Main Code ❤️) !
-<b>Mr Dark Prince</b> - For Yt Download!
-<b>TheHamkercat</b> - For Deezer and Saavn Download!
-<b>TeamDaisyX</b>
+<b>Mr Dark Prince</b>
+<b>TheHamkercat</b>
 <b>AbirHasan2005</b>
-<b>N A C</b> - For <code>/vc</code> Command
+<b>DevsExpo</b>
+<b>TeamDaisyX</b>
+<b>N A C</b>
 
-Made with ❤️ by **@NexaBotsUpdates**
-
-Respect To Code Owners! Not To Me!""",
+Made with ❤️ by **@{UPDATES_CHANNEL}**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "🔰️ My Update Channel 🔰️", url="https://t.me/NexaBotsUpdates"
+                        "🔰️ My Update Channel 🔰️", url=f"https://t.me/{UPDATES_CHANNEL}"
                     )
                 ],
                 [
@@ -155,7 +159,8 @@ Respect To Code Owners! Not To Me!""",
                     )
                 ]
             ]
-        )
+        ),
+        disable_web_page_preview=True
     )   
 
 
@@ -182,7 +187,7 @@ ____________________------------______________________
 👉️ [Here Is Your Voice Chat Link](https://t.me/{message.chat.username}?voicechat) 👈️
 ____________________------------______________________
 
-Enjoy!😌️❤️""",
+Enjoy 😌️❤️!""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -192,7 +197,7 @@ Enjoy!😌️❤️""",
                 ],
                 [
                     InlineKeyboardButton(
-                        "🔰️ Update Channel 🔰️", url="https://t.me/NexaBotsUpdates"
+                        "🔰️ Update Channel 🔰️", url=f"https://t.me/{UPDATES_CHANNEL}"
                     ),
                     InlineKeyboardButton(
                         "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"

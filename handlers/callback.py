@@ -2,7 +2,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, Chat, CallbackQuery
 
 from callsmusic.callsmusic import client as USER
-from config import BOT_USERNAME
+from config import BOT_USERNAME, UPDATES_CHANNEL
 
 # close calllback
 
@@ -22,12 +22,12 @@ I'm The Nexa Music Bot! A Powerful Bot to Play Music in Your Group Voice Chat �
 
 Also I have more features! Please hit on **/help** to see them 😘!
 
-Made with ❤️ <b>@NexaBotsUpdates</b>""",
+Made with ❤️ **@{UPDATES_CHANNEL}**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "➕ Add Me To Your Group ➕", url="https://t.me/MusicsNexa_bot?startgroup=true"
+                        "➕ Add Me To Your Group ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true"
                     )
                 ],
                 [
@@ -37,7 +37,12 @@ Made with ❤️ <b>@NexaBotsUpdates</b>""",
                 ],
                 [
                     InlineKeyboardButton(
-                        "🔰️ My Update Channel 🔰️", url="https://t.me/NexaBotsUpdates"
+                        "📦 Source Code 📦", url="https://github.com/Itz-fork/Callsmusic-Plus"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🔰️ My Update Channel 🔰️", url=f"https://t.me/{UPDATES_CHANNEL}"
                     ),
                     InlineKeyboardButton(
                         "⚜️ Support Group ⚜️", url="https://t.me/Nexa_bots"
@@ -99,8 +104,8 @@ async def cbhowtouse(_, query: CallbackQuery):
         f"""<b>How To Use This Bot?</b>
 
 **Setting Up The Bot:**
-    1. Add This Bot and @{(await USER.get_me()).username} To Your Group! (Send `/joingrp` to your group! Streamer Will Automatically join)
-    2. Give Admin To Me and @{(await USER.get_me()).username} !
+    1. Add **{BOT_USERNAME}** Bot and @{(await USER.get_me()).username} To Your Group! (Send `/joingrp` to your group! Streamer Will Automatically join)
+    2. Give Admin To **{BOT_USERNAME}** and **@{(await USER.get_me()).username}** !
 
  
 **Using Player Commands:**
@@ -130,7 +135,7 @@ async def cbhowtouse(_, query: CallbackQuery):
 
 **Supported Url List:** https://ytdl-org.github.io/youtube-dl/supportedsites.html
 
-Made with ❤️ by **@NexaBotsUpdates**""",
+Made with ❤️ by **@{UPDATES_CHANNEL}**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -161,7 +166,7 @@ async def cbgetlyrics(_, query: CallbackQuery):
 
 **Example:** `/lyrics faded`
 
-Made with ❤️ by **@NexaBotsUpdates**""",
+Made with ❤️ by **@{UPDATES_CHANNEL}**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -197,7 +202,7 @@ async def cbytsearch(_, query: CallbackQuery):
     2. Example For Search via Command
      - `/ytsearch faded`
 
-Made with ❤️ by **@NexaBotsUpdates**""",
+Made with ❤️ by **@{UPDATES_CHANNEL}**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -239,7 +244,7 @@ async def cbmusicdown(_, query: CallbackQuery):
     3. Example For Deezer Audio Download,
       - `/deezer unity`
 
-Made with ❤️ by **@NexaBotsUpdates**""",
+Made with ❤️ by **@{UPDATES_CHANNEL}**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -266,7 +271,7 @@ async def cbytviddown(_, query: CallbackQuery):
 
 **Example:** `/ytvid faded`
 
-Made with ❤️ by **@NexaBotsUpdates**""",
+Made with ❤️ by **@{UPDATES_CHANNEL}**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -295,7 +300,7 @@ async def cbdelcmds(_, query: CallbackQuery):
     2. To Turn Off This,
       - Send `/delcmd off` command.
 
-Made with ❤️ by **@NexaBotsUpdates**""",
+Made with ❤️ by **@{UPDATES_CHANNEL}**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -337,7 +342,7 @@ async def cbquotely(_, query: CallbackQuery):
     3. Example Quote Message with Reply,
       - `/q r` reply to a text message
 
-Made with ❤️ by **@NexaBotsUpdates**""",
+Made with ❤️ by **@{UPDATES_CHANNEL}**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
