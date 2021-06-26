@@ -79,4 +79,4 @@ async def getlogs(message: Message, app_):
     await msg.edit("`Successfully Enabled PM Logs Module!` \n\n**Bot is Restarting Now..**")
     heroku_var[_done] = False
   except Exception as lol:
-    await i_go_away.edit(f"`Can't Enable This Feature!, Something Wrong Happend!` \n\n**Error:** `{lol}`")
+    await msg.edit(f"`Can't Enable This Feature!, Something Wrong Happend!` \n\n**Error:** `{lol}`")
