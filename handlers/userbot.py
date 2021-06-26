@@ -1,6 +1,8 @@
-# Copyright (c) @Bruh_0x (Itz-fork)
+# Copyright (c) 2021 @Bruh_0x (Itz-fork)
 # Plugin To Handle Your Streamer Account
 
+import heroku3
+import os
 from pyrogram import Client, filters
 from pyrogram.types import Dialog, Chat, Message
 
@@ -58,3 +60,22 @@ async def ubkickme(_, message: Message):
 @NEXAUB.on_message(filters.command("alive", [".", "/"]) & filters.me & ~filters.edited)
 async def ubalive(_, message: Message):
   await message.edit_text(f"**🌀 Nexa Music Userbot is Alive 🌀** \n\n**🤖 Bot Version:** `V2.9.1` \n\n**🐬 Info**\n ↳**Music Bot:** @{BOT_USERNAME} \n ↳**Owner:** [Click Here](tg://user?id={BOT_OWNER})")
+
+
+# Get Streamer's Private Chat Messages in to a Private Group
+PM_LOGS = bool(os.environ.get("BROADCAST_AS_COPY", True))
+@NEXAUB.on_message(filters.private & filters.command("getlogs", [".", "/"]) & filters.me & ~filters.edited)
+async def getlogs(message: Message, app_):
+  msg = await message.edit_text("`PM Message Logs Module is Starting Now...`")
+  if PM_LOGS is False:
+    await msg.edit("`You already did this huh? Why again?`")
+    return
+  heroku_var = app_.config()
+  _done = PM_LOGS
+  try:
+    await msg.edit("`Creating Private Group Now...`!")
+    await NEXAUB.create_group(f"Nexa Userbot's PM Logs", BOT_OWNER)
+    await msg.edit("`Successfully Enabled PM Logs Module!` \n\n**Bot is Restarting Now..**")
+    heroku_var[_done] = False
+  except Exception as lol:
+    await i_go_away.edit(f"`Can't Enable This Feature!, Something Wrong Happend!` \n\n**Error:** `{lol}`")
