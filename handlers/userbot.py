@@ -4,6 +4,7 @@
 from pyrogram import Client, filters
 from pyrogram.types import Dialog, Chat, Message
 
+from config import BOT_USERNAME, BOT_OWNER
 from callsmusic.callsmusic import client as NEXAUB
 
 # To Block a PM'ed User
@@ -19,7 +20,7 @@ async def ubblock(_, message: Message):
 
 
 # To Unblock User That Already Blocked
-@NEXAUB.on_message(filters.private & filters.command("unblock", [".", "/"]) & filters.me & ~filters.edited)
+@NEXAUB.on_message(filters.command("unblock", [".", "/"]) & filters.me & ~filters.edited)
 async def ubblock(_, message: Message):
   good_bro = int(message.command[1])
   gonna_unblock_u = await message.edit_text("`Unblocking User...`")
@@ -40,3 +41,21 @@ async def ubgetchats(_, message: Message):
       await getting_chats.edit(f"**Total Dialogs Counted:** `{total}` \n\n**Not Stable Lol**")
     except Exception as lol:
       await getting_chats.edit(f"`Never Gonna Give You Up!` \n\n**Error:** `{lol}`")
+
+
+# Leave From a Chat
+@NEXAUB.on_message(filters.private & filters.command("kickme", [".", "/"]) & filters.me & ~filters.edited)
+async def ubkickme(_, message: Message):
+  i_go_away = await message.edit_text("`Leaving This Chat...`")
+  try:
+    await NEXAUB.leave_chat()
+    await i_go_away.edit("`Successfully Leaved This Chat!`")
+  except Exception as lol:
+    await i_go_away.edit(f"`Can't Leave This Chat!, What a cruel world!` \n\n**Error:** `{lol}`")
+
+
+# Alive Message
+@NEXAUB.on_message(filters.command("alive", [".", "/"]) & filters.me & ~filters.edited)
+async def ubalive(_, message: Message):
+  owner = BOT_OWNER.first_name
+  await message.edit_text(f"**🌀 Nexa Music Userbot is Alive 🌀** \n\n**🤖 Bot Version:** `V2.9.1` \n\n**🐬 Info**\n ↳**Music Bot:** {BOT_USERNAME} \n ↳**Owner:** {owner}")
