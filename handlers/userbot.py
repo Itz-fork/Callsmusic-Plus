@@ -48,7 +48,7 @@ async def ubgetchats(_, message: Message):
 async def ubkickme(_, message: Message):
   i_go_away = await message.edit_text("`Leaving This Chat...`")
   try:
-    await NEXAUB.leave_chat()
+    await NEXAUB.leave_chat(message.chat.id)
     await i_go_away.edit("`Successfully Leaved This Chat!`")
   except Exception as lol:
     await i_go_away.edit(f"`Can't Leave This Chat!, What a cruel world!` \n\n**Error:** `{lol}`")
