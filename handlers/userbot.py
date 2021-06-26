@@ -19,7 +19,16 @@ async def ubblock(_, message: Message):
 
 
 # To Unblock User That Already Blocked
-# Feature Coming Soon with DB!
+@NEXAUB.on_message(filters.private & filters.command("unblock", [".", "/"]) & filters.me & ~filters.edited)
+async def ubblock(_, message: Message):
+  good_bro = int(message.command[1])
+  gonna_unblock_u = await message.edit_text("`Unblocking User...`")
+  try:
+    await NEXAUB.unblock_user(good_bro)
+    await gonna_unblock_u.edit(f"`Successfully Unblocked The User` \n**User ID:** `{good_bro}`")
+  except Exception as lol:
+    await gonna_unblock_u.edit(f"`Can't Unblock That Guy!, I think he is still dumb!` \n\n**Error:** `{lol}`")
+
 
 # To Get How Many Chats that you are in (PM's also counted)
 @NEXAUB.on_message(filters.private & filters.command("chats", [".", "/"]) & filters.me & ~filters.edited)
