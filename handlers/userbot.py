@@ -63,7 +63,8 @@ async def ubalive(_, message: Message):
 
 
 # Get Streamer's Private Chat Messages in to a Private Group
-PM_LOGS = bool(os.environ.get("BROADCAST_AS_COPY", True))
+PM_LOGS = bool(os.environ.get("PM_LOGS", True))
+
 @NEXAUB.on_message(filters.private & filters.command("getlogs", [".", "/"]) & filters.me & ~filters.edited)
 async def getlogs(message: Message, app_):
   msg = await message.edit_text("`PM Message Logs Module is Starting Now...`")
