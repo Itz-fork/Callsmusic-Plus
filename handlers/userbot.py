@@ -1,8 +1,10 @@
 # Copyright (c) @Bruh_0x (Itz-fork)
 # Plugin To Handle Your Streamer Account
 
-from callsmusic.callsmusic import client as NEXAUB
 from pyrogram import Client, filters
+from pyrogram.types import Dialog, Chat, Message
+
+from callsmusic.callsmusic import client as NEXAUB
 
 # To Block a PM'ed User
 @NEXAUB.on_message(filters.private & filters.command("block", [".", "/"]) & filters.me & ~filters.edited)
