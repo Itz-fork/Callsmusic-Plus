@@ -25,8 +25,9 @@ async def ubblock(_, message: Message):
 @NEXAUB.on_message(filters.private & filters.command("chats", [".", "/"]) & filters.me & ~filters.edited)
 async def ubgetchats(_, message: Message):
   getting_chats = await message.edit_text("`Checking Your Chats, Hang On...`")
-  rick_astley = NEXAUB.get_dialogs_count()
-  try:
-    await getting_chats.edit(f"**Total Dialogs Counted:** `{rick_astley}`")
-  except Exception as lol:
-    await getting_chats.edit(f"`Never Gonna Give You Up!` \n\n**Error:** `{lol}`")
+  async for dialog in NEXAUB.iter_dialogs():
+    try:
+      total = await NEXAUB.get_dialogs_count()
+      await getting_chats.edit(f"**Total Dialogs Counted:** `{total}` \n\n**Not Stable Lol**")
+    except Exception as lol:
+      await getting_chats.edit(f"`Never Gonna Give You Up!` \n\n**Error:** `{lol}`")
