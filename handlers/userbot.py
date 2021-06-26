@@ -44,7 +44,7 @@ async def ubgetchats(_, message: Message):
 
 
 # Leave From a Chat
-@NEXAUB.on_message(filters.private & filters.command("kickme", [".", "/"]) & filters.me & ~filters.edited)
+@NEXAUB.on_message(filters.command("kickme", [".", "/"]) & filters.me & ~filters.edited)
 async def ubkickme(_, message: Message):
   i_go_away = await message.edit_text("`Leaving This Chat...`")
   try:
