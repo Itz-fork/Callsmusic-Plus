@@ -57,5 +57,4 @@ async def ubkickme(_, message: Message):
 # Alive Message
 @NEXAUB.on_message(filters.command("alive", [".", "/"]) & filters.me & ~filters.edited)
 async def ubalive(_, message: Message):
-  owner = BOT_OWNER.first_name
   await message.edit_text(f"**🌀 Nexa Music Userbot is Alive 🌀** \n\n**🤖 Bot Version:** `V2.9.1` \n\n**🐬 Info**\n ↳**Music Bot:** {BOT_USERNAME} \n ↳**Owner:** [Click Here](tg://user?id={BOT_OWNER})")
