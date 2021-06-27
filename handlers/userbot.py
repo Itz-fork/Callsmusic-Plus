@@ -93,7 +93,7 @@ async def getlogs(client: NEXAUB, message: Message, app_):
       await NEXAUB.set_chat_photo(chat_id=chat_id, photo=chat_pic)
       await logmsg.edit(f"`Successfully Finished Step 1, To Enable This Feature Please Check Your Log Group That Created Now!!` \n\n**Bot is Restarting...!**")
       await client.send_message(chat_id, f"**Welcome to @{(await NEXAUB.get_me()).username}'s PM Log Group!** \nThis Chat will Contain All PM Messages Of @{(await NEXAUB.get_me()).username} ! \n\n\n`/setvar PM_LOG_CHAT_ID {chat_id}` \n\n ✪ **Please Copy and Send Above Command To Your @{BOT_USERNAME} After 1-2 Minutes**!")
-      heroku_var[_var] = NoWTF
+      heroku_var[_var] = "NoWTF"
     except Exception as lol:
       await logmsg.edit(f"`Can't Enable This Feature!, Something Wrong Happend!` \n\n**Error:** `{lol}`")
       return
