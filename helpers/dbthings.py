@@ -147,31 +147,3 @@ async def delcmd_off(chat_id: int):
     if not already_del:
         return
     return await delcmdmdb.insert_one({"chat_id": chat_id})
-
-
-# PM logs Database
-
-pmnexaubdb = dcmdb.userbot
-
-async def pmlogs_is_on(chat_id: int) -> bool:
-    chat = await pmnexaubdb.find_one({"chat_id": chat_id})
-    if not chat:
-        return True
-    return False
-
-async def get_chat_id(chat_id: int) -> bool:
-    chat = await pmnexaubdb.find_one({"chat_id": chat_id})
-    return chat
-
-async def setpm_logs(chat_id: int):
-    always_has_been = await pmlogs_is_on(chat_id)
-    if always_has_been:
-        return
-    return await pmnexaubdb.delete_one({"chat_id": chat_id})
-
-
-async def unsetpm_logs(chat_id: int):
-    always_has_been = await pmlogs_is_on(chat_id)
-    if not always_has_been:
-        return
-    return await pmnexaubdb.insert_one({"chat_id": chat_id})
