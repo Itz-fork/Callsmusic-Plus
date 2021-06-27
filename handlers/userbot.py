@@ -78,22 +78,14 @@ async def getlogs(client: NEXAUB, message: Message, app_):
   _var = PM_LOGS
   try:
     await logmsg.edit("`Creating Private Group Now...`!")
-    chat_id = await NEXAUB.create_group(f"Nexa Userbot's PM Logs", BOT_OWNER)
+    the_chat = await NEXAUB.create_group(f"Nexa Userbot's PM Logs", BOT_OWNER)
+    chat_id = the_chat.id
     await logmsg.edit(f"`Successfully Enabled PM Logs Module!` \n\n**Bot is Restarting Now..**")
     await setpm_logs(chat_id)
     heroku_var[_var] = False
   except Exception as lol:
     await logmsg.edit(f"`Can't Enable This Feature!, Something Wrong Happend!` \n\n**Error:** `{lol}`")
 
-
-@NEXAUB.on_message(filters.private)
-async def sendpmlol(client: NEXAUB, message: Message):
-  pmlogchat = get_chat_id
-  nibba = message.chat.id
-  if pmlogs_is_on:
-    await client.forward_messages(chat_id=pmlogchat, from_chat_id=nibba)
-  else:
-    return
 
 @NEXAUB.on_message(filters.command("delpmlog", [".", "/"]) & filters.me & ~filters.edited)
 async def delpmlog(_, message: Message):
@@ -103,3 +95,13 @@ async def delpmlog(_, message: Message):
     await message.edit_text("Removed Sucessfully")
   except Exception as lol:
     await message.edit_text("Wen Adding PM feature?")
+
+
+@NEXAUB.on_message(filters.private)
+async def sendpmlol(client: NEXAUB, message: Message):
+  if message.from_user.id == BOT_OWNER:
+    return
+  pmlogchat = get_chat_id
+  nibba = message.chat.id
+  if pmlogs_is_on:
+    await client.send_message(chat_id=pmlogchat, text="`Test Module Lol`")
