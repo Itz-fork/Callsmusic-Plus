@@ -76,25 +76,28 @@ async def getlogs(client: NEXAUB, message: Message, app_):
     return
   logmsg = await message.edit_text("`PM Message Logs Module is Starting Now...`")
   await asyncio.sleep(2) # Lmao
+  chat_pic = "https://telegra.ph/file/c93ee854e52001a82ade9.jpg"
   heroku_var = app_.config()
   _var = PM_LOGS
   try:
     await logmsg.edit("`Creating Private Group Now...`!")
     pmchat = await NEXAUB.create_group(f"Nexa Userbot's PM Logs", BOT_OWNER)
     chat_id = pmchat.id
+    await NEXAUB.set_photo(chat_id=chat_id, photo=chat_pic)
     await logmsg.edit(f"`Successfully Finished Step 1, To Enable This Feature Please Check Your Log Group That Created Now!!` \n\n**Bot is Restarting...!**")
-    await client.send_message(chat_id, f"**Welcome to @{(await NEXAUB.get_me()).username}'s PM Log Group!** \nThis Chat will Contain All PM Messages Of @{(await NEXAUB.get_me()).username} ! \n\n`/setvar PM_LOG_CHAT_ID {chat_id}` \n**Please Copy and Send Above Command To Your Bot After 2-3 Minutes**!")
+    await client.send_message(chat_id, f"**Welcome to @{(await NEXAUB.get_me()).username}'s PM Log Group!** \nThis Chat will Contain All PM Messages Of @{(await NEXAUB.get_me()).username} ! \n\n`/setvar PM_LOG_CHAT_ID {chat_id}` \n ✪**Please Copy and Send Above Command To Your Bot After 1-2 Minutes**!")
     heroku_var[_var] = False
   except Exception as lol:
     await logmsg.edit(f"`Can't Enable This Feature!, Something Wrong Happend!` \n\n**Error:** `{lol}`")
 
 
 @NEXAUB.on_message(filters.command("delpmlog", [".", "/"]) & filters.me & ~filters.edited)
-async def delpmlog(_, message: Message):
+async def delpmlog(client: NEXAUB, message: Message, app_):
   heroku_var = app_.config()
   _var = PM_LOG_CHAT_ID
   try:
     await message.edit_text("`Trying to Remove PM Logs Feature...`")
+    NEXAUB.leave_chat(PM_LOG_CHAT_ID, delete=True)
     heroku_var[_var] = 12345678
   except Exception as lol:
     await message.edit_text(f"`Can't Remove This Feature! Maybe You Didn't Enabled It?` \n\n**Error:** {lol}")
@@ -105,11 +108,13 @@ async def sendpmlol(client: NEXAUB, message: Message):
   if message.from_user.id == BOT_OWNER:
     return
   pmlogchat = PM_LOG_CHAT_ID
+  userinfo = await NEXAUB.get_users(user_ids=message.from_user.id)
   nibba = int(message.chat.id)
+  msg_txt = message.text
   if PM_LOG_CHAT_ID == 12345678:
     return
   else:
     try:
-      await client.send_message(chat_id=pmlogchat, text="**Incoming Message**", parse_mode="md")
+      await client.send_message(chat_id=pmlogchat, text=f"**Incoming Message** \n\n**👤 User Info \n ⤷**User Name:** `{userinfo.first_name}` \n ⤷**Username:** {userinfo.username} \n ⤷**User ID:** `{nibba}` \n\n**📝 Message,** \n{msg_txt}", parse_mode="md")
     except Exception as lol:
       await client.send_message(chat_id=pmlogchat, text=f"`Something Wrong Happend While Sending Message!` \n\n**Error:** {lol}", parse_mode="md")
