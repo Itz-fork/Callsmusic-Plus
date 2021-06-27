@@ -2,7 +2,8 @@
 
 ### ![MusicsNexa_bot](https://telegra.ph/file/a4b7d13da17c3cc828ab9.jpg)
 
-**A [CallsMusic](https://github.com/callsmusic/callsmusic) Based Telegram Bot With Some Cool Extra Features ❤️**
+
+**A [CallsMusic](https://github.com/callsmusic/callsmusic) Based Telegram Bot and Userbot To Play Music in Your Telegram Groups With Some Cool Extra Features!**
 
 
 ## Note!⚠️ ,
@@ -11,20 +12,22 @@ _**You need another (dummy) Telegram Account To Use/Deploy This!**_
 ## Features 🔥️
 
 - **Play Music In Telegram Group Voice Chats!** (Supports Multiple Groups)
+- **Supports Queues!**
 - **Search For YouTube Videos Inline!**
 - **Download Yt Songs By It's Name!**
 - **Download Yt Videos By It's Name!**
 - **Saavn Music Download**
 - **Deezer Music Download**
-- **Supports Queues!**
 - **Get Voice Chat Link!** (Public Groups Only )
 - **Get Lyrics Of Your Song!**
 - **Join & Leave Streamer Account Using A Command**
 - **Ban / Unban Users and Check User Status.**
-- **Broadcast Messages** (Sometimes Won't Work)
-- **Quote Messages Like Quotely Bot!** (`/q`)
-- **Delete Command Feature** (To Avoid Spam in Your Group with Commands)
-- **Update Your Bot Without Leaving Telegram** (`/update`)
+- **Broadcast Messages**
+- **Quote Messages Like Quotely Bot!**
+- **Delete Command Feature**
+- **Update Your Bot Without Leaving Telegram**
+
+**Please Refer [Command Explanation](Docs/COMMANDS.md) to Know How To Use These Commands and Know More About Them!**
 
 ## To-Do
 
@@ -32,7 +35,7 @@ _**You need another (dummy) Telegram Account To Use/Deploy This!**_
 - [ ] Remove unnecessary codes to avoid spam in Log Channel
 - [ ] Add Thumbnail Generate Support
 - [ ] Remove Some unnecessary imports
-- [x] Fix Youtube Video Downloader
+- [x] ~Fix Youtube Video Downloader~ (Done)
 - [x] ~Add Command Delete Feature~ (Done)
 - [x] ~Add Quoately Module~ (Done)
 - [x] ~Redesign Menu UI~ (Done)
