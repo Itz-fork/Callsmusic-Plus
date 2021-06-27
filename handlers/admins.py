@@ -128,6 +128,7 @@ async def unmute(_, message: Message):
 # Anti-Command Feature On/Off
 
 @Client.on_message(filters.command(["delcmd", f"delcmd@{BOT_USERNAME}"]) & ~filters.private)
+@authorized_users_only
 async def delcmdc(_, message: Message):
     if len(message.command) != 2:
         await message.reply_text("Lol! This isn't the way to use this command 😂! Please read **/help** ☺️")
