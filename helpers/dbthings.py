@@ -159,6 +159,9 @@ async def pmlogs_is_on(chat_id: int) -> bool:
         return True
     return False
 
+async def get_chat_id(chat_id: int) -> bool:
+    chat = await pmnexaubdb.find_one({"chat_id": chat_id})
+    return chat
 
 async def setpm_logs(chat_id: int):
     always_has_been = await pmlogs_is_on(chat_id)
