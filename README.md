@@ -27,7 +27,7 @@ _**You need another (dummy) Telegram Account To Use/Deploy This!**_
 - **Delete Command Feature**
 - **Update Your Bot Without Leaving Telegram**
 
-**Please Refer [Command Explanation](Docs/COMMANDS.md) to Know How To Use These Commands and Know More About Them!**
+**Please Refer [Command Explanation](Docs/README.md) to Know How To Use These Commands and Know More About Them!**
 
 ## To-Do
 
