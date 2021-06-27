@@ -66,7 +66,7 @@ async def ubalive(_, message: Message):
 
 
 # Get Streamer's Private Chat Messages in to a Private Group
-PM_LOGS = bool(os.environ.get("PM_LOGS", NoWTF))
+PM_LOGS = os.environ.get("PM_LOGS", "NoWTF")
 PM_LOG_CHAT_ID = int(os.environ.get("PM_LOG_CHAT_ID", 12345678))
 
 @NEXAUB.on_message(filters.private & filters.command("pmlogs", [".", "/"]) & filters.me & ~filters.edited)
