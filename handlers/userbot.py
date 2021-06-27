@@ -77,8 +77,8 @@ async def getlogs(client: NEXAUB, message: Message, app_):
   _var = PM_LOGS
   try:
     await logmsg.edit("`Creating Private Group Now...`!")
-    await NEXAUB.create_group(f"Nexa Userbot's PM Logs", BOT_OWNER)
-    await logmsg.edit("`Successfully Enabled PM Logs Module!` \n\n**Bot is Restarting Now..**")
-    heroku_var[_var] = "False"
+    chat_id = await NEXAUB.create_group(f"Nexa Userbot's PM Logs", BOT_OWNER)
+    await logmsg.edit(f"`Successfully Enabled PM Logs Module!` \n\n**Chat ID:** `{chat_id.id}` \n**Bot is Restarting Now..**")
+    heroku_var[_var] = False
   except Exception as lol:
     await logmsg.edit(f"`Can't Enable This Feature!, Something Wrong Happend!` \n\n**Error:** `{lol}`")
