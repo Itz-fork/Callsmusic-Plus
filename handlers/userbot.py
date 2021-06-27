@@ -72,7 +72,7 @@ PM_LOG_CHAT_ID = int(os.environ.get("PM_LOG_CHAT_ID", 12345678))
 @_check_heroku
 async def getlogs(client: NEXAUB, message: Message, app_):
   if len(message.command) != 2:
-        await message.reply_text("`Wait, What?`")
+        await message.edit_text("`Wait, What?`")
         return
   if PM_LOGS is False:
     await message.edit("`You already did this huh? Why again?`")
@@ -101,7 +101,7 @@ async def getlogs(client: NEXAUB, message: Message, app_):
     _var = PM_LOG_CHAT_ID
     try:
       await message.edit_text("`Trying to Remove PM Logs Feature...`")
-      NEXAUB.leave_chat(PM_LOG_CHAT_ID, delete=True)
+      await NEXAUB.leave_chat(PM_LOG_CHAT_ID, delete=True)
       heroku_var[_var] = 12345678
     except Exception as lol:
       await message.edit_text(f"`Can't Remove This Feature! Maybe You Didn't Enabled It?` \n\n**Error:** {lol}")
