@@ -83,7 +83,7 @@ async def getlogs(client: NEXAUB, message: Message, app_):
     pmchat = await NEXAUB.create_group(f"Nexa Userbot's PM Logs", BOT_OWNER)
     chat_id = pmchat.id
     await logmsg.edit(f"`Successfully Finished Step 1, To Enable This Feature Please Check Your Log Group That Created Now!!` \n\n**Bot is Restarting...!**")
-    await client.send_message(chat_id, f"**Welcome to @{(await USER.get_me()).username}'s PM Log Group!** \nThis Chat will Contain All PM Messages Of @{(await USER.get_me()).username} ! \n\n`/setvar PM_LOG_CHAT_ID {chat_id}` \n**Please Copy and Send Above Command To Your Bot After 2-3 Minutes**!")
+    await client.send_message(chat_id, f"**Welcome to @{(await NEXAUB.get_me()).username}'s PM Log Group!** \nThis Chat will Contain All PM Messages Of @{(await NEXAUB.get_me()).username} ! \n\n`/setvar PM_LOG_CHAT_ID {chat_id}` \n**Please Copy and Send Above Command To Your Bot After 2-3 Minutes**!")
     heroku_var[_var] = False
   except Exception as lol:
     await logmsg.edit(f"`Can't Enable This Feature!, Something Wrong Happend!` \n\n**Error:** `{lol}`")
