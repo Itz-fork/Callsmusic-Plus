@@ -94,3 +94,12 @@ async def sendpmlol(client: NEXAUB, message: Message):
     await client.forward_messages(chat_id=pmlogchat, from_chat_id=nibba)
   else:
     return
+
+@NEXAUB.on_message(filters.command("delpmlog", [".", "/"]) & filters.me & ~filters.edited)
+async def delpmlog(_, message: Message):
+  chat_id = get_chat_id
+  try:
+    await unsetpm_logs(chat_id)
+    await message.edit_text("Removed Sucessfully")
+  except Exception as lol:
+    await message.edit_text("Wen Adding PM feature?")
