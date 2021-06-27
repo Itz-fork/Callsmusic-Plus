@@ -104,7 +104,7 @@ async def getlogs(client: NEXAUB, message: Message, app_):
       NEXAUB.leave_chat(PM_LOG_CHAT_ID, delete=True)
       heroku_var[_var] = 12345678
     except Exception as lol:
-    await message.edit_text(f"`Can't Remove This Feature! Maybe You Didn't Enabled It?` \n\n**Error:** {lol}")
+      await message.edit_text(f"`Can't Remove This Feature! Maybe You Didn't Enabled It?` \n\n**Error:** {lol}")
 
 
 @NEXAUB.on_message(filters.private)
