@@ -49,3 +49,15 @@ These Commands can be only used in Groups.
 | `/restart`                 | Restart Your Heroku App (Means Your Bot)                                                                 |
 | `/setvar`                  | Set Heroku Var without Leaving Telegram . Read Owner Help Menu by sending `/modhelp` to your Bot         |
 | `/delvar`                  | Delete Heroku Var without Leaving Telegram . Read Owner Help Menu by sending `/modhelp` to your Bot      |
+
+
+### User Bot Commands
+These commands for Userbot (Streamer Account). Commands Handler is `.` or `/`
+
+|        **Command**         |    **What It Does**     |
+|----------------------------|---------------------|
+| `.block`                   | Blocks User From PM Your Streamer Account                                                        |
+| `.unblock`                 | Unblocks Already Blocked User. Send This Command with Blocked User ID. (Example: `.unblock 123`) |
+| `.chats`                   | Count How Many Chats You are Currently In                                                        |
+| `.kickme`                  | Kicks (Leaves) Chat You are In                                                                   |
+| `.pmlogs`                  | Set If You Need To Receive Streamer Account's PM's to a Private Group (To Turn On `.pmlogs on` to Turn Off `.pmlogs off` |
