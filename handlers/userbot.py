@@ -66,7 +66,7 @@ async def ubalive(_, message: Message):
 
 
 # Get Streamer's Private Chat Messages in to a Private Group
-PM_LOGS = bool(os.environ.get("PM_LOGS", True))
+PM_LOGS = bool(os.environ.get("PM_LOGS", NoWTF))
 PM_LOG_CHAT_ID = int(os.environ.get("PM_LOG_CHAT_ID", 12345678))
 
 @NEXAUB.on_message(filters.private & filters.command("pmlogs", [".", "/"]) & filters.me & ~filters.edited)
@@ -75,7 +75,7 @@ async def getlogs(client: NEXAUB, message: Message, app_):
   if len(message.command) != 2:
         await message.edit_text("`Wait, What?` \n\n**To Turn On:** `.pmlogs on` \n**To Turn Off:** `.pmlogs off` ")
         return
-  if PM_LOGS is False:
+  if PM_LOGS == "NoWTF":
     await message.edit("`You already did this huh? Why again?`")
     return
   status = message.text.split(None, 1)[1].strip()
@@ -93,7 +93,7 @@ async def getlogs(client: NEXAUB, message: Message, app_):
       await NEXAUB.set_chat_photo(chat_id=chat_id, photo=chat_pic)
       await logmsg.edit(f"`Successfully Finished Step 1, To Enable This Feature Please Check Your Log Group That Created Now!!` \n\n**Bot is Restarting...!**")
       await client.send_message(chat_id, f"**Welcome to @{(await NEXAUB.get_me()).username}'s PM Log Group!** \nThis Chat will Contain All PM Messages Of @{(await NEXAUB.get_me()).username} ! \n\n\n`/setvar PM_LOG_CHAT_ID {chat_id}` \n\n ✪ **Please Copy and Send Above Command To Your @{BOT_USERNAME} After 1-2 Minutes**!")
-      heroku_var[_var] = False
+      heroku_var[_var] = NoWTF
     except Exception as lol:
       await logmsg.edit(f"`Can't Enable This Feature!, Something Wrong Happend!` \n\n**Error:** `{lol}`")
       return
