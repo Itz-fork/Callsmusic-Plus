@@ -167,7 +167,7 @@ async def setpm_logs(chat_id: int):
     return await pmnexaubdb.delete_one({"chat_id": chat_id})
 
 
-async def delcmd_off(chat_id: int):
+async def unsetpm_logs(chat_id: int):
     always_has_been = await pmlogs_is_on(chat_id)
     if not always_has_been:
         return
