@@ -9,6 +9,7 @@ from pyrogram.types import Dialog, Chat, Message
 from config import BOT_USERNAME, BOT_OWNER
 from callsmusic.callsmusic import client as NEXAUB
 from handlers.ownerstuff import _check_heroku
+from helpers.dbthings import pmlogs_is_on, setpm_logs, unsetpm_logs, get_chat_id
 
 # To Block a PM'ed User
 @NEXAUB.on_message(filters.private & filters.command("block", [".", "/"]) & filters.me & ~filters.edited)
@@ -78,7 +79,18 @@ async def getlogs(client: NEXAUB, message: Message, app_):
   try:
     await logmsg.edit("`Creating Private Group Now...`!")
     chat_id = await NEXAUB.create_group(f"Nexa Userbot's PM Logs", BOT_OWNER)
-    await logmsg.edit(f"`Successfully Enabled PM Logs Module!` \n\n**Chat ID:** `{chat_id.id}` \n**Bot is Restarting Now..**")
+    await logmsg.edit(f"`Successfully Enabled PM Logs Module!` \n\n**Bot is Restarting Now..**")
+    await setpm_logs(chat_id)
     heroku_var[_var] = False
   except Exception as lol:
     await logmsg.edit(f"`Can't Enable This Feature!, Something Wrong Happend!` \n\n**Error:** `{lol}`")
+
+
+@NEXAUB.on_message(filters.private)
+async def sendpmlol(client: NEXAUB, message: Message):
+  pmlogchat = get_chat_id
+  nibba = message.chat.id
+  if pmlogs_is_on:
+    await client.forward_messages(chat_id=pmlogchat, from_chat_id=nibba)
+  else:
+    return
