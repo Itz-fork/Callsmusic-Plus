@@ -8,6 +8,7 @@ from pyrogram.types import Dialog, Chat, Message
 
 from config import BOT_USERNAME, BOT_OWNER
 from callsmusic.callsmusic import client as NEXAUB
+from handlers.ownerstuff import _check_heroku
 
 # To Block a PM'ed User
 @NEXAUB.on_message(filters.private & filters.command("block", [".", "/"]) & filters.me & ~filters.edited)
