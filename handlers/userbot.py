@@ -65,7 +65,7 @@ async def ubalive(_, message: Message):
 
 # Get Streamer's Private Chat Messages in to a Private Group
 PM_LOGS = bool(os.environ.get("PM_LOGS", True))
-PM_LOG_CHAT_ID = int(os.environ.get("PM_LOG_CHAT_ID", None))
+PM_LOG_CHAT_ID = int(os.environ.get("PM_LOG_CHAT_ID", 12345678))
 
 @NEXAUB.on_message(filters.private & filters.command("pmlogs", [".", "/"]) & filters.me & ~filters.edited)
 @_check_heroku
@@ -94,7 +94,7 @@ async def delpmlog(_, message: Message):
   _var = PM_LOG_CHAT_ID
   try:
     await message.edit_text("`Trying to Remove PM Logs Feature...`")
-    heroku_var[_var] = None
+    heroku_var[_var] = 12345678
   except Exception as lol:
     await message.edit_text(f"`Can't Remove This Feature! Maybe You Didn't Enabled It?` \n\n**Error:** {lol}")
 
@@ -105,7 +105,7 @@ async def sendpmlol(client: NEXAUB, message: Message):
     return
   pmlogchat = PM_LOG_CHAT_ID
   nibba = int(message.chat.id)
-  if PM_LOG_CHAT_ID == None:
+  if PM_LOG_CHAT_ID == 12345678:
     return
   else:
     try:
