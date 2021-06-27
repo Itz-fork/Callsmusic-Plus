@@ -3,6 +3,7 @@
 
 import heroku3
 import os
+import asyncio
 from pyrogram import Client, filters
 from pyrogram.types import Dialog, Chat, Message
 
@@ -74,7 +75,7 @@ async def getlogs(client: NEXAUB, message: Message, app_):
     await message.edit("`You already did this huh? Why again?`")
     return
   logmsg = await message.edit_text("`PM Message Logs Module is Starting Now...`")
-  await asyncio.sleep(2)
+  await asyncio.sleep(2) # Lmao
   heroku_var = app_.config()
   _var = PM_LOGS
   try:
