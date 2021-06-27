@@ -66,17 +66,17 @@ async def ubalive(_, message: Message):
 PM_LOGS = bool(os.environ.get("PM_LOGS", True))
 
 @NEXAUB.on_message(filters.private & filters.command("getlogs", [".", "/"]) & filters.me & ~filters.edited)
-async def getlogs(message: Message, app_):
-  msg = await message.edit_text("`PM Message Logs Module is Starting Now...`")
+async def getlogs(_,message: Message, app_):
   if PM_LOGS is False:
-    await msg.edit("`You already did this huh? Why again?`")
+    await message.edit("`You already did this huh? Why again?`")
     return
+  logmsg = await message.edit_text("`PM Message Logs Module is Starting Now...`")
   heroku_var = app_.config()
   _done = PM_LOGS
   try:
-    await msg.edit("`Creating Private Group Now...`!")
+    await logmsg.edit("`Creating Private Group Now...`!")
     await NEXAUB.create_group(f"Nexa Userbot's PM Logs", BOT_OWNER)
-    await msg.edit("`Successfully Enabled PM Logs Module!` \n\n**Bot is Restarting Now..**")
+    await logmsg.edit("`Successfully Enabled PM Logs Module!` \n\n**Bot is Restarting Now..**")
     heroku_var[_done] = False
   except Exception as lol:
-    await msg.edit(f"`Can't Enable This Feature!, Something Wrong Happend!` \n\n**Error:** `{lol}`")
+    await logmsg.edit(f"`Can't Enable This Feature!, Something Wrong Happend!` \n\n**Error:** `{lol}`")
