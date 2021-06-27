@@ -71,35 +71,39 @@ PM_LOG_CHAT_ID = int(os.environ.get("PM_LOG_CHAT_ID", 12345678))
 @NEXAUB.on_message(filters.private & filters.command("pmlogs", [".", "/"]) & filters.me & ~filters.edited)
 @_check_heroku
 async def getlogs(client: NEXAUB, message: Message, app_):
+  if len(message.command) != 2:
+        await message.reply_text("`Wait, What?`")
+        return
   if PM_LOGS is False:
     await message.edit("`You already did this huh? Why again?`")
     return
-  logmsg = await message.edit_text("`PM Message Logs Module is Starting Now...`")
-  await asyncio.sleep(2) # Lmao
-  chat_pic = "https://telegra.ph/file/c93ee854e52001a82ade9.jpg"
-  heroku_var = app_.config()
-  _var = PM_LOGS
-  try:
-    await logmsg.edit("`Creating Private Group Now...`!")
-    pmchat = await NEXAUB.create_group(f"Nexa Userbot's PM Logs", BOT_OWNER)
-    chat_id = pmchat.id
-    await NEXAUB.set_chat_photo(chat_id=chat_id, photo=chat_pic)
-    await logmsg.edit(f"`Successfully Finished Step 1, To Enable This Feature Please Check Your Log Group That Created Now!!` \n\n**Bot is Restarting...!**")
-    await client.send_message(chat_id, f"**Welcome to @{(await NEXAUB.get_me()).username}'s PM Log Group!** \nThis Chat will Contain All PM Messages Of @{(await NEXAUB.get_me()).username} ! \n\n`/setvar PM_LOG_CHAT_ID {chat_id}` \n ✪**Please Copy and Send Above Command To Your Bot After 1-2 Minutes**!")
-    heroku_var[_var] = False
-  except Exception as lol:
-    await logmsg.edit(f"`Can't Enable This Feature!, Something Wrong Happend!` \n\n**Error:** `{lol}`")
-
-
-@NEXAUB.on_message(filters.command("delpmlog", [".", "/"]) & filters.me & ~filters.edited)
-async def delpmlog(client: NEXAUB, message: Message, app_):
-  heroku_var = app_.config()
-  _var = PM_LOG_CHAT_ID
-  try:
-    await message.edit_text("`Trying to Remove PM Logs Feature...`")
-    NEXAUB.leave_chat(PM_LOG_CHAT_ID, delete=True)
-    heroku_var[_var] = 12345678
-  except Exception as lol:
+  status = message.text.split(None, 1)[1].strip()
+  status = status.lower()
+  if status == "on":
+    logmsg = await message.edit_text("`PM Message Logs Module is Starting Now...`")
+    await asyncio.sleep(2) # Lmao
+    chat_pic = "cache/NexaUB.jpg"
+    heroku_var = app_.config()
+    _var = PM_LOGS
+    try:
+      await logmsg.edit("`Creating Private Group Now...`!")
+      pmchat = await NEXAUB.create_group(f"Nexa Userbot's PM Logs", BOT_OWNER)
+      chat_id = pmchat.id
+      await NEXAUB.set_chat_photo(chat_id=chat_id, photo=chat_pic)
+      await logmsg.edit(f"`Successfully Finished Step 1, To Enable This Feature Please Check Your Log Group That Created Now!!` \n\n**Bot is Restarting...!**")
+      await client.send_message(chat_id, f"**Welcome to @{(await NEXAUB.get_me()).username}'s PM Log Group!** \nThis Chat will Contain All PM Messages Of @{(await NEXAUB.get_me()).username} ! \n\n`/setvar PM_LOG_CHAT_ID {chat_id}` \n ✪**Please Copy and Send Above Command To Your Bot After 1-2 Minutes**!")
+      heroku_var[_var] = False
+    except Exception as lol:
+      await logmsg.edit(f"`Can't Enable This Feature!, Something Wrong Happend!` \n\n**Error:** `{lol}`")
+      return
+  elif status == "off":
+    heroku_var = app_.config()
+    _var = PM_LOG_CHAT_ID
+    try:
+      await message.edit_text("`Trying to Remove PM Logs Feature...`")
+      NEXAUB.leave_chat(PM_LOG_CHAT_ID, delete=True)
+      heroku_var[_var] = 12345678
+    except Exception as lol:
     await message.edit_text(f"`Can't Remove This Feature! Maybe You Didn't Enabled It?` \n\n**Error:** {lol}")
 
 
