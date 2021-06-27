@@ -30,6 +30,8 @@ These Commands can be only used in Groups.
 | `/unmute` `/um` ⊗          | Unmute Streamer Account                                   |
 | `/pause` or `/p` ⊗         | Pauses Currently Playing Song                             |
 | `/resume` or `/r` ⊗        | Resumes Currently Paused Song                             |
+| `/joingrp`                 | Add Streamer Account to Your Group Automatically          |
+| `/leavegrp`                | Remove Streamer Account and Bot From Your Group           |
 | `/delcmd` ⊗                | Enable or Disable Command Deleting Feature. Read Bot Help |
 
 ⊗ - Group Admins Only
