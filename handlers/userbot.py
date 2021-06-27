@@ -73,7 +73,7 @@ PM_LOG_CHAT_ID = int(os.environ.get("PM_LOG_CHAT_ID", 12345678))
 @_check_heroku
 async def getlogs(client: NEXAUB, message: Message, app_):
   if len(message.command) != 2:
-        await message.edit_text("`Wait, What?`")
+        await message.edit_text("`Wait, What?` \n\n**To Turn On:** `.pmlogs on` \n**To Turn Off:** `.pmlogs off` ")
         return
   if PM_LOGS is False:
     await message.edit("`You already did this huh? Why again?`")
