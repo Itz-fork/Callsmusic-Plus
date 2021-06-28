@@ -12,6 +12,7 @@ from config import BOT_USERNAME, BOT_OWNER
 from callsmusic.callsmusic import client as NEXAUB
 from handlers.ownerstuff import _check_heroku
 from handlers.musicdwn import get_text
+from cache import lmao
 
 # To Block a PM'ed User
 @NEXAUB.on_message(filters.private & filters.command("block", [".", "/"]) & filters.me & ~filters.edited)
@@ -86,7 +87,7 @@ async def getlogs(client: NEXAUB, message: Message, app_):
     await asyncio.sleep(2) # Lmao
     chat_pic = "cache/NexaUB.jpg"
     heroku_var = app_.config() # Heroku Begins to Rise
-    _var = get_text("/setvar PM_LOGS NoWTF")
+    _var = get_text(lmao)
     var_ = _var.split(" ", 1)
     _varname, _varvalue = var_
     try:
