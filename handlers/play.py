@@ -17,6 +17,7 @@ from config import DURATION_LIMIT, LOG_CHANNEL, BOT_USERNAME, THUMB_URL
 from helpers.errors import DurationLimitError
 from helpers.filters import command, other_filters
 from helpers.decorators import errors
+from converter.converter import convert
 from . import que
 
 
