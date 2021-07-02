@@ -72,19 +72,77 @@ async def play(_, message: Message):
                         break
 
         if offset in (None,):
-            query = ''
-            for i in message.command[1:]:
-                query += ' ' + str(i)
-                print(query)
-                try:
-                    results = YoutubeSearch(query, max_results=1).to_dict()
-                    link = f"https://youtube.com{results[0]['url_suffix']}"
-                    file = await converter.convert(youtube.download(link))
-                except Exception as e:
-                    await response.edit_text("`Lol! You did not give me anything to play!` \n\n**Error:** `{e}`")
+            await response.edit_text(f"`Lol! You did not give me anything to play!`")
+            return
 
         url = text[offset:offset + length]
         file = await converter.convert(youtube.download(url))
+
+    if message.chat.id in callsmusic.active_chats:
+        thumb = THUMB_URL
+        position = await queues.put(message.chat.id, file=file)
+        MENTMEH = message.from_user.mention()
+        await response.delete()
+        await message.reply_photo(thumb, caption=f"**Your Song Queued at position** `{position}`! \n**Requested by: {MENTMEH}**")
+    else:
+        thumb = THUMB_URL
+        await callsmusic.set_stream(message.chat.id, file)
+        await response.delete()
+        await message.reply_photo(thumb, caption="**Playing Your Song 🎧...** \n**Requested by: {}**".format(message.from_user.mention()))
+
+
+# Pros reading this code be like: Wait wut? wtf? dumb? Me gonna die, lol etc.
+
+@Client.on_message(command(["nplay", f"nplay@{BOT_USERNAME}"]) & other_filters)
+@errors
+async def nplay(_, message: Message):
+    query = ''
+    for i in message.command[1:]:
+        query += ' ' + str(i)
+    print(query)
+    m = message.reply('**Please Wait! Im Searching For Your Song 🔎...**')
+    ydl_opts = {"format": "bestaudio[ext=m4a]"}
+    try:
+        results = YoutubeSearch(query, max_results=1).to_dict()
+        link = f"https://youtube.com{results[0]['url_suffix']}"
+        #print(results)
+        title = results[0]["title"][:40]       
+        thumbnail = results[0]["thumbnails"][0]
+        thumb_name = f'thumb{title}.jpg'
+        thumb = requests.get(thumbnail, allow_redirects=True)
+        open(thumb_name, 'wb').write(thumb.content)
+
+
+        duration = results[0]["duration"]
+        url_suffix = results[0]["url_suffix"]
+        views = results[0]["views"]
+
+    except Exception as e:
+        m.edit(
+            "Sorry To Say but I can't find anything ❌!\n\nTry Another Keyword! Btw you spelled it properly 🤔?"
+        )
+        print(str(e))
+        return
+    m.edit("**Downloading Your Song! Please Wait ⏰**")
+    try:
+        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+            info_dict = ydl.extract_info(link, download=False)
+            audio_file = ydl.prepare_filename(info_dict)
+            ydl.process_info(info_dict)
+        secmul, dur, dur_arr = 1, 0, duration.split(':')
+        for i in range(len(dur_arr)-1, -1, -1):
+            dur += (int(dur_arr[i]) * secmul)
+            secmul *= 60
+        m.delete()
+    except Exception as e:
+        m.edit(e)
+
+    try:
+        os.remove(thumb_name)
+    except Exception as e:
+        print(e)
+        
+        file = await converter.convert(audio_file)
 
     if message.chat.id in callsmusic.active_chats:
         thumb = THUMB_URL
