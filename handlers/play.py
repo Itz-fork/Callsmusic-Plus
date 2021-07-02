@@ -2,6 +2,7 @@ from os import path
 
 from pyrogram import Client, filters # Ik this is weird as this shit is already imported in line 16! anyway ... Fuck Off!
 from pyrogram.types import Message, Voice
+from youtube_search import YoutubeSearch
 
 from callsmusic import callsmusic, queues
 
@@ -71,8 +72,16 @@ async def play(_, message: Message):
                         break
 
         if offset in (None,):
-            await response.edit_text("`Lol! You did not give me anything to play!`")
-            return
+            query = ''
+            for i in message.command[1:]:
+                query += ' ' + str(i)
+                print(query)
+                try:
+                    results = YoutubeSearch(query, max_results=1).to_dict()
+                    link = f"https://youtube.com{results[0]['url_suffix']}"
+                    file = await converter.convert(youtube.download(link))
+                except Exception as e:
+                    await response.edit_text("`Lol! You did not give me anything to play!` \n\n**Error:** `{e}`")
 
         url = text[offset:offset + length]
         file = await converter.convert(youtube.download(url))
