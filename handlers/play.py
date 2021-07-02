@@ -122,7 +122,7 @@ async def nplay(_, message: Message):
 
     except Exception as e:
         await lel.edit(
-            "Sorry To Say but I can't find anything ❌!\n\nTry Another Keyword! Btw you spelled it properly 🤔?"
+            f"**Error:** {e}"
         )
         print(str(e))
         return
