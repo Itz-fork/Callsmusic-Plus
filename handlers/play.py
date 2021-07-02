@@ -94,56 +94,52 @@ async def play(_, message: Message):
 # Pros reading this code be like: Wait wut? wtf? dumb? Me gonna die, lol etc.
 
 @Client.on_message(command(["nplay", f"nplay@{BOT_USERNAME}"]) & other_filters)
-@errors
 async def nplay(_, message: Message):
-    query = ''
+    global que
+    if message.chat.id in DISABLED_GROUPS:
+        return
+    
+    lel = await message.reply_text("**Processing Your Song 😇...**")
+    user_id = message.from_user.id
+    user_name = message.from_user.first_name
+
+    query = ""
     for i in message.command[1:]:
-        query += ' ' + str(i)
+        query += " " + str(i)
     print(query)
-    m = message.reply('**Please Wait! Im Searching For Your Song 🔎...**')
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
-        link = f"https://youtube.com{results[0]['url_suffix']}"
-        #print(results)
-        title = results[0]["title"][:40]       
+        url = f"https://youtube.com{results[0]['url_suffix']}"
+        # print(results)
+        title = results[0]["title"][:40]
         thumbnail = results[0]["thumbnails"][0]
-        thumb_name = f'thumb{title}.jpg'
+        thumb_name = f"thumb{title}.jpg"
         thumb = requests.get(thumbnail, allow_redirects=True)
-        open(thumb_name, 'wb').write(thumb.content)
-
-
+        open(thumb_name, "wb").write(thumb.content)
         duration = results[0]["duration"]
-        url_suffix = results[0]["url_suffix"]
+        results[0]["url_suffix"]
         views = results[0]["views"]
 
     except Exception as e:
-        m.edit(
+        await lel.edit(
             "Sorry To Say but I can't find anything ❌!\n\nTry Another Keyword! Btw you spelled it properly 🤔?"
         )
         print(str(e))
         return
-    m.edit("**Downloading Your Song! Please Wait ⏰**")
-    try:
-        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-            info_dict = ydl.extract_info(link, download=False)
-            audio_file = ydl.prepare_filename(info_dict)
-            ydl.process_info(info_dict)
+    try:    
         secmul, dur, dur_arr = 1, 0, duration.split(':')
         for i in range(len(dur_arr)-1, -1, -1):
             dur += (int(dur_arr[i]) * secmul)
             secmul *= 60
-        m.delete()
-    except Exception as e:
-        m.edit(e)
+        if (dur / 60) > DURATION_LIMIT:
+             await lel.edit(f"Bruh! Videos longer than `{DURATION_LIMIT}` minute(s) aren’t allowed, the provided audio is {round(audio.duration / 60)} minute(s) 😒")
+             return
+    except:
+        pass    
 
-    try:
-        os.remove(thumb_name)
-    except Exception as e:
-        print(e)
-        
-        file = await converter.convert(audio_file)
-
+    file = await convert(youtube.download(url))
+    
     if message.chat.id in callsmusic.active_chats:
         thumb = THUMB_URL
         position = await queues.put(message.chat.id, file=file)
