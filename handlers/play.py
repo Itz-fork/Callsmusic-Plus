@@ -97,8 +97,6 @@ async def play(_, message: Message):
 @Client.on_message(command(["nplay", f"nplay@{BOT_USERNAME}"]) & other_filters)
 async def nplay(_, message: Message):
     global que
-    if message.chat.id in DISABLED_GROUPS:
-        return
     
     lel = await message.reply_text("**Processing Your Song 😇...**")
     user_id = message.from_user.id
