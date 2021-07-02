@@ -8,6 +8,7 @@ from callsmusic import callsmusic, queues
 
 import converter
 import youtube
+import requests
 import aiohttp
 
 from helpers.database import db, Database
