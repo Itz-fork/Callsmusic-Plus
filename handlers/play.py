@@ -140,15 +140,14 @@ async def nplay(_, message: Message):
         pass    
 
     file = await convert(youtube.download(url))
-    
     if message.chat.id in callsmusic.active_chats:
         thumb = THUMB_URL
         position = await queues.put(message.chat.id, file=file)
         MENTMEH = message.from_user.mention()
-        await response.delete()
+        await lel.delete()
         await message.reply_photo(thumb, caption=f"**Your Song Queued at position** `{position}`! \n**Requested by: {MENTMEH}**")
     else:
         thumb = THUMB_URL
         await callsmusic.set_stream(message.chat.id, file)
-        await response.delete()
+        await lel.delete()
         await message.reply_photo(thumb, caption="**Playing Your Song 🎧...** \n**Requested by: {}**".format(message.from_user.mention()))
