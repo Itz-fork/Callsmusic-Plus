@@ -51,42 +51,42 @@ async def play(_, message: Message):
             url = text[offset:offset + length]
             file = await converter.convert(youtube.download(url))
        
-    if offset in (None,):
-        query = ""
-        for i in message.command[1:]:
-            query += " " + str(i)
-            print(query)
-            ydl_opts = {"format": "bestaudio[ext=m4a]"}
-            try:
-                results = YoutubeSearch(query, max_results=1).to_dict()
-                url = f"https://youtube.com{results[0]['url_suffix']}"
-                # print(results)
-                title = results[0]["title"][:40]
-                thumbnail = results[0]["thumbnails"][0]
-                thumb_name = f"thumb{title}.jpg"
-                thumb = requests.get(thumbnail, allow_redirects=True)
-                open(thumb_name, "wb").write(thumb.content)
-                duration = results[0]["duration"]
-                results[0]["url_suffix"]
-                views = results[0]["views"]
-            except Exception as e:
-                await response.edit(
-                    f"**Error:** {e}"
-                )
-                print(str(e))
-                return
-            try:    
-                secmul, dur, dur_arr = 1, 0, duration.split(':')
-                for i in range(len(dur_arr)-1, -1, -1):
-                    dur += (int(dur_arr[i]) * secmul)
-                    secmul *= 60
-                if (dur / 60) > DURATION_LIMIT:
-                    await response.edit(f"Bruh! Videos longer than `{DURATION_LIMIT}` minute(s) aren’t allowed, the provided audio is {round(audio.duration / 60)} minute(s) 😒")
+        if offset in (None,):
+            query = ""
+            for i in message.command[1:]:
+                query += " " + str(i)
+                print(query)
+                ydl_opts = {"format": "bestaudio[ext=m4a]"}
+                try:
+                    results = YoutubeSearch(query, max_results=1).to_dict()
+                    url = f"https://youtube.com{results[0]['url_suffix']}"
+                    # print(results)
+                    title = results[0]["title"][:40]
+                    thumbnail = results[0]["thumbnails"][0]
+                    thumb_name = f"thumb{title}.jpg"
+                    thumb = requests.get(thumbnail, allow_redirects=True)
+                    open(thumb_name, "wb").write(thumb.content)
+                    duration = results[0]["duration"]
+                    results[0]["url_suffix"]
+                    views = results[0]["views"]
+                except Exception as e:
+                    await response.edit(
+                        f"**Error:** {e}"
+                    )
+                    print(str(e))
                     return
-            except:
-                pass
-
-        file = await convert(youtube.download(url))
+                try:    
+                    secmul, dur, dur_arr = 1, 0, duration.split(':')
+                    for i in range(len(dur_arr)-1, -1, -1):
+                        dur += (int(dur_arr[i]) * secmul)
+                        secmul *= 60
+                        if (dur / 60) > DURATION_LIMIT:
+                            await response.edit(f"Bruh! Videos longer than `{DURATION_LIMIT}` minute(s) aren’t allowed, the provided audio is {round(audio.duration / 60)} minute(s) 😒")
+                            return
+                except:
+                    pass
+                
+         file = await convert(youtube.download(url))
 
     else:
         audio = (message.reply_to_message.audio or message.reply_to_message.voice) if message.reply_to_message else None
