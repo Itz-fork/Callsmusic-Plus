@@ -76,8 +76,7 @@ async def play(_, message: Message):
                         break
 
         if offset in (None,):
-            await response.edit_text(f"`Lol! You did not give me anything to play!`")
-            break
+            await response.edit_text(f"`Lol! Can't Find a URL to Play! Trying to Play by Given Name`")
 
         url = text[offset:offset + length]
         file = await converter.convert(youtube.download(url))
