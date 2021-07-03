@@ -78,8 +78,8 @@ async def play(_, message: Message):
         if offset not in (None,):
             url = text[offset:offset + length]
             file = await converter.convert(youtube.download(url))
-
-    if offset not in (None,) or if not audio:
+       
+    if offset in (None,):
         query = ""
         for i in message.command[1:]:
             query += " " + str(i)
