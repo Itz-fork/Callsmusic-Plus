@@ -28,6 +28,8 @@ async def _(bot: Client, cmd: command):
 @Client.on_message(command(["play", f"play@{BOT_USERNAME}"]) & other_filters)
 @errors
 async def play(_, message: Message):
+        response = await message.reply_text("**Processing Your Song 😇...**")
+
         messages = [message]
         text = ""
         offset = None
@@ -88,41 +90,40 @@ async def play(_, message: Message):
                 
             file = await convert(youtube.download(url))
 
-    else:
-        audio = (message.reply_to_message.audio or message.reply_to_message.voice) if message.reply_to_message else None
-        response = await message.reply_text("**Processing Your Song 😇...**")
-        
-        if audio:
-            if round(audio.duration / 60) > DURATION_LIMIT:
-                raise DurationLimitError(
-                    f"Bruh! Videos longer than `{DURATION_LIMIT}` minute(s) aren’t allowed, the provided audio is {round(audio.duration / 60)} minute(s) 😒"
-                )
-                
-                file_name = audio.file_unique_id + "." + (
-                    (
-                        audio.file_name.split(".")[-1]
-                    ) if (
-                        not isinstance(audio, Voice)
-                    ) else "ogg"
-                )
-                
-                file = await converter.convert(
-                    (
-                        await message.reply_to_message.download(file_name)
+        else:
+            audio = (message.reply_to_message.audio or message.reply_to_message.voice) if message.reply_to_message else None
+            if audio:
+                if round(audio.duration / 60) > DURATION_LIMIT:
+                    raise DurationLimitError(
+                        f"Bruh! Videos longer than `{DURATION_LIMIT}` minute(s) aren’t allowed, the provided audio is {round(audio.duration / 60)} minute(s) 😒"
                     )
-                    if (
-                        not path.isfile(path.join("downloads", file_name))
-                    ) else file_name
-                )
+                    
+                    file_name = audio.file_unique_id + "." + (
+                        (
+                            audio.file_name.split(".")[-1]
+                        ) if (
+                            not isinstance(audio, Voice)
+                        ) else "ogg"
+                    )
+                    
+                    file = await converter.convert(
+                        (
+                            await message.reply_to_message.download(file_name)
+                        )
+                        if (
+                            not path.isfile(path.join("downloads", file_name))
+                        ) else file_name
+                    )
     
-    if message.chat.id in callsmusic.active_chats:
-        thumb = THUMB_URL
-        position = await queues.put(message.chat.id, file=file)
-        MENTMEH = message.from_user.mention()
-        await response.delete()
-        await message.reply_photo(thumb, caption=f"**Your Song Queued at position** `{position}`! \n**Requested by: {MENTMEH}**")
-    else:
-        thumb = THUMB_URL
-        await callsmusic.set_stream(message.chat.id, file)
-        await response.delete()
-        await message.reply_photo(thumb, caption="**Playing Your Song 🎧...** \n**Requested by: {}**".format(message.from_user.mention()))
+        if message.chat.id in callsmusic.active_chats:
+            thumb = THUMB_URL
+            position = await queues.put(message.chat.id, file=file)
+            MENTMEH = message.from_user.mention()
+            await response.delete()
+            await message.reply_photo(thumb, caption=f"**Your Song Queued at position** `{position}`! \n**Requested by: {MENTMEH}**")
+        
+        else:
+            thumb = THUMB_URL
+            await callsmusic.set_stream(message.chat.id, file)
+            await response.delete()
+            await message.reply_photo(thumb, caption="**Playing Your Song 🎧...** \n**Requested by: {}**".format(message.from_user.mention()))
