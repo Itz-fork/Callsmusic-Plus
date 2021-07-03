@@ -24,6 +24,7 @@ These Commands can be only used in Groups.
 |        **Command**         |    **What It Does**     |
 |----------------------------|---------------------|
 | `/play`                    | Play Music in Group Voice Chat. Reply to a [Supported Link](https://ytdl-org.github.io/youtube-dl/supportedsites.html) or a Audio File |
+| `/nplay`                   | Play Song by It's name. (Ex:- `/nplay faded` ) This will play the First result of your keyword  |
 | `/skip` or `/s` ⊗          | Skips Currently Playing Song in Voice Chat                |
 | `/end` or `/e` ⊗           | Streamer Account will End Playing and Leaves Voice Chat   |
 | `/mute` or `/m` ⊗          | Mutes Streamer Account                                    |
