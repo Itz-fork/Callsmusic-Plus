@@ -25,6 +25,7 @@ from . import que
 async def _(bot: Client, cmd: command):
     await handle_user_status(bot, cmd)
 
+# Playing from Url or It's Name
 @Client.on_message(command(["play", f"play@{BOT_USERNAME}"]) & other_filters)
 @errors
 async def play(_, message: Message):
@@ -89,31 +90,6 @@ async def play(_, message: Message):
                     pass
                 
             file = await convert(youtube.download(url))
-
-        else:
-            audio = (message.reply_to_message.audio or message.reply_to_message.voice) if message.reply_to_message else None
-            if audio:
-                if round(audio.duration / 60) > DURATION_LIMIT:
-                    raise DurationLimitError(
-                        f"Bruh! Videos longer than `{DURATION_LIMIT}` minute(s) aren’t allowed, the provided audio is {round(audio.duration / 60)} minute(s) 😒"
-                    )
-                    
-                    file_name = audio.file_unique_id + "." + (
-                        (
-                            audio.file_name.split(".")[-1]
-                        ) if (
-                            not isinstance(audio, Voice)
-                        ) else "ogg"
-                    )
-                    
-                    file = await converter.convert(
-                        (
-                            await message.reply_to_message.download(file_name)
-                        )
-                        if (
-                            not path.isfile(path.join("downloads", file_name))
-                        ) else file_name
-                    )
     
         if message.chat.id in callsmusic.active_chats:
             thumb = THUMB_URL
@@ -127,3 +103,49 @@ async def play(_, message: Message):
             await callsmusic.set_stream(message.chat.id, file)
             await response.delete()
             await message.reply_photo(thumb, caption="**Playing Your Song 🎧...** \n**Requested by: {}**".format(message.from_user.mention()))
+
+# Playing from local telegram file
+@Client.on_message(command(["tgplay", f"tgplay@{BOT_USERNAME}"]) & other_filters)
+@errors
+async def tgplay(_, message: Message):
+    if not message.reply_to_message.audio or message.reply_to_message.voice:
+        await message.reply_text("`Reply to a Telegram Audio File...`")
+        return
+    
+    else:
+        audio = (message.reply_to_message.audio or message.reply_to_message.voice) if message.reply_to_message else None
+        if audio:
+            if round(audio.duration / 60) > DURATION_LIMIT:
+                raise DurationLimitError(
+                    f"Bruh! Videos longer than `{DURATION_LIMIT}` minute(s) aren’t allowed, the provided audio is {round(audio.duration / 60)} minute(s) 😒"
+                )
+                
+                file_name = audio.file_unique_id + "." + (
+                    (
+                        audio.file_name.split(".")[-1]
+                    ) if (
+                        not isinstance(audio, Voice)
+                    ) else "ogg"
+                )
+                
+                file = await converter.convert(
+                    (
+                        await message.reply_to_message.download(file_name)
+                    )
+                    if (
+                        not path.isfile(path.join("downloads", file_name))
+                    ) else file_name
+                )
+                
+                if message.chat.id in callsmusic.active_chats:
+                    thumb = THUMB_URL
+                    position = await queues.put(message.chat.id, file=file)
+                    MENTMEH = message.from_user.mention()
+                    await response.delete()
+                    await message.reply_photo(thumb, caption=f"**Your Song Queued at position** `{position}`! \n**Requested by: {MENTMEH}**")
+                    
+                else:
+                    thumb = THUMB_URL
+                    await callsmusic.set_stream(message.chat.id, file)
+                    await response.delete()
+                    await message.reply_photo(thumb, caption="**Playing Your Song 🎧...** \n**Requested by: {}**".format(message.from_user.mention()))
