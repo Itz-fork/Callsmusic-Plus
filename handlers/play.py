@@ -75,15 +75,11 @@ async def play(_, message: Message):
                         offset, length = entity.offset, entity.length
                         break
 
-        if offset in (None,):
-            sedlyf = await response.edit_text(f"`Lol! Can't Find a URL to Play! Trying to Play by Given Name`")
-            return sedlyf
-
-        if not sedlyf:
+        if offset not in (None,):
             url = text[offset:offset + length]
             file = await converter.convert(youtube.download(url))
 
-    if not audio or file:
+    if offset not in (None,) or if not audio:
         query = ""
         for i in message.command[1:]:
             query += " " + str(i)
