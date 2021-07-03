@@ -54,7 +54,8 @@ async def play(_, message: Message):
                 not path.isfile(path.join("downloads", file_name))
             ) else file_name
         )
-    elif:
+    
+    else:
         messages = [message]
         text = ""
         offset = None
@@ -80,7 +81,8 @@ async def play(_, message: Message):
 
         url = text[offset:offset + length]
         file = await converter.convert(youtube.download(url))
-    else:
+
+    if not audio or file:
         query = ""
         for i in message.command[1:]:
             query += " " + str(i)
@@ -116,6 +118,7 @@ async def play(_, message: Message):
                 pass
     
     file = await convert(youtube.download(url))
+    
     if message.chat.id in callsmusic.active_chats:
         thumb = THUMB_URL
         position = await queues.put(message.chat.id, file=file)
