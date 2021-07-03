@@ -112,12 +112,12 @@ async def play(_, message: Message):
                     dur += (int(dur_arr[i]) * secmul)
                     secmul *= 60
                 if (dur / 60) > DURATION_LIMIT:
-             await response.edit(f"Bruh! Videos longer than `{DURATION_LIMIT}` minute(s) aren’t allowed, the provided audio is {round(audio.duration / 60)} minute(s) 😒")
-            return
-           except:
+                    await response.edit(f"Bruh! Videos longer than `{DURATION_LIMIT}` minute(s) aren’t allowed, the provided audio is {round(audio.duration / 60)} minute(s) 😒")
+                    return
+            except:
                 pass
-    
-    file = await convert(youtube.download(url))
+
+        file = await convert(youtube.download(url))
     
     if message.chat.id in callsmusic.active_chats:
         thumb = THUMB_URL
