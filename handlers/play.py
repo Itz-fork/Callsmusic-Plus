@@ -108,7 +108,7 @@ async def play(_, message: Message):
 @Client.on_message(command(["tgplay", f"tgplay@{BOT_USERNAME}"]) & other_filters)
 @errors
 async def tgplay(_, message: Message):
-    if not message.reply_to_message.audio or message.reply_to_message.voice:
+    if not message.reply_to_message:
         await message.reply_text("`Reply to a Telegram Audio File...`")
         return
     
