@@ -76,7 +76,8 @@ async def play(_, message: Message):
                         break
 
         if offset in (None,):
-            sedlyf = await response.edit_text(f"`Lol! Can't Find a URL to Play! Trying to Play by Given Name`")
+            await response.edit_text(f"`Lol! Can't Find a URL to Play! Trying to Play by Given Name`")
+            return sedlyf
 
         if not sedlyf:
             url = text[offset:offset + length]
