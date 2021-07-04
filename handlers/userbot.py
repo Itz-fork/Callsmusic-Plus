@@ -62,7 +62,10 @@ async def ubkickme(_, message: Message):
 # Alive Message
 @NEXAUB.on_message(filters.command("alive", [".", "/"]) & filters.me & ~filters.edited)
 async def ubalive(_, message: Message):
-  await message.edit_text(f"**🌀 Nexa Music Userbot is Alive 🌀** \n\n**🤖 Version** \n ↳**Bot Version:** `V2.9.1` \n ↳**Userbot Version:** `0.3` \n\n**🐬 Info**\n ↳**Music Bot:** @{BOT_USERNAME} \n ↳**Owner:** [Click Here](tg://user?id={BOT_OWNER})")
+  alive_msg = await message.edit_text("`Processing...`")
+  alive_pic = "cache/NexaUB.jpg"
+  await message.reply_photo(alive_pic, caption=f"**🌀 Nexa Music Userbot is Alive 🌀** \n\n**🤖 Version** \n ↳**Bot Version:** `V2.9.1` \n ↳**Userbot Version:** `0.3` \n\n**🐬 Info**\n ↳**Music Bot:** @{BOT_USERNAME} \n ↳**Owner:** [Click Here](tg://user?id={BOT_OWNER})")
+  await alive_msg.delete()
 
 
 # Get Streamer's Private Chat Messages in to a Private Group
