@@ -56,7 +56,7 @@ or Ask Me In **[Nexa Bots Support Group](https://t.me/Nexa_bots)**
 Read The **[Official Docs](https://itz-fork.gitbook.io/callsmusic-plus/)** For the Guides on How to Deploy and Getting Config Values.
 
 <p align="center">
-    <a href="https://itz-fork.gitbook.io/callsmusic-plus/"><img srec="https://img.shields.io/badge/Docs-FAFAFA?style=for-the-badge&logo=gitbook&logoColor=black"></a>
+    <a href="https://itz-fork.gitbook.io/callsmusic-plus/"><img src="https://img.shields.io/badge/Docs-FAFAFA?style=for-the-badge&logo=gitbook&logoColor=black"></a>
 </p>
 
 ## Credits
