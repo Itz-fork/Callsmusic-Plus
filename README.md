@@ -27,20 +27,7 @@ _**You need another (dummy) Telegram Account To Use/Deploy This!**_
 - **Delete Command Feature**
 - **Update Your Bot Without Leaving Telegram**
 
-**Please Refer [Command Explanation](Docs/README.md) to Know How To Use These Commands and Know More About Them!**
-
-## To-Do
-
-- [ ] Add Control by Buttons Feature
-- [ ] Remove unnecessary codes to avoid spam in Log Channel
-- [ ] Add Thumbnail Generate Support
-- [ ] Remove Some unnecessary imports
-- [x] ~Fix Youtube Video Downloader~ (Done)
-- [x] ~Add Command Delete Feature~ (Done)
-- [x] ~Add Quoately Module~ (Done)
-- [x] ~Redesign Menu UI~ (Done)
-- [x] ~Add Database To Ban, Unban, Broadcast and check user status~ (Done)
-- [x] ~Fix `/chatcast` Command~ (Done)
+**Please Refer [Command Explanation](https://itz-fork.gitbook.io/callsmusic-plus/about#command-explanation) to Know How To Use These Commands and Know More About Them!**
 
 
 # Deployment
@@ -61,105 +48,16 @@ Before You Deploy make sure you Starred & Forked **[This Repo!](https://github.c
 
 
 ## Support!
-Facing Problems While Deploying or Using? **[Read How To Deploy](https://github.com/Itz-fork/Callsmusic-Plus/wiki/How-To-Deploy-This!)**
+Facing Problems While Deploying or Using? **[Read How To Deploy](https://itz-fork.gitbook.io/callsmusic-plus/deploying-the-bot)**
 or Ask Me In **[Nexa Bots Support Group](https://t.me/Nexa_bots)**
 
 
-### Config Vars 😂,
+# More Info
+Read The **[Official Docs](https://itz-fork.gitbook.io/callsmusic-plus/)** For the Guides on How to Deploy and Getting Config Values.
 
- `SESSION_NAME` - Your Pyrogram String Session!</br>
- `BOT_TOKEN` - Your Bot Token</br>
- `API_ID` - Your API ID</br>
- `API_HASH` - Your API HASH</br>
- `BOT_OWNER` - Your Telegram Id</br>
- `USER_ACCNAME` - Your bot's streamer account username without "@" ! </br>
- `SUDO_USERS` - Sudo User's ID</br>
- `LOG_CHANNEL` - Log Channel Where Bot Logs Go!</br>
- `BOT_USERNAME` - Your Bot's Username</br>
- `DURATION_LIMIT` - Max Time Limited For a song!</br>
- `ARQ_API_KEY` - Your ARQ api key! Get your own at [ARQ Bot](https://t.me/ARQRobot)</br>
- `DATABASE_URL` - Your MongoDB Url</br>
- `HEROKU_APP_NAME` - Your Heroku App Name! (If you used Heroku)</br>
- `HEROKU_API_KEY` - Your Heroku Api Key! (If you used Heroku)
-
-**[How To Get Config Vars? 🤔 Read This!](https://github.com/Itz-fork/yeah-my-man/wiki/How-To-Deploy-This!)**
-
-
-# The Hard Way!
-
-## Deploy In Your PC (or whatever)
-
-#### For Ubuntu Based OS
-
-**First run this command** - ``` sudo apt update ```
-
-- Install Python,
-```
-sudo apt install software-properties-common
-```
-```
-sudo add-apt-repository ppa:deadsnakes/ppa
-```
-```
-sudo apt install python3.9
-```
-
-- Install ffmpeg,
-```
-sudo apt install ffmpeg
-```
-
-- Install Git,
-```
-sudo apt install git
-```
-
-- Clone This Repo, 
-```
-git clone https://github.com/Itz-fork/Callsmusic-Plus
-```
-
-- Enter File Dir; 
-```
-cd Callsmusic-Plus
-```
-
-- Install Other Requirements, 
-```
-pip3 install -r requirements.txt
-```
-
-- Go to **config.py** and edit it this with **[your own values](https://github.com/Itz-fork/yeah-my-man/wiki/How-To-Deploy-This!)**
-
-- Finally Let's run the bot, 
-```
-python3 main.py
-```
-
-
-**For guide on other OS check [This wiki page](https://github.com/Itz-fork/yeah-my-man/wiki/Install-On-Other-OS)**
-
-### Requirements
-
-- FFmpeg
-- Python 3.7+
-
-### Config
-
-Copy `example.env` to `.env` and fill it with your credentials.
-
-
-### Using Docker
-
-1. Build:
-   ```bash
-   docker build -t musicplayer .
-   ```
-2. Run:
-   ```bash
-   docker run --env-file .env musicplayer
-   ```
-
+<p align="center">
+    <a href="https://itz-fork.gitbook.io/callsmusic-plus/"><img srec="https://img.shields.io/badge/Docs-FAFAFA?style=for-the-badge&logo=gitbook&logoColor=black"></a>
+</p>
 
 ## Credits
 
