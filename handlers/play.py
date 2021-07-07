@@ -48,8 +48,6 @@ PLAYMSG_BUTTONS = InlineKeyboardMarkup(
 )
 
 
-
-
 @Client.on_message(command(["play", f"play@{BOT_USERNAME}"]) & other_filters)
 @errors
 async def play(_, message: Message):
