@@ -200,9 +200,9 @@ async def cbend(_, query: CallbackQuery):
 async def cbskip(_, query: CallbackQuery):
      if query.message.chat.id not in callsmusic.active_chats:
         await query.edit_message_text("❗️ Nothing is playing", reply_markup=BACK_BUTTON)
-    else:
+     else:
         queues.task_done(query.message.chat.id)
-
+        
         if queues.is_empty(query.message.chat.id):
             await callsmusic.stop(query.message.chat.id)
         else:
