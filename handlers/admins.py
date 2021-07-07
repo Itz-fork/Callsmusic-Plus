@@ -55,7 +55,10 @@ async def pause(_, message: Message):
 @errors
 @authorized_users_only
 async def betacb(_, message: Message):
-    await message.reply_text("Beta Setting Opened!", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Pause Button", callback_data="cbpause")]])
+    await message.reply_text(
+        "Beta Setting Opened!",
+        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("📺 Watch On YouTube 📺", callback_data="cbpause")]])
+    )
 
 @Client.on_callback_query(filters.regex("cbpause"))
 async def cbpause(_, query: CallbackQuery):
