@@ -45,13 +45,26 @@ async def update_admin(client, message):
 @errors
 @authorized_users_only
 async def pause(_, message: Message):
-    await message.delete()
     if callsmusic.pause(message.chat.id):
         await message.reply_text("⏸ Paused")
     else:
         await message.reply_text("❗️ Nothing is playing")
 
+# beta Test
+@Client.on_message(command(["beta", f"beta@{BOT_USERNAME}", "p"]))
+@errors
+@authorized_users_only
+async def betacb(_, message: Message):
+    await message.reply_text("Beta Setting Opened!", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Pause Button", callback_data="cbpause")]])
 
+@Client.on_callback_query(filters.regex("cbpause"))
+async def cbpause(_, query: CallbackQuery):
+    if callsmusic.pause(query.message.chat.id):
+        await query.edit_message_text("⏸ Paused")
+    else:
+        await query.edit_message_text("❗️ Nothing is playing")
+
+# Over lol
 @Client.on_message(command(["resume", f"resume@{BOT_USERNAME}", "r"]))
 @errors
 @authorized_users_only
