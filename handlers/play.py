@@ -121,7 +121,6 @@ async def play(_, message: Message):
 # Pros reading this code be like: Wait wut? wtf? dumb? Me gonna die, lol etc.
 
 @Client.on_message(command(["nplay", f"nplay@{BOT_USERNAME}"]) & other_filters)
-@errors
 async def nplay(_, message: Message):
     global que
     status = message.text.split(None, 1)[1].strip()
