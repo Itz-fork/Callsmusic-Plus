@@ -10,6 +10,42 @@ from config import BOT_USERNAME, UPDATES_CHANNEL
 async def close(_, query: CallbackQuery):
     await query.message.delete()
 
+# Player Control Callbacks
+
+@Client.on_callback_query(filters.regex("cbback"))
+async def cbback(_, query: CallbackQuery):
+    await query.edit_message_text(
+        "**Here is The Control Menu Of Streamer!**",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "⏸ Pause ⏸", callback_data="cbpause"
+                    ),
+                    InlineKeyboardButton(
+                        "▶️ Resume ▶️", callback_data="cbresume"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "⏩ Skip ⏩", callback_data="cbskip"
+                    ),
+                    InlineKeyboardButton(
+                        "⏹ End ⏹", callback_data="cbend"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🔇 Mute 🔇", callback_data="cbmute"
+                    ),
+                    InlineKeyboardButton(
+                        "🔈 Unmute 🔈", callback_data="cbunmute"
+                    )
+                ]
+            ]
+        )
+    )
+
 
 # Start callback 
 
