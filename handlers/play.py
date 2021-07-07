@@ -12,6 +12,7 @@ import converter
 import youtube
 import requests
 import aiohttp
+import wget
 
 from helpers.database import db, Database
 from helpers.dbthings import handle_user_status
@@ -165,8 +166,54 @@ async def nplay(_, message: Message):
                     return
         except:
             pass    
+        file = await convert(youtube.download(url))
 
-    file = await convert(youtube.download(url))
+    if status == "deezer":
+        try:
+            songs = await arq.deezer(query,1)
+            if not songs.ok:
+                await message_.reply_text(songs.result)
+                return
+            url = songs.result[0].url
+            duration = songs.result[0].duration
+        except Exception as e:
+            await lel.edit(
+                f"**Error:** {e}"
+            )
+            print(str(e))
+            return
+        try:
+            deezduration = round(duration / 60)
+            if deezduration > DURATION_LIMIT:
+                await lel.edit(f"Bruh! Videos longer than `{DURATION_LIMIT}` minute(s) aren’t allowed, the provided audio is {round(audio.duration / 60)} minute(s) 😒")
+                return
+        except:
+            pass
+        file = await convert(wget.download(url))
+
+    if status == "saavn":
+        try:
+            songs = await arq.saavn(query,1)
+            if not songs.ok:
+                await message_.reply_text(songs.result)
+                return
+            url = songs.result[0].media_url
+            duration = int(songs.result[0].duration)
+        except Exception as e:
+            await lel.edit(
+                f"**Error:** {e}"
+            )
+            print(str(e))
+            return
+        try:
+            saavduration = round(duration / 60)
+            if saavduration > DURATION_LIMIT:
+                await lel.edit(f"Bruh! Videos longer than `{DURATION_LIMIT}` minute(s) aren’t allowed, the provided audio is {round(audio.duration / 60)} minute(s) 😒")
+                return
+        except:
+            pass
+        file = await convert(wget.download(url))
+        
     if message.chat.id in callsmusic.active_chats:
         thumb = THUMB_URL
         position = await queues.put(message.chat.id, file=file)
