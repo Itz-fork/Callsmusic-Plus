@@ -124,9 +124,6 @@ async def play(_, message: Message):
 @errors
 async def nplay(_, message: Message):
     global que
-    if len(message.command) != 2:
-        await message.reply_text("Lol! This isn't the way to use this command 😂! Please read **/help** ☺️")
-        return
     status = message.text.split(None, 1)[1].strip()
     status = status.lower()
     lel = await message.reply_text("**Processing Your Song 😇...**")
