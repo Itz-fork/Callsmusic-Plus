@@ -163,7 +163,7 @@ async def nplay(_, message: Message):
                     return
         except:
             pass    
-        file = await convert(youtube.download(url))
+            file = await convert(youtube.download(url))
 
     if status == "deezer":
         try:
@@ -186,7 +186,7 @@ async def nplay(_, message: Message):
                 return
         except:
             pass
-        file = await convert(wget.download(url))
+            file = await convert(wget.download(url))
 
     if status == "saavn":
         try:
@@ -209,7 +209,7 @@ async def nplay(_, message: Message):
                 return
         except:
             pass
-        file = await convert(wget.download(url))
+            file = await convert(wget.download(url))
         
     if message.chat.id in callsmusic.active_chats:
         thumb = THUMB_URL
