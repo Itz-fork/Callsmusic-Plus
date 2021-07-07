@@ -123,7 +123,11 @@ async def play(_, message: Message):
 @errors
 async def nplay(_, message: Message):
     global que
-    
+    if len(message.command) != 2:
+        await message.reply_text("Lol! This isn't the way to use this command 😂! Please read **/help** ☺️")
+        return
+    status = message.text.split(None, 1)[1].strip()
+    status = status.lower()
     lel = await message.reply_text("**Processing Your Song 😇...**")
     user_id = message.from_user.id
     user_name = message.from_user.first_name
@@ -132,36 +136,35 @@ async def nplay(_, message: Message):
     for i in message.command[1:]:
         query += " " + str(i)
     print(query)
-    ydl_opts = {"format": "bestaudio[ext=m4a]"}
-    try:
-        results = YoutubeSearch(query, max_results=1).to_dict()
-        url = f"https://youtube.com{results[0]['url_suffix']}"
-        # print(results)
-        title = results[0]["title"][:40]
-        thumbnail = results[0]["thumbnails"][0]
-        thumb_name = f"thumb{title}.jpg"
-        thumb = requests.get(thumbnail, allow_redirects=True)
-        open(thumb_name, "wb").write(thumb.content)
-        duration = results[0]["duration"]
-        results[0]["url_suffix"]
-        views = results[0]["views"]
-
-    except Exception as e:
-        await lel.edit(
-            f"**Error:** {e}"
-        )
-        print(str(e))
-        return
-    try:    
-        secmul, dur, dur_arr = 1, 0, duration.split(':')
-        for i in range(len(dur_arr)-1, -1, -1):
-            dur += (int(dur_arr[i]) * secmul)
-            secmul *= 60
-        if (dur / 60) > DURATION_LIMIT:
-             await lel.edit(f"Bruh! Videos longer than `{DURATION_LIMIT}` minute(s) aren’t allowed, the provided audio is {round(audio.duration / 60)} minute(s) 😒")
-             return
-    except:
-        pass    
+    if status == "youtube":
+        ydl_opts = {"format": "bestaudio[ext=m4a]"}
+        try:
+            results = YoutubeSearch(query, max_results=1).to_dict()
+            url = f"https://youtube.com{results[0]['url_suffix']}"
+            title = results[0]["title"][:40]
+            thumbnail = results[0]["thumbnails"][0]
+            thumb_name = f"thumb{title}.jpg"
+            thumb = requests.get(thumbnail, allow_redirects=True)
+            open(thumb_name, "wb").write(thumb.content)
+            duration = results[0]["duration"]
+            results[0]["url_suffix"]
+            views = results[0]["views"]
+        except Exception as e:
+            await lel.edit(
+                f"**Error:** {e}"
+            )
+            print(str(e))
+            return
+        try:    
+            secmul, dur, dur_arr = 1, 0, duration.split(':')
+            for i in range(len(dur_arr)-1, -1, -1):
+                dur += (int(dur_arr[i]) * secmul)
+                secmul *= 60
+                if (dur / 60) > DURATION_LIMIT:
+                    await lel.edit(f"Bruh! Videos longer than `{DURATION_LIMIT}` minute(s) aren’t allowed, the provided audio is {round(audio.duration / 60)} minute(s) 😒")
+                    return
+        except:
+            pass    
 
     file = await convert(youtube.download(url))
     if message.chat.id in callsmusic.active_chats:
