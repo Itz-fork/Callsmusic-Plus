@@ -5,7 +5,6 @@ import asyncio # Lol! Weird Import!
 
 from asyncio import QueueEmpty
 from functools import wraps
-from typing import Callable
 
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, Chat, CallbackQuery
@@ -36,7 +35,7 @@ async def delcmd(_, message: Message):
 def admin_chack_cb(func):
     @wraps(func)
     async def checkedadmin(message, query):
-        admins = await client.get_chat_members(message.chat.id, filter="administrators")
+        admins = await Client.get_chat_members(message.chat.id, filter="administrators")
         if query.from_user.id == admins:
             return await func(message, query)
         else:
