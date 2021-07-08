@@ -1,22 +1,18 @@
-# Copyright (c) 2021 Itz-fork <https://github.com/Itz-fork> and Callsmusic
-
 import traceback
 import asyncio # Lol! Weird Import!
 
-from typing import Callable
 from asyncio import QueueEmpty
 
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, Chat, CallbackQuery
 
 from callsmusic import callsmusic, queues
+
 from helpers.filters import command
 from helpers.decorators import errors, authorized_users_only
 from helpers.database import db, dcmdb, Database
-from helpers.admins import get_administrators
-from cache.admins import admins as a
 from helpers.dbthings import handle_user_status, delcmd_is_on, delcmd_on, delcmd_off
-from config import LOG_CHANNEL, BOT_OWNER, BOT_USERNAME, SUDO_USERS
+from config import LOG_CHANNEL, BOT_OWNER, BOT_USERNAME
 from . import que, admins as fuck
 
 
@@ -24,40 +20,14 @@ from . import que, admins as fuck
 async def _(bot: Client, cmd: Message):
     await handle_user_status(bot, cmd)
 
-# F this shit
-def admin_chack_cb(func: Callable) -> Callable:
-    async def decorator(client, query):
-        admemes = a.get(query.message.chat.id)
-        if query.from_user.id in admemes:
-            return await func(client, query)
-        else:
-            await cb.answer("You ain't allowed!", show_alert=True)
-            return
+# Back Button
+BACK_BUTTON = InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Go Back ⬅️", callback_data="cbback")]])
 
-def admin_chack_cb(func: Callable) -> Callable:
-    async def decorator(client: Client, message, query):
-        if query.from_user.id in SUDO_USERS:
-            return await func(client, query)
-
-        administrators = await get_administrators(query.message.chat)
-
-        for administrator in administrators:
-            if administrator == query.from_user.id:
-                return await func(client, query)
-        else:
-            await cb.answer("This isn't for you!", show_alert=True)
-            return
-
-    return decorator
-# Anticommand Module
 @Client.on_message(~filters.private)
 async def delcmd(_, message: Message):
     if await delcmd_is_on(message.chat.id) and message.text.startswith("/") or message.text.startswith("!"):
         await message.delete()
     await message.continue_propagation()
-
-# Back Button
-BACK_BUTTON = InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Go Back ⬅️", callback_data="cbback")]])
 
 
 @Client.on_message(filters.command(["reload", f"reload@{BOT_USERNAME}"]))
@@ -76,7 +46,7 @@ async def update_admin(client, message):
 @Client.on_message(command(["control", f"control@{BOT_USERNAME}", "p"]))
 @errors
 @authorized_users_only
-async def controlset(client: Client, message: Message):
+async def controlset(_, message: Message):
     await message.reply_text(
         "**Successfully Opened Control Menu Of Streamer Player!**",
         reply_markup=InlineKeyboardMarkup(
@@ -196,7 +166,6 @@ async def unmute(_, message: Message):
 # Music Player Callbacks (Control by buttons feature)
 
 @Client.on_callback_query(filters.regex("cbpause"))
-@admin_chack_cb
 async def cbpause(_, query: CallbackQuery):
     if callsmusic.pause(query.message.chat.id):
         await query.edit_message_text("⏸ Song Paused", reply_markup=BACK_BUTTON)
@@ -204,7 +173,6 @@ async def cbpause(_, query: CallbackQuery):
         await query.edit_message_text("❗️ Nothing is playing, Lol!", reply_markup=BACK_BUTTON)
 
 @Client.on_callback_query(filters.regex("cbresume"))
-@admin_chack_cb
 async def cbresume(_, query: CallbackQuery):
     if callsmusic.resume(query.message.chat.id):
         await query.edit_message_text("🎧 Song Resumed", reply_markup=BACK_BUTTON)
@@ -212,7 +180,6 @@ async def cbresume(_, query: CallbackQuery):
         await query.edit_message_text("❗️ Nothing is paused, Lol!", reply_markup=BACK_BUTTON)
 
 @Client.on_callback_query(filters.regex("cbend"))
-@admin_chack_cb
 async def cbend(_, query: CallbackQuery):
     if query.message.chat.id not in callsmusic.active_chats:
         await query.edit_message_text("❗️ Nothing is playing", reply_markup=BACK_BUTTON)
@@ -226,7 +193,6 @@ async def cbend(_, query: CallbackQuery):
         await query.edit_message_text("✅ Cleared the queue and left the Voice Chat!", reply_markup=BACK_BUTTON)
 
 @Client.on_callback_query(filters.regex("cbskip"))
-@admin_chack_cb
 async def cbskip(_, query: CallbackQuery):
      if query.message.chat.id not in callsmusic.active_chats:
         await query.edit_message_text("❗️ Nothing is playing", reply_markup=BACK_BUTTON)
@@ -243,7 +209,6 @@ async def cbskip(_, query: CallbackQuery):
         await query.edit_message_text("🗑 Skipped", reply_markup=BACK_BUTTON)
 
 @Client.on_callback_query(filters.regex("cbmute"))
-@admin_chack_cb
 async def cbmute(_, query: CallbackQuery):
     result = callsmusic.mute(query.message.chat.id)
 
@@ -255,7 +220,6 @@ async def cbmute(_, query: CallbackQuery):
         await query.edit_message_text("❗️ Not in voice chat", reply_markup=BACK_BUTTON)
 
 @Client.on_callback_query(filters.regex("cbunmute"))
-@admin_chack_cb
 async def cbunmute(_, query: CallbackQuery):
     result = callsmusic.unmute(query.message.chat.id)
 
