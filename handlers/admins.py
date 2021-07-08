@@ -33,10 +33,10 @@ async def delcmd(_, message: Message):
 
 # Cb admin check
 def cb_admemes_only(func: Callable) -> Callable:
-    async def decorator(client, query):
+    async def decorator(message, query):
         admemes = purnmemes.get(query.message.chat.id)
         if query.from_user.id in admemes:
-            return await func(client, query)
+            return await func(message, query)
         else:
             await query.answer("You aren't an admin", show_alert=True)
             return
