@@ -32,7 +32,7 @@ def authorized_users_only(func: Callable) -> Callable:
 
 
 def admin_chack_cb(func: Callable) -> Callable:
-    async def gaeshit(message: Message, query: CallbackQuery):
+    async def gaeshit(client: Client, message: Message, query: CallbackQuery):
         administrators = await get_administrators(query.message.chat)
         if message.from_user.id in SUDO_USERS:
             return await func(message, query)
