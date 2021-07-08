@@ -26,7 +26,7 @@ async def _(bot: Client, cmd: Message):
 
 def cb_admemes_only(func: Callable) -> Callable:
     async def decorator(client, query):
-        admemes = a.get(query.message.chat.id)
+        admemes = await get(query.message.chat.id)
         if query.from_user.id in admemes:
             return await func(client, query)
         else:
