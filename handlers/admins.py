@@ -34,7 +34,7 @@ async def delcmd(_, message: Message):
 # Cb admin check
 def cb_admemes_only(func: Callable) -> Callable:
     async def decorator(client, query):
-        admemes = purnmemes.get(cb.message.chat.id)
+        admemes = purnmemes.get(query.message.chat.id)
         if query.from_user.id in admemes:
             return await func(client, query)
         else:
