@@ -27,7 +27,7 @@ async def _(bot: Client, cmd: Message):
 
 def cb_admemes_only(func):
     @wraps(func)
-    async def ownermelol(message, query):
+    async def cbdecorator(message, query):
         if query.message.from_user.id in SUDO_USERS:
             return await func(message, query)
 
