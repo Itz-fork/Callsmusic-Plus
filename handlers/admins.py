@@ -24,23 +24,17 @@ from . import que, admins as fuck
 async def _(bot: Client, cmd: Message):
     await handle_user_status(bot, cmd)
 
-# Callback admin check
 def cb_admemes_only(func: Callable) -> Callable:
-    async def decorator(message, query):
-        if query.message.from_user.id in SUDO_USERS:
-            return await func(message, query)
-
-        administrators = await get_administrators(query.message.chat)
-
-        for administrator in administrators:
-            if administrator == query.message.from_user.id:
-                return await func(message, query)
-
+    async def decorator(client, query):
+        admemes = a.get(query.message.chat.id)
+        if query.from_user.id in admemes:
+            return await func(client, query)
         else:
-            await query.answer("You Go Away, This isn't For You!", show_alert=True)
+            await query.answer("You aren't an admin", show_alert=True)
             return
 
     return decorator
+
 
 # Back Button
 BACK_BUTTON = InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Go Back ⬅️", callback_data="cbback")]])
