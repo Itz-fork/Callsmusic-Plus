@@ -22,6 +22,24 @@ from . import que, admins as fuck
 @Client.on_message()
 async def _(bot: Client, cmd: Message):
     await handle_user_status(bot, cmd)
+# Callback admin check
+
+def is_that_owner(func):
+    @wraps(func)
+    async def ownermelol(message, query):
+        if query.message.from_user.id in SUDO_USERS:
+            return await func(message, query)
+
+        administrators = await get_administrators(query.message.chat)
+
+        for administrator in administrators:
+            if administrator == query.message.from_user.id:
+                return await func(message, query)
+        else:
+            await query.answer("Lol, You aren't a admin to do this!", show_alert=True)
+            return
+
+    return cbdecorator
 
 # Back Button
 BACK_BUTTON = InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Go Back ⬅️", callback_data="cbback")]])
