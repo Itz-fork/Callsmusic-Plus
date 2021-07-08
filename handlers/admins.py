@@ -1,5 +1,4 @@
 # Copyright (c) 2021 Itz-fork <https://github.com/Itz-fork> and Callsmusic
-# Made for Callsmusic-Plus in Earth by a Sri Lankan :)
 
 
 import traceback
@@ -13,7 +12,7 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, 
 from callsmusic import callsmusic, queues
 
 from helpers.filters import command
-from helpers.decorators import errors, authorized_users_only
+from helpers.decorators import errors, authorized_users_only, cb_admemes_only
 from helpers.database import db, dcmdb, Database
 from helpers.dbthings import handle_user_status, delcmd_is_on, delcmd_on, delcmd_off
 from config import LOG_CHANNEL, BOT_OWNER, BOT_USERNAME
@@ -170,6 +169,7 @@ async def unmute(_, message: Message):
 # Music Player Callbacks (Control by buttons feature)
 
 @Client.on_callback_query(filters.regex("cbpause"))
+@cb_admemes_only
 async def cbpause(_, query: CallbackQuery):
     if callsmusic.pause(query.message.chat.id):
         await query.edit_message_text("⏸ Song Paused", reply_markup=BACK_BUTTON)
@@ -177,6 +177,7 @@ async def cbpause(_, query: CallbackQuery):
         await query.edit_message_text("❗️ Nothing is playing, Lol!", reply_markup=BACK_BUTTON)
 
 @Client.on_callback_query(filters.regex("cbresume"))
+@cb_admemes_only
 async def cbresume(_, query: CallbackQuery):
     if callsmusic.resume(query.message.chat.id):
         await query.edit_message_text("🎧 Song Resumed", reply_markup=BACK_BUTTON)
@@ -184,6 +185,7 @@ async def cbresume(_, query: CallbackQuery):
         await query.edit_message_text("❗️ Nothing is paused, Lol!", reply_markup=BACK_BUTTON)
 
 @Client.on_callback_query(filters.regex("cbend"))
+@cb_admemes_only
 async def cbend(_, query: CallbackQuery):
     if query.message.chat.id not in callsmusic.active_chats:
         await query.edit_message_text("❗️ Nothing is playing", reply_markup=BACK_BUTTON)
@@ -197,6 +199,7 @@ async def cbend(_, query: CallbackQuery):
         await query.edit_message_text("✅ Cleared the queue and left the Voice Chat!", reply_markup=BACK_BUTTON)
 
 @Client.on_callback_query(filters.regex("cbskip"))
+@cb_admemes_only
 async def cbskip(_, query: CallbackQuery):
      if query.message.chat.id not in callsmusic.active_chats:
         await query.edit_message_text("❗️ Nothing is playing", reply_markup=BACK_BUTTON)
@@ -213,6 +216,7 @@ async def cbskip(_, query: CallbackQuery):
         await query.edit_message_text("🗑 Skipped", reply_markup=BACK_BUTTON)
 
 @Client.on_callback_query(filters.regex("cbmute"))
+@cb_admemes_only
 async def cbmute(_, query: CallbackQuery):
     result = callsmusic.mute(query.message.chat.id)
 
@@ -224,6 +228,7 @@ async def cbmute(_, query: CallbackQuery):
         await query.edit_message_text("❗️ Not in voice chat", reply_markup=BACK_BUTTON)
 
 @Client.on_callback_query(filters.regex("cbunmute"))
+@cb_admemes_only
 async def cbunmute(_, query: CallbackQuery):
     result = callsmusic.unmute(query.message.chat.id)
 
