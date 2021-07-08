@@ -24,6 +24,14 @@ from . import que, admins as fuck
 async def _(bot: Client, cmd: Message):
     await handle_user_status(bot, cmd)
 
+# Anticommand Module
+@Client.on_message(~filters.private)
+async def delcmd(_, message: Message):
+    if await delcmd_is_on(message.chat.id) and message.text.startswith("/") or message.text.startswith("!"):
+        await message.delete()
+    await message.continue_propagation()
+
+# Cb admin check
 def cb_admemes_only(func: Callable) -> Callable:
     async def decorator(client, query):
         admemes = purnmemes.get(cb.message.chat.id)
@@ -38,12 +46,6 @@ def cb_admemes_only(func: Callable) -> Callable:
 
 # Back Button
 BACK_BUTTON = InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Go Back ⬅️", callback_data="cbback")]])
-
-@Client.on_message(~filters.private)
-async def delcmd(_, message: Message):
-    if await delcmd_is_on(message.chat.id) and message.text.startswith("/") or message.text.startswith("!"):
-        await message.delete()
-    await message.continue_propagation()
 
 
 @Client.on_message(filters.command(["reload", f"reload@{BOT_USERNAME}"]))
