@@ -13,6 +13,7 @@ from functools import wraps
 from callsmusic import callsmusic, queues
 from helpers.filters import command
 from helpers.decorators import errors, authorized_users_only
+from cache.admins import get
 from helpers.database import db, dcmdb, Database
 from helpers.admins import get_administrators
 from helpers.dbthings import handle_user_status, delcmd_is_on, delcmd_on, delcmd_off
@@ -25,22 +26,16 @@ async def _(bot: Client, cmd: Message):
     await handle_user_status(bot, cmd)
 # Callback admin check
 
-def cb_admemes_only(func):
-    @wraps(func)
-    async def cbdecorator(message, query):
-        if query.message.from_user.id in SUDO_USERS:
-            return await func(message, query)
-
-        administrators = await get_administrators(query.message.chat)
-
-        for administrator in administrators:
-            if administrator == query.message.from_user.id:
-                return await func(message, query)
+def cb_admemes_only(func: Callable) -> Callable:
+    async def decorator(client, query):
+        gae_memes = client.get(query.message.chat.id)
+        if query.from_user.id in gae_memes:
+            return await func(client, query)
         else:
-            await query.answer("Lol, You aren't a admin to do this!", show_alert=True)
+            await query.answer("Lol, You aren't a admin of this chat!", show_alert=True)
             return
 
-    return cbdecorator
+    return decorator
 
 # Back Button
 BACK_BUTTON = InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Go Back ⬅️", callback_data="cbback")]])
