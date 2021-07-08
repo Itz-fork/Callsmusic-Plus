@@ -1,10 +1,10 @@
 # Copyright (c) 2021 Itz-fork <https://github.com/Itz-fork> and Callsmusic
 
-
 import traceback
 import asyncio # Lol! Weird Import!
 
 from asyncio import QueueEmpty
+from typing import Callable
 
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, Chat, CallbackQuery
