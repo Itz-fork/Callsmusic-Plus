@@ -4,6 +4,7 @@ import traceback
 import asyncio # Lol! Weird Import!
 
 from asyncio import QueueEmpty
+from functools import wraps
 from typing import Callable
 
 from pyrogram import Client, filters
@@ -32,16 +33,17 @@ async def delcmd(_, message: Message):
     await message.continue_propagation()
 
 # Cb admin check
-def cb_admemes_only(func: Callable) -> Callable:
-    async def decorator(message, query):
-        admemes = purnmemes.get(query.message.chat.id)
-        if query.from_user.id in admemes:
+def admin_chack_cb(func):
+    @wraps(func)
+    async def checkedadmin(message, query):
+        admins = await client.get_chat_members(message.chat.id, filter="administrators")
+        if query.from_user.id == admins:
             return await func(message, query)
         else:
-            await query.answer("You aren't an admin", show_alert=True)
+            await query.answer("You Go Away, This isn't For You!", show_alert=True)
             return
-
-    return decorator
+    
+    return checkedadmin
 
 
 # Back Button
@@ -184,7 +186,7 @@ async def unmute(_, message: Message):
 # Music Player Callbacks (Control by buttons feature)
 
 @Client.on_callback_query(filters.regex("cbpause"))
-@cb_admemes_only
+@admin_chack_cb
 async def cbpause(_, query: CallbackQuery):
     if callsmusic.pause(query.message.chat.id):
         await query.edit_message_text("⏸ Song Paused", reply_markup=BACK_BUTTON)
@@ -192,7 +194,7 @@ async def cbpause(_, query: CallbackQuery):
         await query.edit_message_text("❗️ Nothing is playing, Lol!", reply_markup=BACK_BUTTON)
 
 @Client.on_callback_query(filters.regex("cbresume"))
-@cb_admemes_only
+@admin_chack_cb
 async def cbresume(_, query: CallbackQuery):
     if callsmusic.resume(query.message.chat.id):
         await query.edit_message_text("🎧 Song Resumed", reply_markup=BACK_BUTTON)
@@ -200,7 +202,7 @@ async def cbresume(_, query: CallbackQuery):
         await query.edit_message_text("❗️ Nothing is paused, Lol!", reply_markup=BACK_BUTTON)
 
 @Client.on_callback_query(filters.regex("cbend"))
-@cb_admemes_only
+@admin_chack_cb
 async def cbend(_, query: CallbackQuery):
     if query.message.chat.id not in callsmusic.active_chats:
         await query.edit_message_text("❗️ Nothing is playing", reply_markup=BACK_BUTTON)
@@ -214,7 +216,7 @@ async def cbend(_, query: CallbackQuery):
         await query.edit_message_text("✅ Cleared the queue and left the Voice Chat!", reply_markup=BACK_BUTTON)
 
 @Client.on_callback_query(filters.regex("cbskip"))
-@cb_admemes_only
+@admin_chack_cb
 async def cbskip(_, query: CallbackQuery):
      if query.message.chat.id not in callsmusic.active_chats:
         await query.edit_message_text("❗️ Nothing is playing", reply_markup=BACK_BUTTON)
@@ -231,7 +233,7 @@ async def cbskip(_, query: CallbackQuery):
         await query.edit_message_text("🗑 Skipped", reply_markup=BACK_BUTTON)
 
 @Client.on_callback_query(filters.regex("cbmute"))
-@cb_admemes_only
+@admin_chack_cb
 async def cbmute(_, query: CallbackQuery):
     result = callsmusic.mute(query.message.chat.id)
 
@@ -243,7 +245,7 @@ async def cbmute(_, query: CallbackQuery):
         await query.edit_message_text("❗️ Not in voice chat", reply_markup=BACK_BUTTON)
 
 @Client.on_callback_query(filters.regex("cbunmute"))
-@cb_admemes_only
+@admin_chack_cb
 async def cbunmute(_, query: CallbackQuery):
     result = callsmusic.unmute(query.message.chat.id)
 
