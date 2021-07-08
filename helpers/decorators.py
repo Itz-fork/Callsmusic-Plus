@@ -30,6 +30,7 @@ def authorized_users_only(func: Callable) -> Callable:
 
     return decorator
 
+
 def admin_chack_cb(func: Callable) -> Callable:
     async def decorator(client: Client, query: CallbackQuery, message: Message):
         if message.from_user.id in SUDO_USERS:
@@ -38,7 +39,7 @@ def admin_chack_cb(func: Callable) -> Callable:
         administrators = await get_administrators(query.message.chat)
 
         for administrator in administrators:
-            if administrator == query.message.from_user.id:
+            if administrator == query.from_user.id:
                 return await func(client, query, message)
 
     return decorator
