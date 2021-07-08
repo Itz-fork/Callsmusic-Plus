@@ -31,14 +31,3 @@ def authorized_users_only(func: Callable) -> Callable:
                 return await func(client, message)
 
     return decorator
-
-
-
-def admin_chack_cb(func: Callable) -> Callable:
-    async def decorator(client, query):
-        admemes = a.get(query.message.chat.id)
-        if query.from_user.id in admemes:
-            return await func(client, query)
-        else:
-            await cb.answer("You ain't allowed!", show_alert=True)
-            return
