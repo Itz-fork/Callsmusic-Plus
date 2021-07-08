@@ -16,7 +16,7 @@ from helpers.filters import command
 from helpers.decorators import errors, authorized_users_only
 from helpers.database import db, dcmdb, Database
 from helpers.dbthings import handle_user_status, delcmd_is_on, delcmd_on, delcmd_off
-from config import LOG_CHANNEL, BOT_OWNER, BOT_USERNAME
+from config import LOG_CHANNEL, BOT_OWNER, BOT_USERNAME, SUDO_USERS
 from . import que, admins as fuck
 
 
