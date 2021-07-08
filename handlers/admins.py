@@ -3,6 +3,7 @@
 import traceback
 import asyncio # Lol! Weird Import!
 
+from typing import Callable
 from asyncio import QueueEmpty
 
 from pyrogram import Client, filters
