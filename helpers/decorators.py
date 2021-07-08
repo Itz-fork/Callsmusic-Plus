@@ -1,7 +1,7 @@
 from typing import Callable
 
 from pyrogram import Client
-from pyrogram.types import Message
+from pyrogram.types import Message, CallbackQuery
 
 from helpers.admins import get_administrators
 from config import SUDO_USERS
@@ -41,5 +41,8 @@ def cb_admemes_only(func: Callable) -> Callable:
         for administrator in administrators:
             if administrator == query.message.from_user.id:
                 return await func(client, message)
+        else:
+            await query.answer("Lol, You aren't a admin to do this!", show_alert=True)
+            return
 
     return cbdecorator
