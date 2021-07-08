@@ -34,6 +34,21 @@ def admin_chack_cb(func: Callable) -> Callable:
             await cb.answer("You ain't allowed!", show_alert=True)
             return
 
+def admin_chack_cb(func: Callable) -> Callable:
+    async def decorator(client: Client, message, query):
+        if query.from_user.id in SUDO_USERS:
+            return await func(client, query)
+
+        administrators = await get_administrators(query.message.chat)
+
+        for administrator in administrators:
+            if administrator == query.from_user.id:
+                return await func(client, query)
+        else:
+            await cb.answer("This isn't for you!", show_alert=True)
+            return
+
+    return decorator
 # Anticommand Module
 @Client.on_message(~filters.private)
 async def delcmd(_, message: Message):
