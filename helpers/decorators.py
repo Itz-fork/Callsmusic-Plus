@@ -32,7 +32,7 @@ def authorized_users_only(func: Callable) -> Callable:
 
 # For callback
 def cb_admemes_only(func: Callable) -> Callable:
-    async def decorator(client: Client, message: Message):
+    async def cbdecorator(client: Client, message: Message):
         if query.message.from_user.id in SUDO_USERS:
             return await func(client, message)
 
@@ -42,4 +42,4 @@ def cb_admemes_only(func: Callable) -> Callable:
             if administrator == query.message.from_user.id:
                 return await func(client, message)
 
-    return decorator
+    return cbdecorator
