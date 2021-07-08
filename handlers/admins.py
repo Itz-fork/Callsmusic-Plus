@@ -12,7 +12,7 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, 
 from callsmusic import callsmusic, queues
 from helpers.filters import command
 from helpers.decorators import errors, authorized_users_only
-from cache.admins import get
+from cache.admins import admins as purnmemes
 from helpers.database import db, dcmdb, Database
 from helpers.admins import get_administrators
 from helpers.dbthings import handle_user_status, delcmd_is_on, delcmd_on, delcmd_off
@@ -26,7 +26,7 @@ async def _(bot: Client, cmd: Message):
 
 def cb_admemes_only(func: Callable) -> Callable:
     async def decorator(client, query):
-        admemes = await get(query.message.chat.id)
+        admemes = purnmemes.get(cb.message.chat.id)
         if query.from_user.id in admemes:
             return await func(client, query)
         else:
