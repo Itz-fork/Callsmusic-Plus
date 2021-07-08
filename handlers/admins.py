@@ -8,6 +8,7 @@ from asyncio import QueueEmpty
 
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, Chat, CallbackQuery
+from functools import wraps
 
 from callsmusic import callsmusic, queues
 
@@ -24,7 +25,7 @@ async def _(bot: Client, cmd: Message):
     await handle_user_status(bot, cmd)
 # Callback admin check
 
-def is_that_owner(func):
+def cb_admemes_only(func):
     @wraps(func)
     async def ownermelol(message, query):
         if query.message.from_user.id in SUDO_USERS:
