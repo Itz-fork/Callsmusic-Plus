@@ -10,9 +10,10 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, 
 
 from callsmusic import callsmusic, queues
 from helpers.filters import command
-from helpers.decorators import errors, authorized_users_only, admin_chack_cb
+from helpers.decorators import errors, authorized_users_only
 from helpers.database import db, dcmdb, Database
 from helpers.admins import get_administrators
+from cache.admins import admins as a
 from helpers.dbthings import handle_user_status, delcmd_is_on, delcmd_on, delcmd_off
 from config import LOG_CHANNEL, BOT_OWNER, BOT_USERNAME, SUDO_USERS
 from . import que, admins as fuck
@@ -21,6 +22,15 @@ from . import que, admins as fuck
 @Client.on_message()
 async def _(bot: Client, cmd: Message):
     await handle_user_status(bot, cmd)
+
+def admin_chack_cb(func: Callable) -> Callable:
+    async def decorator(client, query):
+        admemes = a.get(query.message.chat.id)
+        if query.from_user.id in admemes:
+            return await func(client, query)
+        else:
+            await cb.answer("You ain't allowed!", show_alert=True)
+            return
 
 # Anticommand Module
 @Client.on_message(~filters.private)
