@@ -11,7 +11,7 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, 
 
 from callsmusic import callsmusic, queues
 from helpers.filters import command
-from helpers.decorators import errors, authorized_users_only
+from helpers.decorators import errors, authorized_users_only, admin_chack_cb
 from cache.admins import admins as purnmemes
 from helpers.database import db, dcmdb, Database
 from helpers.admins import get_administrators
@@ -30,20 +30,6 @@ async def delcmd(_, message: Message):
     if await delcmd_is_on(message.chat.id) and message.text.startswith("/") or message.text.startswith("!"):
         await message.delete()
     await message.continue_propagation()
-
-# Cb admin check
-def admin_chack_cb(func):
-    @wraps(func)
-    async def checkedadmin(message, query):
-        admins = await Client.get_chat_members(message.chat.id, filter="administrators")
-        if query.from_user.id == admins:
-            return await func(message, query)
-        else:
-            await query.answer("You Go Away, This isn't For You!", show_alert=True)
-            return
-    
-    return checkedadmin
-
 
 # Back Button
 BACK_BUTTON = InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Go Back ⬅️", callback_data="cbback")]])
