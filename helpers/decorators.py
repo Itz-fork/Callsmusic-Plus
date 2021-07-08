@@ -29,21 +29,3 @@ def authorized_users_only(func: Callable) -> Callable:
                 return await func(client, message)
 
     return decorator
-
-# For callback
-def is_that_owner(func):
-    @wraps(func)
-    async def ownermelol(message, query):
-        if query.message.from_user.id in SUDO_USERS:
-            return await func(message, query)
-
-        administrators = await get_administrators(query.message.chat)
-
-        for administrator in administrators:
-            if administrator == query.message.from_user.id:
-                return await func(message, query)
-        else:
-            await query.answer("Lol, You aren't a admin to do this!", show_alert=True)
-            return
-
-    return cbdecorator
