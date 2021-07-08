@@ -1,4 +1,5 @@
 from typing import Callable
+from functools import wraps
 
 from pyrogram import Client
 from pyrogram.types import Message, CallbackQuery
@@ -31,8 +32,9 @@ def authorized_users_only(func: Callable) -> Callable:
     return decorator
 
 
-def admin_chack_cb(func: Callable) -> Callable:
-    async def gaeshit(client: Client, message: Message, query: CallbackQuery):
+def admin_chack_cb(func):
+    @wraps(func)
+    async def gaeshit(message: Message, query: CallbackQuery):
         administrators = await get_administrators(query.message.chat)
         if message.from_user.id in SUDO_USERS:
             return await func(message, query)
