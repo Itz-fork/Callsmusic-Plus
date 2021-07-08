@@ -49,7 +49,7 @@ async def update_admin(client, message):
 @Client.on_message(command(["control", f"control@{BOT_USERNAME}", "p"]))
 @errors
 @authorized_users_only
-async def controlset(_, message: Message):
+async def controlset(client, message: Message):
     await message.reply_text(
         "**Successfully Opened Control Menu Of Streamer Player!**",
         reply_markup=InlineKeyboardMarkup(
@@ -170,7 +170,7 @@ async def unmute(_, message: Message):
 
 @Client.on_callback_query(filters.regex("cbpause"))
 @admin_chack_cb
-async def cbpause(client, query: CallbackQuery):
+async def cbpause(_, query: CallbackQuery):
     if callsmusic.pause(query.message.chat.id):
         await query.edit_message_text("⏸ Song Paused", reply_markup=BACK_BUTTON)
     else:
@@ -178,7 +178,7 @@ async def cbpause(client, query: CallbackQuery):
 
 @Client.on_callback_query(filters.regex("cbresume"))
 @admin_chack_cb
-async def cbresume(client, query: CallbackQuery):
+async def cbresume(_, query: CallbackQuery):
     if callsmusic.resume(query.message.chat.id):
         await query.edit_message_text("🎧 Song Resumed", reply_markup=BACK_BUTTON)
     else:
@@ -186,7 +186,7 @@ async def cbresume(client, query: CallbackQuery):
 
 @Client.on_callback_query(filters.regex("cbend"))
 @admin_chack_cb
-async def cbend(client, query: CallbackQuery):
+async def cbend(_, query: CallbackQuery):
     if query.message.chat.id not in callsmusic.active_chats:
         await query.edit_message_text("❗️ Nothing is playing", reply_markup=BACK_BUTTON)
     else:
@@ -200,7 +200,7 @@ async def cbend(client, query: CallbackQuery):
 
 @Client.on_callback_query(filters.regex("cbskip"))
 @admin_chack_cb
-async def cbskip(client, query: CallbackQuery):
+async def cbskip(_, query: CallbackQuery):
      if query.message.chat.id not in callsmusic.active_chats:
         await query.edit_message_text("❗️ Nothing is playing", reply_markup=BACK_BUTTON)
      else:
@@ -217,7 +217,7 @@ async def cbskip(client, query: CallbackQuery):
 
 @Client.on_callback_query(filters.regex("cbmute"))
 @admin_chack_cb
-async def cbmute(client, query: CallbackQuery):
+async def cbmute(_, query: CallbackQuery):
     result = callsmusic.mute(query.message.chat.id)
 
     if result == 0:
@@ -229,7 +229,7 @@ async def cbmute(client, query: CallbackQuery):
 
 @Client.on_callback_query(filters.regex("cbunmute"))
 @admin_chack_cb
-async def cbunmute(client, query: CallbackQuery):
+async def cbunmute(_, query: CallbackQuery):
     result = callsmusic.unmute(query.message.chat.id)
 
     if result == 0:
