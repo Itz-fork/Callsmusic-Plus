@@ -8,7 +8,6 @@ from typing import Callable
 
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, Chat, CallbackQuery
-from functools import wraps
 
 from callsmusic import callsmusic, queues
 from helpers.filters import command
@@ -24,15 +23,21 @@ from . import que, admins as fuck
 @Client.on_message()
 async def _(bot: Client, cmd: Message):
     await handle_user_status(bot, cmd)
-# Callback admin check
 
+# Callback admin check
 def cb_admemes_only(func: Callable) -> Callable:
-    async def decorator(client, query):
-        gae_memes = client.get(query.message.chat.id)
-        if query.from_user.id in gae_memes:
-            return await func(client, query)
+    async def decorator(message, query):
+        if query.message.from_user.id in SUDO_USERS:
+            return await func(message, query)
+
+        administrators = await get_administrators(query.message.chat)
+
+        for administrator in administrators:
+            if administrator == query.message.from_user.id:
+                return await func(message, query)
+
         else:
-            await query.answer("Lol, You aren't a admin of this chat!", show_alert=True)
+            await query.answer("You Go Away, This isn't For You!", show_alert=True)
             return
 
     return decorator
