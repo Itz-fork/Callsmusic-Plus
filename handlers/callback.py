@@ -10,6 +10,42 @@ from config import BOT_USERNAME, UPDATES_CHANNEL
 async def close(_, query: CallbackQuery):
     await query.message.delete()
 
+# Player Control Callbacks
+
+@Client.on_callback_query(filters.regex("cbback"))
+async def cbback(_, query: CallbackQuery):
+    await query.edit_message_text(
+        "**Here is The Control Menu Of Streamer!**",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "⏸ Pause ⏸", callback_data="cbpause"
+                    ),
+                    InlineKeyboardButton(
+                        "▶️ Resume ▶️", callback_data="cbresume"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "⏩ Skip ⏩", callback_data="cbskip"
+                    ),
+                    InlineKeyboardButton(
+                        "⏹ End ⏹", callback_data="cbend"
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🔇 Mute 🔇", callback_data="cbmute"
+                    ),
+                    InlineKeyboardButton(
+                        "🔈 Unmute 🔈", callback_data="cbunmute"
+                    )
+                ]
+            ]
+        )
+    )
+
 
 # Start callback 
 
@@ -112,6 +148,9 @@ async def cbhowtouse(_, query: CallbackQuery):
     1. **Group Admin Only Commands 👮 ,**
      - `/play` - Reply to supported url, Reply to Audio File or Send `/play` with [Supported Url](https://ytdl-org.github.io/youtube-dl/supportedsites.html)
        **Example:** `/play https://www.youtube.com/watch?v=ALZHF5UqnU4`
+        
+     - `/nplay` - Play Song by Name. (Currenty Supported for Youtube Only)
+       **Example:** `/nplay faded`
     
      - `/skip` - Skip currenly playing song.
     
@@ -128,6 +167,8 @@ async def cbhowtouse(_, query: CallbackQuery):
      - `/joingrp` - To Add Streamer Account To Your Group.
     
      - `/leavegrp` - To Remove Streamer Account From Your Group.
+     
+     - `/control` - To Control the Streamer Account in VC by Buttons. (Like pause, resume, skip etc.)
      
     2. **Other Commands,**
      - `/vc` - To Get and Share Voice Chat Link. (Public Groups Only)

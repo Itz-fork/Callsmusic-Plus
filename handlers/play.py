@@ -1,7 +1,9 @@
+# Copyright (c) 2021 Itz-fork <https://github.com/Itz-fork> and Callsmusic
+
 from os import path
 
 from pyrogram import Client, filters # Ik this is weird as this shit is already imported in line 16! anyway ... Fuck Off!
-from pyrogram.types import Message, Voice
+from pyrogram.types import Message, Voice, InlineKeyboardMarkup, InlineKeyboardButton, Chat, CallbackQuery
 from youtube_search import YoutubeSearch
 
 from callsmusic import callsmusic, queues
@@ -10,6 +12,7 @@ import converter
 import youtube
 import requests
 import aiohttp
+import wget
 
 from helpers.database import db, Database
 from helpers.dbthings import handle_user_status
@@ -24,6 +27,27 @@ from . import que
 @Client.on_message(filters.private)
 async def _(bot: Client, cmd: command):
     await handle_user_status(bot, cmd)
+
+
+# Some Secret Buttons
+PLAYMSG_BUTTONS = InlineKeyboardMarkup(
+    [
+        [
+            InlineKeyboardButton(
+                "⏸ Pause ⏸", callback_data="cbpause"
+            ),
+            InlineKeyboardButton(
+                "⏩ Skip ⏩", callback_data="cbskip"
+            ),
+        ],
+        [
+            InlineKeyboardButton(
+                "❌ Close ❌", callback_data="close"
+            )
+        ]
+    ]
+)
+
 
 @Client.on_message(command(["play", f"play@{BOT_USERNAME}"]) & other_filters)
 @errors
@@ -86,12 +110,12 @@ async def play(_, message: Message):
         position = await queues.put(message.chat.id, file=file)
         MENTMEH = message.from_user.mention()
         await response.delete()
-        await message.reply_photo(thumb, caption=f"**Your Song Queued at position** `{position}`! \n**Requested by: {MENTMEH}**")
+        await message.reply_photo(thumb, caption=f"**Your Song Queued at position** `{position}`! \n**Requested by: {MENTMEH}**", reply_markup=PLAYMSG_BUTTONS)
     else:
         thumb = THUMB_URL
         await callsmusic.set_stream(message.chat.id, file)
         await response.delete()
-        await message.reply_photo(thumb, caption="**Playing Your Song 🎧...** \n**Requested by: {}**".format(message.from_user.mention()))
+        await message.reply_photo(thumb, caption="**Playing Your Song 🎧...** \n**Requested by: {}**".format(message.from_user.mention()), reply_markup=PLAYMSG_BUTTONS)
 
 
 # Pros reading this code be like: Wait wut? wtf? dumb? Me gonna die, lol etc.
@@ -146,9 +170,9 @@ async def nplay(_, message: Message):
         position = await queues.put(message.chat.id, file=file)
         MENTMEH = message.from_user.mention()
         await lel.delete()
-        await message.reply_photo(thumb, caption=f"**Your Song Queued at position** `{position}`! \n**Requested by: {MENTMEH}**")
+        await message.reply_photo(thumb, caption=f"**Your Song Queued at position** `{position}`! \n**Requested by: {MENTMEH}**", reply_markup=PLAYMSG_BUTTONS)
     else:
         thumb = THUMB_URL
         await callsmusic.set_stream(message.chat.id, file)
         await lel.delete()
-        await message.reply_photo(thumb, caption="**Playing Your Song 🎧...** \n**Requested by: {}**".format(message.from_user.mention()))
+        await message.reply_photo(thumb, caption="**Playing Your Song 🎧...** \n**Requested by: {}**".format(message.from_user.mention()), reply_markup=PLAYMSG_BUTTONS)

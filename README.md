@@ -13,6 +13,7 @@ _**You need another (dummy) Telegram Account To Use/Deploy This!**_
 
 - **Play Music In Telegram Group Voice Chats!** (Supports Multiple Groups)
 - **Supports Queues!**
+- **Control by buttons or commands**
 - **Search For YouTube Videos Inline!**
 - **Download Yt Songs By It's Name!**
 - **Download Yt Videos By It's Name!**
