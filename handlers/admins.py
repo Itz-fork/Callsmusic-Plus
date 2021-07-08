@@ -24,6 +24,7 @@ from . import que, admins as fuck
 async def _(bot: Client, cmd: Message):
     await handle_user_status(bot, cmd)
 
+# F this shit
 def admin_chack_cb(func: Callable) -> Callable:
     async def decorator(client, query):
         admemes = a.get(query.message.chat.id)
@@ -60,7 +61,7 @@ async def update_admin(client, message):
 @Client.on_message(command(["control", f"control@{BOT_USERNAME}", "p"]))
 @errors
 @authorized_users_only
-async def controlset(client, message: Message):
+async def controlset(client: Client, message: Message):
     await message.reply_text(
         "**Successfully Opened Control Menu Of Streamer Player!**",
         reply_markup=InlineKeyboardMarkup(
