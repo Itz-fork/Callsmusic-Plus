@@ -45,7 +45,7 @@ async def ubgetchats(_, message: Message):
       total = await NEXAUB.get_dialogs_count()
       await getting_chats.edit(f"**Total Dialogs Counted:** `{total}` \n\n**Not Stable Lol**")
     except Exception as lol:
-      await getting_chats.edit(f"`Never Gonna Give You Up!` \n\n**Error:** `{lol}`")
+      await message.reply_text(f"`Never Gonna Give You Up!` \n\n**Error:** `{lol}`")
 
 
 # Leave From a Chat
@@ -78,12 +78,12 @@ async def getlogs(client: NEXAUB, message: Message, app_):
   if len(message.command) != 2:
         await message.edit_text("`Wait, What?` \n\n**To Turn On:** `.pmlogs on` \n**To Turn Off:** `.pmlogs off` ")
         return
-  if PM_LOG_CHAT_ID != 12345678:
-    await message.edit("`You already did this huh? Why again?`")
-    return
   status = message.text.split(None, 1)[1].strip()
   status = status.lower()
   if status == "on":
+    if PM_LOG_CHAT_ID != 12345678:
+      await message.edit("`You already did this huh? Why again?`")
+      return # Next level logic lol
     logmsg = await message.edit_text("`PM Message Logs Module is Starting Now...`")
     await asyncio.sleep(2) # Lmao
     chat_pic = "cache/NexaUB.jpg"
@@ -120,6 +120,7 @@ async def sendpmlol(client: NEXAUB, message: Message):
     return
   else:
     try:
-      await client.send_message(chat_id=pmlogchat, text=f"**Incoming Message** \n\n**👤 User Info \n ⤷**User Name:** `{userinfo.first_name}` \n ⤷**Username:** @{userinfo.username} \n ⤷**User ID:** `{nibba}` \n\n**📝 Message,** \n{msg_txt}", parse_mode="md")
+      forwardedmsg = await client.forward_messages(chat_id=pmlogchat, from_chat_id=message.chat.id, message_ids=message.message_id)
+      await forwardedmsg.reply_text(chat_id=pmlogchat, text=f"**Incoming Message** \n\n**👤 User Info \n ⤷**User Name:** `{userinfo.first_name}` \n ⤷**Username:** @{userinfo.username} \n ⤷**User ID:** `{nibba}`", parse_mode="md")
     except Exception as lol:
       await client.send_message(chat_id=pmlogchat, text=f"`Something Wrong Happend While Sending Message!` \n\n**Error:** {lol}", parse_mode="md")
