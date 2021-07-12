@@ -47,3 +47,7 @@ HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
 UPSTREAM_REPO = os.environ.get("UPSTREAM_REPO", "https://github.com/Itz-fork/Callsmusic-Plus")
 U_BRANCH = "master"
 HEROKU_URL = fetch_heroku_git_url(HEROKU_API_KEY, HEROKU_APP_NAME)
+
+# Versions
+cp_version = "v2.9.3.2"
+nexaub_version = "v0.4"
