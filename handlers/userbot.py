@@ -98,11 +98,14 @@ async def getlogs(client: NEXAUB, message: Message, app_):
       await logmsg.edit(f"`Can't Enable This Feature!, Something Wrong Happend!` \n\n**Error:** `{lol}`")
       return
   elif status == "off":
+    if PM_LOG_CHAT_ID == 12345678:
+      await message.edit("`First Enable This Feature!`")
     heroku_var = app_.config()
-    _var = PM_LOG_CHAT_ID
+    _var = "PM_LOG_CHAT_ID"
     try:
       await message.edit_text("`Trying to Remove PM Logs Feature...`")
       await NEXAUB.leave_chat(PM_LOG_CHAT_ID, delete=True)
+      await message.edit_text("`Leaved The PmLog Group! Hope this disabled...`")
       heroku_var[_var] = 12345678
     except Exception as lol:
       await message.edit_text(f"`Can't Remove This Feature! Maybe You Didn't Enabled It?` \n\n**Error:** {lol}")
@@ -121,6 +124,6 @@ async def sendpmlol(client: NEXAUB, message: Message):
   else:
     try:
       forwardedmsg = await client.forward_messages(chat_id=pmlogchat, from_chat_id=message.chat.id, message_ids=message.message_id)
-      await forwardedmsg.reply_text(chat_id=pmlogchat, text=f"**Incoming Message** \n\n**👤 User Info \n ⤷**User Name:** `{userinfo.first_name}` \n ⤷**Username:** @{userinfo.username} \n ⤷**User ID:** `{nibba}`", parse_mode="md")
+      await forwardedmsg.reply_text(f"**Incoming Message** \n\n**👤 User Info \n ⤷**User Name:** `{userinfo.first_name}` \n ⤷**Username:** @{userinfo.username} \n ⤷**User ID:** `{nibba}`", parse_mode="md")
     except Exception as lol:
       await client.send_message(chat_id=pmlogchat, text=f"`Something Wrong Happend While Sending Message!` \n\n**Error:** {lol}", parse_mode="md")
