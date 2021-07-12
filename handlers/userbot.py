@@ -8,7 +8,7 @@ import asyncio
 from pyrogram import Client, filters
 from pyrogram.types import Dialog, Chat, Message
 
-from config import BOT_USERNAME, BOT_OWNER
+from config import BOT_USERNAME, BOT_OWNER, cp_version, nexaub_version
 from callsmusic.callsmusic import client as NEXAUB
 from handlers.ownerstuff import _check_heroku
 
@@ -45,7 +45,8 @@ async def ubgetchats(_, message: Message):
       total = await NEXAUB.get_dialogs_count()
       await getting_chats.edit(f"**Total Dialogs Counted:** `{total}` \n\n**Not Stable Lol**")
     except Exception as lol:
-      await message.reply_text(f"`Never Gonna Give You Up!` \n\n**Error:** `{lol}`")
+      brokenmsg = await message.reply_text(f"`Never Gonna Give You Up!, but Something Went Wrong!`")
+      await brokenmsg.edit(f"**Error:** `{lol}`")
 
 
 # Leave From a Chat
@@ -64,7 +65,7 @@ async def ubkickme(_, message: Message):
 async def ubalive(_, message: Message):
   alive_msg = await message.edit_text("`Processing...`")
   alive_pic = "cache/NexaUB.jpg"
-  await message.reply_photo(alive_pic, caption=f"**🌀 Nexa Music Userbot is Alive 🌀** \n\n**🤖 Version** \n ↳**Bot Version:** `V2.9.1` \n ↳**Userbot Version:** `0.3` \n\n**🐬 Info**\n ↳**Music Bot:** @{BOT_USERNAME} \n ↳**Owner:** [Click Here](tg://user?id={BOT_OWNER})")
+  await message.reply_photo(alive_pic, caption=f"**🌀 Nexa Music Userbot is Alive 🌀** \n\n**🤖 Version** \n ↳**Bot Version:** `{cp_version}` \n ↳**Userbot Version:** `{nexaub_version}` \n\n**🐬 Info**\n ↳**Music Bot:** @{BOT_USERNAME} \n ↳**Owner:** [Click Here](tg://user?id={BOT_OWNER})")
   await alive_msg.delete()
 
 
@@ -92,8 +93,8 @@ async def getlogs(client: NEXAUB, message: Message, app_):
       pmchat = await NEXAUB.create_group(f"Nexa Userbot's PM Logs", BOT_OWNER)
       chat_id = pmchat.id
       await NEXAUB.set_chat_photo(chat_id=chat_id, photo=chat_pic)
-      await logmsg.edit(f"`Successfully Finished Step 1, To Enable This Feature Please Check Your Log Group That Created Now!!` \n\n**Bot is Restarting...!**")
-      await client.send_message(chat_id, f"**Welcome to @{(await NEXAUB.get_me()).username}'s PM Log Group!** \nThis Chat will Contain All PM Messages Of @{(await NEXAUB.get_me()).username} ! \n\n\n`/setvar PM_LOG_CHAT_ID {chat_id}` \n\n ✪ **Please Copy and Send Above Command To Your @{BOT_USERNAME} After 1-2 Minutes**!")
+      await logmsg.edit(f"`Successfully Finished Step 1, To Enable This Feature Please Check Your Log Group That Created Now!!` \n\n ~ **@NexaBotsUpdates**")
+      await client.send_message(chat_id, f"**Welcome to @{(await NEXAUB.get_me()).username}'s PM Log Group!** \nThis Chat will Contain All PM Messages Of **@{(await NEXAUB.get_me()).username}** ! \n\n\n`/setvar PM_LOG_CHAT_ID {chat_id}` \n\n ✪ **Please Copy and Send Above Command To Your @{BOT_USERNAME} Now**!")
     except Exception as lol:
       await logmsg.edit(f"`Can't Enable This Feature!, Something Wrong Happend!` \n\n**Error:** `{lol}`")
       return
