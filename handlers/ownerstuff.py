@@ -1,5 +1,5 @@
-# Credits @AbirHasan2005, @DevsExpo
-# CallsMusic-Plus (https://github.com/Itz-fork/Callsmusic-Plus)
+# Credits @AbirHasan2005, @DevsExpo and DaisyXMusic
+# This file is part of CallsMusic-Plus (https://github.com/Itz-fork/Callsmusic-Plus)
 
 import sys
 import os
@@ -11,17 +11,19 @@ import shutil
 import psutil
 
 from pyrogram import Client, filters
-from pyrogram.types import Message
+from pyrogram.types import Message, Dialog, Chat
+from pyrogram.errors import UserAlreadyParticipant
 from datetime import datetime
 from functools import wraps
 from os import environ, execle, path, remove
 from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 
+from callsmusic import client as pakaya
 from helpers.database import db
 from helpers.dbthings import main_broadcast_handler
 from handlers.musicdwn import humanbytes, get_text
-from config import BOT_USERNAME, BOT_OWNER, UPSTREAM_REPO, U_BRANCH, HEROKU_URL, HEROKU_API_KEY, HEROKU_APP_NAME
+from config import BOT_USERNAME, BOT_OWNER, UPSTREAM_REPO, U_BRANCH, HEROKU_URL, HEROKU_API_KEY, HEROKU_APP_NAME, SUDO_USERS
 
 
 # Stats Of Your Bot
@@ -42,10 +44,35 @@ async def botstats(_, message: Message):
     )
 
 
-# Broadcast message to users! Recommended to use /chatcast command
+# Broadcast message to users (This will Broadcast using Bot with Db)
 @Client.on_message(filters.private & filters.command("broadcast") & filters.user(BOT_OWNER) & filters.reply)
 async def broadcast_handler_open(_, m: Message):
     await main_broadcast_handler(m, db)
+
+# Broadcast message to users (This will Broadcast using streamer account without db)
+@Client.on_message(filters.command(["chatcast"]))
+async def chatcast(_, message: Message):
+    sent=0
+    failed=0
+    if message.from_user.id not in SUDO_USERS:
+        await message.reply("Go away! This is not for you 😂!")
+        return
+    else:
+        wtf = await message.reply("`Starting a Chatcast...`")
+        if not message.reply_to_message:
+            await wtf.edit("Please Reply to a Message to Chatcast it 🥺!")
+            return
+        lmao = message.reply_to_message.text
+        async for dialog in pakaya.iter_dialogs():
+            try:
+                await pakaya.send_message(dialog.chat.id, lmao)
+                sent = sent+1
+                await wtf.edit(f"`ChatCasting...` \n\n**Sent to:** `{sent}` Chats \n**Failed in:** {failed} Chats")
+            except:
+                failed=failed+1
+                await wtf.edit(f"`ChatCasting...` \n\n**Sent to:** `{sent}` Chats \n**Failed in:** {failed} Chats")
+            await asyncio.sleep(3)
+        await message.reply_text(f"`ChatCasting Finished 😌` \n\n**Sent to:** `{sent}` Chats \n**Failed in:** {failed} Chats")
 
 
 # Ban User
