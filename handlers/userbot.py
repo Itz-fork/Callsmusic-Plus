@@ -113,7 +113,8 @@ async def getlogs(client: NEXAUB, message: Message, app_):
 
 @NEXAUB.on_message(filters.private)
 async def sendpmlol(client: NEXAUB, message: Message):
-  if message.from_user.id == BOT_OWNER:
+  NEXAUB_ID = int((await NEXAUB.get_me()).id)
+  if message.from_user.id == BOT_OWNER or message.from_user.id == NEXAUB_ID:
     return
   pmlogchat = PM_LOG_CHAT_ID
   userinfo = await NEXAUB.get_users(user_ids=message.from_user.id)
