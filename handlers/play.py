@@ -52,6 +52,7 @@ PLAYMSG_BUTTONS = InlineKeyboardMarkup(
 @Client.on_message(command(["play", f"play@{BOT_USERNAME}"]) & other_filters)
 @errors
 async def play(_, message: Message):
+    chat_id = message.chat.id
     audio = (message.reply_to_message.audio or message.reply_to_message.voice) if message.reply_to_message else None
 
     response = await message.reply_text("**Processing Your Song 😇...**")
@@ -105,15 +106,15 @@ async def play(_, message: Message):
         url = text[offset:offset + length]
         file = await converter.convert(youtube.download(url))
 
-    if message.chat.id in callsmusic.active_chats:
+    if chat_id in callsmusic.active_chats:
         thumb = THUMB_URL
-        position = await queues.put(message.chat.id, file=file)
+        position = await queues.put(chat_id, file=file)
         MENTMEH = message.from_user.mention()
         await response.delete()
         await message.reply_photo(thumb, caption=f"**Your Song Queued at position** `{position}`! \n**Requested by: {MENTMEH}**", reply_markup=PLAYMSG_BUTTONS)
     else:
         thumb = THUMB_URL
-        await callsmusic.set_stream(message.chat.id, file)
+        await callsmusic.set_stream(chat_id, file)
         await response.delete()
         await message.reply_photo(thumb, caption="**Playing Your Song 🎧...** \n**Requested by: {}**".format(message.from_user.mention()), reply_markup=PLAYMSG_BUTTONS)
 
