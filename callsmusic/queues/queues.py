@@ -1,5 +1,7 @@
-from asyncio import Queue, QueueEmpty as Empty
-from typing import Dict, Union
+from asyncio import Queue
+from asyncio import QueueEmpty as Empty
+from typing import Dict
+
 
 queues: Dict[int, Queue] = {}
 
@@ -11,7 +13,7 @@ async def put(chat_id: int, **kwargs) -> int:
     return queues[chat_id].qsize()
 
 
-def get(chat_id: int) -> Union[Dict[str, str], None]:
+def get(chat_id: int) -> Dict[str, str]:
     if chat_id in queues:
         try:
             return queues[chat_id].get_nowait()
