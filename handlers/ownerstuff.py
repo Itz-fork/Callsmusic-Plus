@@ -1,4 +1,4 @@
-# Credits @AbirHasan2005, @DevsExpo and DaisyXMusic
+# Credits @abhinasroy, @DevsExpo and DaisyXMusic
 # This file is part of CallsMusic-Plus (https://github.com/Itz-fork/Callsmusic-Plus)
 
 import sys
