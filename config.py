@@ -39,7 +39,7 @@ UPDATES_CHANNEL = os.environ.get("UPDATES_CHANNEL", "NexaBotsUpdates")
 # Your ARQ API Key
 ARQ_API_KEY = getenv("ARQ_API_KEY")
 # Don't Change Anything Here
-ARQ_API_URL = "https://thearq.tech/"
+ARQ_API_URL = "https://grambuilders.tech/"
 
 # Updator Configs
 HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
